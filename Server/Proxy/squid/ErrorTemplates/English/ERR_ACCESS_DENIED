@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+	<TITLE>Status: 403 Forbidden</TITLE>
+</HEAD>
+<BODY>
+
+<span style="font-size: 30pt; font-family: Trebuchet MS; color: blue; font-weight:bold;">Qbe</span>
+<span style="font-size: 30pt; font-family: Trebuchet MS; color: red; font-weight:bold;"><i>SAS Proxy</i></span> &nbsp;
+
+<hr noshade color=black size=1>
+
+<P>
+URL: <A HREF="%U">%U</A><br>
+<br>
+
+<blockquote>
+
+	<span style="font-size: 20pt; font-family: Trebuchet MS; color: black; font-weight:bold;">Zugriff verboten</span><br>
+
+	<br>
+
+	<iframe src="http://10.0.2.10/rpc/proxy403-info.php" height=24 width=800 border=0 scrolling=no style="border: none;"></iframe>
+
+</blockquote>
+
+<P>Ihr Proxy-Administrator ist: <A HREF="mailto:%w">%w</A>. 
+
+<hr noshade color=black size=1>
+
+<div style="visibility: hidden;">
+
