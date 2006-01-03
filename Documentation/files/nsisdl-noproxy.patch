@@ -1,0 +1,25 @@
+--- nsisdl.cpp~ 2004-02-02 00:55:08.000000000 +0100
++++ nsisdl.cpp  2004-02-03 20:39:18.000000000 +0100
+@@ -310,7 +310,7 @@
+       char *buf=main_buf;
+       char *p=NULL;
+
+-      HKEY hKey;
++/*      HKEY hKey;
+       if (RegOpenKeyEx(HKEY_CURRENT_USER,"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings",0,KEY_READ,&hKey) == ERROR_SUCCESS)
+       {
+         DWORD l = 4;
+@@ -335,9 +335,10 @@
+         buf[8192-1]=0;
+         RegCloseKey(hKey);
+       }
+-
++*/
+       DWORD start_time=GetTickCount();
+-      get=new JNL_HTTPGet(JNL_CONNECTION_AUTODNS,16384,(p&&p[0])?p:NULL);
++//      get=new JNL_HTTPGet(JNL_CONNECTION_AUTODNS,16384,(p&&p[0])?p:NULL);
++      get=new JNL_HTTPGet(JNL_CONNECTION_AUTODNS,16384,NULL);
+       int         st;
+       int         has_printed_headers = 0;
+       int         cl;
+
