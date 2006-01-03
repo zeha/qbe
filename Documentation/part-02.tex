@@ -1,0 +1,151 @@
+%%
+%% Qbe SAS SystemDocumentation
+%% (C) Copyright 2001-2003 Christian Hofstaedtler
+%%
+%% $Id: part-02.tex 20 2004-05-03 15:41:20Z ch $
+%%
+
+\cChapter{Proxy -- Internetgateway}
+
+Der Qbe SAS Proxy stellt die Verbindung zum Internet her. Alle ausgehenden Verbindungen passieren den \index{Proxy}{Proxy} -- teilweise durch Application Proxies oder IP-Forwarding. Zugriffe werden zentral über Qbe SAS kontrolliert und protokolliert.
+Der Proxy wird fast ausschliesslich mit Standard OpenSource Software implementiert.
+
+\section{Software}
+Folgende Standardsoftware wird verwendet:
+
+\begin{Verbatim}
+Debian GNU/Linux woody, RedHat Linux 9.0, alternativ OpenBSD 3.0+
+Linux Kernel 2.4.18+ 
+Squid Cache 2.4-STABLE oder 2.5-STABLE -- \index{HTTP}{HTTP} Proxy
+Frox -- FTP Proxy
+Perl 5.8 und Module Net::LDAP, File::Tail, DBI, MySql
+ISC BIND 9 -- DNS
+\end{Verbatim}
+
+Zusätzlich laufen nur zwei \index{Perl}{Perl-Skripte} die sich mit der Zugriffssteuerung und Volumenaccounting beschäftigen. Die Skripte werden üblicherweise in \verb|/qbe/sbin/| abgelegt und können ggf. mit rsync vom AuthServer synchronisiert werden.
+
+\begin{Verbatim}
+qbe-proxy-checkaclupdate.pl -- Zugriffssteuerung für Squid Cache
+qbe-proxy-squidlog.pl -- Auswertung der Squid Cache Logs
+\end{Verbatim}
+
+Notiz: Es ist nicht notwendig eine LDAP-Benutzerauthentifizierung einzurichten. Idealerweise gibt es auf dem Qbe Proxy nur Systemaccounts und einen Systemverwalter (nicht \verb|root|). \verb|root| sollte sich nicht remote anmelden können.
+
+\subsection{Beschreibung qbe-proxy-squidlog.pl}
+Das Perlskript liest die Squid-Logdatei kontinuierlich aus und wertet die Einträge aus, interne Zugriffe werden dabei ignoriert. Die Datentransfergröße wird (pro Client-IP) im RAM abgespeichert. 
+Alle 5 Minuten werden die Daten im RAM in die \index{MySQL}{MySQL-Tabelle} \index{sas.trafficlog}{sas.trafficlog} gespeichert. 
+Am AuthServer werden diese Daten dann zusammengezählt und in die \index{LDAP}{LDAP-Datenbank} hinzugefügt. Traffic der nicht einem Benutzer zugeordnet werden kann, wird beim \verb|nobody|-User dazugezählt. Für eine IP-basierende-Auswertung werden die Daten in eine getrennte Tabelle \verb|sas.trafficip| gespeichert. Weiters kann am AuthServer eine Grafik über den Traffic-Verlauf erstellt werden.
+
+\medskip
+
+Tabellenaufbau:
+\begin{lstlisting}[language=sql]
+CREATE TABLE trafficlog (
+  ip varchar(60) NOT NULL default '',
+  traffic bigint(20) default NULL,
+  KEY client (ip)
+) TYPE=MyISAM;
+
+CREATE TABLE trafficip (
+  ip varchar(20) NOT NULL default '',
+  traffic bigint(20) NOT NULL default '0',
+  PRIMARY KEY  (ip)
+) TYPE=MyISAM;
+\end{lstlisting}
+
+Ein typischer, temporärer Eintrag:
+\begin{lstlisting}[language=sql]
+INSERT INTO trafficlog VALUES ('10.3.5.1',135084);
+INSERT INTO trafficip VALUES ('10.1.40.1',8991453419);
+\end{lstlisting}
+
+FIXME: Ablaufdiagramm
+
+\subsubsection{Grafik-Auswertung nach Benutzern}
+Am Authentication Server wird jede Stunde einmal das Skript /qbe/sbin/qbe\_trafficview.pl aufgerufen. Dieses aggregiert die Daten aus dem LDAP und kopiert die Daten pro Benutzer in die Tabelle \verb|sas.trafficview|. Die Tabelle wird im UI mittels /modules/internet/stats-traffic-overall ausgewertet und als Balkendiagramm je Abteilung dargestellt.
+
+\begin{lstlisting}[language=sql]
+CREATE TABLE trafficview (
+  userid varchar(10) NOT NULL default '',
+  traffic bigint(20) NOT NULL default '0',
+  abt varchar(5) NOT NULL default ''
+) TYPE=MyISAM;
+\end{lstlisting}
+
+Ein Beispieleintrag:
+\begin{lstlisting}[language=sql]
+INSERT INTO trafficview VALUES ('cb',1123132,'Adm');
+\end{lstlisting}
+
+\placefig{scr-inettraffic}{Graphische Auswertung}
+
+\subsection{Beschreibung qbe-proxy-checkaclupdate.pl}
+Das Perlskript wird regelmäßig vom \verb|cron| aufgerufen. Damit nicht dauernd unnötige LDAP-Last generiert wird, wird nur fortgefahren wenn die Datei\\ \verb|/import/homes/.status/proxyacl-update| existiert. (Diese Datei wird anschließend gelöscht.)
+
+Es wird eine Verbindung zum AuthServer/LDAP aufgebaut und eine Liste aller freigeschalteter Benutzer (daher Filter $(|(inetStatus=0) (inetStatus=7))$) abgerufen. Die Einträge werden auf Gültigkeit und vorhandenen Attributen \verb|loggedonHost| und \verb|loggedonMac| überprüft. Einträge die diese Kriterien erfüllen werden im Format "\verb|loggedonHost|/32" in die Datei \verb|/qbe/data/squid.include| geschrieben.
+Um Fehlermeldungen des Squids zu vermeiden, wenn keine Benutzer angemeldet sind, wird zusätzlich der harmlose Eintrag 127.0.0.1/32 geschrieben.
+
+Anschließend wird der \index{Squid}{Squid-Cache} angewiesen die Konfiguration neu einzulesen. Ablaufdiagramm auf der nächsten Seite. 
+%dazu siehe Abb. \ref{fig:flow-qbe-proxy-squidacl}
+
+\placefig{scr-proxyaccessdenied}{Fehlermeldung vom Proxy bei keiner Anmeldung}
+
+%\placefig{flow-qbe-proxy-squidacl}{Ablaufdiagramm qbe-proxy-squidacl.pl}
+\includepdf{files/flow-qbe-proxy-squidacl.pdf}
+
+\section{System-Konfiguration}
+Es werden kurz die Änderungen an der Standardkonfiguration beschrieben.
+
+\subsection{Cron}
+Folgender Eintrag in \verb|/etc/crontab| ruft jede Minute das Skript für die Zugriffskontrolllisten auf.
+
+\begin{Verbatim}
+# Qbe ACL Update checker
+*/1 * * * * root /qbe/sbin/qbe-proxy-checkaclupdate.pl
+\end{Verbatim}
+
+\subsection{Squid: Init}
+Das Initskript des Squid Cache daemons \verb|/etc/init.d/squid| muss angepasst werden, um \verb|qbe-proxy-squidlog.pl| entsprechend zu starten bzw. zu beenden.
+
+Ans Ende der \verb|start()|-Routine gehört folgende Zeile:
+\begin{Verbatim}
+# Qbe SAS Proxy
+/qbe/sbin/qbe-proxy-squidlog.pl&
+# END
+\end{Verbatim}
+
+An den Anfang der \verb|stop()|-Routine muss folgendes hinzugefügt werden:
+\begin{Verbatim}
+# Qbe SAS Proxy
+killall "qbe-proxy-squidlog.pl"
+# END
+\end{Verbatim}
+
+\subsection{Squid: ACL}
+Um den Clients die Benutzung des Squid Caches zu erlauben muss in der \verb|/etc/squid/squid.conf| ein \index{ACL}{ACL-Eintrag} hinzugefügt werden:
+\begin{Verbatim}
+# angemeldete Benutzer
+acl proxy-users src "/qbe/data/squid.include"
+\end{Verbatim}
+
+Anschliessend muß diese ACL in der \verb|allow|-Klasse eingetragen werden:
+\begin{Verbatim}
+http_access allow proxy-users
+\end{Verbatim}
+
+\subsection{WebSense EIM}
+Soll der "WebSense Employee Internet Manager" installiert werden (der für österreichische Schulen zum Zeitpunkt des Schreibens nur einer kostenlosen Registrierung bedarft), muss mindestens Squid 2.5-STABLE verwendet werden. Für Debian \index{Debian}{woody} ist daher ein eigenes Paket notwendig.
+
+Mit einem kleinen Patch kann das sid-Sourcepaket (hier: 2.5.4-3) verwendet werden. Es sind dann noch zwei Pakete aus unstable zu installieren, diese sind jedoch nicht plattformabhängig und funktionieren ohne Modifikation.
+
+\lstinputlisting[language=C]{files/squid-2.5.4-woody.patch}
+
+\subsection{Hinweis}
+Es soll hier ein Hinweis auf \verb|iptables| gegeben werden, mit denen eine Firewall-Funktionalität aufgebaut werden kann. Dies ist dringend zu empfehlen. Es sollten auch keine anderen Dienste auf dem Qbe SAS Proxy laufen (z.B. Webserver, MySQL...) da diese ein nicht einschätzbares Sicherheitsrisiko beherbergen können.
+
+\subsection{Ideen für die Zukunft, bessere Skalierbarkeit}
+Die in dieser Version eingesetzte ACL-Kontrolle über eine Datei funktioniert zwar, führt jedoch teilweise zu obskuren Problemen. Da der squid die ACL-Datei nur bei einem SIGHUP neu einliest, und dabei leider manchmal offene Verbindungen (warum er dies tut, ist mir unbekannt) unterbricht, wäre eine z.B. MySQL-basierende ACL besser. Dazu muss jedoch der squid entsprechend erweitert werden und die Login/Logout Skripte am Authentication Server angepasst werden. Änderungen am Internet-Status der Benutzer könnte man mit einem LDAP-Event abfangen und damit die Datenbank aktualisieren.
+
+Eine andere Möglichkeit wäre das squid external-acl API zu verwenden. Dann läuft ein kleines Programm das nur mit dem LDAP Server spricht sobald der squid einen Benutzer authentifizieren muss. Die Cache-Vorhaltezeit der ist dann im squid selbst konfigurierbar.
+
+%% *eof*

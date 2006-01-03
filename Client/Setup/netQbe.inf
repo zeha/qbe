@@ -1,0 +1,111 @@
+;
+; Qbe SAS Client
+; Setup INFormation File for the QbeSVC
+; (C) Copyright 2004 Christian Hofstaedtler
+;
+; $Id: netQbe.inf 163 2004-06-17 14:38:36Z ch $
+;
+
+[Version]
+Signature="$Windows NT$"
+DriverVer=04/15/2004
+Provider=%Qbe%
+
+[DefaultInstall]
+AddReg			= Qbe_ClientService.Addreg
+CopyINF			= netQbe.inf
+
+[Qbe_ClientService.Addreg]
+HKLM, "SOFTWARE\Qbe\SAS", "Path", REG_EXPAND_SZ, "%%SystemRoot%%\system32\Qbe\"
+;; policies
+HKLM, SYSTEM\CurrentControlSet\Control\Lsa, forceguest, REG_DWORD, 0
+HKLM, SYSTEM\CurrentControlSet\Services\Netlogon\Parameters, requiresignorseal, REG_DWORD, 0 
+HKLM, SYSTEM\CurrentControlSet\Services\Netlogon\Parameters, requiresignorseal, REG_DWORD, 0 
+HKLM, SYSTEM\CurrentControlSet\Services\Netlogon\Parameters, requirestrongkey, REG_DWORD, 0 
+HKLM, SYSTEM\ControlSet001\Services\Netlogon\Parameters, requiresignorseal, REG_DWORD, 0 
+HKLM, SYSTEM\ControlSet001\Services\Netlogon\Parameters, requirestrongkey, REG_DWORD, 0 
+HKLM, "SOFTWARE\Policies\Microsoft\Windows\System", CompatibleRUPSecurity, REG_DWORD, 1 
+HKLM, "SOFTWARE\Policies\Microsoft\Messenger\Client", PreventRun, REG_DWORD, 1
+HKLM, "SOFTWARE\Policies\Microsoft\Internet Explorer\Infodelivery\Restrictions", NoUpdateCheck, REG_DWORD, 1
+HKLM, "SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Winlogon", SyncForegroundPolicy, REG_DWORD, 1
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon", CompatibleRUPSecurity, REG_DWORD, 1 
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon", DeleteRoamingCache, REG_DWORD, 1
+HKLM, "SOFTWARE\Microsoft\Windows\CurrentVersion\NetCache", Enabled, REG_DWORD, 0
+HKLM, "SYSTEM\CurrentControlSet\Control\ContentIndex", FilterFilesWithUnknownExtensions, REG_DWORD, 1
+HKLM, "SOFTWARE\Microsoft\Ole", "EnableDCOM", REG_SZ, "N"
+HKLM, "SOFTWARE\Microsoft\Ole", "EnableDCOMHTTP", REG_SZ, "N"
+HKLM, "SOFTWARE\Microsoft\Ole", "EnableRemoteConnect", REG_SZ, "N"
+
+[DefaultInstall.Services]
+AddService = QbeSvc,,Qbe_ClientService.AddService, Qbe_ClientService.AddEventLog
+
+[Qbe_ClientService.AddService]
+DisplayName=%QbeSvcName%
+ServiceType=16			;SERVICE_WIN32_OWN_PROCESS 
+StartType=2			;SERVICE_AUTO_START      AUTO=2
+ErrorControl=0			;SERVICE_ERROR_IGNORE
+ServiceBinary="%11%\Qbe\QbeSvc.exe -start"
+Description=%QbeSvcDesc%
+Dependencies=TCPIP
+
+[Qbe_ClientService.AddEventLog]
+AddReg=Qbe_ClientService.AddEventLog.reg
+
+[Qbe_ClientService.AddEventLog.reg]
+HKR,,EventMessageFile,0x20000,"%%SystemRoot%%\Microsoft.NET\Framework\v1.1.4322\EventLogMessages.dll"
+HKR,,TypesSupported,0x10001,7
+
+[DefaultUninstall]
+DelReg=Qbe_ClientService.DelReg
+
+[DefaultUninstall.Services]
+DelService = QbeSvc,0x00000200
+
+[Qbe_ClientService.DelReg]
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\Run,QbeStart
+HKLM,SOFTWARE\Qbe\SAS\Client,BuildNumber
+HKLM,SOFTWARE\Qbe\SAS\Client
+HKLM,SOFTWARE\Qbe\SAS,Path
+HKLM,SOFTWARE\Qbe\SAS
+HKLM,SOFTWARE\Qbe
+HKLM,SYSTEM\CurrentControlSet\Control\Lsa, forceguest
+
+[SourceDisksNames]
+39=%QbeCD%,,,""
+
+[SourceDisksFiles]
+netQbe.inf = 39,,1024
+
+[Strings]
+
+REG_SZ = 0x1
+REG_MULTI_SZ = 0x10000
+REG_EXPAND_SZ = 0x20000
+REG_DWORD = 0x10001
+
+SERVICE_DEMAND_START = 3
+SERVICE_AUTO_START = 2
+SERVICE_WIN32_SHARE_PROCESS = 32
+SERVICE_WIN32_OWN_PROCESS = 16
+
+FLG_ADDREG_KEYONLY = 0x0010
+
+;;
+;; Begin Localizable Strings
+;; 
+
+Qbe="Qbe Austria"
+QbeClient="Qbe SAS Client"
+QbeSvcName="Qbe Network Authentication"
+QbeSvcDesc="Unterstützungsdienst für den Qbe SAS Client"
+QbeSvcHelpText="Qbe SAS Client erlaubt eine transparente Authentifizierung in Qbe SAS Netzwerken."
+QbeCD="Qbe SAS Client CD"
+
+QbeShortcutName="Qbe SAS Client"
+
+;;
+;; End Localizable Strings
+;;
+
+; -eof-
+

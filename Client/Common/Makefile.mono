@@ -1,0 +1,14 @@
+# Makefile. Written for UNIX. May work on windows with nmake too.
+#
+
+all: ilogin-version.cs AssemblyInfo.cs
+
+clean:
+	rm -f ilogin-version.cs AssemblyInfo.cs
+
+ilogin-version.cs: ilogin-version.xcs ilogin-version.h 
+	cpp -Wall -P -E ilogin-version.xcs -o ilogin-version.cs
+	
+AssemblyInfo.cs: AssemblyInfo.xcs ilogin-version.h
+	cpp -Wall -P -E AssemblyInfo.xcs -o AssemblyInfo.cs
+

@@ -1,0 +1,1 @@
+pscp.exe QbeSASDoc.pdf ch@sas.qbe.ch:/kunden/vhosts/qbe.ch/sas/htdocs/sysdoc/

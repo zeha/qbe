@@ -1,0 +1,227 @@
+\hypertarget{classQbeSAS_1_1ClientUI}{
+\section{Client\-UI Klassenreferenz}
+\label{classQbeSAS_1_1ClientUI}\index{QbeSAS::ClientUI@{QbeSAS::ClientUI}}
+}
+
+
+\subsection{Ausf\"{u}hrliche Beschreibung}
+Das gesamte Benutzerinterface des Win32 Clients. 
+
+
+
+Definiert in Zeile 6 der Datei Client\-UI.cs.\subsection*{\"{O}ffentliche Methoden}
+\begin{CompactItemize}
+\item 
+\hyperlink{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa0}{Client\-UI} (bool \hyperlink{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIr0}{b\-Silent})
+\begin{CompactList}\small\item\em Initialisert \hyperlink{classQbeSAS_1_1ClientUI}{Client\-UI}::. Initialisert Qbe\-Directory (app\-Path) und this.b\-Silent. \item\end{CompactList}\item 
+bool \hyperlink{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa1}{display\-SASLogin} ()
+\begin{CompactList}\small\item\em Ruft einen Browser mit dem Web-Interface Login auf. \item\end{CompactList}\item 
+bool \hyperlink{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa2}{display\-Client\-Login} ()
+\begin{CompactList}\small\item\em Ruft die i\-Login.hta auf. \item\end{CompactList}\item 
+bool \hyperlink{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa3}{display\-Client\-Startup} ()
+\begin{CompactList}\small\item\em Ruft die startup.hta auf. \item\end{CompactList}\item 
+bool \hyperlink{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa4}{import\-Settings} ()
+\begin{CompactList}\small\item\em Importiert die Einstellungen (Proxy usw.) in die Registry. Dazu wird das i\-Login.reg einfach mit dem regedit importiert. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Attribute}
+\begin{CompactItemize}
+\item 
+bool \hyperlink{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIr0}{b\-Silent}
+\item 
+String \hyperlink{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIr1}{app\-Path} = \char`\"{}\char`\"{}
+\end{CompactItemize}
+
+
+\subsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa0}{
+\index{QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}!ClientUI@{ClientUI}}
+\index{ClientUI@{ClientUI}!QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}}
+\subsubsection[ClientUI]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{classQbeSAS_1_1ClientUI}{Client\-UI} (bool {\em b\-Silent})}}
+\label{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa0}
+
+
+Initialisert \hyperlink{classQbeSAS_1_1ClientUI}{Client\-UI}::. Initialisert Qbe\-Directory (app\-Path) und this.b\-Silent. 
+
+
+
+Definiert in Zeile 12 der Datei Client\-UI.cs.
+
+Benutzt Client\-UI::app\-Path.
+
+
+
+\footnotesize\begin{verbatim}13     {
+14       appPath = System.Environment.SystemDirectory;
+15       if (!appPath.EndsWith("\\"))
+16         appPath += "\\";
+17       appPath += "Qbe\\";
+18 
+19       this.bSilent = bSilent;
+20     }
+\end{verbatim}\normalsize 
+
+
+\subsection{Dokumentation der Elementfunktionen}
+\hypertarget{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa2}{
+\index{QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}!displayClientLogin@{displayClientLogin}}
+\index{displayClientLogin@{displayClientLogin}!QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}}
+\subsubsection[displayClientLogin]{\setlength{\rightskip}{0pt plus 5cm}bool display\-Client\-Login ()}}
+\label{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa2}
+
+
+Ruft die i\-Login.hta auf. 
+
+
+
+Definiert in Zeile 40 der Datei Client\-UI.cs.
+
+Benutzt Client\-UI::app\-Path und Client\-UI::b\-Silent.
+
+
+
+\footnotesize\begin{verbatim}41     {
+42       System.Diagnostics.ProcessStartInfo si = new System.Diagnostics.ProcessStartInfo();
+43       si.WorkingDirectory = appPath;
+44       si.UseShellExecute = true;
+45       si.FileName = appPath + "iLogin.hta";
+46       try 
+47       {
+48         System.Diagnostics.Process.Start(si);
+49         return true;
+50       } 
+51       catch (Exception ex)
+52       { ex=ex;
+53         if (!bSilent)
+54           System.Windows.Forms.MessageBox.Show("Could not find required file \"iLogin.hta\".", "Qbe SAS Client", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+55         return false;
+56       }
+57     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa3}{
+\index{QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}!displayClientStartup@{displayClientStartup}}
+\index{displayClientStartup@{displayClientStartup}!QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}}
+\subsubsection[displayClientStartup]{\setlength{\rightskip}{0pt plus 5cm}bool display\-Client\-Startup ()}}
+\label{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa3}
+
+
+Ruft die startup.hta auf. 
+
+
+
+Definiert in Zeile 60 der Datei Client\-UI.cs.
+
+Benutzt Client\-UI::app\-Path und Client\-UI::b\-Silent.
+
+
+
+\footnotesize\begin{verbatim}61     {
+62       System.Diagnostics.ProcessStartInfo si = new System.Diagnostics.ProcessStartInfo();
+63       si.WorkingDirectory = appPath;
+64       si.UseShellExecute = true;
+65       si.FileName = appPath + "startup.hta";
+66       try 
+67       {
+68         System.Diagnostics.Process.Start(si);
+69         return true;
+70       } 
+71       catch (Exception ex)
+72       { ex=ex;
+73         if (!bSilent)
+74           System.Windows.Forms.MessageBox.Show("Could not find required file \"startup.hta\".", "Qbe SAS Client", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+75         return false;
+76       }
+77     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa1}{
+\index{QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}!displaySASLogin@{displaySASLogin}}
+\index{displaySASLogin@{displaySASLogin}!QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}}
+\subsubsection[displaySASLogin]{\setlength{\rightskip}{0pt plus 5cm}bool display\-SASLogin ()}}
+\label{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa1}
+
+
+Ruft einen Browser mit dem Web-Interface Login auf. 
+
+
+
+Definiert in Zeile 23 der Datei Client\-UI.cs.
+
+Benutzt Client\-UI::b\-Silent.
+
+
+
+\footnotesize\begin{verbatim}24     {
+25       try 
+26       {
+27         System.Diagnostics.Process.Start( "http://qbe-auth/modules/core/checklogin.php" );
+28         return true;
+29       } 
+30       catch (Exception ex)
+31       { ex=ex;
+32         if (!bSilent)
+33                     System.Windows.Forms.MessageBox.Show("Could not start the default browser to view the Qbe SAS login page. Operation aborted.","Qbe SAS Client",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Error);
+34         return false;
+35       }
+36 
+37     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa4}{
+\index{QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}!importSettings@{importSettings}}
+\index{importSettings@{importSettings}!QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}}
+\subsubsection[importSettings]{\setlength{\rightskip}{0pt plus 5cm}bool import\-Settings ()}}
+\label{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIa4}
+
+
+Importiert die Einstellungen (Proxy usw.) in die Registry. Dazu wird das i\-Login.reg einfach mit dem regedit importiert. 
+
+
+
+Definiert in Zeile 80 der Datei Client\-UI.cs.
+
+Benutzt Client\-UI::app\-Path und Client\-UI::b\-Silent.
+
+
+
+\footnotesize\begin{verbatim}81     {
+82       System.Diagnostics.ProcessStartInfo si = new System.Diagnostics.ProcessStartInfo();
+83       si.WorkingDirectory = appPath;
+84       si.UseShellExecute = false;
+85       si.FileName = "regedit.exe";
+86       si.Arguments = "/s \"" + appPath + "iLogin.reg\"";
+87       try 
+88       {
+89         System.Diagnostics.Process.Start(si);
+90         return true;
+91       } 
+92       catch (Exception ex)
+93       { ex=ex;
+94         if (!bSilent)
+95           System.Windows.Forms.MessageBox.Show("Could not find required file \"iLogin.reg\".", "Qbe SAS Client", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+96         return false;
+97       }
+98     }
+\end{verbatim}\normalsize 
+
+
+\subsection{Dokumentation der Datenelemente}
+\hypertarget{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIr1}{
+\index{QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}!appPath@{appPath}}
+\index{appPath@{appPath}!QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}}
+\subsubsection[appPath]{\setlength{\rightskip}{0pt plus 5cm}String \hyperlink{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIr1}{app\-Path} = \char`\"{}\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIr1}
+
+
+
+
+Definiert in Zeile 9 der Datei Client\-UI.cs.
+
+Wird benutzt von Client\-UI::Client\-UI(), Client\-UI::display\-Client\-Login(), Client\-UI::display\-Client\-Startup() und Client\-UI::import\-Settings().\hypertarget{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIr0}{
+\index{QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}!bSilent@{bSilent}}
+\index{bSilent@{bSilent}!QbeSAS::ClientUI@{Qbe\-SAS::Client\-UI}}
+\subsubsection[bSilent]{\setlength{\rightskip}{0pt plus 5cm}bool \hyperlink{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIr0}{b\-Silent}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeSAS_1_1ClientUI_QbeSAS_1_1ClientUIr0}
+
+
+
+
+Definiert in Zeile 8 der Datei Client\-UI.cs.
+
+Wird benutzt von Client\-UI::display\-Client\-Login(), Client\-UI::display\-Client\-Startup(), Client\-UI::display\-SASLogin() und Client\-UI::import\-Settings().

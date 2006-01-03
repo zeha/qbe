@@ -1,0 +1,125 @@
+%%
+%% Qbe SAS SystemDocumentation
+%%     special edition for htl
+%% (C) Copyright 2001-2004 Christian Hofstaedtler
+%%
+%% $Id$
+%%
+\documentclass[a4paper,11pt,oneside]{book}
+
+\newcommand{\ionusdocdate}{\today}
+\newcommand{\ionusdoctitle}{Qbe SAS}
+\newcommand{\ionusdocauthor}{Christian\ Hofstädtler}
+
+\include{tools}
+\nonfrenchspacing
+
+\begin{document}
+\pagenumbering{roman}
+
+% Set Document Information
+\date{\ionusdocdate}
+\author{\ionusdocauthor}
+\title{\ionusdoctitle}
+
+
+\begin{titlepage}
+{
+\nonfrenchspacing
+\begin{center}
+HTBLuVA Wiener Neustadt \\
+\rule{\textwidth}{0.5pt}
+ABTEILUNG für ELEKTROTECHNIK \\
+Industrielle Elektronik / Informationstechnik \\
+
+\vspace{2cm}
+
+Diplomarbeit / Abschlussarbeit \\
+\normalsize
+
+\vspace{1cm}
+
+\Huge%
+Redundantes LAN-Anmelde- und Verwaltungssystem \\
+\normalsize
+
+\vspace{3.5cm}
+
+von \\
+
+\vspace{1cm}
+
+Christian Hofstädtler \\
+
+\vspace{3cm}
+
+\textbf{Begutachter: Dr. K. Filz} \\
+
+\vfill
+
+Wiener Neustadt, Juni 2004
+\medskip
+
+\par
+\end{center}
+}
+\end{titlepage}
+
+%%% Preflight pages
+\pagestyle{empty}
+\normalsize
+
+\newpage	%% Copyright, Thanks
+\include{pre-copyright}
+\newpage
+\include{pre-thanks}
+\newpage
+\include{pre-filefor}
+
+\pagestyle{plain}
+
+\normalsize
+\newpage
+\tableofcontents
+
+%\newpage
+%\listoffigures															      
+
+\newpage
+
+\cChapter{Preface}
+\input{pre-abstract.tex}
+\input{pre-stateoftheart.tex}
+
+\newpage
+
+\pagenumbering{arabic}
+
+\pagestyle{plain}
+\renewcommand{\headrulewidth}{0pt} %
+\renewcommand{\footrulewidth}{0.4pt} %
+
+\include{pre-timetable}
+
+% Auth
+\include{part-01}
+
+% Proxy
+\include{part-02}
+
+% WebServer
+\include{part-03}
+
+% Client
+\include{part-04}
+
+% Appendixes
+\appendix
+\include{part-last}
+
+\newpage
+\printindex
+
+\end{document}
+
+%% *eof*

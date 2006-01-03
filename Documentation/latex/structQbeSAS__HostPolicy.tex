@@ -1,0 +1,95 @@
+\hypertarget{structQbeSAS__HostPolicy}{
+\section{Qbe\-SAS\_\-Host\-Policy Strukturreferenz}
+\label{structQbeSAS__HostPolicy}\index{QbeSAS_HostPolicy@{QbeSAS\_\-HostPolicy}}
+}
+{\tt \#include $<$qbeldap.h$>$}
+
+
+
+\subsection{Ausf\"{u}hrliche Beschreibung}
+Enthaelt die Konfiguration fuer die lokale Arbeitsstation (\char`\"{}Host\-Policy\char`\"{}). 
+
+
+
+Definiert in Zeile 12 der Datei qbeldap.h.\subsection*{\"{O}ffentliche Attribute}
+\begin{CompactItemize}
+\item 
+int \hyperlink{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo0}{enable\-Dynamic\-User}
+\begin{CompactList}\small\item\em Soll ein Lokaler Benutzer bei erfolgreicher Server-Authentifizierung erstellt werden. \item\end{CompactList}\item 
+LPWSTR \hyperlink{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo1}{Dynamic\-User\-Group}
+\begin{CompactList}\small\item\em Gruppenname fuer den lokalen Benutzer. \item\end{CompactList}\item 
+LPWSTR \hyperlink{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo2}{Login\-Script}
+\begin{CompactList}\small\item\em Pfad und Parameter zum Login-Skript. \item\end{CompactList}\item 
+LPWSTR \hyperlink{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo3}{Home\-Drive}
+\begin{CompactList}\small\item\em Laufwerksbuchstabe fuer das Benutzerverzeichnis (z.B. Q). \item\end{CompactList}\item 
+LPWSTR \hyperlink{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo4}{Home\-Drive\-Dir}
+\begin{CompactList}\small\item\em Pfad zum Benutzerverzeichnis. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Dokumentation der Datenelemente}
+\hypertarget{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo1}{
+\index{QbeSAS_HostPolicy@{Qbe\-SAS\_\-Host\-Policy}!DynamicUserGroup@{DynamicUserGroup}}
+\index{DynamicUserGroup@{DynamicUserGroup}!QbeSAS_HostPolicy@{Qbe\-SAS\_\-Host\-Policy}}
+\subsubsection[DynamicUserGroup]{\setlength{\rightskip}{0pt plus 5cm}LPWSTR \hyperlink{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo1}{Dynamic\-User\-Group}}}
+\label{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo1}
+
+
+Gruppenname fuer den lokalen Benutzer. 
+
+
+
+Definiert in Zeile 17 der Datei qbeldap.h.
+
+Wird benutzt von qbe\_\-ldap\_\-getpolicy() und qbe\_\-sam\_\-createuser().\hypertarget{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo0}{
+\index{QbeSAS_HostPolicy@{Qbe\-SAS\_\-Host\-Policy}!enableDynamicUser@{enableDynamicUser}}
+\index{enableDynamicUser@{enableDynamicUser}!QbeSAS_HostPolicy@{Qbe\-SAS\_\-Host\-Policy}}
+\subsubsection[enableDynamicUser]{\setlength{\rightskip}{0pt plus 5cm}int \hyperlink{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo0}{enable\-Dynamic\-User}}}
+\label{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo0}
+
+
+Soll ein Lokaler Benutzer bei erfolgreicher Server-Authentifizierung erstellt werden. 
+
+
+
+Definiert in Zeile 15 der Datei qbeldap.h.
+
+Wird benutzt von qbe\_\-ldap\_\-getpolicy() und Wlx\-Logged\-Out\-SAS().\hypertarget{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo3}{
+\index{QbeSAS_HostPolicy@{Qbe\-SAS\_\-Host\-Policy}!HomeDrive@{HomeDrive}}
+\index{HomeDrive@{HomeDrive}!QbeSAS_HostPolicy@{Qbe\-SAS\_\-Host\-Policy}}
+\subsubsection[HomeDrive]{\setlength{\rightskip}{0pt plus 5cm}LPWSTR \hyperlink{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo3}{Home\-Drive}}}
+\label{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo3}
+
+
+Laufwerksbuchstabe fuer das Benutzerverzeichnis (z.B. Q). 
+
+
+
+Definiert in Zeile 21 der Datei qbeldap.h.
+
+Wird benutzt von NPLogon\-Notify(), qbe\_\-ldap\_\-getpolicy() und qbe\_\-sam\_\-createuser().\hypertarget{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo4}{
+\index{QbeSAS_HostPolicy@{Qbe\-SAS\_\-Host\-Policy}!HomeDriveDir@{HomeDriveDir}}
+\index{HomeDriveDir@{HomeDriveDir}!QbeSAS_HostPolicy@{Qbe\-SAS\_\-Host\-Policy}}
+\subsubsection[HomeDriveDir]{\setlength{\rightskip}{0pt plus 5cm}LPWSTR \hyperlink{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo4}{Home\-Drive\-Dir}}}
+\label{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo4}
+
+
+Pfad zum Benutzerverzeichnis. 
+
+
+
+Definiert in Zeile 23 der Datei qbeldap.h.
+
+Wird benutzt von NPLogon\-Notify(), qbe\_\-ldap\_\-getpolicy() und qbe\_\-sam\_\-createuser().\hypertarget{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo2}{
+\index{QbeSAS_HostPolicy@{Qbe\-SAS\_\-Host\-Policy}!LoginScript@{LoginScript}}
+\index{LoginScript@{LoginScript}!QbeSAS_HostPolicy@{Qbe\-SAS\_\-Host\-Policy}}
+\subsubsection[LoginScript]{\setlength{\rightskip}{0pt plus 5cm}LPWSTR \hyperlink{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo2}{Login\-Script}}}
+\label{structQbeSAS__HostPolicy_QbeSAS__HostPolicyo2}
+
+
+Pfad und Parameter zum Login-Skript. 
+
+
+
+Definiert in Zeile 19 der Datei qbeldap.h.
+
+Wird benutzt von NPLogon\-Notify() und qbe\_\-ldap\_\-getpolicy().

@@ -1,0 +1,693 @@
+\hypertarget{classQbeTray_1_1TrayNotify}{
+\section{Tray\-Notify Klassenreferenz}
+\label{classQbeTray_1_1TrayNotify}\index{QbeTray::TrayNotify@{QbeTray::TrayNotify}}
+}
+
+
+\subsection{Ausf\"{u}hrliche Beschreibung}
+Eigene \hyperlink{classQbeTray_1_1TrayNotify}{Tray\-Notify} Klasse die auch Balloon Tooltips anzeigen kann, und nicht unbedingt an ein richtiges Fenster gebunden sein muss. 
+
+
+
+Definiert in Zeile 12 der Datei Tray\-Notify.cs.\subsection*{\"{O}ffentliche Methoden}
+\begin{CompactItemize}
+\item 
+\hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya0}{Tray\-Notify} ()
+\item 
+void \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya1}{Del\-Tray\-Icon} ()
+\begin{CompactList}\small\item\em \hyperlink{classQbeTray_1_1Tray}{Tray} Icon entfernen. \item\end{CompactList}\item 
+void \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya2}{Set\-Tray\-Icon} ()
+\begin{CompactList}\small\item\em \hyperlink{classQbeTray_1_1Tray}{Tray} Icon setzen. \item\end{CompactList}\item 
+void \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya3}{Update\-Tray\-Icon} ()
+\begin{CompactList}\small\item\em \hyperlink{classQbeTray_1_1Tray}{Tray} icon aktualisieren. \item\end{CompactList}\item 
+void \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya4}{Show\-Tray\-Balloon} (string Title, string Text, int flags)
+\begin{CompactList}\small\item\em Einen Balloon Tooltip initialisieren und anzeigen. \item\end{CompactList}\end{CompactItemize}
+\subsection*{\"{O}ffentliche Attribute}
+\begin{CompactItemize}
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo0}{NIIF\_\-NONE} = 0x00
+\begin{CompactList}\small\item\em Icon: keines (shellapi.h). \item\end{CompactList}\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo1}{NIIF\_\-INFO} = 0x01
+\begin{CompactList}\small\item\em Icon: Information (shellapi.h). \item\end{CompactList}\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo2}{NIIF\_\-WARNING} = 0x02
+\begin{CompactList}\small\item\em Icon: Achtung (shellapi.h). \item\end{CompactList}\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo3}{NIIF\_\-ERROR} = 0x03
+\begin{CompactList}\small\item\em Icon: Fehler (shellapi.h). \item\end{CompactList}\item 
+string \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo4}{icon\-Text} = \char`\"{}\char`\"{}
+\begin{CompactList}\small\item\em Text fuer das \hyperlink{classQbeTray_1_1Tray}{Tray} Icon. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Gesch\"{u}tzte Methoden}
+\begin{CompactItemize}
+\item 
+override void \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyb0}{Wnd\-Proc} (ref Message msg)
+\begin{CompactList}\small\item\em Interne Routine um die Klick-Events abzufangen. \item\end{CompactList}\item 
+override void \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyb1}{Dispose} (bool disposing)
+\end{CompactItemize}
+\subsection*{Private Methoden}
+\begin{CompactItemize}
+\item 
+bool \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyd0}{Shell\_\-Notify\-Icon} (int dw\-Message, ref \hyperlink{structQbeTray_1_1TrayNotify_1_1NOTIFYICONDATA}{NOTIFYICONDATA} lp\-Data)
+\item 
+void \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyd1}{Initialize\-Component} ()
+\end{CompactItemize}
+\subsection*{Private Attribute}
+\begin{CompactItemize}
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr0}{WM\_\-LBUTTONDOWN} = 0x0201
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr1}{WM\_\-LBUTTONUP} = 0x0202
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr2}{WM\_\-LBUTTONDBLCLK} = 0x0203
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr3}{WM\_\-RBUTTONDOWN} = 0x0204
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr4}{WM\_\-RBUTTONUP} = 0x0205
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr5}{WM\_\-RBUTTONDBLCLK} = 0x0206
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr6}{WM\_\-MBUTTONDOWN} = 0x0207
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr7}{WM\_\-MBUTTONUP} = 0x0208
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr8}{WM\_\-MBUTTONDBLCLK} = 0x0209
+\item 
+internal readonly int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr9}{u\-ID} = 4711
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr10}{NIF\_\-MESSAGE} = 0x01
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr11}{NIF\_\-ICON} = 0x02
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr12}{NIF\_\-TIP} = 0x04
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr13}{NIF\_\-STATE} = 0x08
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr14}{NIF\_\-INFO} = 0x10
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr15}{NIM\_\-ADD} = 0x00
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr16}{NIM\_\-MODIFY} = 0x01
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr17}{NIM\_\-DELETE} = 0x02
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr18}{NIM\_\-SETFOCUS} = 0x03
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr19}{NIM\_\-SETVERSION} = 0x04
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr20}{NIS\_\-HIDDEN} = 0x01
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr21}{NIS\_\-SHAREDICON} = 0x02
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr22}{NOTIFYICON\_\-OLDVERSION} = 0x00
+\item 
+const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr23}{NOTIFYICON\_\-VERSION} = 0x03
+\item 
+\hyperlink{structQbeTray_1_1TrayNotify_1_1NOTIFYICONDATA}{NOTIFYICONDATA} \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr24}{notify\-Icon\-Tray}
+\item 
+System.Component\-Model.Container \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr25}{components} = null
+\begin{CompactList}\small\item\em Erforderliche Designervariable. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Statische private Attribute}
+\begin{CompactItemize}
+\item 
+internal readonly int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyv0}{WM\_\-NOTIFY\_\-TRAY} = 0x0400 + 2001
+\end{CompactItemize}
+
+
+\subsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya0}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!TrayNotify@{TrayNotify}}
+\index{TrayNotify@{TrayNotify}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[TrayNotify]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{classQbeTray_1_1TrayNotify}{Tray\-Notify} ()}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya0}
+
+
+
+
+Definiert in Zeile 92 der Datei Tray\-Notify.cs.
+
+Benutzt Tray\-Notify::Initialize\-Component() und Tray\-Notify::notify\-Icon\-Tray.
+
+
+
+\footnotesize\begin{verbatim}93     {
+94       //
+95       // Erforderlich für die Windows Form-Designerunterstützung
+96       //
+97       InitializeComponent();
+98 
+99       notifyIconTray = new NOTIFYICONDATA();
+100     }
+\end{verbatim}\normalsize 
+
+
+\subsection{Dokumentation der Elementfunktionen}
+\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya1}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!DelTrayIcon@{DelTrayIcon}}
+\index{DelTrayIcon@{DelTrayIcon}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[DelTrayIcon]{\setlength{\rightskip}{0pt plus 5cm}void Del\-Tray\-Icon ()}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya1}
+
+
+\hyperlink{classQbeTray_1_1Tray}{Tray} Icon entfernen. 
+
+
+
+Definiert in Zeile 103 der Datei Tray\-Notify.cs.
+
+Benutzt Tray\-Notify::NIM\_\-DELETE, Tray\-Notify::notify\-Icon\-Tray und Tray\-Notify::Shell\_\-Notify\-Icon().
+
+Wird benutzt von Tray\-Notify::Dispose().
+
+
+
+\footnotesize\begin{verbatim}104     {
+105       Shell_NotifyIcon(NIM_DELETE, ref notifyIconTray);
+106     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyb1}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[Dispose]{\setlength{\rightskip}{0pt plus 5cm}override void Dispose (bool {\em disposing})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyb1}
+
+
+Die verwendeten Ressourcen bereinigen.  
+
+Definiert in Zeile 175 der Datei Tray\-Notify.cs.
+
+Benutzt Tray\-Notify::Del\-Tray\-Icon().
+
+
+
+\footnotesize\begin{verbatim}176     {
+177       if( disposing )
+178       {
+179         DelTrayIcon();
+180         if(components != null)
+181         {
+182           components.Dispose();
+183         }
+184       }
+185       base.Dispose( disposing );
+186     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyd1}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!InitializeComponent@{InitializeComponent}}
+\index{InitializeComponent@{InitializeComponent}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[InitializeComponent]{\setlength{\rightskip}{0pt plus 5cm}void Initialize\-Component (void)\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyd1}
+
+
+Erforderliche Methode f\"{u}r die Designerunterst\"{u}tzung. Der Inhalt der Methode darf nicht mit dem Code-Editor ge\"{a}ndert werden.  
+
+Definiert in Zeile 193 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Tray\-Notify().
+
+
+
+\footnotesize\begin{verbatim}194     {
+195       // 
+196       // TrayNotify
+197       // 
+198       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+199       this.ClientSize = new System.Drawing.Size(144, 16);
+200       this.ControlBox = false;
+201       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+202       this.MaximizeBox = false;
+203       this.MinimizeBox = false;
+204       this.Name = "TrayNotify";
+205       this.ShowInTaskbar = false;
+206       this.Text = "TrayNotify";
+207 
+208     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya2}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!SetTrayIcon@{SetTrayIcon}}
+\index{SetTrayIcon@{SetTrayIcon}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[SetTrayIcon]{\setlength{\rightskip}{0pt plus 5cm}void Set\-Tray\-Icon ()}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya2}
+
+
+\hyperlink{classQbeTray_1_1Tray}{Tray} Icon setzen. 
+
+
+
+Definiert in Zeile 109 der Datei Tray\-Notify.cs.
+
+Benutzt Tray\-Notify::NOTIFYICONDATA::cb\-Size, Tray\-Notify::NOTIFYICONDATA::dw\-Info\-Flags, Tray\-Notify::NOTIFYICONDATA::h\-Icon, Tray\-Notify::NOTIFYICONDATA::hwnd, Tray\-Notify::NIF\_\-ICON, Tray\-Notify::NIF\_\-MESSAGE, Tray\-Notify::NIF\_\-TIP, Tray\-Notify::NIIF\_\-INFO, Tray\-Notify::NIM\_\-ADD, Tray\-Notify::NOTIFYICON\_\-VERSION, Tray\-Notify::notify\-Icon\-Tray, Tray\-Notify::Shell\_\-Notify\-Icon(), Tray\-Notify::NOTIFYICONDATA::sz\-Info, Tray\-Notify::NOTIFYICONDATA::sz\-Info\-Title, Tray\-Notify::NOTIFYICONDATA::sz\-Tip, Tray\-Notify::NOTIFYICONDATA::u\-Callback\-Message, Tray\-Notify::NOTIFYICONDATA::u\-Flags, Tray\-Notify::u\-ID, Tray\-Notify::NOTIFYICONDATA::u\-ID, Tray\-Notify::NOTIFYICONDATA::u\-Timeout\-And\-Version und Tray\-Notify::WM\_\-NOTIFY\_\-TRAY.
+
+Wird benutzt von Tray::Tray().
+
+
+
+\footnotesize\begin{verbatim}110     {
+111 
+112       notifyIconTray.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(notifyIconTray); // struct size
+113       notifyIconTray.hwnd = this.Handle; // WndProc form
+114       notifyIconTray.uID = uID; // message WParam, for callback
+115       notifyIconTray.uFlags = NIF_MESSAGE|NIF_ICON|NIF_TIP; // Flags 
+116       notifyIconTray.uCallbackMessage = WM_NOTIFY_TRAY; // message ID, for call back
+117       notifyIconTray.hIcon = this.Icon.Handle; // icon handle, for animation icon if u need
+118       notifyIconTray.uTimeoutAndVersion = 10 * 1000 | NOTIFYICON_VERSION; // "Balloon Tooltip" timeout
+119 
+120       notifyIconTray.dwInfoFlags = NIIF_INFO; // info type Flag, u can try waring, error, info
+121 
+122       notifyIconTray.szTip = this.Text; // tooltip message
+123 
+124       notifyIconTray.szInfoTitle = ""; // "Balloon Tooltip" title
+125       notifyIconTray.szInfo = ""; // "Balloon Tooltip" body
+126 
+127       Shell_NotifyIcon(NIM_ADD, ref notifyIconTray);
+128 
+129     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyd0}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!Shell_NotifyIcon@{Shell\_\-NotifyIcon}}
+\index{Shell_NotifyIcon@{Shell\_\-NotifyIcon}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[Shell\_\-NotifyIcon]{\setlength{\rightskip}{0pt plus 5cm}bool Shell\_\-Notify\-Icon (int {\em dw\-Message}, ref \hyperlink{structQbeTray_1_1TrayNotify_1_1NOTIFYICONDATA}{NOTIFYICONDATA} {\em lp\-Data})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyd0}
+
+
+
+
+Wird benutzt von Tray\-Notify::Del\-Tray\-Icon(), Tray\-Notify::Set\-Tray\-Icon(), Tray\-Notify::Show\-Tray\-Balloon() und Tray\-Notify::Update\-Tray\-Icon().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya4}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!ShowTrayBalloon@{ShowTrayBalloon}}
+\index{ShowTrayBalloon@{ShowTrayBalloon}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[ShowTrayBalloon]{\setlength{\rightskip}{0pt plus 5cm}void Show\-Tray\-Balloon (string {\em Title}, string {\em Text}, int {\em flags})}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya4}
+
+
+Einen Balloon Tooltip initialisieren und anzeigen. 
+
+
+
+Definiert in Zeile 143 der Datei Tray\-Notify.cs.
+
+Benutzt Tray\-Notify::NOTIFYICONDATA::dw\-Info\-Flags, Tray\-Notify::NOTIFYICONDATA::h\-Icon, Tray\-Notify::NIF\_\-ICON, Tray\-Notify::NIF\_\-INFO, Tray\-Notify::NIF\_\-MESSAGE, Tray\-Notify::NIF\_\-TIP, Tray\-Notify::NIM\_\-MODIFY, Tray\-Notify::notify\-Icon\-Tray, Tray\-Notify::Shell\_\-Notify\-Icon(), Tray\-Notify::NOTIFYICONDATA::sz\-Info, Tray\-Notify::NOTIFYICONDATA::sz\-Info\-Title und Tray\-Notify::NOTIFYICONDATA::u\-Flags.
+
+Wird benutzt von Tray::timer\_\-Tick().
+
+
+
+\footnotesize\begin{verbatim}144     {
+145       notifyIconTray.uFlags = NIF_MESSAGE|NIF_ICON|NIF_INFO|NIF_TIP;
+146       notifyIconTray.szInfoTitle = Title;
+147       notifyIconTray.szInfo = Text;
+148       notifyIconTray.dwInfoFlags = flags;
+149       notifyIconTray.hIcon = this.Icon.Handle;
+150       Shell_NotifyIcon(NIM_MODIFY, ref notifyIconTray);
+151     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya3}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!UpdateTrayIcon@{UpdateTrayIcon}}
+\index{UpdateTrayIcon@{UpdateTrayIcon}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[UpdateTrayIcon]{\setlength{\rightskip}{0pt plus 5cm}void Update\-Tray\-Icon ()}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifya3}
+
+
+\hyperlink{classQbeTray_1_1Tray}{Tray} icon aktualisieren. 
+
+
+
+Definiert in Zeile 132 der Datei Tray\-Notify.cs.
+
+Benutzt Tray\-Notify::NOTIFYICONDATA::h\-Icon, Tray\-Notify::NIF\_\-ICON, Tray\-Notify::NIF\_\-INFO, Tray\-Notify::NIF\_\-MESSAGE, Tray\-Notify::NIF\_\-TIP, Tray\-Notify::NIM\_\-MODIFY, Tray\-Notify::notify\-Icon\-Tray, Tray\-Notify::Shell\_\-Notify\-Icon(), Tray\-Notify::NOTIFYICONDATA::sz\-Info, Tray\-Notify::NOTIFYICONDATA::sz\-Info\-Title, Tray\-Notify::NOTIFYICONDATA::sz\-Tip und Tray\-Notify::NOTIFYICONDATA::u\-Flags.
+
+Wird benutzt von Tray::timer\_\-Tick().
+
+
+
+\footnotesize\begin{verbatim}133     {
+134       notifyIconTray.uFlags = NIF_MESSAGE|NIF_ICON|NIF_TIP|NIF_INFO;
+135       notifyIconTray.szInfoTitle = "";
+136       notifyIconTray.szInfo = "";
+137       notifyIconTray.szTip = this.Text;
+138       notifyIconTray.hIcon = this.Icon.Handle;
+139       Shell_NotifyIcon(NIM_MODIFY, ref notifyIconTray);
+140     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyb0}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!WndProc@{WndProc}}
+\index{WndProc@{WndProc}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[WndProc]{\setlength{\rightskip}{0pt plus 5cm}override void Wnd\-Proc (ref Message {\em msg})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyb0}
+
+
+Interne Routine um die Klick-Events abzufangen. 
+
+
+
+Definiert in Zeile 154 der Datei Tray\-Notify.cs.
+
+Benutzt Tray\-Notify::WM\_\-LBUTTONDOWN, Tray\-Notify::WM\_\-NOTIFY\_\-TRAY und Tray\-Notify::WM\_\-RBUTTONDOWN.
+
+
+
+\footnotesize\begin{verbatim}155     {
+156       if (msg.Msg == WM_NOTIFY_TRAY) 
+157       {
+158         if((int)msg.LParam == WM_LBUTTONDOWN) 
+159         {
+160           QbeSAS.ClientUI sasClientUI = new QbeSAS.ClientUI(false);
+161           sasClientUI.displayClientLogin();
+162         }
+163         if((int)msg.LParam == WM_RBUTTONDOWN) 
+164         {
+165           QbeSAS.ClientUI sasClientUI = new QbeSAS.ClientUI(false);
+166           sasClientUI.displaySASLogin();
+167         }
+168       }
+169       base.WndProc(ref msg);
+170     }
+\end{verbatim}\normalsize 
+
+
+\subsection{Dokumentation der Datenelemente}
+\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr25}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!components@{components}}
+\index{components@{components}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[components]{\setlength{\rightskip}{0pt plus 5cm}System.Component\-Model.Container \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr25}{components} = null\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr25}
+
+
+Erforderliche Designervariable. 
+
+
+
+Definiert in Zeile 90 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo4}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!iconText@{iconText}}
+\index{iconText@{iconText}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[iconText]{\setlength{\rightskip}{0pt plus 5cm}string \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo4}{icon\-Text} = \char`\"{}\char`\"{}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo4}
+
+
+Text fuer das \hyperlink{classQbeTray_1_1Tray}{Tray} Icon. 
+
+
+
+Definiert in Zeile 87 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr11}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIF_ICON@{NIF\_\-ICON}}
+\index{NIF_ICON@{NIF\_\-ICON}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIF\_\-ICON]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr11}{NIF\_\-ICON} = 0x02\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr11}
+
+
+
+
+Definiert in Zeile 40 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Set\-Tray\-Icon(), Tray\-Notify::Show\-Tray\-Balloon() und Tray\-Notify::Update\-Tray\-Icon().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr14}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIF_INFO@{NIF\_\-INFO}}
+\index{NIF_INFO@{NIF\_\-INFO}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIF\_\-INFO]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr14}{NIF\_\-INFO} = 0x10\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr14}
+
+
+
+
+Definiert in Zeile 43 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Show\-Tray\-Balloon() und Tray\-Notify::Update\-Tray\-Icon().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr10}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIF_MESSAGE@{NIF\_\-MESSAGE}}
+\index{NIF_MESSAGE@{NIF\_\-MESSAGE}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIF\_\-MESSAGE]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr10}{NIF\_\-MESSAGE} = 0x01\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr10}
+
+
+
+
+Definiert in Zeile 39 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Set\-Tray\-Icon(), Tray\-Notify::Show\-Tray\-Balloon() und Tray\-Notify::Update\-Tray\-Icon().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr13}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIF_STATE@{NIF\_\-STATE}}
+\index{NIF_STATE@{NIF\_\-STATE}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIF\_\-STATE]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr13}{NIF\_\-STATE} = 0x08\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr13}
+
+
+
+
+Definiert in Zeile 42 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr12}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIF_TIP@{NIF\_\-TIP}}
+\index{NIF_TIP@{NIF\_\-TIP}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIF\_\-TIP]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr12}{NIF\_\-TIP} = 0x04\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr12}
+
+
+
+
+Definiert in Zeile 41 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Set\-Tray\-Icon(), Tray\-Notify::Show\-Tray\-Balloon() und Tray\-Notify::Update\-Tray\-Icon().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo3}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIIF_ERROR@{NIIF\_\-ERROR}}
+\index{NIIF_ERROR@{NIIF\_\-ERROR}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIIF\_\-ERROR]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo3}{NIIF\_\-ERROR} = 0x03}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo3}
+
+
+Icon: Fehler (shellapi.h). 
+
+
+
+Definiert in Zeile 37 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo1}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIIF_INFO@{NIIF\_\-INFO}}
+\index{NIIF_INFO@{NIIF\_\-INFO}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIIF\_\-INFO]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo1}{NIIF\_\-INFO} = 0x01}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo1}
+
+
+Icon: Information (shellapi.h). 
+
+
+
+Definiert in Zeile 33 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Set\-Tray\-Icon().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo0}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIIF_NONE@{NIIF\_\-NONE}}
+\index{NIIF_NONE@{NIIF\_\-NONE}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIIF\_\-NONE]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo0}{NIIF\_\-NONE} = 0x00}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo0}
+
+
+Icon: keines (shellapi.h). 
+
+
+
+Definiert in Zeile 31 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo2}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIIF_WARNING@{NIIF\_\-WARNING}}
+\index{NIIF_WARNING@{NIIF\_\-WARNING}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIIF\_\-WARNING]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo2}{NIIF\_\-WARNING} = 0x02}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyo2}
+
+
+Icon: Achtung (shellapi.h). 
+
+
+
+Definiert in Zeile 35 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr15}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIM_ADD@{NIM\_\-ADD}}
+\index{NIM_ADD@{NIM\_\-ADD}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIM\_\-ADD]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr15}{NIM\_\-ADD} = 0x00\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr15}
+
+
+
+
+Definiert in Zeile 45 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Set\-Tray\-Icon().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr17}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIM_DELETE@{NIM\_\-DELETE}}
+\index{NIM_DELETE@{NIM\_\-DELETE}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIM\_\-DELETE]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr17}{NIM\_\-DELETE} = 0x02\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr17}
+
+
+
+
+Definiert in Zeile 47 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Del\-Tray\-Icon().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr16}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIM_MODIFY@{NIM\_\-MODIFY}}
+\index{NIM_MODIFY@{NIM\_\-MODIFY}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIM\_\-MODIFY]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr16}{NIM\_\-MODIFY} = 0x01\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr16}
+
+
+
+
+Definiert in Zeile 46 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Show\-Tray\-Balloon() und Tray\-Notify::Update\-Tray\-Icon().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr18}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIM_SETFOCUS@{NIM\_\-SETFOCUS}}
+\index{NIM_SETFOCUS@{NIM\_\-SETFOCUS}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIM\_\-SETFOCUS]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr18}{NIM\_\-SETFOCUS} = 0x03\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr18}
+
+
+
+
+Definiert in Zeile 48 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr19}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIM_SETVERSION@{NIM\_\-SETVERSION}}
+\index{NIM_SETVERSION@{NIM\_\-SETVERSION}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIM\_\-SETVERSION]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr19}{NIM\_\-SETVERSION} = 0x04\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr19}
+
+
+
+
+Definiert in Zeile 49 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr20}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIS_HIDDEN@{NIS\_\-HIDDEN}}
+\index{NIS_HIDDEN@{NIS\_\-HIDDEN}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIS\_\-HIDDEN]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr20}{NIS\_\-HIDDEN} = 0x01\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr20}
+
+
+
+
+Definiert in Zeile 51 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr21}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NIS_SHAREDICON@{NIS\_\-SHAREDICON}}
+\index{NIS_SHAREDICON@{NIS\_\-SHAREDICON}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NIS\_\-SHAREDICON]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr21}{NIS\_\-SHAREDICON} = 0x02\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr21}
+
+
+
+
+Definiert in Zeile 52 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr22}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NOTIFYICON_OLDVERSION@{NOTIFYICON\_\-OLDVERSION}}
+\index{NOTIFYICON_OLDVERSION@{NOTIFYICON\_\-OLDVERSION}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NOTIFYICON\_\-OLDVERSION]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr22}{NOTIFYICON\_\-OLDVERSION} = 0x00\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr22}
+
+
+
+
+Definiert in Zeile 54 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr23}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!NOTIFYICON_VERSION@{NOTIFYICON\_\-VERSION}}
+\index{NOTIFYICON_VERSION@{NOTIFYICON\_\-VERSION}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[NOTIFYICON\_\-VERSION]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr23}{NOTIFYICON\_\-VERSION} = 0x03\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr23}
+
+
+
+
+Definiert in Zeile 55 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Set\-Tray\-Icon().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr24}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!notifyIconTray@{notifyIconTray}}
+\index{notifyIconTray@{notifyIconTray}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[notifyIconTray]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{structQbeTray_1_1TrayNotify_1_1NOTIFYICONDATA}{NOTIFYICONDATA} \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr24}{notify\-Icon\-Tray}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr24}
+
+
+
+
+Definiert in Zeile 85 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Del\-Tray\-Icon(), Tray\-Notify::Set\-Tray\-Icon(), Tray\-Notify::Show\-Tray\-Balloon(), Tray\-Notify::Tray\-Notify() und Tray\-Notify::Update\-Tray\-Icon().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr9}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!uID@{uID}}
+\index{uID@{uID}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[uID]{\setlength{\rightskip}{0pt plus 5cm}internal readonly int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr9}{u\-ID} = 4711\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr9}
+
+
+
+
+Definiert in Zeile 28 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Set\-Tray\-Icon().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr2}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!WM_LBUTTONDBLCLK@{WM\_\-LBUTTONDBLCLK}}
+\index{WM_LBUTTONDBLCLK@{WM\_\-LBUTTONDBLCLK}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[WM\_\-LBUTTONDBLCLK]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr2}{WM\_\-LBUTTONDBLCLK} = 0x0203\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr2}
+
+
+
+
+Definiert in Zeile 17 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr0}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!WM_LBUTTONDOWN@{WM\_\-LBUTTONDOWN}}
+\index{WM_LBUTTONDOWN@{WM\_\-LBUTTONDOWN}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[WM\_\-LBUTTONDOWN]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr0}{WM\_\-LBUTTONDOWN} = 0x0201\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr0}
+
+
+
+
+Definiert in Zeile 15 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Wnd\-Proc().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr1}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!WM_LBUTTONUP@{WM\_\-LBUTTONUP}}
+\index{WM_LBUTTONUP@{WM\_\-LBUTTONUP}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[WM\_\-LBUTTONUP]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr1}{WM\_\-LBUTTONUP} = 0x0202\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr1}
+
+
+
+
+Definiert in Zeile 16 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr8}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!WM_MBUTTONDBLCLK@{WM\_\-MBUTTONDBLCLK}}
+\index{WM_MBUTTONDBLCLK@{WM\_\-MBUTTONDBLCLK}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[WM\_\-MBUTTONDBLCLK]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr8}{WM\_\-MBUTTONDBLCLK} = 0x0209\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr8}
+
+
+
+
+Definiert in Zeile 23 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr6}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!WM_MBUTTONDOWN@{WM\_\-MBUTTONDOWN}}
+\index{WM_MBUTTONDOWN@{WM\_\-MBUTTONDOWN}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[WM\_\-MBUTTONDOWN]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr6}{WM\_\-MBUTTONDOWN} = 0x0207\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr6}
+
+
+
+
+Definiert in Zeile 21 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr7}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!WM_MBUTTONUP@{WM\_\-MBUTTONUP}}
+\index{WM_MBUTTONUP@{WM\_\-MBUTTONUP}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[WM\_\-MBUTTONUP]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr7}{WM\_\-MBUTTONUP} = 0x0208\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr7}
+
+
+
+
+Definiert in Zeile 22 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyv0}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!WM_NOTIFY_TRAY@{WM\_\-NOTIFY\_\-TRAY}}
+\index{WM_NOTIFY_TRAY@{WM\_\-NOTIFY\_\-TRAY}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[WM\_\-NOTIFY\_\-TRAY]{\setlength{\rightskip}{0pt plus 5cm}internal readonly int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyv0}{WM\_\-NOTIFY\_\-TRAY} = 0x0400 + 2001\hspace{0.3cm}{\tt  \mbox{[}static, private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyv0}
+
+
+
+
+Definiert in Zeile 27 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Set\-Tray\-Icon() und Tray\-Notify::Wnd\-Proc().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr5}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!WM_RBUTTONDBLCLK@{WM\_\-RBUTTONDBLCLK}}
+\index{WM_RBUTTONDBLCLK@{WM\_\-RBUTTONDBLCLK}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[WM\_\-RBUTTONDBLCLK]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr5}{WM\_\-RBUTTONDBLCLK} = 0x0206\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr5}
+
+
+
+
+Definiert in Zeile 20 der Datei Tray\-Notify.cs.\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr3}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!WM_RBUTTONDOWN@{WM\_\-RBUTTONDOWN}}
+\index{WM_RBUTTONDOWN@{WM\_\-RBUTTONDOWN}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[WM\_\-RBUTTONDOWN]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr3}{WM\_\-RBUTTONDOWN} = 0x0204\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr3}
+
+
+
+
+Definiert in Zeile 18 der Datei Tray\-Notify.cs.
+
+Wird benutzt von Tray\-Notify::Wnd\-Proc().\hypertarget{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr4}{
+\index{QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}!WM_RBUTTONUP@{WM\_\-RBUTTONUP}}
+\index{WM_RBUTTONUP@{WM\_\-RBUTTONUP}!QbeTray::TrayNotify@{Qbe\-Tray::Tray\-Notify}}
+\subsubsection[WM\_\-RBUTTONUP]{\setlength{\rightskip}{0pt plus 5cm}const int \hyperlink{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr4}{WM\_\-RBUTTONUP} = 0x0205\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeTray_1_1TrayNotify_QbeTray_1_1TrayNotifyr4}
+
+
+
+
+Definiert in Zeile 19 der Datei Tray\-Notify.cs.

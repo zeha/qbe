@@ -1,0 +1,176 @@
+%%
+%% Qbe SAS SystemDocumentation
+%% (C) Copyright 2001-2004 Christian Hofstaedtler
+%%
+%% $Id: QbeSASDoc.tex 20 2004-05-03 15:41:20Z ch $
+%%
+%draft
+\documentclass[a4paper,11pt,twoside]{book}
+%%\usepackage[top=10mm,bottom=15mm]{geometry}
+
+\newcommand{\ionusappver}{0.9.6}
+\newcommand{\ionusdocver}{0078}
+\newcommand{\ionusdocdate}{\today}
+\newcommand{\ionusdoctitle}{Qbe SAS SystemDocumentation}
+\newcommand{\ionusdocauthor}{Christian\ Hofstädtler}
+
+\include{tools}
+
+%% HyperRef
+\hypersetup{%
+	pdfsubject = {SystemDocumentation for a Qbe product},
+	pdfkeywords = {Qbe Documentation SysDoc},
+}
+
+%%\makeatletter
+%\nonfrenchspacing
+
+% Figure tweaking
+% http://www.fysik.dtu.dk/~schiotz/comp/latextips/#tweaklist
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+
+% Page Setup
+%
+%   E Even page
+%   O Odd page
+%   L Left field
+%   C Center field
+%   R Right field
+%   H Header
+%   F Footer
+
+%\lhead{\nouppercase{\rightmark}}
+%\rhead{\nouppercase{\leftmark}}
+
+%\newcommand{\cLFoot}{ \small{\thepage{} \ \nouppercase{\leftmark}}  }
+%\newcommand{\cRFoot}{ \small{\nouppercase{\rightmark{}}\thepage{}}  }
+
+% now define fancy
+%\pagestyle{fancy}
+
+%\renewcommand{\chaptermark}[1]{\markboth{$|$ \ \chaptername{} \thechapter: #1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{#1 \ $|$ \ }}
+
+%	\fancyhead{}	% clear all fields
+%	\fancyfoot{}	% clear all fields
+%	\fancyfoot[L]{\cLFoot} %
+%%	\fancyfoot[LE]{\cLFoot} %
+%%	\fancyfoot[LO]{} %
+%%	\fancyfoot[RE]{} %
+%%	\fancyfoot[RO]{\cRFoot} %
+%	\renewcommand{\headrulewidth}{0pt} %
+%	\renewcommand{\footrulewidth}{0.4pt} %
+
+% redefine plain
+%\fancypagestyle{plain}{ %
+%	\fancyhead{} %
+%	\fancyfoot{} %
+%	\fancyfoot[LE]{\thepage{}} %
+%	\fancyfoot[LO]{\thepage{}} %
+%%	\fancyfoot[LE]{\thepage{}} %
+%%	\fancyfoot[LO]{} %
+%%	\fancyfoot[RE]{} %
+%%	\fancyfoot[RO]{\thepage{}} %
+%	\renewcommand{\headrulewidth}{0pt} %
+%	\renewcommand{\footrulewidth}{0.4pt} %
+%	}
+
+\begin{document}
+\pagenumbering{roman}
+
+%\sffamily
+\fontfamily{cmss}		%ppl
+\selectfont
+
+% Set Document Information
+\date{\ionusdocdate}
+\author{\ionusdocauthor}
+\title{\ionusdoctitle}
+
+
+\begin{titlepage}
+{
+\Huge%
+\ionusdoctitle \rule{\textwidth}{1pt}  %%0.75
+\par
+}
+\begin{flushleft}
+	\normalsize
+	\fontfamily{cmss}\selectfont	%\fontseries{sbc}		padx
+	\ionusdocauthor\\[2ex]
+	Version \ionusappver-\ionusdocver\\
+	\ionusdocdate\\
+\end{flushleft}
+
+\vspace{4cm}
+\begin{center}
+Qbe Enterprise IT Solutions
+\end{center}
+
+\vfill
+
+{\parindent=0cm
+\rule{\textwidth}{1pt}  %%0.75
+Diese SystemDocumentation gibt einen Überblick über das umfangreiche Qbe SAS System. Es wurde versucht, so viel wie möglich in kurzer und verständlicher Form zu dokumentieren - bei einem derart großen System mag dies allerdings fast nicht gelingen. \\
+Zusätzlich findet sich im Anhang die Source Code Cross Reference für den Qbe SAS Client -- der Teil der wohl am meisten Anpassung in der Zukunft benötigen wird.
+}
+\end{titlepage}
+
+%%% Preflight pages
+\pagestyle{empty}
+\normalsize
+
+\newpage	%% Copyright, Thanks
+\include{pre-copyright}
+\newpage
+\include{pre-thanks}
+\newpage
+\include{pre-filefor}
+
+\pagestyle{plain}
+
+\newpage
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+%\setcounter{page}{1}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt} %
+\renewcommand{\footrulewidth}{0.4pt} %
+\fancyhead{}{}
+%	\fancyfoot{} %
+
+
+% Auth
+\input{part-01}
+
+% Proxy
+\input{part-02}
+
+% WebServer
+\input{part-03}
+
+% iLogin
+\input{part-04}
+
+% Appendixes
+\appendix
+\input{part-last}
+
+% Code XRef SAS Client
+\lstset{numbers=none}
+\input{part-xref-client}
+
+\newpage
+\printindex
+
+%\newpage
+%\listoffigures
+
+\end{document}
+
+%% *eof*

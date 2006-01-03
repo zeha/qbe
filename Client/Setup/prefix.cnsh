@@ -1,0 +1,15 @@
+;
+; $Id: prefix.cnsh 116 2004-06-02 08:05:18Z ch $
+; (C) Copyright 2002-2003 Christian Hofstaedtler
+;
+
+#include "../Common/ilogin-version.h"
+
+!define PRODUCT_PRODUCT "Qbe SAS Client"
+!define PRODUCT_VERSION ILOGIN_VERSION
+!define PRODUCT_NAME "${PRODUCT_PRODUCT} ${PRODUCT_VERSION}"
+!define QBE_UPDATEURL "http://qbe-auth.htlwrn.ac.at/modules/client/update.php?ver=${PRODUCT_VERSION}"
+!define DOTNETFX_URL "http://qbe-auth.htlwrn.ac.at/modules/client/files/dotnetfx.exe"
+!define SYSFILES_BASE_URL "http://qbe-auth.htlwrn.ac.at/modules/client/files/"
+!define BITDEFENDER_URL "http://qbe-auth.htlwrn.ac.at/modules/client/files/bd7pro.exe"
+!define QBE_GINAURL "http://qbe-auth.htlwrn.ac.at/modules/client/files/QbeSASLogin.exe"

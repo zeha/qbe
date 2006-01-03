@@ -1,0 +1,305 @@
+%%
+%% Qbe SAS SystemDocumentation
+%% (C) Copyright 2001-2004 Christian Hofstaedtler
+%%
+%% $Id: part-01.tex 20 2004-05-03 15:41:20Z ch $
+%%
+
+\cChapter{Authentication Server}
+
+\section{Philosophie}
+Der Authentication Server basiert auf der \index{Application Server}{"Qbe Application Server"} Software, die eine generische Engine zur Verfügung stellen soll, die folgendes bietet:
+\begin{itemize}
+\item Ausführung einer sogenannten Applikation für \index{HTTP}{HTTP}. \index{Engine}{Engine} und Applikation werden in PHP implementiert, Hintergrunddienste vorzugsweise in \index{Perl}{Perl}, oder auch C/C++.
+\item Einfache Einbindung von anderen Systemen in die Applikation.
+\item Modularität und klare Trennung von Teilkomponenten
+\item Transparentes Handling von verschiedenen \index{Grundfunktionen}, wie Menü\-sys\-tem, SSL \ldots
+\end{itemize}
+
+In der vorhandenen Implementierung sind Engine und Applikation nicht klar voneinander getrennt, da erst in einer späten Projektphase die Reusability aufgedeckt wurde. Daher kann nur eine echte Anwendung (mit einigen Sub-Anwendungen) pro Installation ausgeführt werden, die Modularität ist ebenfalls teilweise nicht gegeben.
+
+\section{Software-Teile}
+\subsection{Verzeichnisstruktur}
+Verwendete Verzeichnisse auf dem AuthServer:
+
+\begin{description}
+\item[/qbe]
+	Qbe Application Software
+\item[/qbe-local]
+	Lokale Einstellungen für Qbe Application Software \\
+	Lokal bedeutet, lokal für diesen Server -- sind mehrere Server vorhanden (z.B. in einem Cluster) können Dateien unter diesem Verzeichnis unterschiedlich sein.
+\item[/var/lib/mysql]
+	\index{MySQL}{MySQL} Database
+\item[/var/lib/ldap]
+	\index{LDAP}{OpenLDAP} Database (falls vorhanden)
+\item[/var/novell]
+	Novell \index{eDirectory}{eDirectory} State (falls vorhanden)
+\item[/var/lib/nds] 
+	Novell eDirectory Database (falls vorhanden)
+\item[/import/homes]
+	Benutzerverzeichnisse
+\item[/import/homes/qbe-systemstate]
+	Qbe Application Software Systemstatus
+\item[/import/homes/qbe-inetstate]
+	Qbe Systemstatus: Modul internet
+\item[/import/homes/.status]
+	Qbe Application Software Systemstatus (compatibility)
+\end{description}
+
+\subsubsection{Verzeichnisse unter /qbe}
+\begin{description}
+\item[etc]
+	Konfigurationsdateien und Vorlagen für automatisch erstellte Systemkonfigurationen.
+\item[data]
+  Enthält meißt temporäre Daten.
+\item[sbin]
+	Programme die die Hintergrunddienste der Applikation implementieren. Perl- und Shell-Skripte, C-Applikationen.\\
+	Achtung: keine Ordner - Modulspezifische Programme sollten \\ \verb|qbe-modulname-programmname| benannt werden.
+\item[status]
+  Enthält meißt temporäre Statusinformationen.
+\item[web]
+	Dateien der Applikation die für HTTP benötigt werden. Ideal: nur Unterordner und defines.php.
+\item[web/htdocs]
+	Dateien die den benutzersichtbaren Teil der Applikation bilden. PHP Skripte, Grafiken, \ldots
+\end{description}
+
+\subsection{Dienstimplementationen}
+
+Qbe SAS setzt auf bereits lang existierenden, gut implementierten Diensten auf, diese sind:
+
+\begin{tabular}{|r|l|l|}
+\hline
+Dienst & Implementation & Daemon \\
+\hline
+DNS & ISC BIND 9 & named \\
+\index{DHCP}{DHCP} & ISC DHCP 3 & dhcpd \\
+LDAP & Novell eDirectory 8.7 & ndsd \\
+ & OpenLDAP 2 & slapd \\
+SQL Datenbank & MySQL 4.1 & mysqld \\
+Webserver (+SSL) & Apache 1.3 & apache \\
+\hline
+\end{tabular}
+
+\section{Konfiguration}
+
+Die Qbe SAS Konfiguration besteht aus mehreren einzelnen Konfigurationsdateien. Diese sind:
+\begin{Verbatim}
+/qbe/web/defines.php
+/qbe/web/defines.app.php
+/qbe/web/defines.local.php
+/qbe/web/defines.security.php
+/qbe/etc/perl/qbesystemconfig.pm
+/qbe/etc/modules/computer/dhcpd.template
+\end{Verbatim}
+
+\noindent
+Weiters werden einige System-Konfigurationsdateien verwendet:
+\begin{Verbatim}
+/etc/apache/httpd.conf
+/etc/apache/ssl*
+/etc/crontab
+/etc/dhcp3/dhcpd.conf - wird automatisch erstellt
+/etc/php4/apache/php.ini
+/etc/php4/cgi/php.ini
+/etc/samba/smb.conf
+\end{Verbatim}
+
+\subsection{/qbe/web/defines.php}
+\begin{description}
+\item[setlocale(LC\_ALL,"de\_AT");] Setzt die Sprache für PHP.
+\item[\$sas\_ldap\_base] Root-Name der LDAP Datenbank. z.B: "o=htlwrn,c=at"
+\item[\$qbe\_http\_basepath] Hauptverzeichniss der Qbe AppServer Dateien. Default: "/qbe/web/htdocs"
+\item[\$qbe\_http\_server] Voreinstellung des Servernamens. \\
+	Default: wird mit \verb|$_SERVER['SERVER_NAME']| automatisch ermittelt.
+\item[\$qbe\_ssl] SSL serverseitig vorhanden, ja/nein. Default: 1
+\item[\$qbe\_http\_globaldomain] DNS-Domain in der die Server eingetragen sind - muss dem PHP Cookie-Domain Setting entsprechen. z.B: "htlwrn.ac.at"
+\item[\$qbe\_http\_globalservername] Df: \verb|"qbe-auth.".$qbe_http_globaldomain|
+\item[\$sas\_samba\_domainsid] Die Samba Domain-SID. \\
+	z.B: "S-1-5-21-1021225642-3915188714-2801850423"
+\item[\$qbe\_app\_frontpage] Skript das in der Startseite angezeigt wird. Default: leer. 
+\item[\$sas\_phpext] Die Erweiterung für PHP-Skripte am Webserver. Default: ".php". Obsolet.
+\item[\$sas\_need\_ilogin] Minimalversion von iLogin v1. Default: "0.047". Obsolet.
+\end{description}
+
+\subsection{/qbe/web/defines.security.php}
+
+\subsection{/qbe/web/defines.local.php}
+In dieser Datei können alle Werte aus defines.php oder defines.security.php überschrieben werden. Die Datei ist in der Regel ein symbolic link auf \verb|/qbe-local/web/defines.local.php| und enthält keine Einträge.
+In Cluster-Konfigurationen wird dort typischerweise die Variable \verb|$qbe_http_globalservername| mit dem wirklichen Servernamen überschrieben.
+
+\subsection{/qbe/web/defines.app.php}
+Dies ist keine Konfigurationsdatei, sondern stellt lediglich Informationen über die Applikation (Qbe SAS) zur Verfügung.
+
+\section{Applikationsmodule}
+Die Applikationsmodule bestehen aus Dateien in diesen Verzeichnissen:
+\begin{description}
+\item{/qbe/etc/MODULNAME/} Enthält modulspezifische Konfigurationsdateien.
+\item{/qbe/web/htdocs/modules/MODULNAME/} Haupt-Modulordner, alle ausführbaren Webskripte, Graphiken, etc. liegen hier. Zusätzlich existiert eine defines.php die Modulinformationen, Menübeschreibungen und globale Modulfunktionen enthält.
+\item{/qbe/web/htdocs/rpc/MODULNAME/} Ausführbare Objekte nach dem QbeRPC-Standard.
+\item{/qbe/sbin/qbe-MODULNAME-...} Ausführbare Hintergrundprogramme
+\end{description}
+
+\subsection{core}
+\verb|core| stellt die Kernfunktionalität des Application-Servers zur Verfügung. Dem core-Modul gehören auch die Hauptkonfigurationsdateien sowie weiter Dateien ausserhalb des Modulverzeichnisses an:
+\begin{description}
+\item{admin/admin/finger.php} Kann verwendet werden um die Un*x-Details eines Benutzers abzufragen.
+\item{admin/index.php} Das Anmeldeformular
+\item{admin/logout.php} Abmeldung des Benutzers
+\item{admin/r.php} Check ob der Benutzer angemeldet ist, falls nicht, Login und dann Weiterleitung auf Original-URL.
+\item graphics/style.css
+\item graphics/qbe.app.png
+\item graphics/base.js
+\item includes/user-info.php
+\item{index.php} Die Startseite -- eine einfache Page die definierbare Inhalte darstellen kann. (Siehe Konfiguration.)
+\item{modules/defines.php} Lädt alle aktiven Module.
+\item{sas.inc.php} Master-Include, stellt die gesamte Basisfunktionalität (Seitenstart, -ende, Links, Menü, Hilfe, \ldots) zur Verfügung.
+\end{description}
+
+Dateien innerhalb des Modulverzeichnisses:
+\begin{description}
+\item{about.php} Eine graphisch ansprechende Informationsseite über Qbe SAS, Copyright-Informationen.
+\item{checklogin.php} Check ob der Benutzer angemeldet ist, falls nicht, Login und dann Weiterleitung auf Original-URL. Ist ein iLogin Client vorhanden, wird dessen Authentifizierung benutzt.
+\item{chpass.php} Frontend zum Passwort ändern, greift auf die User-Provider-Funktion zurück.
+\item{datenschutz.php} Stellt Informationen über den eigenen Benutzer in halbwegs verständlicher Form dar und informiert über einige Grundsätze des Datenschutzes.
+\item{lookup.php} Sucht den passenden Provider für das \$subject und leitet den Benutzer auf die entsprechende URL.
+\item{lookup-helper.php} Für Popup-Lookups enthält dieses File Javascript-Code um das Original-Formular zu befüllen.
+\item{sendmsg.php} Sendet (ohne BgTask) eine Nachricht an den iLogin Clienten des ausgewählten Benutzers.
+\end{description}
+
+\subsubsection{Background Tasks}
+
+\subsection{redir}
+Stellt erweiterte URL-Weiterleitungsfunktionen zur Verfügung.
+
+Dateien innerhalb des Modulverzeichnisses:
+\begin{description}
+\item{outside.php} Baut ein iframe mit dem Qbe SAS Template und der Original-URL auf.
+\item{ssl.php} Sendet den Benutzer (falls SSL eingeschaltet ist) auf den SSL Port des Auth-Servers.
+\end{description}
+
+
+\subsection{ldap}
+Providermodul, stellt Authentifizierung und Management von Benutzern durch das LDAP-Directory zur Verfügung.
+Aufgrund anfänglich nicht modularer Implementierung sind viele Dateien des \verb|ldap|-Modules, über die alte Verzeichnisstruktur verteilt:
+\begin{itemize}
+\item admin/admin/*
+\item admin/login.php
+\item admin/activation.php
+\end{itemize}
+
+\subsection{ldif}
+Providermodul für den Import von Benutzerdaten in den LDAP Server.
+
+Dateien im Modulverzeichnis:
+\begin{description}
+\item{import.php} Importiert \index{Benutzerlisten}{Benutzerlisten} (CSV)
+\item{import\_passwords.php} Importiert nur die Passwörter von Benutzerlisten (CSV)
+\end{description}
+
+
+\subsection{computer}
+\begin{itemize}
+\item admin/tools/request\_clearance.php
+\item admin/tools/request\_client.php
+\end{itemize}
+
+\subsection{ilogin}
+Dieses Modul stellt hauptsächlich QbeRPC-Objekte für den Qbe SAS Client zur Verfügung. Die für den Cleint am \index{HTTP}{HTTP} Server verwendete Verzeichnisstruktur und die Skripte:
+
+\begin{Verbatim}
+
+/login
+	update.php
+		Versionsabfrage
+		Service, User Interface, Installer
+	servicepack.php
+		Update des Windows Service Packs
+\end{Verbatim}
+
+Die QbeRPC-Objekte befinden sich unter \verb|/rpc/ilogin/|. Aliasnamen zur Kompabilität mit iLogin v2 $<=$ 2.20 befinden sich unter \verb|/admin/ilogin/|.
+
+\subsubsection{QbeRPC login.php}
+Anmeldung des Benutzers.
+
+\subsubsection{QbeRPC logout.php}
+
+Abmeldung des Benutzers.
+Suche nach dem ersten LDAP-Eintrag auf den folgender Filter passt: loggedonHost=\$ClientIP . Löschen der Attribute loggedon\-Host, loggedon\-Mac, last\-Activity.
+
+\subsubsection{QbeRPC svc-frame.php}
+Stellt für das User Interface ein Frameset zur Verfügung. Wenn eine Versionsnummer vom Client übermittelt wird, und diese kleiner der aktuellen iLogin-Version ist, wird stattdessen eine Update-Information ausgeliefert. Die Update-Information kann nicht übergangen werden. Wird das Frameset angezeigt, enthält dieses zwei Frames. Das Top-Frame ist die svc-top.php, das Hauptframe ist die Menüseite des QbeSvc auf dem Clientcomputer. (via http://127.0.0.1:7666)
+
+\subsubsection{QbeRPC svc-top.php}
+Zeigt den Schriftzug ``Qbe SAS Client MJ.MN.RV'' (wobei MJ = Majorversion, MN = Minorversion, RV = Revision des Clients) und den Text ``Server: xx'', wobei xx der Serverzustand ist (z.B: ok, fail, critical).
+
+	%%%
+
+\subsection{filexs}
+Dieses Modul stellt im Webinterface eine Möglichkeit zur Verfügung die Dateien im eigenen Benutzerverzeichnis zu verwalten. Folgende Aktionen sind möglich: \index{fileget}{Datei herunterladen} (fileget), Datei abspeichern (fileput), Löschen (unlink bzw. rmdir), Umbenennen (rename) -- alle Aktionen werden im \index{setuid}{setuid}/setgrp-Bereich des jeweiligen Benutzers ausgeführt. Außerdem kann auf die "free"- und "alle"-Freigaben zugegriffen werden.
+
+Alle zugehörigen Dateien befinden sich in den entsprechenden Verzeichnissen.
+
+Dateien im Modulverzeichnis:
+\begin{description}
+\item{index.php} Listet das ausgewählte Verzeichnis auf.
+\item{inc.php} Modul-Include
+\item{act.php} Frontend für den qbe-filexs BgTask.
+\item{xfer-get.php} Frontend für den qbe-filexs BgTask: Dateidownload (fileget)
+\item{xfer-put.php} Frontend für den qbe-filexs BgTask: Dateiupload (fileput)
+\end{description}
+
+\subsubsection{Background Tasks}
+Das filexs Modul enthält nur den Pseudo-Background-Task "\index{qbe-filexs}{qbe-filexs}" (ein setuid root-Binary), welcher sich um die eigentlichen Dateizugriffe kümmert. Damit liegen alle Sicherheitsprobleme und die Access-Control in diesem Background Task.
+
+\begin{Verbatim}
+ch@xtc:/qbe/sbin -> ls qbe-filexs
+-r-sr-sr-x    1 root     root         7643 Dec 19 13:10 qbe-filexs
+
+Aufrufparameter:
+/qbe/sbin/qbe-filexs user group action file [file2]
+                     |    |     |      |    |
+                     |    |     |      |    Ein zweiter Dateiname
+                     |    |     |      Dateiname    
+                     |    |     Die auszuführende Aktion
+                     |    Gruppenname oder "-"
+                     Benutzer unter dem die Aktion ausgeführt
+                     werden soll.
+\end{Verbatim}
+
+
+\subsection{changelog}
+Stellt die Führung des System-Änderungsprotokolls durch Administratoren zur Verfügung -- nur Administratoren können das ChangeLog einsehen. Die Einträge (bestehend aus Datum, Benutzername und Logtext) werden in der SQL-Tabelle \index{sas.changelog}{sas.changelog} gespeichert.
+
+Dateien im Modulverzeichnis:
+\begin{description}
+\item{prettyprint.php} Gibt das komplette ChangeLog in Tabellenform ohne Template aus.
+\item{latex.php} Gibt das komplette ChangeLog als \LaTeX longtable aus.
+\item{index.php} Listet das ChangeLog innerhalb des Templates auf und ermöglicht Administratoren die Eingabe von neuen Einträgen.
+\end{description}
+
+\subsection{nagios}
+Ein typisches \index{Custom-Modul}{Custom-Modul}, stellt für die Startseite (die Verwendung ist getrennt zu konfigurieren) Inhalt (Nagios Übersichtsbild) und einen Reverse Proxy zur Verfügung.
+
+Dateien im Modulverzeichnis:
+\begin{description}
+\item{frontpage.php} Custom Inhalt für Startseite
+\item{.htaccess} Konfiguriert einen Reverse Proxy basierend auf mod\_rewrite für das Bild
+\end{description}
+
+\subsection{help}
+Implementiert das Hilfesystem. Die Seiten werden mit \verb|index.php| dargestellt (welches nur im PopUp-Modus arbeitet), die einzelnen Hilfeseiten werden unter \verb|topics| abgelegt.
+
+\subsection{dev}
+Zeigt einige Funktionen der Qbe AppServer Engine, mit Codebeispielen. Legt keine Menüeinträge an.
+
+Dateien im Modulverzeichnis:
+\begin{description}
+\item{demo.php} Zeigt Codebeispiele.
+\item{masterinc.php} Zeigt Funktionen aus dem Master Include File.
+\end{description}
+
+\subsection{rfid}
+Implementiert die Inventarverwaltung. Out of scope.
+
+
+%% *eof*

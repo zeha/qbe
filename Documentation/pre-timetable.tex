@@ -1,0 +1,163 @@
+%%
+%% Qbe SAS SystemDocumentation
+%% (C) Copyright 2001-2004 Christian Hofstaedtler
+%%
+%% $Id: part-last.tex 16 2004-04-30 12:55:13Z ch $
+%%
+
+\cChapter{Tätigkeitsprotokoll}
+
+Dies ist die möglicherweise unvollständige Auflistung der Tätigkeiten, beginnend mit dem 31. Oktober 2003 -- also kurz nach der Umstellung auf die neuen Intel Server.
+Arbeiten vor diesem Datum sind nicht mehr in der Liste, und wurden auch nirgends richtig dokumentiert. Die Arbeiten wären z.B. Erstellung des LDAP Baumes, Import der Benutzer, Kampf mit dem OpenLDAP Server, Beginn des Web-Interfaces und Erstellung des iLogin Clients in C.
+
+\begin{longtable}{l|p{9.5cm}}
+2004-04-29 & fixing design of /login/ (download page) \\
+2004-04-29 & fixing bug with IE6 + /login/update.php showing download box twice \\
+2004-04-29 & making changelog private \\
+2004-04-17 & rewrote 90\% of computer administration \\
+2004-04-17 & fixed the sql errors btw \\
+2004-04-16 & todo: fix sum in filexs/index \\
+2004-04-16 & fixed a bunch o' bugs in client + gina \\
+2004-04-16 & released 2.23.89 today \\
+2004-04-16 & some fixes to webinterface \\
+2004-04-16 & readability fixes to sas.inc.php (mac etc) \\
+2004-04-16 & 0.96-pre has arrived! \\
+2004-04-15 & bugfix user import \\
+2004-03-18 & sas client 2.23.14 released: lots of bugfixes, auto logon to qbe-auth as requested by CZ \\
+2004-03-17 & style + security fixes \\
+2004-03-17 & infosys link now points to /modules/infosys, lets see... \\
+2004-03-17 & merged workstation add into normal computer add \\
+2004-03-17 & released new qbesasclient+unix version, with new .net qbeservice \\
+2004-03-16 & ported qbesvc over to .net the last few days... this should get us: no more crashes on windows, and linux (macos?) support! \\
+2004-03-09 & removed login/ssl links from logged-out menu, we have an ssl loginbox anyway \\
+2004-03-08 & ok changed background color to blue again \\
+2004-03-08 & added infosys module per request \\
+2004-03-08 & fixed filexs group permission bug \\
+2004-03-08 & fixed filexs xfer-put problems \\
+2004-03-06 & adding in ldap call result caching \\
+2004-03-06 & switched to xhtml 1.0, hopefully valid... \\
+2004-03-06 & switched to new stylesheet \\
+2004-03-06 & turned off iframe support in modules/redir/outside.php \\
+2004-03-05 & reinstalled status with fz \\
+2004-03-05 & adding in more macaddress validity checks \\
+2004-03-05 & iis is now fixed \\
+2004-03-05 & hm some users are reporting qbesvc crashes again, again in ntdll... \\
+2004-03-01 & fixed lots of stuff in sasclient, uploaded 2.23.04 \\
+2004-03-01 & added new "development patches" list to clientupdate page, added second version that wont autoupdate... \\
+2004-03-01 & broke IE's webmail view somehow with strict mode, dunno why it doesnt want the iframe \\
+2004-02-29 & fixed redirect to localservername instead of globalservername in checklogin, moved globalservername config to defines.app.php \\
+2004-02-29 & ssl seems to work now without problems \\
+2004-02-29 & added sidebar login form if not logged in \\
+2004-02-29 & switched to standards compliance mode, hope this makes no further problems \\
+2004-02-27 & fixed lots of permission problems in the webinterface \\
+2004-02-27 & added "reown" for clients \\
+2004-02-26 & ilogin update to 2.23.01, fixing some startup problems \\
+2004-02-26 & added new "groups" share to samba, this is /export/groups, as in the filexs module \\
+2004-02-26 & changed manage-objects/display-user from post to get, fixing the broken link when saving the userobject \\
+2004-02-26 & moved sendmsg from menu to manage-objects \\
+2004-02-26 & updates in addclient\_nt \\
+2004-02-26 & fixing bugs in groupeditor \\
+2004-02-21 & bugfixing in sasclient the whole day... \\
+2004-02-21 & 00:34 - 90\% of new protocol description in manual done...tired... \\
+2004-02-21 & fixed cb's typo 'Verwalteng' \\
+2004-02-21 & btw, made some cool new issue's yesterday \\
+2004-02-21 & got lots of complaints of broken links in the webinterface, will fix them now or then. \\
+2004-02-16 & added more diag to failures in qbe-appmodule-ilogin-rpclogin \\
+2004-02-13 & fixed bug with sysinfo \\
+2004-02-13 & fixed bug with filexs not able to do anything \\
+2004-02-11 & fixed some bugs in group editor \\
+2004-02-11 & thought about lib for search blah \\
+2004-02-11 & fixed bug in time display on every page \\
+2004-02-11 & now worked 4h with teh web interface, no ssl errors... hopefully it works now \\
+2004-02-11 & fixed webmail link \\
+2004-02-11 & added a few lib functions, dont like to doc them atm. \\
+2004-02-11 & added redpill into / and htaccess, so if you have a server downtime, just use the htaccess haha \\
+2004-02-11 & added class lookup provider, not fully working \\
+2004-02-11 & moved inetsave log to sql \\
+2004-02-11 & added "last inet lock opener" to internet module \\
+2004-02-11 & added "magic edvo user import on logon" for infothek-ips \\
+2004-02-10 & hopefully fixed ssl problems (2) \\
+2004-02-10 & added pc delete page \\
+2004-02-10 & redid some tables \\
+2004-02-10 & moved user,group,class management into the user manager \\
+2004-02-10 & created new object manager \\
+2004-02-10 & enhanced reporter \\
+2004-02-10 & fixed some bugs in class editor \\
+2004-02-09 & last week: did ilogin things... \\
+2004-02-09 & debugging ssl problems... \\
+2004-02-09 & hopefully fixed ssl problems \\
+2004-01-30 & released client 2.22.00 (gold master), with a lot of fixes to the installer, service, tray, new gina, etc \\
+2004-01-30 & held meeting with fz and sc about edvo-users \\
+2004-01-30 & started coding of edvo-integration for "infothek" \\
+2004-01-27 & done new sasgina today+yesterday... well it works \\
+2004-01-24 & 02:10AM: wrote qbe\_ldap\_checkuser in C(++) using winldap calls... what a mess... * ch went to bed. \\
+2004-01-23 & updated docs \\
+2004-01-23 & updated ilogin to 2.21.03 \\
+2004-01-22 & fixed ftp/passive problems \\
+2004-01-22 & added internet/stats-traffic-iprange yesterday, completed it today \\
+2004-01-22 & reconfigured network-raid, now syncs completly in 3h \\
+2004-01-22 & added rsync for /qbe, xtc is master, lsd slave \\
+2004-01-19 & merged /qbe/sysstate into /qbe/status/acl, removed dyna-acl which caused a lot of problems in the past \\
+2004-01-18 & updated colors \\
+2004-01-18 & removed network image from frontpage \\
+2004-01-18 & fixed error if qbe\_app\_frontpage was empty \\
+2004-01-18 & removed image from login form, form didnt look good if image wasnt there cause of X reasons \\
+2004-01-18 & renamed login to Anmelden to make it consistent with the rest \\
+2004-01-17 & fixed inetstatus save bug in modules/ldap/save-user.php, thanks to clemens+co \\
+2004-01-15 & gestern: 19:00-00:30 uhr: gateway mit debian neu aufgesetzt, konfiguriert \\
+2004-01-15 & ldap auth, squid, websense auf egw fertig konfiguriert \\
+2004-01-09 & fixed things on status (mrtg etc) \\
+2004-01-08 & fixed bug in ldif/import* \\
+2004-01-08 & looked up realtek data sheets \\
+2004-01-07 & fixed bug in checkaclupdate for proxy \\
+2004-01-04 & 02:43 comitting: removed lots of old files, still writing docupdates \\
+2004-01-04 & 03:51 uploaded new docpdf, gone sleeping \\
+2003-12-28 & 20,21,22,23,25,27: documentation updates \\
+2003-12-28 & fixed userlookup popup form \\
+2003-12-28 & wrote a demo module, see /modules/dev/demo \\
+2003-12-28 & added pretty print (table) to the changelog module \\
+2003-12-28 & increased version to 0.9.2-alpha \\
+2003-12-28 & corrected 193.170.149.2 mapping to status.htlwrn.ac.at \\
+2003-12-19 & fixed filexs \\
+2003-12-18 & added christmas special for ilogin2 \\
+2003-12-18 & fixed zone htlwrn.ac.at on xtc dns and added flashlight \\
+2003-12-18 & hopefully fixed problems with auto-dhcp clients (bound 172.16.0.1 ip etc) \\
+2003-12-18 & fixed unreachable services from outside caused by alias/ip-change of blackbox.htlwrn.ac.at \\
+2003-12-16 & modified statistics/systeminfo to look better etc \\
+2003-12-15 & updated ilogin to 2.21.01 \\
+2003-12-10 & moved a lot from /admin/admin/ to /modules/(core|ldap|ldif)/ \\
+2003-12-10 & added /modules/core/sendmsg \\
+2003-12-10 & completed menu restructure, changed core and ldap/user defines \\
+2003-12-10 & added the "providers" system for module capabilities \\
+2003-12-10 & added a popup for user lookup, doesnt work completely \\
+2003-12-09 & fixed client pc self-add for users \\
+2003-12-09 & modified sas\_ldap\_getusername() to accept dn's also \\
+2003-12-02 & made a lot of changes to ilogin \\
+2003-12-02 & moved a lot of files from /admin/ to /modules/(internet|core) \\
+2003-12-02 & fixed internet stats links \\
+2003-11-26 & turned off clustering for now \\
+2003-11-26 & removed drbd, added dhcp and apache correctly to heartbeat, /dev/sda7 now gets mounted under /raid not /data \\
+2003-11-26 & reconfigured fstabs on the other server so that nfs will work better after server failure \\
+2003-11-26 & added logging facility (syslog) to a lot of phps \\
+2003-11-24 & restarted xtc due to server hangup \\
+2003-11-24 & added rfid module \\
+2003-11-22 & restructured directory usage, added /modules/ and dynamic menu creation \\
+2003-11-22 & completed filexs system level helper rewrite \\
+2003-11-22 & created some debian qbe packages... \\
+2003-11-21 & (ch) fixed user auto deletion from IE \\
+2003-11-20 & readded focus() in loginform \\
+2003-11-20 & started filexs-system part rewrite \\
+2003-11-19 & readded missing features \\
+2003-11-19 & added upload for filexs \\
+2003-11-19 & started importer interface \\
+2003-11-18 & completed reports interface \\
+2003-11-18 & updated changelog interface \\
+2003-11-18 & added filexs \\
+2003-11-16 & updated complete layout \\
+2003-11-16 & fixed mysql \\
+2003-11-16 & found why qbelog.pl got started so often through cron \\
+2003-11-03 & fixed a lot of problems after move to xtc \\
+2003-10-31 & got nss\_ldap on xtc working against edirectory \\
+\end{longtable}
+
+%% *eof*

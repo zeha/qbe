@@ -1,0 +1,498 @@
+\hypertarget{QbeNP_8c}{
+\section{Qbe\-NP.c Dateireferenz}
+\label{QbeNP_8c}\index{QbeNP.c@{QbeNP.c}}
+}
+
+
+{\tt \#include $<$windows.h$>$}\par
+{\tt \#include $<$lm.h$>$}\par
+{\tt \#include $<$winhttp.h$>$}\par
+{\tt \#include \char`\"{}../Qbe\-Gina/qbeldap.h\char`\"{}}\par
+{\tt \#include \char`\"{}npapi.h\char`\"{}}\par
+{\tt \#include \char`\"{}npaux.h\char`\"{}}\par
+{\tt \#include \char`\"{}../Qbe\-Gina/qbeldap.c\char`\"{}}\par
+\subsection*{Makrodefinitionen}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{QbeNP_8c_a0}{UNICODE}
+\item 
+\#define \hyperlink{QbeNP_8c_a1}{\_\-UNICODE}
+\item 
+\#define \hyperlink{QbeNP_8c_a2}{HAVE\_\-WRITELOGFILE}
+\item 
+\#define \hyperlink{QbeNP_8c_a3}{MSV1\_\-0\_\-AUTH\_\-TYPE}\ L\char`\"{}MSV1\_\-0:Interactive\char`\"{}
+\begin{CompactList}\small\item\em The authentication type is only used here in a Unicode context. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Funktionen}
+\begin{CompactItemize}
+\item 
+void \hyperlink{QbeNP_8c_a4}{Write\-Log\-File} (LPTSTR String)
+\begin{CompactList}\small\item\em Debug stuff. \item\end{CompactList}\item 
+BOOL WINAPI \hyperlink{QbeNP_8c_a5}{Dll\-Main} (\hyperlink{QbeGina_8h_a0}{HANDLE} h\-Inst, \hyperlink{QbeGina_8h_a2}{DWORD} dw\-Reason, LPVOID lp\-Reserved)
+\item 
+BOOL \hyperlink{QbeNP_8c_a6}{qbe\_\-sam\_\-issasuser} (LPWSTR sz\-Username)
+\item 
+\hyperlink{QbeGina_8h_a2}{DWORD} WINAPI \hyperlink{QbeNP_8c_a7}{NPGet\-Caps} (\hyperlink{QbeGina_8h_a2}{DWORD} n\-Index)
+\item 
+BOOL \hyperlink{QbeNP_8c_a8}{get\-Local\-Machine\-Name} (LPWSTR sz\-Workstation\-Name)
+\item 
+BOOL \hyperlink{QbeNP_8c_a9}{init\-Policy} (struct \hyperlink{structQbeSAS__HostPolicy}{Qbe\-SAS\_\-Host\-Policy} $\ast$p\-Policy)
+\item 
+\hyperlink{QbeGina_8h_a2}{DWORD} WINAPI \hyperlink{QbeNP_8c_a10}{NPLogon\-Notify} (\hyperlink{QbeGina_8h_a3}{PLUID} lp\-Logon\-Id, LPCWSTR lp\-Authent\-Info\-Type, LPVOID lp\-Authent\-Info, LPCWSTR lp\-Previous\-Authent\-Info\-Type, LPVOID lp\-Previous\-Authent\-Info, LPWSTR lp\-Station\-Name, LPVOID Station\-Handle, LPWSTR $\ast$lp\-Logon\-Script)
+\item 
+\hyperlink{QbeGina_8h_a2}{DWORD} WINAPI \hyperlink{QbeNP_8c_a11}{NPPassword\-Change\-Notify} (LPCWSTR lp\-Authent\-Info\-Type, LPVOID lp\-Authent\-Info, LPCWSTR lp\-Previous\-Authent\-Info\-Type, LPVOID lp\-Previous\-Authent\-Info, LPWSTR lp\-Station\-Name, LPVOID Station\-Handle, \hyperlink{QbeGina_8h_a2}{DWORD} dw\-Change\-Info)
+\end{CompactItemize}
+
+
+\subsection{Makro-Dokumentation}
+\hypertarget{QbeNP_8c_a1}{
+\index{QbeNP.c@{Qbe\-NP.c}!_UNICODE@{\_\-UNICODE}}
+\index{_UNICODE@{\_\-UNICODE}!QbeNP.c@{Qbe\-NP.c}}
+\subsubsection[\_\-UNICODE]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-UNICODE}}
+\label{QbeNP_8c_a1}
+
+
+
+
+Definiert in Zeile 8 der Datei Qbe\-NP.c.\hypertarget{QbeNP_8c_a2}{
+\index{QbeNP.c@{Qbe\-NP.c}!HAVE_WRITELOGFILE@{HAVE\_\-WRITELOGFILE}}
+\index{HAVE_WRITELOGFILE@{HAVE\_\-WRITELOGFILE}!QbeNP.c@{Qbe\-NP.c}}
+\subsubsection[HAVE\_\-WRITELOGFILE]{\setlength{\rightskip}{0pt plus 5cm}\#define HAVE\_\-WRITELOGFILE}}
+\label{QbeNP_8c_a2}
+
+
+
+
+Definiert in Zeile 17 der Datei Qbe\-NP.c.\hypertarget{QbeNP_8c_a3}{
+\index{QbeNP.c@{Qbe\-NP.c}!MSV1_0_AUTH_TYPE@{MSV1\_\-0\_\-AUTH\_\-TYPE}}
+\index{MSV1_0_AUTH_TYPE@{MSV1\_\-0\_\-AUTH\_\-TYPE}!QbeNP.c@{Qbe\-NP.c}}
+\subsubsection[MSV1\_\-0\_\-AUTH\_\-TYPE]{\setlength{\rightskip}{0pt plus 5cm}\#define MSV1\_\-0\_\-AUTH\_\-TYPE\ L\char`\"{}MSV1\_\-0:Interactive\char`\"{}}}
+\label{QbeNP_8c_a3}
+
+
+The authentication type is only used here in a Unicode context. 
+
+
+
+Definiert in Zeile 23 der Datei Qbe\-NP.c.
+
+Wird benutzt von NPLogon\-Notify().\hypertarget{QbeNP_8c_a0}{
+\index{QbeNP.c@{Qbe\-NP.c}!UNICODE@{UNICODE}}
+\index{UNICODE@{UNICODE}!QbeNP.c@{Qbe\-NP.c}}
+\subsubsection[UNICODE]{\setlength{\rightskip}{0pt plus 5cm}\#define UNICODE}}
+\label{QbeNP_8c_a0}
+
+
+
+
+Definiert in Zeile 7 der Datei Qbe\-NP.c.
+
+\subsection{Dokumentation der Funktionen}
+\hypertarget{QbeNP_8c_a5}{
+\index{QbeNP.c@{Qbe\-NP.c}!DllMain@{DllMain}}
+\index{DllMain@{DllMain}!QbeNP.c@{Qbe\-NP.c}}
+\subsubsection[DllMain]{\setlength{\rightskip}{0pt plus 5cm}BOOL WINAPI Dll\-Main (\hyperlink{QbeGina_8h_a0}{HANDLE} {\em h\-Inst}, \hyperlink{QbeGina_8h_a2}{DWORD} {\em dw\-Reason}, LPVOID {\em lp\-Reserved})}}
+\label{QbeNP_8c_a5}
+
+
+
+
+Definiert in Zeile 27 der Datei Qbe\-NP.c.
+
+
+
+\footnotesize\begin{verbatim}32 {
+33    if (dwReason == DLL_PROCESS_ATTACH)
+34    {
+35       DisableThreadLibraryCalls(hInst);
+36    }
+37 
+38    return TRUE;
+39 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeNP_8c_a8}{
+\index{QbeNP.c@{Qbe\-NP.c}!getLocalMachineName@{getLocalMachineName}}
+\index{getLocalMachineName@{getLocalMachineName}!QbeNP.c@{Qbe\-NP.c}}
+\subsubsection[getLocalMachineName]{\setlength{\rightskip}{0pt plus 5cm}BOOL get\-Local\-Machine\-Name (LPWSTR {\em sz\-Workstation\-Name})}}
+\label{QbeNP_8c_a8}
+
+
+
+
+Definiert in Zeile 105 der Datei Qbe\-NP.c.
+
+Benutzt BOOL().
+
+Wird benutzt von init\-Policy().
+
+
+
+\footnotesize\begin{verbatim}106 {
+107   NET_API_STATUS netstatus;
+108   LPWKSTA_INFO_100 lpWkstaInfo;
+109 
+110   netstatus = NetApiBufferAllocate(sizeof(LPWKSTA_INFO_100), (LPVOID *) &lpWkstaInfo);
+111   if (netstatus == NERR_Success)
+112   {
+113     NetApiBufferFree(&lpWkstaInfo);
+114   }
+115   
+116   //
+117   // Get local machine name.
+118   //
+119   netstatus = NetWkstaGetInfo(NULL, 100, (LPBYTE *) &lpWkstaInfo);
+120   if (netstatus != NERR_Success)
+121   {
+122     while (netstatus == NERR_WkstaNotStarted)
+123     {
+124       Sleep(1000);
+125       // try again
+126       netstatus = NetWkstaGetInfo(NULL, 100, (LPBYTE *) &lpWkstaInfo);
+127       if (netstatus == NERR_Success)
+128         break;
+129       if (netstatus != NERR_WkstaNotStarted)
+130         return FALSE;
+131     }
+132   }            
+133   
+134   wcscpy(szWorkstationName,lpWkstaInfo->wki100_computername);
+135 
+136   NetApiBufferFree((LPVOID) lpWkstaInfo);
+137   
+138   return TRUE;
+139 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeNP_8c_a9}{
+\index{QbeNP.c@{Qbe\-NP.c}!initPolicy@{initPolicy}}
+\index{initPolicy@{initPolicy}!QbeNP.c@{Qbe\-NP.c}}
+\subsubsection[initPolicy]{\setlength{\rightskip}{0pt plus 5cm}BOOL init\-Policy (struct \hyperlink{structQbeSAS__HostPolicy}{Qbe\-SAS\_\-Host\-Policy} $\ast$ {\em p\-Policy})}}
+\label{QbeNP_8c_a9}
+
+
+
+
+Definiert in Zeile 141 der Datei Qbe\-NP.c.
+
+Benutzt BOOL(), get\-Local\-Machine\-Name() und qbe\_\-ldap\_\-getpolicy().
+
+
+
+\footnotesize\begin{verbatim}142 {
+143   LPWSTR szLocalMachineName = (LPWSTR)malloc(256);
+144 
+145   if (!getLocalMachineName(szLocalMachineName))
+146   {
+147     return FALSE;
+148   }
+149 
+150   qbe_ldap_getpolicy(szLocalMachineName,pPolicy);
+151 
+152   return TRUE;
+153 } 
+\end{verbatim}\normalsize 
+\hypertarget{QbeNP_8c_a7}{
+\index{QbeNP.c@{Qbe\-NP.c}!NPGetCaps@{NPGetCaps}}
+\index{NPGetCaps@{NPGetCaps}!QbeNP.c@{Qbe\-NP.c}}
+\subsubsection[NPGetCaps]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{QbeGina_8h_a2}{DWORD} WINAPI NPGet\-Caps (\hyperlink{QbeGina_8h_a2}{DWORD} {\em n\-Index})}}
+\label{QbeNP_8c_a7}
+
+
+
+
+Definiert in Zeile 71 der Datei Qbe\-NP.c.
+
+Benutzt DWORD.
+
+
+
+\footnotesize\begin{verbatim}74 {
+75    DWORD dwRes;
+76 
+77    switch (nIndex)
+78    {
+79 
+80    case WNNC_NET_TYPE:
+81       dwRes = WNNC_CRED_MANAGER; // credential manager
+82       break;
+83 
+84    case WNNC_SPEC_VERSION:
+85       dwRes = WNNC_SPEC_VERSION51;  // We are using version 5.1 of the spec.
+86       break;
+87 
+88    case WNNC_DRIVER_VERSION:
+89       dwRes = 1;  // This driver is version 1.
+90       break;
+91 
+92    case WNNC_START:
+93       dwRes = 1;  // We are already "started"
+94       break;
+95 
+96    default:
+97       dwRes = 0;  // We don't support anything else
+98       break;
+99    }
+100 
+101    return dwRes;
+102 
+103 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeNP_8c_a10}{
+\index{QbeNP.c@{Qbe\-NP.c}!NPLogonNotify@{NPLogonNotify}}
+\index{NPLogonNotify@{NPLogonNotify}!QbeNP.c@{Qbe\-NP.c}}
+\subsubsection[NPLogonNotify]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{QbeGina_8h_a2}{DWORD} WINAPI NPLogon\-Notify (\hyperlink{QbeGina_8h_a3}{PLUID} {\em lp\-Logon\-Id}, LPCWSTR {\em lp\-Authent\-Info\-Type}, LPVOID {\em lp\-Authent\-Info}, LPCWSTR {\em lp\-Previous\-Authent\-Info\-Type}, LPVOID {\em lp\-Previous\-Authent\-Info}, LPWSTR {\em lp\-Station\-Name}, LPVOID {\em Station\-Handle}, LPWSTR $\ast$ {\em lp\-Logon\-Script})}}
+\label{QbeNP_8c_a10}
+
+
+FUNCTION: NPLogon\-Notify
+
+PURPOSE: This entry point is called when a user logs on. If the user authentication fails here, the user will still be logged on to the local machine. 
+
+Definiert in Zeile 161 der Datei Qbe\-NP.c.
+
+Benutzt DWORD, Qbe\-SAS\_\-Host\-Policy::Home\-Drive, Qbe\-SAS\_\-Host\-Policy::Home\-Drive\-Dir, init\-Policy(), Qbe\-SAS\_\-Host\-Policy::Login\-Script, MSV1\_\-0\_\-AUTH\_\-TYPE, PMSV1\_\-0\_\-INTERACTIVE\_\-LOGON, qbe\_\-sam\_\-issasuser(), QBENP\_\-INTERACTIVESTATION und Write\-Log\-File().
+
+
+
+\footnotesize\begin{verbatim}171 {
+172   struct QbeSAS_HostPolicy qHostPolicy;
+173   PMSV1_0_INTERACTIVE_LOGON pAuthInfo;
+174 
+175   // If the primary authenticator is not MSV1_0, return success.
+176   // Why? Because this is the only auth info structure that we
+177   // understand and we don't want to interact with other types.
+178   if ( lstrcmpiW (MSV1_0_AUTH_TYPE, lpAuthentInfoType) )
+179   {
+180     SetLastError(NO_ERROR);
+181     return NO_ERROR;
+182   }
+183 
+184   if ( lstrcmpiW (QBENP_INTERACTIVESTATION, lpStationName) )
+185   {
+186     SetLastError(NO_ERROR);
+187     return NO_ERROR;
+188   }
+189   
+190   // Do something with the authentication information
+191   pAuthInfo = (PMSV1_0_INTERACTIVE_LOGON) lpAuthentInfo;
+192 
+193   // Check if this user was created by QbeGina
+194   if (qbe_sam_issasuser(pAuthInfo->UserName.Buffer))
+195   { // Yes
+196   if (initPolicy(&qHostPolicy))
+197   {
+198     // Haben wir ein LoginScript in der Hostpolicy?
+199     if (qHostPolicy.LoginScript != NULL)
+200     {
+201       // The Caller MUST free this memory
+202       *lpLogonScript = LocalAlloc(LPTR,1024);
+203 
+204       wsprintf(*lpLogonScript,TEXT("%s %s %s"),qHostPolicy.LoginScript,pAuthInfo->UserName.Buffer,pAuthInfo->Password.Buffer);
+205       WriteLogFile(*lpLogonScript);
+206     } else {
+207       // Nein.
+208       WriteLogFile(TEXT("No login script specified."));
+209     }
+210     WriteLogFile(TEXT("\r\n"));
+211 
+212     // map the network drive specified in policy
+213     {
+214       LPWSTR szUseName = (LPWSTR)malloc(512);
+215       LPWSTR szUnc = (LPWSTR)malloc(512);
+216       NETRESOURCE netRes;
+217       DWORD res;
+218       
+219       if ( (qHostPolicy.HomeDrive != NULL) && (qHostPolicy.HomeDriveDir != NULL) )
+220       {
+221         swprintf(szUseName,TEXT("%s:"),qHostPolicy.HomeDrive);
+222         if (NetUseDel(NULL, szUseName, USE_LOTS_OF_FORCE) != NERR_Success)
+223           WriteLogFile(TEXT("*** NetUseDel failed.\r\n"));
+224 
+225         if (szUseName == NULL)
+226           MessageBox(NULL,TEXT("Error allocating szUseName!"),TEXT("Error"),0);
+227         if (szUnc == NULL)
+228           MessageBox(NULL,TEXT("Error allocating szUnc!"),TEXT("Error"),0);
+229           
+230         netRes.dwType = RESOURCETYPE_DISK;
+231         netRes.lpProvider = NULL;
+232         netRes.lpLocalName = szUseName;
+233         swprintf(szUnc,qHostPolicy.HomeDriveDir,pAuthInfo->UserName.Buffer);
+234         netRes.lpRemoteName = szUnc;
+235       
+236         res = WNetAddConnection2(&netRes,pAuthInfo->UserName.Buffer,pAuthInfo->Password.Buffer,FALSE);
+237               if (res != NO_ERROR)
+238         {
+239           WriteLogFile(TEXT("*** WNetAddConnection2 failed.\r\n"));
+240           WriteLogFile(TEXT("*** Error code: "));
+241           _ltow(res,szUnc,10);
+242           WriteLogFile(szUnc);
+243           WriteLogFile(TEXT("\r\n"));
+244         }
+245       }
+246 
+247       free(szUseName);
+248       free(szUnc);
+249     }
+250   } else {
+251     WriteLogFile(TEXT("Cant init policy object\r\n"));
+252     MessageBox(NULL,TEXT("The machine policy could not be found in LDAP."),TEXT("Qbe SAS Client"),MB_OK|MB_ICONERROR);
+253   }
+254   } else {
+255     WriteLogFile(TEXT("User is not a Qbe SAS User\r\n"));
+256   }
+257   
+258   SetLastError(NO_ERROR);
+259   return NO_ERROR;
+260 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeNP_8c_a11}{
+\index{QbeNP.c@{Qbe\-NP.c}!NPPasswordChangeNotify@{NPPasswordChangeNotify}}
+\index{NPPasswordChangeNotify@{NPPasswordChangeNotify}!QbeNP.c@{Qbe\-NP.c}}
+\subsubsection[NPPasswordChangeNotify]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{QbeGina_8h_a2}{DWORD} WINAPI NPPassword\-Change\-Notify (LPCWSTR {\em lp\-Authent\-Info\-Type}, LPVOID {\em lp\-Authent\-Info}, LPCWSTR {\em lp\-Previous\-Authent\-Info\-Type}, LPVOID {\em lp\-Previous\-Authent\-Info}, LPWSTR {\em lp\-Station\-Name}, LPVOID {\em Station\-Handle}, \hyperlink{QbeGina_8h_a2}{DWORD} {\em dw\-Change\-Info})}}
+\label{QbeNP_8c_a11}
+
+
+
+
+Definiert in Zeile 343 der Datei Qbe\-NP.c.
+
+
+
+\footnotesize\begin{verbatim}352 {
+353   SetLastError(NO_ERROR);
+354   return NO_ERROR;
+355 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeNP_8c_a6}{
+\index{QbeNP.c@{Qbe\-NP.c}!qbe_sam_issasuser@{qbe\_\-sam\_\-issasuser}}
+\index{qbe_sam_issasuser@{qbe\_\-sam\_\-issasuser}!QbeNP.c@{Qbe\-NP.c}}
+\subsubsection[qbe\_\-sam\_\-issasuser]{\setlength{\rightskip}{0pt plus 5cm}BOOL qbe\_\-sam\_\-issasuser (LPWSTR {\em sz\-Username})}}
+\label{QbeNP_8c_a6}
+
+
+
+
+Definiert in Zeile 262 der Datei Qbe\-NP.c.
+
+Benutzt BOOL() und DWORD.
+
+Wird benutzt von NPLogon\-Notify().
+
+
+
+\footnotesize\begin{verbatim}263 {
+264   LPLOCALGROUP_USERS_INFO_0 pBuf = NULL;
+265   DWORD dwPrefMaxLen = MAX_PREFERRED_LENGTH;
+266   DWORD dwEntriesRead = 0;
+267   DWORD dwTotalEntries = 0;
+268   NET_API_STATUS nStatus;
+269   BOOL bReturn = FALSE;
+270 
+271   //
+272   // Call the NetUserGetLocalGroups function 
+273   //  specifying information level 0.
+274   //
+275   //  The LG_INCLUDE_INDIRECT flag specifies that the 
+276   //   function should also return the names of the local 
+277   //   groups in which the user is indirectly a member.
+278   //
+279   nStatus = NetUserGetLocalGroups(NULL,
+280                                    szUsername,
+281                                    0,
+282                                    0,
+283                                    (LPBYTE *) &pBuf,
+284                                    dwPrefMaxLen,
+285                                    &dwEntriesRead,
+286                                    &dwTotalEntries);
+287    //
+288    // If the call succeeds,
+289    //
+290    if (nStatus == NERR_Success)
+291    {
+292       LPLOCALGROUP_USERS_INFO_0 pTmpBuf;
+293       DWORD i;
+294 
+295       if ((pTmpBuf = pBuf) != NULL)
+296       {
+297          //
+298          // Loop through the entries and 
+299          //  print the names of the local groups 
+300          //  to which the user belongs. 
+301          //
+302          for (i = 0; i < dwEntriesRead; i++)
+303          {
+304             if (pTmpBuf == NULL)
+305                break;
+306 
+307             //wprintf(L"\t-- %s\n", pTmpBuf->lgrui0_name);
+308     if (wcscmp(TEXT("Qbe SAS Users"), pTmpBuf->lgrui0_name) == 0)
+309     {
+310       bReturn = TRUE;
+311       break;
+312     }
+313 
+314             pTmpBuf++;
+315          }
+316       }
+317    }
+318    //
+319    // Free the allocated memory.
+320    //
+321    if (pBuf != NULL)
+322       NetApiBufferFree(pBuf);
+323 
+324    return bReturn;
+325 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeNP_8c_a4}{
+\index{QbeNP.c@{Qbe\-NP.c}!WriteLogFile@{WriteLogFile}}
+\index{WriteLogFile@{WriteLogFile}!QbeNP.c@{Qbe\-NP.c}}
+\subsubsection[WriteLogFile]{\setlength{\rightskip}{0pt plus 5cm}void Write\-Log\-File (LPTSTR {\em String})}}
+\label{QbeNP_8c_a4}
+
+
+Debug stuff. 
+
+
+
+Definiert in Zeile 108 der Datei Qbe\-Gina.c.
+
+Benutzt DWORD und HANDLE.
+
+Wird benutzt von NPLogon\-Notify(), qbe\_\-ldap\_\-getpolicy(), qbe\_\-qbesvc\_\-login(), Start\-RPCService() und Wlx\-Logoff().
+
+
+
+\footnotesize\begin{verbatim}109 {
+110 // Ohne SASDEBUG ist das eine NOP.
+111 #ifdef SASDEBUG
+112    HANDLE hFile;
+113    DWORD dwBytesWritten;
+114 
+115    hFile = CreateFile(
+116                      TEXT("c:\\gina.txt"),
+117                      GENERIC_WRITE,
+118                      0,
+119                      NULL,
+120                      OPEN_ALWAYS,
+121                      FILE_FLAG_SEQUENTIAL_SCAN,
+122                      NULL
+123                      );
+124 
+125    if (hFile == INVALID_HANDLE_VALUE) return;
+126 
+127    // Seek to the end of the file
+128    SetFilePointer(hFile, 0, NULL, FILE_END);
+129 
+130    WriteFile(
+131             hFile,
+132             String,
+133             lstrlen(String)*sizeof(TCHAR),
+134             &dwBytesWritten,
+135             NULL
+136             );
+137 
+138    CloseHandle(hFile);
+139 
+140 #endif
+141    return;
+142 }
+\end{verbatim}\normalsize 

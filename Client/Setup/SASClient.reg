@@ -1,0 +1,41 @@
+REGEDIT4
+
+;
+; $Id: SASClient.reg 137 2004-06-04 12:57:09Z ch $
+; (C) Copyright 2003 Christian Hofstaedtler
+;
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings]
+"EnableHttp1_1"=dword:00000001
+"ProxyEnable"=dword:00000001
+"ProxyServer"="http=10.0.0.1:8080;https=10.0.0.1:8080;ftp=10.0.0.1:8080"
+"ProxyHttp1.1"=dword:00000001
+"ProxyOverride"="qbe-auth;qbe-auth.htlwrn.ac.at;www.htlwrn.ac.at;10.*;<local>"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"ShowInfoTip"=dword:00000000
+"FolderContentsInfoTip"=dword:00000000
+"StartButtonBalloonTip"=dword:00000000
+"NoSMBalloonTip"=dword:00000001
+"NoWelcomeScreen"=dword:00000000
+"Start_NotifyNewApps"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Applets\Tour]
+"RunCount"=dword:00000000
+
+[HKEY_CURRENT_USER\Printers\Settings]
+"EnableBalloonNotificationsLocal"=dword:00000000
+"EnableBalloonNotificationsRemote"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+"RunLogonScriptSync"="1"
+
+[HKEY_CURRENT_USER\SystemFileAssociations\.avi\shellex\PropertyHandler]
+@=""
+
+[HKEY_CURRENT_USER\SystemFileAssociations\.mp3\shellex\PropertyHandler]
+@=""
+
+[HKEY_CURRENT_USER\SystemFileAssociations\.wav\shellex\PropertyHandler]
+@=""
+

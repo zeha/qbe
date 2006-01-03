@@ -1,0 +1,12 @@
+#!/usr/bin/perl -w
+
+use LWP::UserAgent;
+my $url = 'http://127.0.0.1:7666/web/logout';
+
+my $ua = LWP::UserAgent->new;
+$ua->timeout(10);
+
+my $response = $ua->get($url);
+
+print "Qbe Client response: ".$response->status_line."\n";
+

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+echo "Qbe SAS Client for Linux"
+echo "Username and Password configuration."
+echo ""
+
+echo "Current configuration:"
+echo -n "  Username: "
+gconftool-2 -g /apps/qbe/username
+echo -n "  Password: "
+gconftool-2 -g /apps/qbe/password
+echo ""
+
+echo "Enter new configuration data:"
+echo -n "  Username: "
+USERNAME=`line`
+
+echo -n "  Password: "
+PASSWORD=`line`
+
+gconftool-2 -s /apps/qbe/username -t string "$USERNAME"
+gconftool-2 -s /apps/qbe/password -t string "$PASSWORD"
+
+echo ""
+echo "Saved data:"
+echo -n "  Username: "
+gconftool-2 -g /apps/qbe/username
+echo -n "  Password: "
+gconftool-2 -g /apps/qbe/password
+

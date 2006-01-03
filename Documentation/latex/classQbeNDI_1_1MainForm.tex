@@ -1,0 +1,486 @@
+\hypertarget{classQbeNDI_1_1MainForm}{
+\section{Main\-Form Klassenreferenz}
+\label{classQbeNDI_1_1MainForm}\index{QbeNDI::MainForm@{QbeNDI::MainForm}}
+}
+{\tt \#include $<$Main\-Form.h$>$}
+
+
+
+\subsection{Ausf\"{u}hrliche Beschreibung}
+Zusammenfassung f\"{u}r \hyperlink{classQbeNDI_1_1MainForm}{Main\-Form}
+
+Achtung: Wenn Sie den Namen dieser Klasse \"{a}ndern, m\"{u}ssen Sie die Eigenschaft 'Ressourcendateiname' f\"{u}r das Compilertool f\"{u}r verwaltete Ressourcen \"{a}ndern, das allen .resx-Dateien zugewiesen ist, von denen diese Klasse abh\"{a}ngt. Anderenfalls k\"{o}nnen die Designer nicht korrekt mit den lokalisierten Ressourcen arbeiten, die diesem Formular zugewiesen sind.  
+
+
+
+Definiert in Zeile 33 der Datei Main\-Form.h.\subsection*{\"{O}ffentliche Methoden}
+\begin{CompactItemize}
+\item 
+\hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainForma0}{Main\-Form} (void)
+\end{CompactItemize}
+\subsection*{Gesch\"{u}tzte Methoden}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormb0}{Dispose} (Boolean disposing)
+\end{CompactItemize}
+\subsection*{Private Methoden}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormd0}{Initialize\-Component} (void)
+\item 
+System::Void \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormd1}{tmr\-Run\_\-Tick} (System::Object $\ast$sender, System::Event\-Args $\ast$e)
+\item 
+System::Void \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormd2}{Main\-Form\_\-Load} (System::Object $\ast$sender, System::Event\-Args $\ast$e)
+\item 
+System::Void \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormd3}{tmr\-Check\_\-Tick} (System::Object $\ast$sender, System::Event\-Args $\ast$e)
+\end{CompactItemize}
+\subsection*{Private Attribute}
+\begin{CompactItemize}
+\item 
+System::Windows::Forms::Group\-Box $\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr0}{grp\-Text}
+\item 
+System::Windows::Forms::Label $\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr1}{lbl\-Status}
+\item 
+System::Windows::Forms::Timer $\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr2}{tmr\-Run}
+\item 
+System::Windows::Forms::Timer $\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr3}{tmr\-Check}
+\item 
+System::Windows::Forms::Picture\-Box $\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr4}{picture\-Box1}
+\item 
+System::Windows::Forms::Label $\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr5}{label1}
+\item 
+System::Component\-Model::IContainer $\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr6}{components}
+\end{CompactItemize}
+
+
+\subsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{classQbeNDI_1_1MainForm_QbeNDI_1_1MainForma0}{
+\index{QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}!MainForm@{MainForm}}
+\index{MainForm@{MainForm}!QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}}
+\subsubsection[MainForm]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{classQbeNDI_1_1MainForm}{Main\-Form} (void)}}
+\label{classQbeNDI_1_1MainForm_QbeNDI_1_1MainForma0}
+
+
+
+
+Definiert in Zeile 36 der Datei Main\-Form.h.
+
+Benutzt Main\-Form::Initialize\-Component().
+
+
+
+\footnotesize\begin{verbatim}37     {
+38       InitializeComponent();
+39     }
+\end{verbatim}\normalsize 
+
+
+\subsection{Dokumentation der Elementfunktionen}
+\hypertarget{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormb0}{
+\index{QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}}
+\subsubsection[Dispose]{\setlength{\rightskip}{0pt plus 5cm}void Dispose (Boolean {\em disposing})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormb0}
+
+
+
+
+Definiert in Zeile 42 der Datei Main\-Form.h.
+
+
+
+\footnotesize\begin{verbatim}43     {
+44       if (disposing && components)
+45       {
+46         components->Dispose();
+47       }
+48       __super::Dispose(disposing);
+49     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormd0}{
+\index{QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}!InitializeComponent@{InitializeComponent}}
+\index{InitializeComponent@{InitializeComponent}!QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}}
+\subsubsection[InitializeComponent]{\setlength{\rightskip}{0pt plus 5cm}void Initialize\-Component (void)\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormd0}
+
+
+Erforderliche Methode f\"{u}r die Designerunterst\"{u}tzung. Der Inhalt der Methode darf nicht mit dem Code-Editor ge\"{a}ndert werden.  
+
+Definiert in Zeile 71 der Datei Main\-Form.h.
+
+Benutzt Main\-Form::grp\-Text, Main\-Form::lbl\-Status, Main\-Form::Main\-Form\_\-Load(), Main\-Form::picture\-Box1, Main\-Form::tmr\-Check, Main\-Form::tmr\-Check\_\-Tick(), Main\-Form::tmr\-Run und Main\-Form::tmr\-Run\_\-Tick().
+
+Wird benutzt von Main\-Form::Main\-Form().
+
+
+
+\footnotesize\begin{verbatim}72     {
+73       this->components = new System::ComponentModel::Container();
+74       System::Resources::ResourceManager *  resources = new System::Resources::ResourceManager("MainForm",System::Reflection::Assembly::GetCallingAssembly());
+75       this->grpText = new System::Windows::Forms::GroupBox();
+76       this->lblStatus = new System::Windows::Forms::Label();
+77       this->tmrRun = new System::Windows::Forms::Timer(this->components);
+78       this->tmrCheck = new System::Windows::Forms::Timer(this->components);
+79       this->pictureBox1 = new System::Windows::Forms::PictureBox();
+80       this->label1 = new System::Windows::Forms::Label();
+81       this->grpText->SuspendLayout();
+82       this->SuspendLayout();
+83       // 
+84       // grpText
+85       // 
+86       this->grpText->Anchor = (System::Windows::Forms::AnchorStyles)(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+87         | System::Windows::Forms::AnchorStyles::Left) 
+88         | System::Windows::Forms::AnchorStyles::Right);
+89       this->grpText->Controls->Add(this->lblStatus);
+90       this->grpText->Font = new System::Drawing::Font(S"Trebuchet MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, (System::Byte)0);
+91       this->grpText->ForeColor = System::Drawing::Color::White;
+92       this->grpText->Location = System::Drawing::Point(8, 128);
+93       this->grpText->Name = S"grpText";
+94       this->grpText->Size = System::Drawing::Size(352, 112);
+95       this->grpText->TabIndex = 5;
+96       this->grpText->TabStop = false;
+97       this->grpText->Text = S"Detail";
+98       // 
+99       // lblStatus
+100       // 
+101       this->lblStatus->BackColor = System::Drawing::Color::FromArgb((System::Byte)51, (System::Byte)102, (System::Byte)153);
+102       this->lblStatus->Dock = System::Windows::Forms::DockStyle::Fill;
+103       this->lblStatus->Font = new System::Drawing::Font(S"Trebuchet MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, (System::Byte)0);
+104       this->lblStatus->ForeColor = System::Drawing::Color::White;
+105       this->lblStatus->Location = System::Drawing::Point(3, 16);
+106       this->lblStatus->Name = S"lblStatus";
+107       this->lblStatus->Size = System::Drawing::Size(346, 93);
+108       this->lblStatus->TabIndex = 1;
+109       // 
+110       // tmrRun
+111       // 
+112       this->tmrRun->Enabled = true;
+113       this->tmrRun->Tick += new System::EventHandler(this, tmrRun_Tick);
+114       // 
+115       // tmrCheck
+116       // 
+117       this->tmrCheck->Tick += new System::EventHandler(this, tmrCheck_Tick);
+118       // 
+119       // pictureBox1
+120       // 
+121       this->pictureBox1->Image = (__try_cast<System::Drawing::Image *  >(resources->GetObject(S"pictureBox1.Image")));
+122       this->pictureBox1->Location = System::Drawing::Point(0, 0);
+123       this->pictureBox1->Name = S"pictureBox1";
+124       this->pictureBox1->Size = System::Drawing::Size(368, 120);
+125       this->pictureBox1->TabIndex = 6;
+126       this->pictureBox1->TabStop = false;
+127       // 
+128       // label1
+129       // 
+130       this->label1->Font = new System::Drawing::Font(S"Trebuchet MS", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, (System::Byte)0);
+131       this->label1->ForeColor = System::Drawing::Color::White;
+132       this->label1->Location = System::Drawing::Point(128, 72);
+133       this->label1->Name = S"label1";
+134       this->label1->Size = System::Drawing::Size(232, 16);
+135       this->label1->TabIndex = 7;
+136       this->label1->Text = S"Software Setup";
+137       // 
+138       // MainForm
+139       // 
+140       this->AutoScaleBaseSize = System::Drawing::Size(5, 13);
+141       this->BackColor = System::Drawing::Color::FromArgb((System::Byte)51, (System::Byte)102, (System::Byte)153);
+142       this->ClientSize = System::Drawing::Size(368, 246);
+143       this->ControlBox = false;
+144       this->Controls->Add(this->label1);
+145       this->Controls->Add(this->pictureBox1);
+146       this->Controls->Add(this->grpText);
+147       this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+148       this->Name = S"MainForm";
+149       this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
+150       this->Text = S"Qbe Software Setup";
+151       this->Load += new System::EventHandler(this, MainForm_Load);
+152       this->grpText->ResumeLayout(false);
+153       this->ResumeLayout(false);
+154 
+155     } 
+\end{verbatim}\normalsize 
+\hypertarget{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormd2}{
+\index{QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}!MainForm_Load@{MainForm\_\-Load}}
+\index{MainForm_Load@{MainForm\_\-Load}!QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}}
+\subsubsection[MainForm\_\-Load]{\setlength{\rightskip}{0pt plus 5cm}System::Void Main\-Form\_\-Load (System::Object $\ast$ {\em sender}, System::Event\-Args $\ast$ {\em e})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormd2}
+
+
+
+
+Definiert in Zeile 293 der Datei Main\-Form.h.
+
+Wird benutzt von Main\-Form::Initialize\-Component().
+
+
+
+\footnotesize\begin{verbatim}293          : System::Void MainForm_Load(System::Object *  sender, System::EventArgs *  e)
+294        {
+295        }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormd3}{
+\index{QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}!tmrCheck_Tick@{tmrCheck\_\-Tick}}
+\index{tmrCheck_Tick@{tmrCheck\_\-Tick}!QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}}
+\subsubsection[tmrCheck\_\-Tick]{\setlength{\rightskip}{0pt plus 5cm}System::Void tmr\-Check\_\-Tick (System::Object $\ast$ {\em sender}, System::Event\-Args $\ast$ {\em e})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormd3}
+
+
+
+
+Definiert in Zeile 297 der Datei Main\-Form.h.
+
+Benutzt Main\-Form::lbl\-Status, Qbe\-NDI::prev\-Work\-State und work\-State.
+
+Wird benutzt von Main\-Form::Initialize\-Component().
+
+
+
+\footnotesize\begin{verbatim}297          : System::Void tmrCheck_Tick(System::Object *  sender, System::EventArgs *  e)
+298      {
+299        if (workState != prevWorkState)
+300        {
+301          prevWorkState = workState;
+302          System::Text::StringBuilder* strb = new System::Text::StringBuilder(lblStatus->Text);
+303          strb->Append("\n");
+304          if (workState == 1)  strb->Append(" -> INF Datei wurde kopiert.");
+305          if (workState == 2)  strb->Append(" -> Netzwerkkonfiguration wurde gelockt.");
+306          if (workState == 5)  strb->Append(" -> NetService wird installiert...");
+307          if (workState == 6)  strb->Append(" -> Installation fertig.");
+308         // progressBar->Value = 40+(workState*10);
+309          lblStatus->Text = strb->ToString();
+310          Application::DoEvents();
+311        }
+312 
+313      }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormd1}{
+\index{QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}!tmrRun_Tick@{tmrRun\_\-Tick}}
+\index{tmrRun_Tick@{tmrRun\_\-Tick}!QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}}
+\subsubsection[tmrRun\_\-Tick]{\setlength{\rightskip}{0pt plus 5cm}System::Void tmr\-Run\_\-Tick (System::Object $\ast$ {\em sender}, System::Event\-Args $\ast$ {\em e})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormd1}
+
+
+
+
+Definiert in Zeile 156 der Datei Main\-Form.h.
+
+Benutzt PFC::cleanup(), Qbe\-NDI::command\-Line, Win\-Inf::del\-Old\-Oem\-Inf\-Files(), PFC::exec\-Check\-Service\-Pack(), PFC::exec\-Kill\-Apps(), PFC::exec\-Kill\-Service(), Main\-Form::lbl\-Status, Main\-Form::tmr\-Run und Net\-Config::Uninstall\-Net\-Component().
+
+Wird benutzt von Main\-Form::Initialize\-Component().
+
+
+
+\footnotesize\begin{verbatim}156          : System::Void tmrRun_Tick(System::Object *  sender, System::EventArgs *  e)
+157       {
+158         tmrRun->Enabled = false;
+159 
+160         //WCHAR wCmdLine[514];
+161 
+162         if (strlen(commandLine) > 0)
+163         {
+164         //  progressBar->Value = 20;
+165           Application::DoEvents();
+166 
+167           if (stricmp(commandLine,"/?") == 0)
+168           {
+169             goto showUsage;
+170             goto done;    // never reached?
+171           }
+172           if (stricmp(commandLine,"-?") == 0)
+173           {
+174             goto showUsage;
+175             goto done;    // never reached?
+176           }
+177           if (stricmp(commandLine,"-u") == 0)
+178           {
+179             lblStatus->Text = " -> Deinstalliere Software...\n";
+180             Application::DoEvents();
+181 
+182             QbeNDI::NetConfig::UninstallNetComponent();
+183 
+184             System::Text::StringBuilder* strb = new System::Text::StringBuilder(lblStatus->Text);
+185             strb->Append(" -> Entferne INF Dateien...\n"); lblStatus->Text = strb->ToString();
+186             Application::DoEvents();
+187 
+188             QbeSAS::WinInf::delOldOemInfFiles();
+189 
+190             Application::DoEvents();
+191             goto done;
+192           }
+193           if (stricmp(commandLine,"-uv") == 0)
+194           {
+195   
+196             lblStatus->Text = " -> Deinstalliere Software...\n";
+197             Application::DoEvents();
+198 
+199             if (!QbeNDI::NetConfig::UninstallNetComponent())
+200               MessageBox(NULL,"Konnte Netzwerkkomponente nicht entfernen.","Qbe Software Setup",MB_ICONERROR);
+201 
+202             System::Text::StringBuilder* strb = new System::Text::StringBuilder(lblStatus->Text);
+203             strb->Append(" -> Entferne INF Dateien...\n"); lblStatus->Text = strb->ToString();
+204             Application::DoEvents();
+205 
+206             QbeSAS::WinInf::delOldOemInfFiles();
+207 
+208             Application::DoEvents();
+209             goto done;
+210           }
+211           if (stricmp(commandLine,"-k") == 0)
+212           { // PreFlightCheck
+213             QbeSAS::PFC* pfc;
+214             pfc = new QbeSAS::PFC();
+215 
+216             lblStatus->Text = "Post Flight Check...\n";
+217             System::Text::StringBuilder* strb = new System::Text::StringBuilder(lblStatus->Text);
+218             Application::DoEvents();
+219 
+220             strb->Append(" -> Beende SystemService...\n"); lblStatus->Text = strb->ToString();
+221             Application::DoEvents();
+222             pfc->execKillService(false);
+223 
+224             strb->Append(" -> Beende Applikationen...\n"); lblStatus->Text = strb->ToString();
+225             Application::DoEvents();
+226             pfc->execKillApps();
+227 
+228             strb->Append(" -> Fertig...\n"); lblStatus->Text = strb->ToString();
+229             Application::DoEvents();
+230             pfc->cleanup();
+231 
+232 //            delete(pfc);
+233             goto done;
+234           }
+235           if (stricmp(commandLine,"-p") == 0)
+236           { // PreFlightCheck
+237             QbeSAS::PFC* pfc;
+238             pfc = new QbeSAS::PFC();
+239 
+240             lblStatus->Text = "Pre Flight Check...\n";
+241             System::Text::StringBuilder* strb = new System::Text::StringBuilder(lblStatus->Text);
+242             Application::DoEvents();
+243 
+244             strb->Append(" -> Beende SystemService...\n"); lblStatus->Text = strb->ToString();
+245             Application::DoEvents();
+246             pfc->execKillService(true);
+247 
+248             strb->Append(" -> Beende Applikationen...\n"); lblStatus->Text = strb->ToString();
+249             Application::DoEvents();
+250             pfc->execKillApps();
+251 
+252             strb->Append(" -> OS ServicePack Check...\n"); lblStatus->Text = strb->ToString();
+253             Application::DoEvents();
+254             pfc->execCheckServicePack();
+255 
+256             strb->Append(" -> Fertig...\n"); lblStatus->Text = strb->ToString();
+257             Application::DoEvents();
+258             pfc->cleanup();
+259 
+260 //            delete(pfc);
+261             goto done;
+262           }
+263           goto showUsage;
+264 /*
+265           // ok, no help, no pfc, no uninstall...then install...
+266           lblStatus->Text = "Installiere Software...";
+267           Application::DoEvents();
+268 
+269           tmrCheck->Enabled = true;
+270 
+271           System::Text::StringBuilder *params = new System::Text::StringBuilder("setupapi.dll,InstallHinfSection 128 ");
+272           params->Append(commandLine);
+273 
+274           System::Diagnostics::ProcessStartInfo *psi = new System::Diagnostics::ProcessStartInfo("rundll32.exe",params->ToString());
+275           psi->set_UseShellExecute(false);
+276           System::Diagnostics::Process *proc = new System::Diagnostics::Process::Start(psi);
+277           proc->WaitForExit();
+278 
+279           System::Threading::Thread::Sleep(500);
+280 
+281           Application::DoEvents();
+282 */
+283         }
+284         goto done;
+285         // \n<inffile>: Install
+286 showUsage:
+287         MessageBox (NULL,"Valid Options:\n\n-u: Silent Uninstall\n-uv: Verbose Uninstall", "Qbe Software Setup", MB_ICONINFORMATION|MB_OK);
+288         //goto done;
+289 done:
+290         Application::Exit();
+291       }
+\end{verbatim}\normalsize 
+
+
+\subsection{Dokumentation der Datenelemente}
+\hypertarget{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr6}{
+\index{QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}!components@{components}}
+\index{components@{components}!QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}}
+\subsubsection[components]{\setlength{\rightskip}{0pt plus 5cm}System::Component\-Model::IContainer$\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr6}{components}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr6}
+
+
+
+
+Definiert in Zeile 59 der Datei Main\-Form.h.\hypertarget{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr0}{
+\index{QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}!grpText@{grpText}}
+\index{grpText@{grpText}!QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}}
+\subsubsection[grpText]{\setlength{\rightskip}{0pt plus 5cm}System::Windows::Forms::Group\-Box$\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr0}{grp\-Text}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr0}
+
+
+
+
+Definiert in Zeile 53 der Datei Main\-Form.h.
+
+Wird benutzt von Main\-Form::Initialize\-Component().\hypertarget{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr5}{
+\index{QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}!label1@{label1}}
+\index{label1@{label1}!QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}}
+\subsubsection[label1]{\setlength{\rightskip}{0pt plus 5cm}System::Windows::Forms::Label$\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr5}{label1}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr5}
+
+
+
+
+Definiert in Zeile 58 der Datei Main\-Form.h.\hypertarget{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr1}{
+\index{QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}!lblStatus@{lblStatus}}
+\index{lblStatus@{lblStatus}!QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}}
+\subsubsection[lblStatus]{\setlength{\rightskip}{0pt plus 5cm}System::Windows::Forms::Label$\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr1}{lbl\-Status}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr1}
+
+
+
+
+Definiert in Zeile 54 der Datei Main\-Form.h.
+
+Wird benutzt von Main\-Form::Initialize\-Component(), Main\-Form::tmr\-Check\_\-Tick() und Main\-Form::tmr\-Run\_\-Tick().\hypertarget{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr4}{
+\index{QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}!pictureBox1@{pictureBox1}}
+\index{pictureBox1@{pictureBox1}!QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}}
+\subsubsection[pictureBox1]{\setlength{\rightskip}{0pt plus 5cm}System::Windows::Forms::Picture\-Box$\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr4}{picture\-Box1}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr4}
+
+
+
+
+Definiert in Zeile 57 der Datei Main\-Form.h.
+
+Wird benutzt von Main\-Form::Initialize\-Component().\hypertarget{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr3}{
+\index{QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}!tmrCheck@{tmrCheck}}
+\index{tmrCheck@{tmrCheck}!QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}}
+\subsubsection[tmrCheck]{\setlength{\rightskip}{0pt plus 5cm}System::Windows::Forms::Timer$\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr3}{tmr\-Check}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr3}
+
+
+
+
+Definiert in Zeile 56 der Datei Main\-Form.h.
+
+Wird benutzt von Main\-Form::Initialize\-Component().\hypertarget{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr2}{
+\index{QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}!tmrRun@{tmrRun}}
+\index{tmrRun@{tmrRun}!QbeNDI::MainForm@{Qbe\-NDI::Main\-Form}}
+\subsubsection[tmrRun]{\setlength{\rightskip}{0pt plus 5cm}System::Windows::Forms::Timer$\ast$ \hyperlink{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr2}{tmr\-Run}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeNDI_1_1MainForm_QbeNDI_1_1MainFormr2}
+
+
+
+
+Definiert in Zeile 55 der Datei Main\-Form.h.
+
+Wird benutzt von Main\-Form::Initialize\-Component() und Main\-Form::tmr\-Run\_\-Tick().

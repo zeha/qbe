@@ -1,0 +1,212 @@
+\hypertarget{classQbeSAS_1_1SysState}{
+\section{Sys\-State Klassenreferenz}
+\label{classQbeSAS_1_1SysState}\index{QbeSAS::SysState@{QbeSAS::SysState}}
+}
+\subsection*{\"{O}ffentliche, statische Methoden}
+\begin{CompactItemize}
+\item 
+string \hyperlink{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee0}{run\-Url} (string url\-Str)
+\item 
+string \hyperlink{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee1}{run\-Logout} ()
+\item 
+string \hyperlink{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee2}{run\-Login} ()
+\item 
+string \hyperlink{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee3}{query\-Service\-Agent\-Ex} (string question)
+\item 
+string \hyperlink{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee4}{query\-Service\-Agent\-Str} (string question)
+\item 
+int \hyperlink{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee5}{query\-Service\-Agent\-Int} (string question)
+\item 
+string \hyperlink{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee6}{get\-State\-String} (int conn\-State, int inet\-State, string username)
+\end{CompactItemize}
+
+
+\subsection{Dokumentation der Elementfunktionen}
+\hypertarget{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee6}{
+\index{QbeSAS::SysState@{Qbe\-SAS::Sys\-State}!getStateString@{getStateString}}
+\index{getStateString@{getStateString}!QbeSAS::SysState@{Qbe\-SAS::Sys\-State}}
+\subsubsection[getStateString]{\setlength{\rightskip}{0pt plus 5cm}string get\-State\-String (int {\em conn\-State}, int {\em inet\-State}, string {\em username})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee6}
+
+
+
+
+Definiert in Zeile 79 der Datei Sys\-State.cs.
+
+
+
+\footnotesize\begin{verbatim}80     {
+81       switch (connState)
+82       {
+83         case 0:
+84         {
+85           return "Angemeldet als "+username+".";
+86         }
+87         case 1:
+88         {
+89           return "Verbindung wurde vom Server abgelehnt.";
+90         }
+91         case -1:
+92         default:
+93         {
+94           return "Keine Verbindung zum Server.";
+95         }
+96       }
+97     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee3}{
+\index{QbeSAS::SysState@{Qbe\-SAS::Sys\-State}!queryServiceAgentEx@{queryServiceAgentEx}}
+\index{queryServiceAgentEx@{queryServiceAgentEx}!QbeSAS::SysState@{Qbe\-SAS::Sys\-State}}
+\subsubsection[queryServiceAgentEx]{\setlength{\rightskip}{0pt plus 5cm}string query\-Service\-Agent\-Ex (string {\em question})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee3}
+
+
+
+
+Definiert in Zeile 52 der Datei Sys\-State.cs.
+
+Benutzt Sys\-State::run\-Url().
+
+Wird benutzt von Sys\-State::query\-Service\-Agent\-Int() und Sys\-State::query\-Service\-Agent\-Str().
+
+
+
+\footnotesize\begin{verbatim}53     {
+54       return runUrl("system/getinfo?type="+question);
+55     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee5}{
+\index{QbeSAS::SysState@{Qbe\-SAS::Sys\-State}!queryServiceAgentInt@{queryServiceAgentInt}}
+\index{queryServiceAgentInt@{queryServiceAgentInt}!QbeSAS::SysState@{Qbe\-SAS::Sys\-State}}
+\subsubsection[queryServiceAgentInt]{\setlength{\rightskip}{0pt plus 5cm}int query\-Service\-Agent\-Int (string {\em question})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee5}
+
+
+
+
+Definiert in Zeile 68 der Datei Sys\-State.cs.
+
+Benutzt Sys\-State::query\-Service\-Agent\-Ex().
+
+
+
+\footnotesize\begin{verbatim}69     { 
+70       try 
+71       {
+72         return int.Parse(queryServiceAgentEx(question));
+73       } 
+74       catch (Exception ex){ ex=ex;
+75         return -1;
+76       }
+77     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee4}{
+\index{QbeSAS::SysState@{Qbe\-SAS::Sys\-State}!queryServiceAgentStr@{queryServiceAgentStr}}
+\index{queryServiceAgentStr@{queryServiceAgentStr}!QbeSAS::SysState@{Qbe\-SAS::Sys\-State}}
+\subsubsection[queryServiceAgentStr]{\setlength{\rightskip}{0pt plus 5cm}string query\-Service\-Agent\-Str (string {\em question})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee4}
+
+
+
+
+Definiert in Zeile 57 der Datei Sys\-State.cs.
+
+Benutzt Sys\-State::query\-Service\-Agent\-Ex().
+
+
+
+\footnotesize\begin{verbatim}58     {
+59       try 
+60       {
+61         return queryServiceAgentEx(question);
+62       } 
+63       catch (Exception ex) { ex=ex;
+64         return "";
+65       }
+66     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee2}{
+\index{QbeSAS::SysState@{Qbe\-SAS::Sys\-State}!runLogin@{runLogin}}
+\index{runLogin@{runLogin}!QbeSAS::SysState@{Qbe\-SAS::Sys\-State}}
+\subsubsection[runLogin]{\setlength{\rightskip}{0pt plus 5cm}string run\-Login ()\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee2}
+
+
+
+
+Definiert in Zeile 47 der Datei Sys\-State.cs.
+
+Benutzt Sys\-State::run\-Url().
+
+
+
+\footnotesize\begin{verbatim}48     {
+49       return runUrl("auth/login");
+50     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee1}{
+\index{QbeSAS::SysState@{Qbe\-SAS::Sys\-State}!runLogout@{runLogout}}
+\index{runLogout@{runLogout}!QbeSAS::SysState@{Qbe\-SAS::Sys\-State}}
+\subsubsection[runLogout]{\setlength{\rightskip}{0pt plus 5cm}string run\-Logout ()\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee1}
+
+
+
+
+Definiert in Zeile 43 der Datei Sys\-State.cs.
+
+Benutzt Sys\-State::run\-Url().
+
+
+
+\footnotesize\begin{verbatim}44     {
+45       return runUrl("auth/logout");
+46     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee0}{
+\index{QbeSAS::SysState@{Qbe\-SAS::Sys\-State}!runUrl@{runUrl}}
+\index{runUrl@{runUrl}!QbeSAS::SysState@{Qbe\-SAS::Sys\-State}}
+\subsubsection[runUrl]{\setlength{\rightskip}{0pt plus 5cm}string run\-Url (string {\em url\-Str})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classQbeSAS_1_1SysState_QbeSAS_1_1SysStatee0}
+
+
+
+
+Definiert in Zeile 10 der Datei Sys\-State.cs.
+
+Wird benutzt von Sys\-State::query\-Service\-Agent\-Ex(), Sys\-State::run\-Login() und Sys\-State::run\-Logout().
+
+
+
+\footnotesize\begin{verbatim}11     {
+12       String returnString = "";
+13       System.Uri url = null;
+14       System.Net.WebRequest req = null;
+15       System.Net.WebResponse resp = null;
+16       System.IO.Stream respStream = null;
+17       System.IO.StreamReader rdr = null;
+18 
+19       try 
+20       {
+21         url = new System.Uri("http://127.0.0.1:7666/"+urlStr);
+22         req = System.Net.HttpWebRequest.Create(url);
+23         resp = req.GetResponse();
+24         respStream = resp.GetResponseStream();
+25         rdr = new System.IO.StreamReader(respStream);
+26         returnString = rdr.ReadLine();
+27       } 
+28       catch (Exception ex)
+29       {
+30         returnString = "";
+31         throw new Exception("Connection Error",ex);
+32       } 
+33       finally 
+34       {
+35         if (req != null) req.Abort();
+36         if (resp != null) resp.Close();
+37         if (respStream != null) respStream.Close();
+38         if (rdr != null) rdr.Close();
+39       }
+40       return returnString;
+41     }
+\end{verbatim}\normalsize 

@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetupWindowsFirewall", "SetupWindowsFirewall.csproj", "{30834FAC-2168-48D0-B015-B057D9F3FCAF}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{30834FAC-2168-48D0-B015-B057D9F3FCAF}.Debug.ActiveCfg = Debug|.NET
+		{30834FAC-2168-48D0-B015-B057D9F3FCAF}.Debug.Build.0 = Debug|.NET
+		{30834FAC-2168-48D0-B015-B057D9F3FCAF}.Release.ActiveCfg = Release|.NET
+		{30834FAC-2168-48D0-B015-B057D9F3FCAF}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

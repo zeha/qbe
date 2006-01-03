@@ -1,0 +1,34 @@
+# Qbe iLogin Makefile: QbeHTA
+# Copyright (C) 2001-2003 Christian Hofstaedtler.  All rights reserved.
+#
+
+## -> MFC
+#QBECLIB=-D_MD -MD /D "_AFXDLL"
+QBEPROG=QbeService
+QBEPEXT=EXE
+# QBEPOBJ=QbeStart.exe
+QBEEXTRAALL=
+QBEEXTRALINK=
+QBEEXTRALINKDEP=
+QBEWINSYS=console
+WITHSSL=
+WITHNETLIB=no
+QBENETCOMPILER=csc
+QBENETTARGET=exe
+
+PROG_FILES = /define:UNIX UnixMain.cs \
+	   ..\QbeSAS\SysState.cs \
+	   ..\QbeSAS\AppDist.cs \
+	   ..\QbeSAS\HttpService.cs \
+	   ..\Common\ilogin-version.cs \
+	   ..\QbeSAS\ServiceMessageBox.cs \
+	   ..\QbeSAS\WinServiceAPI.cs \
+	   ..\QbeSAS\WinTimeAPI.cs \
+	   ..\QbeSAS\CaptureScreen.cs \
+	   ..\Common\AssemblyInfo.cs
+
+!include "../Common/ilogin.mak"
+
+
+# - eof -
+

@@ -1,0 +1,308 @@
+\hypertarget{classQbeStart_1_1StartX}{
+\section{Start\-X Klassenreferenz}
+\label{classQbeStart_1_1StartX}\index{QbeStart::StartX@{QbeStart::StartX}}
+}
+
+
+\subsection{Ausf\"{u}hrliche Beschreibung}
+Code fuer den Client-Start, verwendet allerhand \hyperlink{namespaceQbeSAS}{Qbe\-SAS}:: Methoden und \hyperlink{classQbeStart_1_1Splash}{Qbe\-Start::Splash}. 
+
+
+
+Definiert in Zeile 13 der Datei Start\-X.cs.\subsection*{\"{O}ffentliche Methoden}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classQbeStart_1_1StartX_QbeStart_1_1StartXa0}{Show\-DNSError} ()
+\begin{CompactList}\small\item\em Zeigt die Fehlermeldung wenn \char`\"{}qbe-auth\char`\"{} nicht aufgeloest werden konnte. \item\end{CompactList}\item 
+void \hyperlink{classQbeStart_1_1StartX_QbeStart_1_1StartXa1}{Start\-XExec} (bool b\-Auto)
+\end{CompactItemize}
+\subsection*{\"{O}ffentliche, statische Methoden}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classQbeStart_1_1StartX_QbeStart_1_1StartXe0}{Main} (string\mbox{[}$\,$\mbox{]} args)
+\end{CompactItemize}
+\subsection*{Private Methoden}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classQbeStart_1_1StartX_QbeStart_1_1StartXd0}{Form\-Thread} ()
+\begin{CompactList}\small\item\em Background-Thread fuer das GUI. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Attribute}
+\begin{CompactItemize}
+\item 
+bool \hyperlink{classQbeStart_1_1StartX_QbeStart_1_1StartXr0}{running\-In\-Automatic\-Mode} = false
+\item 
+Qbe\-Start.\hyperlink{classQbeStart_1_1Splash}{Splash} \hyperlink{classQbeStart_1_1StartX_QbeStart_1_1StartXr1}{splash\-Form} = null
+\end{CompactItemize}
+
+
+\subsection{Dokumentation der Elementfunktionen}
+\hypertarget{classQbeStart_1_1StartX_QbeStart_1_1StartXd0}{
+\index{QbeStart::StartX@{Qbe\-Start::Start\-X}!FormThread@{FormThread}}
+\index{FormThread@{FormThread}!QbeStart::StartX@{Qbe\-Start::Start\-X}}
+\subsubsection[FormThread]{\setlength{\rightskip}{0pt plus 5cm}void Form\-Thread ()\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeStart_1_1StartX_QbeStart_1_1StartXd0}
+
+
+Background-Thread fuer das GUI. 
+
+
+
+Definiert in Zeile 26 der Datei Start\-X.cs.
+
+Benutzt Start\-X::splash\-Form.
+
+
+
+\footnotesize\begin{verbatim}27     {
+28       try 
+29       {
+30         splashForm.lblVersion.Text = "Version "+Qbe.QbeClientVersion.ClientVersion;
+31 
+32         System.Windows.Forms.Application.Run(splashForm);
+33       } 
+34       catch (Exception ex)
+35       {
+36         ex=ex; //shut up!
+37 //  don't!
+38 //        System.Windows.Forms.MessageBox.Show("FormThread Error:\nMsg: "+ex.Message +"\nLocation: "+ex.StackTrace);
+39       }
+40     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeStart_1_1StartX_QbeStart_1_1StartXe0}{
+\index{QbeStart::StartX@{Qbe\-Start::Start\-X}!Main@{Main}}
+\index{Main@{Main}!QbeStart::StartX@{Qbe\-Start::Start\-X}}
+\subsubsection[Main]{\setlength{\rightskip}{0pt plus 5cm}void Main (string\mbox{[}$\,$\mbox{]} {\em args})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classQbeStart_1_1StartX_QbeStart_1_1StartXe0}
+
+
+Einsprungspunkt fuer den Win32 \hyperlink{namespaceQbe}{Qbe} SAS Client -- \hyperlink{namespaceQbeTray}{Qbe\-Tray} -auto wird als Parameter akzeptiert, und uebergibt dies an die \hyperlink{classQbeStart_1_1StartX_QbeStart_1_1StartXa1}{Start\-XExec()} 
+
+Definiert in Zeile 186 der Datei Start\-X.cs.
+
+Benutzt Start\-X::Start\-XExec().
+
+
+
+\footnotesize\begin{verbatim}187     {
+188       bool bAuto = false;
+189 
+190       try 
+191       {
+192         if (args.Length == 1)
+193           if (args[0].Equals("-auto"))
+194             bAuto = true;
+195       } 
+196       catch (Exception ex)
+197       {
+198         System.Windows.Forms.MessageBox.Show(ex.StackTrace);
+199       }
+200 
+201       StartX app = new StartX();
+202       app.StartXExec(bAuto);
+203     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeStart_1_1StartX_QbeStart_1_1StartXa0}{
+\index{QbeStart::StartX@{Qbe\-Start::Start\-X}!ShowDNSError@{ShowDNSError}}
+\index{ShowDNSError@{ShowDNSError}!QbeStart::StartX@{Qbe\-Start::Start\-X}}
+\subsubsection[ShowDNSError]{\setlength{\rightskip}{0pt plus 5cm}void Show\-DNSError ()}}
+\label{classQbeStart_1_1StartX_QbeStart_1_1StartXa0}
+
+
+Zeigt die Fehlermeldung wenn \char`\"{}qbe-auth\char`\"{} nicht aufgeloest werden konnte. 
+
+
+
+Definiert in Zeile 19 der Datei Start\-X.cs.
+
+Benutzt Start\-X::running\-In\-Automatic\-Mode.
+
+Wird benutzt von Start\-X::Start\-XExec().
+
+
+
+\footnotesize\begin{verbatim}20     {
+21       if (!runningInAutomaticMode)
+22         System.Windows.Forms.MessageBox.Show("Qbe SAS Client kann den Loginserver \"qbe-auth\" nicht finden.\nStellen Sie sicher, dass Ihr Netzwerkkabel angesteckt ist und Ihr PC die richtige IP-Adresse zugewiesen bekommt.", "Qbe SAS Client", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+23     } 
+\end{verbatim}\normalsize 
+\hypertarget{classQbeStart_1_1StartX_QbeStart_1_1StartXa1}{
+\index{QbeStart::StartX@{Qbe\-Start::Start\-X}!StartXExec@{StartXExec}}
+\index{StartXExec@{StartXExec}!QbeStart::StartX@{Qbe\-Start::Start\-X}}
+\subsubsection[StartXExec]{\setlength{\rightskip}{0pt plus 5cm}void Start\-XExec (bool {\em b\-Auto})}}
+\label{classQbeStart_1_1StartX_QbeStart_1_1StartXa1}
+
+
+Die Funktion die den Client initialisiert b\-Auto == true: keine Fehler zeigen und einfach beenden, wird normalerweise beim Systemstart verwendet 
+
+Definiert in Zeile 44 der Datei Start\-X.cs.
+
+Benutzt Start\-X::running\-In\-Automatic\-Mode, Start\-X::Show\-DNSError() und Start\-X::splash\-Form.
+
+Wird benutzt von Start\-X::Main().
+
+
+
+\footnotesize\begin{verbatim}45     {
+46       System.Threading.Thread t = null;
+47       QbeSAS.ClientUI sasClientUI = null;
+48       System.ServiceProcess.ServiceController serviceController1 = null;
+49       
+50       splashForm = new QbeStart.Splash();     
+51 
+52       // Client UI initialisieren
+53       try 
+54       {
+55         sasClientUI = new QbeSAS.ClientUI(bAuto);
+56       } 
+57       catch (Exception ex)
+58       {
+59         System.Windows.Forms.MessageBox.Show("Error initializing QbeLib.\n"+ex.StackTrace);
+60       }
+61 
+62       runningInAutomaticMode = bAuto;
+63       bool bAllOk = true;
+64 
+65       try 
+66       {
+67         t = new System.Threading.Thread(new System.Threading.ThreadStart(FormThread));
+68         t.Start();
+69         System.Windows.Forms.Application.DoEvents();
+70         System.Threading.Thread.Sleep(500);
+71       } 
+72       catch (Exception ex)
+73       {
+74         System.Windows.Forms.MessageBox.Show("Error initializing QbeTray [Stage 1].\n"+ex.StackTrace);
+75       }
+76 
+77       splashForm.stLbl_NetInit.Font = new System.Drawing.Font(splashForm.stLbl_NetInit.Font, System.Drawing.FontStyle.Bold);
+78       System.Windows.Forms.Application.DoEvents();
+79             System.Threading.Thread.Sleep(5000);
+80 
+81       try
+82       {
+83         System.Net.IPHostEntry QbeAuthHE = System.Net.Dns.GetHostByName("qbe-auth");
+84         splashForm.pctNetInit.Image = splashForm.pctTpl_Ok.Image;
+85       } 
+86       catch (Exception ex)
+87       { ex = ex;  // keep compiler quiet
+88         bAllOk = false;
+89         splashForm.pctNetInit.Image = splashForm.pctTpl_Fail.Image;
+90         ShowDNSError();
+91         if (runningInAutomaticMode)
+92         {
+93           System.Windows.Forms.Application.Exit();
+94           return;
+95         }
+96       } 
+97       splashForm.stLbl_NetInit.Font = new System.Drawing.Font(splashForm.stLbl_NetInit.Font, System.Drawing.FontStyle.Regular);
+98       System.Windows.Forms.Application.DoEvents();
+99       splashForm.stLbl_Service.Font = new System.Drawing.Font(splashForm.stLbl_Service.Font, System.Drawing.FontStyle.Bold);
+100       System.Windows.Forms.Application.DoEvents();
+101 
+102       try 
+103       {
+104         serviceController1 = new System.ServiceProcess.ServiceController("QbeSvc");
+105         serviceController1.Refresh();
+106       } 
+107       catch (Exception ex)
+108       {
+109         ex = ex;  // keep compiler quiet
+110         bAllOk = false;
+111         if (!runningInAutomaticMode)
+112           System.Windows.Forms.MessageBox.Show("The Windows Service Manager returend an error while requesting a connection to the Qbe SAS Client service. Try rebooting the computer or reinstalling the application.", "Qbe SAS Client", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+113         else
+114         {
+115           System.Windows.Forms.Application.Exit();
+116           return;
+117         }
+118       }
+119 
+120       try 
+121       {
+122         if (serviceController1 != null)
+123         {
+124           if (serviceController1.Status != System.ServiceProcess.ServiceControllerStatus.Running)
+125             serviceController1.Start();
+126           splashForm.pctService.Image = splashForm.pctTpl_Ok.Image;
+127         } 
+128         else 
+129         {
+130           throw new Exception();
+131         }
+132       } 
+133       catch (Exception ex)
+134       {
+135         ex = ex;  // keep compiler quiet
+136         
+137         splashForm.pctService.Image = splashForm.pctTpl_Fail.Image;
+138         bAllOk = false;
+139         if (!runningInAutomaticMode)
+140           System.Windows.Forms.MessageBox.Show("Could not talk to Qbe SAS Client service. Try rebooting the computer or reinstalling the application.", "Qbe SAS Client", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+141         else
+142         {
+143           System.Windows.Forms.Application.Exit();
+144           return;
+145         }
+146       }
+147 
+148       splashForm.stLbl_Service.Font = new System.Drawing.Font(splashForm.stLbl_Service.Font, System.Drawing.FontStyle.Regular);
+149       System.Windows.Forms.Application.DoEvents();
+150       splashForm.stLbl_Client.Font = new System.Drawing.Font(splashForm.stLbl_Client.Font, System.Drawing.FontStyle.Bold);
+151       System.Windows.Forms.Application.DoEvents();
+152 
+153       if ( bAllOk )
+154       {
+155         sasClientUI.importSettings();
+156         if (sasClientUI.displayClientStartup())
+157           splashForm.pctClient.Image = splashForm.pctTpl_Ok.Image;
+158         else
+159           splashForm.pctClient.Image = splashForm.pctTpl_Fail.Image;
+160       }
+161       else
+162         splashForm.pctClient.Image = splashForm.pctTpl_Fail.Image;
+163 
+164       splashForm.stLbl_Client.Font = new System.Drawing.Font(splashForm.stLbl_Client.Font, System.Drawing.FontStyle.Regular);
+165       System.Windows.Forms.Application.DoEvents();
+166       System.Threading.Thread.Sleep(1000);
+167 
+168       splashForm.Close();
+169 
+170       System.Diagnostics.Process[] oldTrays = System.Diagnostics.Process.GetProcessesByName("QbeTray");
+171       if (oldTrays.Length > 1)
+172       {
+173         System.Windows.Forms.MessageBox.Show("Qbe SAS Client läuft bereits. Diese Instanz wird beendet.","Qbe SAS Client",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Exclamation);
+174         return;
+175       }
+176 
+177       System.Windows.Forms.Application.DoEvents();
+178 //      System.Windows.Forms.Application.Exit();      
+179       QbeTray.Tray trayIcon = new QbeTray.Tray();
+180       System.Windows.Forms.Application.Run();
+181     }
+\end{verbatim}\normalsize 
+
+
+\subsection{Dokumentation der Datenelemente}
+\hypertarget{classQbeStart_1_1StartX_QbeStart_1_1StartXr0}{
+\index{QbeStart::StartX@{Qbe\-Start::Start\-X}!runningInAutomaticMode@{runningInAutomaticMode}}
+\index{runningInAutomaticMode@{runningInAutomaticMode}!QbeStart::StartX@{Qbe\-Start::Start\-X}}
+\subsubsection[runningInAutomaticMode]{\setlength{\rightskip}{0pt plus 5cm}bool \hyperlink{classQbeStart_1_1StartX_QbeStart_1_1StartXr0}{running\-In\-Automatic\-Mode} = false\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeStart_1_1StartX_QbeStart_1_1StartXr0}
+
+
+
+
+Definiert in Zeile 15 der Datei Start\-X.cs.
+
+Wird benutzt von Start\-X::Show\-DNSError() und Start\-X::Start\-XExec().\hypertarget{classQbeStart_1_1StartX_QbeStart_1_1StartXr1}{
+\index{QbeStart::StartX@{Qbe\-Start::Start\-X}!splashForm@{splashForm}}
+\index{splashForm@{splashForm}!QbeStart::StartX@{Qbe\-Start::Start\-X}}
+\subsubsection[splashForm]{\setlength{\rightskip}{0pt plus 5cm}Qbe\-Start.\hyperlink{classQbeStart_1_1Splash}{Splash} \hyperlink{classQbeStart_1_1StartX_QbeStart_1_1StartXr1}{splash\-Form} = null\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeStart_1_1StartX_QbeStart_1_1StartXr1}
+
+
+
+
+Definiert in Zeile 16 der Datei Start\-X.cs.
+
+Wird benutzt von Start\-X::Form\-Thread() und Start\-X::Start\-XExec().

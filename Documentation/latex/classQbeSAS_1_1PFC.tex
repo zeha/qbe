@@ -1,0 +1,205 @@
+\hypertarget{classQbeSAS_1_1PFC}{
+\section{PFC Klassenreferenz}
+\label{classQbeSAS_1_1PFC}\index{QbeSAS::PFC@{QbeSAS::PFC}}
+}
+
+
+\subsection{Ausf\"{u}hrliche Beschreibung}
+Funktionen fuer Qbe\-PFC/Qbe\-NDI
+
+
+
+Definiert in Zeile 9 der Datei PFC.cs.\subsection*{\"{O}ffentliche Methoden}
+\begin{CompactItemize}
+\item 
+bool \hyperlink{classQbeSAS_1_1PFC_QbeSAS_1_1PFCa0}{cleanup} ()
+\begin{CompactList}\small\item\em 1 Sekunde warten \item\end{CompactList}\item 
+bool \hyperlink{classQbeSAS_1_1PFC_QbeSAS_1_1PFCa1}{exec\-Kill\-Service} (bool b\-Remove)
+\item 
+bool \hyperlink{classQbeSAS_1_1PFC_QbeSAS_1_1PFCa2}{exec\-Kill\-Apps} ()
+\item 
+bool \hyperlink{classQbeSAS_1_1PFC_QbeSAS_1_1PFCa3}{exec\-Check\-Service\-Pack} ()
+\end{CompactItemize}
+
+
+\subsection{Dokumentation der Elementfunktionen}
+\hypertarget{classQbeSAS_1_1PFC_QbeSAS_1_1PFCa0}{
+\index{QbeSAS::PFC@{Qbe\-SAS::PFC}!cleanup@{cleanup}}
+\index{cleanup@{cleanup}!QbeSAS::PFC@{Qbe\-SAS::PFC}}
+\subsubsection[cleanup]{\setlength{\rightskip}{0pt plus 5cm}bool cleanup ()}}
+\label{classQbeSAS_1_1PFC_QbeSAS_1_1PFCa0}
+
+
+1 Sekunde warten 
+
+
+
+Definiert in Zeile 12 der Datei PFC.cs.
+
+Wird benutzt von Main\-Form::tmr\-Run\_\-Tick().
+
+
+
+\footnotesize\begin{verbatim}13     {
+14       System.Threading.Thread.Sleep(1000);
+15       return true;
+16     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeSAS_1_1PFC_QbeSAS_1_1PFCa3}{
+\index{QbeSAS::PFC@{Qbe\-SAS::PFC}!execCheckServicePack@{execCheckServicePack}}
+\index{execCheckServicePack@{execCheckServicePack}!QbeSAS::PFC@{Qbe\-SAS::PFC}}
+\subsubsection[execCheckServicePack]{\setlength{\rightskip}{0pt plus 5cm}bool exec\-Check\-Service\-Pack ()}}
+\label{classQbeSAS_1_1PFC_QbeSAS_1_1PFCa3}
+
+
+Abfrage der Service Pack Version sowie Download (mit Service\-Pack.exe) des aktuellen Service Packs Es wird nur Windows 2000 (5.0) und XP (5.1) abgefragt. Unter NT4.0 laeufts eh nicht, und Win2003 sollte ohne weiteres funktionieren. 
+
+Definiert in Zeile 110 der Datei PFC.cs.
+
+Wird benutzt von Main\-Form::tmr\-Run\_\-Tick().
+
+
+
+\footnotesize\begin{verbatim}111     {
+112       try
+113       {
+114       System.Diagnostics.Process procSPack;
+115       System.OperatingSystem os;
+116 
+117       os = Environment.OSVersion;
+118 
+119       if (os.Version.Major == 5)
+120       {
+121         int spack = QbeSAS.WinVersionAPI.getServicePack();
+122 
+123         if (os.Version.Minor == 0 && spack < 3)
+124         {
+125           procSPack = System.Diagnostics.Process.Start("ServicePack.exe", "os=5.0");
+126           while (!procSPack.HasExited)
+127             System.Threading.Thread.Sleep(1000);
+128         }
+129         if (os.Version.Minor == 1 && spack < 1)
+130         {
+131           procSPack = System.Diagnostics.Process.Start("ServicePack.exe", "os=5.1");
+132           while (!procSPack.HasExited)
+133             System.Threading.Thread.Sleep(1000);
+134         }
+135       }
+136       } 
+137       catch (Exception e) { e=e; }
+138       return true;
+139     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeSAS_1_1PFC_QbeSAS_1_1PFCa2}{
+\index{QbeSAS::PFC@{Qbe\-SAS::PFC}!execKillApps@{execKillApps}}
+\index{execKillApps@{execKillApps}!QbeSAS::PFC@{Qbe\-SAS::PFC}}
+\subsubsection[execKillApps]{\setlength{\rightskip}{0pt plus 5cm}bool exec\-Kill\-Apps ()}}
+\label{classQbeSAS_1_1PFC_QbeSAS_1_1PFCa2}
+
+
+Beendet alle moeglichen Applikationen die die Installation beeintraechtigen koennen Das sind z.B. der qbesvc, qbetray, Internet Explorer und alle alten i\-Login/Qbe Client Applikationen 
+
+Definiert in Zeile 56 der Datei PFC.cs.
+
+Wird benutzt von Main\-Form::tmr\-Run\_\-Tick().
+
+
+
+\footnotesize\begin{verbatim}57     {
+58       String ProcName;
+59 
+60       foreach (System.Diagnostics.Process Proc in System.Diagnostics.Process.GetProcesses())
+61       {
+62         try
+63         {
+64         ProcName = Proc.ProcessName.ToLower();
+65         if (ProcName == "qbesvc") 
+66           Proc.Kill();
+67         if (ProcName == "qbetray") 
+68           Proc.Kill();
+69         if (ProcName == "mshta") 
+70           Proc.Kill();
+71         if (ProcName == "ilogin") 
+72           Proc.Kill();
+73         if (ProcName == "iloginlite") 
+74           Proc.Kill();
+75         if (ProcName == "qbestart") 
+76           Proc.Kill();
+77         if (ProcName == "qbelauncher") 
+78           Proc.Kill();
+79         if (ProcName == "iliveup") 
+80           Proc.Kill();
+81         if (ProcName == "rpcsvc") 
+82           Proc.Kill();
+83         if (ProcName == "iexplore") 
+84           Proc.Kill();
+85         } 
+86         catch (Exception e) { e=e; }
+87 
+88       }
+89 
+90       foreach (System.Diagnostics.Process Proc in System.Diagnostics.Process.GetProcesses())
+91       {
+92         try
+93         {
+94         ProcName = Proc.ProcessName.ToLower();
+95         if (ProcName == "qbesvc") 
+96         {
+97           Proc.Kill();
+98           while (!Proc.HasExited)
+99             Proc.WaitForExit(5000);
+100         }
+101         } 
+102         catch (Exception e) { e=e; }
+103       }
+104       return true;
+105     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeSAS_1_1PFC_QbeSAS_1_1PFCa1}{
+\index{QbeSAS::PFC@{Qbe\-SAS::PFC}!execKillService@{execKillService}}
+\index{execKillService@{execKillService}!QbeSAS::PFC@{Qbe\-SAS::PFC}}
+\subsubsection[execKillService]{\setlength{\rightskip}{0pt plus 5cm}bool exec\-Kill\-Service (bool {\em b\-Remove})}}
+\label{classQbeSAS_1_1PFC_QbeSAS_1_1PFCa1}
+
+
+Qbe\-Svc stoppen, entfernen und eventuell abschiessen Es werden alle Moeglichkeiten versucht um den Qbe\-Svc zu entfernen. 
+
+Definiert in Zeile 20 der Datei PFC.cs.
+
+Wird benutzt von Main\-Form::tmr\-Run\_\-Tick().
+
+
+
+\footnotesize\begin{verbatim}21     {
+22       System.Diagnostics.ProcessStartInfo pi;
+23       if (bRemove)
+24         QbeSAS.WinServiceAPI.RemoveService();
+25 
+26       pi = new System.Diagnostics.ProcessStartInfo();
+27       pi.WindowStyle = System.Diagnostics.ProcessWindowStyle.Minimized;
+28 
+29       try 
+30       {
+31         System.ServiceProcess.ServiceController svcCtrl;
+32         svcCtrl = new System.ServiceProcess.ServiceController("qbesvc");
+33         svcCtrl.Refresh();
+34         svcCtrl.Stop();
+35 
+36         if (svcCtrl.Status != System.ServiceProcess.ServiceControllerStatus.Stopped)
+37         {
+38           pi.FileName = "net.exe";
+39           pi.Arguments = "stop qbesvc";
+40           System.Diagnostics.Process.Start(pi);
+41           if (bRemove)
+42           {
+43             pi.FileName = "qbesvc.exe";
+44             pi.Arguments = "-remove";
+45             System.Diagnostics.Process.Start(pi);
+46           }
+47         }
+48       } 
+49       catch (Exception e) { e=e; }
+50 
+51       return true;
+52     }
+\end{verbatim}\normalsize 

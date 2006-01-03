@@ -1,0 +1,116 @@
+\hypertarget{classQbeSAS_1_1WinInf}{
+\section{Win\-Inf Klassenreferenz}
+\label{classQbeSAS_1_1WinInf}\index{QbeSAS::WinInf@{QbeSAS::WinInf}}
+}
+
+
+\subsection{Ausf\"{u}hrliche Beschreibung}
+Interface fuer das Setup um den ganzen INF Stuff. 
+
+
+
+Definiert in Zeile 6 der Datei Win\-Inf.cs.\subsection*{\"{O}ffentliche, statische Methoden}
+\begin{CompactItemize}
+\item 
+bool \hyperlink{classQbeSAS_1_1WinInf_QbeSAS_1_1WinInfe0}{del\-Old\-Oem\-Inf\-Files} ()
+\begin{CompactList}\small\item\em Abstraktion um die alten INF Dateien vom \hyperlink{namespaceQbe}{Qbe} Setup zu suchen und zu loeschen Sucht und loescht alte Qbe\-Setup INF Dateien. Schreibt eine Log Datei nach system32$\backslash$\hyperlink{namespaceQbe}{Qbe}$\backslash$Setup$\backslash$PFCLog.txt. Die OEM$\ast$.INF Dateien werden in system32$\backslash$..$\backslash$inf gesucht. Als Identifikation wird der Text \char`\"{}; \$Id: net\-Qbe.inf\char`\"{} in den ersten zehn Zeilen gesucht. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Dokumentation der Elementfunktionen}
+\hypertarget{classQbeSAS_1_1WinInf_QbeSAS_1_1WinInfe0}{
+\index{QbeSAS::WinInf@{Qbe\-SAS::Win\-Inf}!delOldOemInfFiles@{delOldOemInfFiles}}
+\index{delOldOemInfFiles@{delOldOemInfFiles}!QbeSAS::WinInf@{Qbe\-SAS::Win\-Inf}}
+\subsubsection[delOldOemInfFiles]{\setlength{\rightskip}{0pt plus 5cm}bool del\-Old\-Oem\-Inf\-Files ()\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classQbeSAS_1_1WinInf_QbeSAS_1_1WinInfe0}
+
+
+Abstraktion um die alten INF Dateien vom \hyperlink{namespaceQbe}{Qbe} Setup zu suchen und zu loeschen Sucht und loescht alte Qbe\-Setup INF Dateien. Schreibt eine Log Datei nach system32$\backslash$\hyperlink{namespaceQbe}{Qbe}$\backslash$Setup$\backslash$PFCLog.txt. Die OEM$\ast$.INF Dateien werden in system32$\backslash$..$\backslash$inf gesucht. Als Identifikation wird der Text \char`\"{}; \$Id: net\-Qbe.inf\char`\"{} in den ersten zehn Zeilen gesucht. 
+
+
+
+Definiert in Zeile 12 der Datei Win\-Inf.cs.
+
+Wird benutzt von Main\-Form::tmr\-Run\_\-Tick().
+
+
+
+\footnotesize\begin{verbatim}13     {
+14       try
+15       {
+16         System.IO.FileStream logStream = new System.IO.FileStream(Environment.SystemDirectory+"\\Qbe\\Setup\\PFCLog.txt",System.IO.FileMode.Append);
+17         System.IO.StreamWriter logfile = new System.IO.StreamWriter(logStream);
+18         System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(Environment.SystemDirectory+"\\..\\inf");
+19         foreach (System.IO.FileInfo file in di.GetFiles("oem*.inf"))
+20         {
+21           try 
+22           {
+23             logfile.WriteLine("File: "+file.Name+"\n");
+24             System.IO.FileStream readStream = file.OpenRead();
+25             System.IO.StreamReader readBuff = new System.IO.StreamReader(readStream);
+26 
+27             bool bKillFile = false;
+28 
+29             for (int i=0;i<10;i++)
+30             {
+31               String thisLine = readBuff.ReadLine();
+32               if (thisLine.StartsWith("; $Id: netQbe.inf"))
+33               {
+34                 logfile.WriteLine("  Found signature: "+thisLine+"\n");
+35                 bKillFile = true;
+36                 break;
+37               }
+38             }
+39 
+40             readBuff.Close();
+41             readStream.Close();
+42 
+43             // entsprechende Datei gefunden
+44             if (bKillFile)
+45             {
+46               try 
+47               {
+48                 logfile.WriteLine("  Delete.\n");
+49                 file.Delete();
+50               } 
+51               catch (Exception ex)
+52               {
+53                 ex=ex;
+54                 logfile.WriteLine("  **Exception: "+ex.StackTrace+"\n");
+55               }
+56 
+57               // es gibt immer ein dummes PNF (Precompiled iNF) zu jedem INF.
+58               // wenn man es nicht loescht, bringt die ganze Sache nix.
+59               try 
+60               {
+61                 logfile.WriteLine("  Delete PNF\n");
+62                 System.IO.FileInfo pnfFile = new System.IO.FileInfo(file.FullName.Replace(".inf",".pnf"));
+63                 pnfFile.Delete();
+64               } 
+65               catch (Exception ex)
+66               {
+67                 ex=ex;
+68                 logfile.WriteLine("  **Exception: "+ex.StackTrace+"\n");
+69               }
+70 
+71             }
+72 
+73 
+74           } 
+75           catch (Exception ex)
+76           {
+77             ex=ex;
+78             logfile.WriteLine("  **Exception: "+ex.StackTrace+"\n");
+79           }
+80         }
+81 
+82         logfile.Close();
+83         return true;
+84       } 
+85       catch (Exception ex)
+86       {
+87         ex=ex;
+88         System.Windows.Forms.MessageBox.Show("Exception: "+ex.Message+"\n"+ex.StackTrace );
+89         return false;
+90       }
+91     }
+\end{verbatim}\normalsize 

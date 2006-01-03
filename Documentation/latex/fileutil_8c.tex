@@ -1,0 +1,105 @@
+\hypertarget{fileutil_8c}{
+\section{fileutil.c Dateireferenz}
+\label{fileutil_8c}\index{fileutil.c@{fileutil.c}}
+}
+
+
+{\tt \#include $<$windows.h$>$}\par
+\subsection*{Makrodefinitionen}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{fileutil_8c_a0}{UNICODE}
+\end{CompactItemize}
+\subsection*{Funktionen}
+\begin{CompactItemize}
+\item 
+void \hyperlink{fileutil_8c_a1}{sys\_\-util\_\-deletefolder} (LPCWSTR directory)
+\begin{CompactList}\small\item\em Loescht den Ordner directory und alle Unterordner und Dateien. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Makro-Dokumentation}
+\hypertarget{fileutil_8c_a0}{
+\index{fileutil.c@{fileutil.c}!UNICODE@{UNICODE}}
+\index{UNICODE@{UNICODE}!fileutil.c@{fileutil.c}}
+\subsubsection[UNICODE]{\setlength{\rightskip}{0pt plus 5cm}\#define UNICODE}}
+\label{fileutil_8c_a0}
+
+
+
+
+Definiert in Zeile 1 der Datei fileutil.c.
+
+\subsection{Dokumentation der Funktionen}
+\hypertarget{fileutil_8c_a1}{
+\index{fileutil.c@{fileutil.c}!sys_util_deletefolder@{sys\_\-util\_\-deletefolder}}
+\index{sys_util_deletefolder@{sys\_\-util\_\-deletefolder}!fileutil.c@{fileutil.c}}
+\subsubsection[sys\_\-util\_\-deletefolder]{\setlength{\rightskip}{0pt plus 5cm}void sys\_\-util\_\-deletefolder (LPCWSTR {\em directory})}}
+\label{fileutil_8c_a1}
+
+
+Loescht den Ordner directory und alle Unterordner und Dateien. 
+
+
+
+Definiert in Zeile 5 der Datei fileutil.c.
+
+Benutzt HANDLE.
+
+Wird benutzt von Wlx\-Logoff().
+
+
+
+\footnotesize\begin{verbatim}6 {
+7   WIN32_FIND_DATA FileInformation;
+8   HANDLE hFile;
+9   WCHAR fullPath[2048];
+10 
+11   // Alle Dateien und Ordner suchen
+12   wcscpy(fullPath,directory);
+13   wcscat(fullPath,TEXT("\\*.*"));
+14 
+15   hFile = FindFirstFile(fullPath,&FileInformation);
+16   if(hFile != INVALID_HANDLE_VALUE)
+17   {
+18     do
+19     {
+20       if((((FileInformation.cFileName[0]) == '.') &&
+21         ((FileInformation.cFileName[1]) != '.') &&
+22         /*Changed NULL to '\0' produced warning on indirection levels*/
+23         ((FileInformation.cFileName[1]) != '\0'))
+24          || ((FileInformation.cFileName[0]) != '.'))
+25       {
+26         wcscpy(fullPath,directory);
+27         wcscat(fullPath,TEXT("\\"));
+28         wcscat(fullPath,FileInformation.cFileName);
+29 
+30         if(FileInformation.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+31         {
+32           // Verzeichnis gefunden, dieses mit uns selbst loeschen.
+33           sys_util_deletefolder((LPCTSTR)fullPath);
+34         }
+35         else
+36         {
+37           // Dateiattribute ruecksetzen
+38           if(SetFileAttributes(fullPath,FILE_ATTRIBUTE_NORMAL) == FALSE)
+39             return;
+40 
+41           // Datei loeschen
+42           if(DeleteFile(fullPath) == FALSE)
+43             return;
+44 
+45         }
+46       }
+47     } while(FindNextFile(hFile,&FileInformation) == TRUE);
+48 
+49     FindClose(hFile);
+50 
+51     if(SetFileAttributes(directory,FILE_ATTRIBUTE_NORMAL) == FALSE)
+52       return;
+53 
+54     // Das Hauptverzeichnis loeschen
+55     if(RemoveDirectory(directory) == FALSE)
+56       return;
+57   }
+58 }
+\end{verbatim}\normalsize 

@@ -1,0 +1,171 @@
+\hypertarget{classQbeSAS_1_1HttpService_1_1ServiceDataType}{
+\section{Http\-Service::Service\-Data\-Type Klassenreferenz}
+\label{classQbeSAS_1_1HttpService_1_1ServiceDataType}\index{QbeSAS::HttpService::ServiceDataType@{QbeSAS::HttpService::ServiceDataType}}
+}
+
+
+\subsection{Ausf\"{u}hrliche Beschreibung}
+Datenspeicher fuer den HTTP Service. 
+
+
+
+Definiert in Zeile 64 der Datei Http\-Service.cs.\subsection*{\"{O}ffentliche Attribute}
+\begin{CompactItemize}
+\item 
+String \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo0}{Username} = \char`\"{}\char`\"{}
+\begin{CompactList}\small\item\em Aktueller Benutzername. \item\end{CompactList}\item 
+String \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo1}{Password} = \char`\"{}\char`\"{}
+\begin{CompactList}\small\item\em Password des aktuellen Benutzers. \item\end{CompactList}\item 
+String \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo2}{Auth\-Server} = \char`\"{}qbe-auth\char`\"{}
+\begin{CompactList}\small\item\em Name des Authentication Servers. to be set by the server; if the client decides to know it better, it can change this... \item\end{CompactList}\item 
+int \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo3}{User\_\-Internet} = -1
+\begin{CompactList}\small\item\em Internetstatus des Benutzers (kommt vom Server). \item\end{CompactList}\item 
+int \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo4}{User\_\-Diskspace} = -1
+\begin{CompactList}\small\item\em Benutzer Speicher in Prozent (kommt vom Server). \item\end{CompactList}\item 
+int \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo5}{User\_\-Traffic} = -1
+\begin{CompactList}\small\item\em Verursachter Traffic in Prozent (kommt vom Server). \item\end{CompactList}\item 
+System.Net.IPAddress \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo6}{Manager\-Address}
+\begin{CompactList}\small\item\em Zusaetzliche IP Adresse auf die der Client reagiert. \item\end{CompactList}\item 
+int \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo7}{Connection\-State} = -1
+\item 
+int \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo8}{Connection\-Error} = -1
+\item 
+System.Date\-Time \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo9}{Last\-Time}
+\begin{CompactList}\small\item\em Zeit der letzten Kommunikation mit dem Server. \item\end{CompactList}\item 
+bool \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo10}{b\-Use\-SSL} = true
+\begin{CompactList}\small\item\em Soll SSL verwendet werden? \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Dokumentation der Datenelemente}
+\hypertarget{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo2}{
+\index{QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}!AuthServer@{AuthServer}}
+\index{AuthServer@{AuthServer}!QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}}
+\subsubsection[AuthServer]{\setlength{\rightskip}{0pt plus 5cm}String \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo2}{Auth\-Server} = \char`\"{}qbe-auth\char`\"{}}}
+\label{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo2}
+
+
+Name des Authentication Servers. to be set by the server; if the client decides to know it better, it can change this... 
+
+
+
+Definiert in Zeile 72 der Datei Http\-Service.cs.
+
+Wird benutzt von Http\-Service::Parse\-Request().\hypertarget{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo10}{
+\index{QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}!bUseSSL@{bUseSSL}}
+\index{bUseSSL@{bUseSSL}!QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}}
+\subsubsection[bUseSSL]{\setlength{\rightskip}{0pt plus 5cm}bool \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo10}{b\-Use\-SSL} = true}}
+\label{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo10}
+
+
+Soll SSL verwendet werden? 
+
+
+
+Definiert in Zeile 91 der Datei Http\-Service.cs.
+
+Wird benutzt von Http\-Service::run\-Url().\hypertarget{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo8}{
+\index{QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}!ConnectionError@{ConnectionError}}
+\index{ConnectionError@{ConnectionError}!QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}}
+\subsubsection[ConnectionError]{\setlength{\rightskip}{0pt plus 5cm}int \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo8}{Connection\-Error} = -1}}
+\label{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo8}
+
+
+
+
+Definiert in Zeile 85 der Datei Http\-Service.cs.
+
+Wird benutzt von Http\-Service::Parse\-Request().\hypertarget{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo7}{
+\index{QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}!ConnectionState@{ConnectionState}}
+\index{ConnectionState@{ConnectionState}!QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}}
+\subsubsection[ConnectionState]{\setlength{\rightskip}{0pt plus 5cm}int \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo7}{Connection\-State} = -1}}
+\label{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo7}
+
+
+
+
+Definiert in Zeile 84 der Datei Http\-Service.cs.
+
+Wird benutzt von Http\-Service::Parse\-Request().\hypertarget{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo9}{
+\index{QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}!LastTime@{LastTime}}
+\index{LastTime@{LastTime}!QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}}
+\subsubsection[LastTime]{\setlength{\rightskip}{0pt plus 5cm}System.Date\-Time \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo9}{Last\-Time}}}
+\label{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo9}
+
+
+Zeit der letzten Kommunikation mit dem Server. 
+
+
+
+Definiert in Zeile 88 der Datei Http\-Service.cs.\hypertarget{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo6}{
+\index{QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}!ManagerAddress@{ManagerAddress}}
+\index{ManagerAddress@{ManagerAddress}!QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}}
+\subsubsection[ManagerAddress]{\setlength{\rightskip}{0pt plus 5cm}System.Net.IPAddress \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo6}{Manager\-Address}}}
+\label{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo6}
+
+
+Zusaetzliche IP Adresse auf die der Client reagiert. 
+
+
+
+Definiert in Zeile 82 der Datei Http\-Service.cs.\hypertarget{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo1}{
+\index{QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}!Password@{Password}}
+\index{Password@{Password}!QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}}
+\subsubsection[Password]{\setlength{\rightskip}{0pt plus 5cm}String \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo1}{Password} = \char`\"{}\char`\"{}}}
+\label{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo1}
+
+
+Password des aktuellen Benutzers. 
+
+
+
+Definiert in Zeile 69 der Datei Http\-Service.cs.
+
+Wird benutzt von Http\-Service::run\-Url().\hypertarget{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo4}{
+\index{QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}!User_Diskspace@{User\_\-Diskspace}}
+\index{User_Diskspace@{User\_\-Diskspace}!QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}}
+\subsubsection[User\_\-Diskspace]{\setlength{\rightskip}{0pt plus 5cm}int \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo4}{User\_\-Diskspace} = -1}}
+\label{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo4}
+
+
+Benutzer Speicher in Prozent (kommt vom Server). 
+
+
+
+Definiert in Zeile 77 der Datei Http\-Service.cs.\hypertarget{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo3}{
+\index{QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}!User_Internet@{User\_\-Internet}}
+\index{User_Internet@{User\_\-Internet}!QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}}
+\subsubsection[User\_\-Internet]{\setlength{\rightskip}{0pt plus 5cm}int \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo3}{User\_\-Internet} = -1}}
+\label{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo3}
+
+
+Internetstatus des Benutzers (kommt vom Server). 
+
+
+
+Definiert in Zeile 75 der Datei Http\-Service.cs.
+
+Wird benutzt von Http\-Service::Parse\-Request().\hypertarget{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo5}{
+\index{QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}!User_Traffic@{User\_\-Traffic}}
+\index{User_Traffic@{User\_\-Traffic}!QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}}
+\subsubsection[User\_\-Traffic]{\setlength{\rightskip}{0pt plus 5cm}int \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo5}{User\_\-Traffic} = -1}}
+\label{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo5}
+
+
+Verursachter Traffic in Prozent (kommt vom Server). 
+
+
+
+Definiert in Zeile 79 der Datei Http\-Service.cs.\hypertarget{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo0}{
+\index{QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}!Username@{Username}}
+\index{Username@{Username}!QbeSAS::HttpService::ServiceDataType@{Qbe\-SAS::Http\-Service::Service\-Data\-Type}}
+\subsubsection[Username]{\setlength{\rightskip}{0pt plus 5cm}String \hyperlink{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo0}{Username} = \char`\"{}\char`\"{}}}
+\label{classQbeSAS_1_1HttpService_1_1ServiceDataType_QbeSAS_1_1HttpService_1_1ServiceDataTypeo0}
+
+
+Aktueller Benutzername. 
+
+
+
+Definiert in Zeile 67 der Datei Http\-Service.cs.
+
+Wird benutzt von Http\-Service::Parse\-Request() und Http\-Service::run\-Url().

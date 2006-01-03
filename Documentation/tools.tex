@@ -1,0 +1,91 @@
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{ngerman,color,latexsym,alltt}
+\usepackage{graphics}
+\usepackage[pdftex]{graphicx}
+\usepackage[pdftex,plainpages=false]{hyperref}
+\usepackage[ngerman]{babel}
+% Packages
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage{longtable}
+\usepackage{url}
+\usepackage{multicol}
+
+\usepackage{pdfpages}
+\usepackage{pdflscape}
+
+\usepackage{geometry}
+\usepackage{calc}
+
+\usepackage{makeidx}
+\usepackage{doxygen}
+\makeindex
+
+%% HyperRef
+\hypersetup{%
+	pdftitle = {\ionusdoctitle},
+	pdfauthor = {\textcopyright\ \ionusdocauthor},
+	pdfcreator = {\LaTeX\ with package \flqq hyperref\frqq},
+	pdfborder = 0,
+	pdfstartpage = 1,
+	bookmarks = true,
+	bookmarksopen = true,
+}
+
+\newcommand{\placefig}[2]{%
+\begin{figure}[h] %
+	\centering % 
+		\includegraphics{files/#1} %
+		\caption{#2} %
+	\label{fig:#1} %
+\end{figure} %
+}
+
+\newcommand{\placefigx}[3]{%
+\begin{figure}[h] %
+	\centering %
+		\includegraphics[#3]{files/#1} %
+		\caption{#2} %
+	\label{fig:#1} %
+\end{figure} %
+}
+
+%\definecolor{Headings}{rgb}{1,0,0}%{named}{Red}
+%\newcommand{\cChapter}[1]{\color{Headings}\chapter{#1}\color{black}}
+\newcommand{\cChapter}[1]{\chapter{#1}}
+
+
+\renewcommand*\descriptionlabel[1]{\hspace\labelsep
+	\color{red}\bfseries #1\hspace{4pt} }
+
+
+%fontfamily=Helvetica,
+%\fvset{frame=single,fontsize=\small,numbers=left,numbersep=3pt}
+
+\definecolor{identifiers}{rgb}{0.1,0.1,0.1}
+
+\lstset{% listings setup
+	basicstyle=\small,%
+	numbers=left,numberstyle=\tiny,stepnumber=1,numbersep=5pt,%
+	tabsize=4,%
+%       frame=single,%
+	breaklines=true,%
+	language=C,%
+	showstringspaces=false,showspaces=false,showtabs=false,%
+	keywordstyle=\color{blue},commentstyle=\color{green},identifierstyle=\color{identifiers}%
+}
+
+% Bookmarks fixup
+\ifx\hypersetup\undefined\else
+\pdfstringdefDisableCommands{\renewcommand{\color}[1]{}}%
+\pdfstringdefDisableCommands{\edef\ci{\textbackslash}}%
+\pdfstringdefDisableCommands{\edef\sim{\textasciitilde}}%
+\pdfstringdefDisableCommands{\edef\circ{\textdegree}}%
+\pdfstringdefDisableCommands{\edef\ldots{... }}%
+\fi
+
+
+

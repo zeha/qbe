@@ -1,0 +1,12 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\QbeNP]
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\QbeNP\NetworkProvider]
+"Name"="Qbe SAS Network Provider"
+"Class"=dword:00000002
+"ProviderPath"="%SystemRoot%\\system32\\qbenp.dll"
+
+; HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\NetworkProvider\Order
+
+

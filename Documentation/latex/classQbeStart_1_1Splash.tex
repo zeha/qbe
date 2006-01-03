@@ -1,0 +1,423 @@
+\hypertarget{classQbeStart_1_1Splash}{
+\section{Splash Klassenreferenz}
+\label{classQbeStart_1_1Splash}\index{QbeStart::Splash@{QbeStart::Splash}}
+}
+
+
+\subsection{Ausf\"{u}hrliche Beschreibung}
+\hyperlink{classQbeStart_1_1Splash}{Splash} stellt das Start-Fenster fuer den Windows Qbe\-Server zur Verfuegung. 
+
+
+
+Definiert in Zeile 15 der Datei Splash.cs.\subsection*{\"{O}ffentliche Methoden}
+\begin{CompactItemize}
+\item 
+\hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasha0}{Splash} ()
+\end{CompactItemize}
+\subsection*{\"{O}ffentliche Attribute}
+\begin{CompactItemize}
+\item 
+System.Windows.Forms.Label \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho0}{st\-Lbl\_\-Service}
+\item 
+System.Windows.Forms.Label \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho1}{st\-Lbl\_\-Net\-Init}
+\item 
+System.Windows.Forms.Label \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho2}{st\-Lbl\_\-Client}
+\item 
+System.Windows.Forms.Picture\-Box \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho3}{pct\-Service}
+\item 
+System.Windows.Forms.Picture\-Box \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho4}{pct\-Net\-Init}
+\item 
+System.Windows.Forms.Picture\-Box \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho5}{pct\-Client}
+\item 
+System.Windows.Forms.Picture\-Box \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho6}{pct\-Tpl\_\-Ok}
+\item 
+System.Windows.Forms.Picture\-Box \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho7}{pct\-Tpl\_\-Fail}
+\item 
+System.Windows.Forms.Label \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho8}{lbl\-Version}
+\end{CompactItemize}
+\subsection*{Gesch\"{u}tzte Methoden}
+\begin{CompactItemize}
+\item 
+override void \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splashb0}{Dispose} (bool disposing)
+\begin{CompactList}\small\item\em Die verwendeten Ressourcen bereinigen. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Methoden}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splashd0}{Initialize\-Component} ()
+\item 
+void \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splashd1}{pct\-Background\_\-Click} (object sender, System.Event\-Args e)
+\end{CompactItemize}
+\subsection*{Private Attribute}
+\begin{CompactItemize}
+\item 
+System.Windows.Forms.Picture\-Box \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splashr0}{pct\-Background}
+\item 
+System.Component\-Model.Container \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splashr1}{components} = null
+\end{CompactItemize}
+
+
+\subsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splasha0}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!Splash@{Splash}}
+\index{Splash@{Splash}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[Splash]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{classQbeStart_1_1Splash}{Splash} ()}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splasha0}
+
+
+
+
+Definiert in Zeile 32 der Datei Splash.cs.
+
+Benutzt Splash::Initialize\-Component().
+
+
+
+\footnotesize\begin{verbatim}33     {
+34       //
+35       // Erforderlich für die Windows Form-Designerunterstützung
+36       //
+37       InitializeComponent();
+38     }
+\end{verbatim}\normalsize 
+
+
+\subsection{Dokumentation der Elementfunktionen}
+\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splashb0}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[Dispose]{\setlength{\rightskip}{0pt plus 5cm}override void Dispose (bool {\em disposing})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splashb0}
+
+
+Die verwendeten Ressourcen bereinigen. 
+
+
+
+Definiert in Zeile 41 der Datei Splash.cs.
+
+
+
+\footnotesize\begin{verbatim}42     {
+43       if( disposing )
+44       {
+45         if(components != null)
+46         {
+47           components.Dispose();
+48         }
+49       }
+50       base.Dispose( disposing );
+51     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splashd0}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!InitializeComponent@{InitializeComponent}}
+\index{InitializeComponent@{InitializeComponent}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[InitializeComponent]{\setlength{\rightskip}{0pt plus 5cm}void Initialize\-Component (void)\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splashd0}
+
+
+Erforderliche Methode f\"{u}r die Designerunterst\"{u}tzung. Der Inhalt der Methode darf nicht mit dem Code-Editor ge\"{a}ndert werden. 
+
+Definiert in Zeile 56 der Datei Splash.cs.
+
+Benutzt Splash::lbl\-Version, Splash::pct\-Background\_\-Click(), Splash::pct\-Client, Splash::pct\-Net\-Init, Splash::pct\-Service, Splash::pct\-Tpl\_\-Fail, Splash::pct\-Tpl\_\-Ok, Splash::st\-Lbl\_\-Client, Splash::st\-Lbl\_\-Net\-Init und Splash::st\-Lbl\_\-Service.
+
+Wird benutzt von Splash::Splash().
+
+
+
+\footnotesize\begin{verbatim}57     {
+58       System.Resources.ResourceManager resources = new System.Resources.ResourceManager("Splash",System.Reflection.Assembly.GetExecutingAssembly());
+59       this.pctBackground = new System.Windows.Forms.PictureBox();
+60       this.stLbl_Service = new System.Windows.Forms.Label();
+61       this.stLbl_NetInit = new System.Windows.Forms.Label();
+62       this.stLbl_Client = new System.Windows.Forms.Label();
+63       this.pctService = new System.Windows.Forms.PictureBox();
+64       this.pctNetInit = new System.Windows.Forms.PictureBox();
+65       this.pctClient = new System.Windows.Forms.PictureBox();
+66       this.pctTpl_Ok = new System.Windows.Forms.PictureBox();
+67       this.pctTpl_Fail = new System.Windows.Forms.PictureBox();
+68       this.lblVersion = new System.Windows.Forms.Label();
+69       this.SuspendLayout();
+70       // 
+71       // pctBackground
+72       // 
+73       this.pctBackground.BackColor = System.Drawing.Color.Transparent;
+74       this.pctBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+75       this.pctBackground.Image = ((System.Drawing.Image)(resources.GetObject("pctBackground.Image")));
+76       this.pctBackground.Location = new System.Drawing.Point(0, 0);
+77       this.pctBackground.Name = "pctBackground";
+78       this.pctBackground.Size = new System.Drawing.Size(400, 200);
+79       this.pctBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+80       this.pctBackground.TabIndex = 0;
+81       this.pctBackground.TabStop = false;
+82       this.pctBackground.Click += new System.EventHandler(this.pctBackground_Click);
+83       // 
+84       // stLbl_Service
+85       // 
+86       this.stLbl_Service.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(51)), ((System.Byte)(102)), ((System.Byte)(153)));
+87       this.stLbl_Service.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+88       this.stLbl_Service.ForeColor = System.Drawing.Color.White;
+89       this.stLbl_Service.Location = new System.Drawing.Point(128, 120);
+90       this.stLbl_Service.Name = "stLbl_Service";
+91       this.stLbl_Service.Size = new System.Drawing.Size(224, 16);
+92       this.stLbl_Service.TabIndex = 1;
+93       this.stLbl_Service.Text = "System Service";
+94       this.stLbl_Service.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+95       // 
+96       // stLbl_NetInit
+97       // 
+98       this.stLbl_NetInit.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(51)), ((System.Byte)(102)), ((System.Byte)(153)));
+99       this.stLbl_NetInit.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+100       this.stLbl_NetInit.ForeColor = System.Drawing.Color.White;
+101       this.stLbl_NetInit.Location = new System.Drawing.Point(128, 104);
+102       this.stLbl_NetInit.Name = "stLbl_NetInit";
+103       this.stLbl_NetInit.Size = new System.Drawing.Size(224, 16);
+104       this.stLbl_NetInit.TabIndex = 2;
+105       this.stLbl_NetInit.Text = "Network Initialization";
+106       this.stLbl_NetInit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+107       // 
+108       // stLbl_Client
+109       // 
+110       this.stLbl_Client.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(51)), ((System.Byte)(102)), ((System.Byte)(153)));
+111       this.stLbl_Client.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+112       this.stLbl_Client.ForeColor = System.Drawing.Color.White;
+113       this.stLbl_Client.Location = new System.Drawing.Point(128, 136);
+114       this.stLbl_Client.Name = "stLbl_Client";
+115       this.stLbl_Client.Size = new System.Drawing.Size(224, 16);
+116       this.stLbl_Client.TabIndex = 3;
+117       this.stLbl_Client.Text = "Client";
+118       this.stLbl_Client.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+119       // 
+120       // pctService
+121       // 
+122       this.pctService.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(51)), ((System.Byte)(102)), ((System.Byte)(153)));
+123       this.pctService.Location = new System.Drawing.Point(112, 120);
+124       this.pctService.Name = "pctService";
+125       this.pctService.Size = new System.Drawing.Size(16, 16);
+126       this.pctService.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+127       this.pctService.TabIndex = 4;
+128       this.pctService.TabStop = false;
+129       // 
+130       // pctNetInit
+131       // 
+132       this.pctNetInit.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(51)), ((System.Byte)(102)), ((System.Byte)(153)));
+133       this.pctNetInit.Location = new System.Drawing.Point(112, 104);
+134       this.pctNetInit.Name = "pctNetInit";
+135       this.pctNetInit.Size = new System.Drawing.Size(16, 16);
+136       this.pctNetInit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+137       this.pctNetInit.TabIndex = 5;
+138       this.pctNetInit.TabStop = false;
+139       // 
+140       // pctClient
+141       // 
+142       this.pctClient.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(51)), ((System.Byte)(102)), ((System.Byte)(153)));
+143       this.pctClient.Location = new System.Drawing.Point(112, 136);
+144       this.pctClient.Name = "pctClient";
+145       this.pctClient.Size = new System.Drawing.Size(16, 16);
+146       this.pctClient.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+147       this.pctClient.TabIndex = 6;
+148       this.pctClient.TabStop = false;
+149       // 
+150       // pctTpl_Ok
+151       // 
+152       this.pctTpl_Ok.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(51)), ((System.Byte)(102)), ((System.Byte)(153)));
+153       this.pctTpl_Ok.Image = ((System.Drawing.Image)(resources.GetObject("pctTpl_Ok.Image")));
+154       this.pctTpl_Ok.Location = new System.Drawing.Point(16, 104);
+155       this.pctTpl_Ok.Name = "pctTpl_Ok";
+156       this.pctTpl_Ok.Size = new System.Drawing.Size(16, 16);
+157       this.pctTpl_Ok.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+158       this.pctTpl_Ok.TabIndex = 7;
+159       this.pctTpl_Ok.TabStop = false;
+160       this.pctTpl_Ok.Visible = false;
+161       // 
+162       // pctTpl_Fail
+163       // 
+164       this.pctTpl_Fail.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(51)), ((System.Byte)(102)), ((System.Byte)(153)));
+165       this.pctTpl_Fail.Image = ((System.Drawing.Image)(resources.GetObject("pctTpl_Fail.Image")));
+166       this.pctTpl_Fail.Location = new System.Drawing.Point(40, 104);
+167       this.pctTpl_Fail.Name = "pctTpl_Fail";
+168       this.pctTpl_Fail.Size = new System.Drawing.Size(16, 16);
+169       this.pctTpl_Fail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+170       this.pctTpl_Fail.TabIndex = 8;
+171       this.pctTpl_Fail.TabStop = false;
+172       this.pctTpl_Fail.Visible = false;
+173       // 
+174       // lblVersion
+175       // 
+176       this.lblVersion.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(51)), ((System.Byte)(102)), ((System.Byte)(153)));
+177       this.lblVersion.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+178       this.lblVersion.ForeColor = System.Drawing.Color.White;
+179       this.lblVersion.Location = new System.Drawing.Point(127, 68);
+180       this.lblVersion.Name = "lblVersion";
+181       this.lblVersion.Size = new System.Drawing.Size(209, 15);
+182       this.lblVersion.TabIndex = 9;
+183       this.lblVersion.Text = "[version]";
+184       this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+185       // 
+186       // Splash
+187       // 
+188       this.AutoScale = false;
+189       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+190       this.BackColor = System.Drawing.Color.White;
+191       this.ClientSize = new System.Drawing.Size(376, 160);
+192       this.ControlBox = false;
+193       this.Controls.Add(this.lblVersion);
+194       this.Controls.Add(this.pctTpl_Fail);
+195       this.Controls.Add(this.pctTpl_Ok);
+196       this.Controls.Add(this.pctClient);
+197       this.Controls.Add(this.pctNetInit);
+198       this.Controls.Add(this.pctService);
+199       this.Controls.Add(this.stLbl_Service);
+200       this.Controls.Add(this.stLbl_Client);
+201       this.Controls.Add(this.stLbl_NetInit);
+202       this.Controls.Add(this.pctBackground);
+203       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+204       this.MaximizeBox = false;
+205       this.MinimizeBox = false;
+206       this.Name = "Splash";
+207       this.ShowInTaskbar = false;
+208       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+209       this.ResumeLayout(false);
+210 
+211     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splashd1}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!pctBackground_Click@{pctBackground\_\-Click}}
+\index{pctBackground_Click@{pctBackground\_\-Click}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[pctBackground\_\-Click]{\setlength{\rightskip}{0pt plus 5cm}void pct\-Background\_\-Click (object {\em sender}, System.Event\-Args {\em e})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splashd1}
+
+
+
+
+Definiert in Zeile 214 der Datei Splash.cs.
+
+Wird benutzt von Splash::Initialize\-Component().
+
+
+
+\footnotesize\begin{verbatim}215     {
+216     
+217     }
+\end{verbatim}\normalsize 
+
+
+\subsection{Dokumentation der Datenelemente}
+\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splashr1}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!components@{components}}
+\index{components@{components}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[components]{\setlength{\rightskip}{0pt plus 5cm}System.Component\-Model.Container \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splashr1}{components} = null\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splashr1}
+
+
+Erforderliche Designervariable.  
+
+Definiert in Zeile 30 der Datei Splash.cs.\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splasho8}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!lblVersion@{lblVersion}}
+\index{lblVersion@{lblVersion}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[lblVersion]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Label \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho8}{lbl\-Version}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splasho8}
+
+
+
+
+Definiert in Zeile 26 der Datei Splash.cs.
+
+Wird benutzt von Splash::Initialize\-Component().\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splashr0}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!pctBackground@{pctBackground}}
+\index{pctBackground@{pctBackground}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[pctBackground]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Picture\-Box \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splashr0}{pct\-Background}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splashr0}
+
+
+
+
+Definiert in Zeile 20 der Datei Splash.cs.\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splasho5}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!pctClient@{pctClient}}
+\index{pctClient@{pctClient}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[pctClient]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Picture\-Box \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho5}{pct\-Client}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splasho5}
+
+
+
+
+Definiert in Zeile 23 der Datei Splash.cs.
+
+Wird benutzt von Splash::Initialize\-Component().\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splasho4}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!pctNetInit@{pctNetInit}}
+\index{pctNetInit@{pctNetInit}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[pctNetInit]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Picture\-Box \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho4}{pct\-Net\-Init}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splasho4}
+
+
+
+
+Definiert in Zeile 22 der Datei Splash.cs.
+
+Wird benutzt von Splash::Initialize\-Component().\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splasho3}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!pctService@{pctService}}
+\index{pctService@{pctService}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[pctService]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Picture\-Box \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho3}{pct\-Service}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splasho3}
+
+
+
+
+Definiert in Zeile 21 der Datei Splash.cs.
+
+Wird benutzt von Splash::Initialize\-Component().\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splasho7}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!pctTpl_Fail@{pctTpl\_\-Fail}}
+\index{pctTpl_Fail@{pctTpl\_\-Fail}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[pctTpl\_\-Fail]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Picture\-Box \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho7}{pct\-Tpl\_\-Fail}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splasho7}
+
+
+
+
+Definiert in Zeile 25 der Datei Splash.cs.
+
+Wird benutzt von Splash::Initialize\-Component().\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splasho6}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!pctTpl_Ok@{pctTpl\_\-Ok}}
+\index{pctTpl_Ok@{pctTpl\_\-Ok}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[pctTpl\_\-Ok]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Picture\-Box \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho6}{pct\-Tpl\_\-Ok}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splasho6}
+
+
+
+
+Definiert in Zeile 24 der Datei Splash.cs.
+
+Wird benutzt von Splash::Initialize\-Component().\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splasho2}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!stLbl_Client@{stLbl\_\-Client}}
+\index{stLbl_Client@{stLbl\_\-Client}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[stLbl\_\-Client]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Label \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho2}{st\-Lbl\_\-Client}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splasho2}
+
+
+
+
+Definiert in Zeile 19 der Datei Splash.cs.
+
+Wird benutzt von Splash::Initialize\-Component().\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splasho1}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!stLbl_NetInit@{stLbl\_\-NetInit}}
+\index{stLbl_NetInit@{stLbl\_\-NetInit}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[stLbl\_\-NetInit]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Label \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho1}{st\-Lbl\_\-Net\-Init}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splasho1}
+
+
+
+
+Definiert in Zeile 18 der Datei Splash.cs.
+
+Wird benutzt von Splash::Initialize\-Component().\hypertarget{classQbeStart_1_1Splash_QbeStart_1_1Splasho0}{
+\index{QbeStart::Splash@{Qbe\-Start::Splash}!stLbl_Service@{stLbl\_\-Service}}
+\index{stLbl_Service@{stLbl\_\-Service}!QbeStart::Splash@{Qbe\-Start::Splash}}
+\subsubsection[stLbl\_\-Service]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Label \hyperlink{classQbeStart_1_1Splash_QbeStart_1_1Splasho0}{st\-Lbl\_\-Service}}}
+\label{classQbeStart_1_1Splash_QbeStart_1_1Splasho0}
+
+
+
+
+Definiert in Zeile 17 der Datei Splash.cs.
+
+Wird benutzt von Splash::Initialize\-Component().

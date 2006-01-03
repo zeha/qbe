@@ -1,0 +1,39 @@
+\hypertarget{MainForm_8cpp}{
+\section{Main\-Form.cpp Dateireferenz}
+\label{MainForm_8cpp}\index{MainForm.cpp@{MainForm.cpp}}
+}
+
+
+{\tt \#include \char`\"{}stdafx.h\char`\"{}}\par
+{\tt \#include \char`\"{}Main\-Form.h\char`\"{}}\par
+\subsection*{Funktionen}
+\begin{CompactItemize}
+\item 
+int APIENTRY \hyperlink{MainForm_8cpp_a0}{\_\-t\-Win\-Main} (HINSTANCE h\-Instance, HINSTANCE h\-Prev\-Instance, LPTSTR lp\-Cmd\-Line, int n\-Cmd\-Show)
+\end{CompactItemize}
+
+
+\subsection{Dokumentation der Funktionen}
+\hypertarget{MainForm_8cpp_a0}{
+\index{MainForm.cpp@{Main\-Form.cpp}!_tWinMain@{\_\-tWinMain}}
+\index{_tWinMain@{\_\-tWinMain}!MainForm.cpp@{Main\-Form.cpp}}
+\subsubsection[\_\-tWinMain]{\setlength{\rightskip}{0pt plus 5cm}int APIENTRY \_\-t\-Win\-Main (HINSTANCE {\em h\-Instance}, HINSTANCE {\em h\-Prev\-Instance}, LPTSTR {\em lp\-Cmd\-Line}, int {\em n\-Cmd\-Show})}}
+\label{MainForm_8cpp_a0}
+
+
+
+
+Definiert in Zeile 6 der Datei Main\-Form.cpp.
+
+Benutzt Qbe\-NDI::command\-Line.
+
+
+
+\footnotesize\begin{verbatim}10 {
+11   System::Threading::Thread::CurrentThread->ApartmentState = System::Threading::ApartmentState::STA;
+12   strncpy(commandLine,lpCmdLine,512);
+13   commandLine[512]=0;
+14   Application::Run(new MainForm());
+15   return 0;
+16 }
+\end{verbatim}\normalsize 

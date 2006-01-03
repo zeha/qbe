@@ -1,0 +1,23 @@
+# Qbe iLogin Makefile: Service
+# Copyright (C) 2001-2003 Christian Hofstaedtler.  All rights reserved.
+#
+
+## -> MFC
+QBECLIB=-D_MD -MD /D "_AFXDLL"
+QBEPROG=SampleMFC
+QBEPEXT=EXE
+#QBEPOBJ=QbeSvc.exe
+QBEEXTRAALL=
+QBEEXTRALINK=
+QBEEXTRALINKDEP=
+QBEWINSYS=windows
+WITHSSL=
+WITHNETLIB=no
+
+PROG_OBJ = $(OUTDIR)\StdAfx.obj \
+           $(OUTDIR)\Main.obj
+
+!include "../C/ilogin.mak"
+
+# - eof -
+

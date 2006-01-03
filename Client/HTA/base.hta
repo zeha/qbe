@@ -1,0 +1,42 @@
+//
+// $Id: base.hta 73 2004-05-04 06:43:35Z ch $
+// (C) Copyright 2003 Christian Hofstaedtler
+//
+
+#include "../Common/ilogin-version.h"
+
+<html>
+<head>
+
+<TITLE>Qbe SAS Client</TITLE>
+  <HTA:APPLICATION 
+    APPLICATIONNAME="ilogin" 
+    BORDER="thin"
+    CAPTION="yes"
+    ICON="Q.ico"
+    SHOWINTASKBAR="yes"
+    SINGLEINSTANCE="yes"
+    SYSMENU="yes"
+    WINDOWSTATE="normal"
+    SELECTION="no"
+    MAXIMIZEBUTTON="no"
+    INNERBORDER="no"
+    VERSION="1.0"
+  >
+</HEAD>
+
+<script>
+window.resizeTo(430,350);
+
+$ver = ILOGIN_VERSION;
+$url = URL;
+document.writeln("<frameset rows=\"*\" frameborder=no border=0 bordercolor=black>");
+document.writeln("<frame src=\"" + $url + $ver + "\" APPLICATION=\"yes\" scrolling=no noresize />");
+document.writeln("</frameset>");
+</script>
+
+
+
+
+</html>
+

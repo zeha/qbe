@@ -1,0 +1,8 @@
+
+LIBRARY   QbeNP.dll
+
+EXPORTS
+    NPGetCaps
+    NPLogonNotify
+    NPPasswordChangeNotify
+

@@ -1,0 +1,11 @@
+#include "ilogin-version.h"
+
+namespace QbeSAS 
+{
+	/// Qbe SAS Client Versionsinformationen fuer .NET
+	class QbeClientVersion 
+	{
+		public const string ClientVersion = ILOGIN_VERSION;
+		public const string CVSID = ILOGIN_CVSID;
+	}
+}

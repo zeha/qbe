@@ -1,0 +1,60 @@
+
+<html>
+<head>
+
+<TITLE>q testcase</TITLE>
+  <HTA:APPLICATION 
+    CAPTION="yes"
+    SYSMENU="yes"
+    WINDOWSTATE="normal"
+    SELECTION="yes"
+    MAXIMIZEBUTTON="no"
+    INNERBORDER="yes"
+    VERSION="1.0"
+  >
+</HEAD>
+<body>
+
+<h1>q testcase: user/pass save, qbesas.dll</h1>
+
+
+<script language=vbscript>
+set iluser = CreateObject("QbeSAS.DataStore")
+
+document.write "old user: '"+iluser.getUsername() + "'<br>"
+document.write "old pass: '"+iluser.getPassword() + "'<br>"
+
+stru = "user"
+strp = "pass"
+document.write "saving: '"+stru+"', '"+strp+"'<br>"
+iluser.saveData "user", "pass", 1
+
+strnu = iluser.getUsername()
+strnp = iluser.getPassword()
+
+document.write "new user: '"+strnu+ "'<br>"
+document.write "new pass: '"+strnp+ "'<br>"
+
+if (strnu = stru) then
+	if (strnp = strp) then
+	document.write "<b>Looks good, man!</b><br>"
+	end if
+end if
+
+</script>
+
+<br>
+<br>
+<a href="#" onclick="javascript:location.reload()">Click here to retry that.</a><br>
+<br>
+
+<br>
+<i>-- 2004/May/03 ch</i><br>
+<i>$Id: userpasssavetest.hta 85 2004-05-04 13:17:16Z ch $</i>
+
+</body>
+
+
+</html>
+
+

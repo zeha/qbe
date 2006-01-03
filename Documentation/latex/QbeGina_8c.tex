@@ -1,0 +1,2163 @@
+\hypertarget{QbeGina_8c}{
+\section{Qbe\-Gina.c Dateireferenz}
+\label{QbeGina_8c}\index{QbeGina.c@{QbeGina.c}}
+}
+
+
+{\tt \#include $<$windows.h$>$}\par
+{\tt \#include $<$winwlx.h$>$}\par
+{\tt \#include $<$lm.h$>$}\par
+{\tt \#include $<$tchar.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$direct.h$>$}\par
+{\tt \#include $<$winnetwk.h$>$}\par
+{\tt \#include $<$Winsvc.h$>$}\par
+{\tt \#include $<$Mmsystem.h$>$}\par
+{\tt \#include $<$process.h$>$}\par
+{\tt \#include \char`\"{}resource.h\char`\"{}}\par
+{\tt \#include \char`\"{}Qbe\-Gina.h\char`\"{}}\par
+{\tt \#include \char`\"{}qbeldap.h\char`\"{}}\par
+{\tt \#include \char`\"{}qbereg.h\char`\"{}}\par
+{\tt \#include \char`\"{}qbesvc.h\char`\"{}}\par
+\subsection*{Makrodefinitionen}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{QbeGina_8c_a0}{\_\-WIN32\_\-WINNT}\ 0x0500
+\item 
+\#define \hyperlink{QbeGina_8c_a1}{UNICODE}
+\item 
+\#define \hyperlink{QbeGina_8c_a2}{\_\-UNICODE}
+\item 
+\#define \hyperlink{QbeGina_8c_a3}{QBEGINA\_\-LOGINACTION\_\-NONE}\ 0
+\begin{CompactList}\small\item\em Nichts ist passiert. \item\end{CompactList}\item 
+\#define \hyperlink{QbeGina_8c_a4}{QBEGINA\_\-LOGINACTION\_\-LOGON}\ 1
+\begin{CompactList}\small\item\em Der Benutzer wird angemeldet. \item\end{CompactList}\item 
+\#define \hyperlink{QbeGina_8c_a5}{QBEGINA\_\-LOGINACTION\_\-SHUTDOWN}\ 2
+\begin{CompactList}\small\item\em \hyperlink{namespaceSystem}{System} wird heruntergefahren. \item\end{CompactList}\item 
+\#define \hyperlink{QbeGina_8c_a6}{QBEGINA\_\-LOGINACTION\_\-WINLOGON}\ 3
+\begin{CompactList}\small\item\em Win\-Logon Event. \item\end{CompactList}\item 
+\#define \hyperlink{QbeGina_8c_a7}{REALGINA\_\-PATH}\ TEXT(\char`\"{}MSGINA.DLL\char`\"{})
+\item 
+\#define \hyperlink{QbeGina_8c_a8}{GINASTUB\_\-VERSION}\ (WLX\_\-VERSION\_\-1\_\-3)
+\begin{CompactList}\small\item\em Versionsnummer des System-APIs dass von unserer SASGina unterst\"{u}tzt wird. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Typendefinitionen}
+\begin{CompactItemize}
+\item 
+typedef \hyperlink{QbeGina_8h_a2}{DWORD}(STDAPICALLTYPE $\ast$ \hyperlink{QbeGina_8c_a36}{PFNSHELLSHUTDOWNDIALOG} )(HWND hwnd\-Parent, LPCTSTR sz\-Username, \hyperlink{QbeGina_8h_a2}{DWORD} dw\-Exclude\-Items)
+\end{CompactItemize}
+\subsection*{Funktionen}
+\begin{CompactItemize}
+\item 
+BOOL \hyperlink{QbeGina_8c_a38}{init\-Policy} ()
+\begin{CompactList}\small\item\em Initialisiert das Host\-Policy Objekt. \item\end{CompactList}\item 
+void \hyperlink{QbeGina_8c_a39}{Write\-Log\-File} (LPTSTR String)
+\begin{CompactList}\small\item\em Debug stuff. \item\end{CompactList}\item 
+\hyperlink{QbeGina_8h_a2}{DWORD} \hyperlink{QbeGina_8c_a40}{Start\-RPCService} ()
+\begin{CompactList}\small\item\em Funktion um den Qbe\-Svc zu starten. \item\end{CompactList}\item 
+BOOL WINAPI \hyperlink{QbeGina_8c_a41}{Dll\-Main} (HINSTANCE h\-Instance, \hyperlink{QbeGina_8h_a2}{DWORD} dw\-Reason, LPVOID lp\-Reserved)
+\begin{CompactList}\small\item\em Einsprungspunkt der Qbe\-Gina.DLL. \item\end{CompactList}\item 
+BOOL \hyperlink{QbeGina_8c_a42}{My\-Initialize} (HINSTANCE h\-Dll, \hyperlink{QbeGina_8h_a2}{DWORD} dw\-Wlx\-Version)
+\begin{CompactList}\small\item\em Hook into the real MSGINA. \item\end{CompactList}\item 
+BOOL WINAPI \hyperlink{QbeGina_8c_a43}{Wlx\-Negotiate} (\hyperlink{QbeGina_8h_a2}{DWORD} dw\-Winlogon\-Version, \hyperlink{QbeGina_8h_a2}{DWORD} $\ast$pdw\-Dll\-Version)
+\item 
+BOOL WINAPI \hyperlink{QbeGina_8c_a44}{Wlx\-Initialize} (LPWSTR lp\-Winsta, \hyperlink{QbeGina_8h_a0}{HANDLE} h\-Wlx, \hyperlink{QbeGina_8h_a1}{PVOID} pv\-Reserved, \hyperlink{QbeGina_8h_a1}{PVOID} p\-Winlogon\-Functions, \hyperlink{QbeGina_8h_a1}{PVOID} $\ast$p\-Wlx\-Context)
+\item 
+BOOL CALLBACK \hyperlink{QbeGina_8c_a45}{Dialog\-Proc\_\-SASNotice} (HWND hwnd\-Dlg, UINT u\-Msg, WPARAM w\-Param, LPARAM l\-Param)
+\begin{CompactList}\small\item\em GUI Handlerfunktion fuer die CTRL-ALT-DEL Dialogbox. \item\end{CompactList}\item 
+VOID WINAPI \hyperlink{QbeGina_8c_a46}{Wlx\-Display\-SASNotice} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context)
+\item 
+VOID \hyperlink{QbeGina_8c_a47}{Center\-Window} (HWND hwnd)
+\begin{CompactList}\small\item\em Das Fenster in hwnd am Bildschirm zentrieren. \item\end{CompactList}\item 
+BOOL \hyperlink{QbeGina_8c_a48}{get\-Local\-Machine\-Name} (LPWSTR sz\-Workstation\-Name)
+\begin{CompactList}\small\item\em Liefert den Computernamen zur\"{u}ck. \item\end{CompactList}\item 
+BOOL CALLBACK \hyperlink{QbeGina_8c_a49}{My\-Login\-Box\-Proc} (HWND hwnd\-Dlg, UINT u\-Msg, WPARAM w\-Param, LPARAM l\-Param)
+\begin{CompactList}\small\item\em GUI Handlerfunktion fuer die Anmeldedialogbox. \item\end{CompactList}\item 
+int \hyperlink{QbeGina_8c_a50}{qbe\_\-sam\_\-createuser} (LPWSTR sz\-Username, LPWSTR sz\-Password)
+\item 
+int WINAPI \hyperlink{QbeGina_8c_a51}{Wlx\-Logged\-Out\-SAS} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context, \hyperlink{QbeGina_8h_a2}{DWORD} dw\-Sas\-Type, \hyperlink{QbeGina_8h_a3}{PLUID} p\-Authentication\-Id, \hyperlink{QbeGina_8h_a4}{PSID} p\-Logon\-Sid, \hyperlink{QbeGina_8h_a5}{PDWORD} pdw\-Options, \hyperlink{QbeGina_8h_a6}{PHANDLE} ph\-Token, \hyperlink{QbeGina_8h_a7}{PWLX\_\-MPR\_\-NOTIFY\_\-INFO} p\-Mpr\-Notify\-Info, \hyperlink{QbeGina_8h_a1}{PVOID} $\ast$p\-Profile)
+\item 
+BOOL WINAPI \hyperlink{QbeGina_8c_a52}{Wlx\-Activate\-User\-Shell} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context, \hyperlink{QbeGina_8h_a8}{PWSTR} psz\-Desktop\-Name, \hyperlink{QbeGina_8h_a8}{PWSTR} psz\-Mpr\-Logon\-Script, \hyperlink{QbeGina_8h_a1}{PVOID} p\-Environment)
+\item 
+int WINAPI \hyperlink{QbeGina_8c_a53}{Wlx\-Logged\-On\-SAS} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context, \hyperlink{QbeGina_8h_a2}{DWORD} dw\-Sas\-Type, \hyperlink{QbeGina_8h_a1}{PVOID} p\-Reserved)
+\item 
+VOID WINAPI \hyperlink{QbeGina_8c_a54}{Wlx\-Display\-Locked\-Notice} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context)
+\item 
+BOOL WINAPI \hyperlink{QbeGina_8c_a55}{Wlx\-Is\-Lock\-Ok} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context)
+\item 
+int WINAPI \hyperlink{QbeGina_8c_a56}{Wlx\-Wksta\-Locked\-SAS} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context, \hyperlink{QbeGina_8h_a2}{DWORD} dw\-Sas\-Type)
+\item 
+BOOL WINAPI \hyperlink{QbeGina_8c_a57}{Wlx\-Is\-Logoff\-Ok} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context)
+\item 
+void \hyperlink{QbeGina_8c_a58}{sys\_\-util\_\-deletefolder} (LPCWSTR directory)
+\begin{CompactList}\small\item\em Loescht den Ordner directory und alle Unterordner und Dateien. \item\end{CompactList}\item 
+VOID WINAPI \hyperlink{QbeGina_8c_a59}{Wlx\-Logoff} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context)
+\item 
+VOID WINAPI \hyperlink{QbeGina_8c_a60}{Wlx\-Shutdown} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context, \hyperlink{QbeGina_8h_a2}{DWORD} Shutdown\-Type)
+\item 
+BOOL WINAPI \hyperlink{QbeGina_8c_a61}{Wlx\-Screen\-Saver\-Notify} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context, BOOL $\ast$p\-Secure)
+\item 
+BOOL WINAPI \hyperlink{QbeGina_8c_a62}{Wlx\-Start\-Application} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context, \hyperlink{QbeGina_8h_a8}{PWSTR} psz\-Desktop\-Name, \hyperlink{QbeGina_8h_a1}{PVOID} p\-Environment, \hyperlink{QbeGina_8h_a8}{PWSTR} psz\-Cmd\-Line)
+\item 
+BOOL WINAPI \hyperlink{QbeGina_8c_a63}{Wlx\-Network\-Provider\-Load} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context, \hyperlink{QbeGina_8h_a7}{PWLX\_\-MPR\_\-NOTIFY\_\-INFO} p\-Npr\-Notify\-Info)
+\item 
+BOOL WINAPI \hyperlink{QbeGina_8c_a64}{Wlx\-Display\-Status\-Message} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context, \hyperlink{QbeGina_8h_a9}{HDESK} h\-Desktop, \hyperlink{QbeGina_8h_a2}{DWORD} dw\-Options, \hyperlink{QbeGina_8h_a8}{PWSTR} p\-Title, \hyperlink{QbeGina_8h_a8}{PWSTR} p\-Message)
+\item 
+BOOL WINAPI \hyperlink{QbeGina_8c_a65}{Wlx\-Get\-Status\-Message} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context, \hyperlink{QbeGina_8h_a2}{DWORD} $\ast$pdw\-Options, \hyperlink{QbeGina_8h_a8}{PWSTR} p\-Message, \hyperlink{QbeGina_8h_a2}{DWORD} dw\-Buffer\-Size)
+\item 
+BOOL WINAPI \hyperlink{QbeGina_8c_a66}{Wlx\-Remove\-Status\-Message} (\hyperlink{QbeGina_8h_a1}{PVOID} p\-Wlx\-Context)
+\end{CompactItemize}
+\subsection*{Variablen}
+\begin{CompactItemize}
+\item 
+\hyperlink{QbeGina_8h_a1}{PVOID} \hyperlink{QbeGina_8c_a9}{g\_\-p\-Winlogon} = NULL
+\item 
+\hyperlink{QbeGina_8h_a2}{DWORD} \hyperlink{QbeGina_8c_a10}{g\_\-dw\-Version} = WLX\_\-VERSION\_\-1\_\-3
+\item 
+\hyperlink{QbeGina_8h_a0}{HANDLE} \hyperlink{QbeGina_8c_a11}{g\_\-h\-Wlx} = NULL
+\item 
+HINSTANCE \hyperlink{QbeGina_8c_a12}{g\_\-h\-Dll} = NULL
+\item 
+HINSTANCE \hyperlink{QbeGina_8c_a13}{g\_\-h\-SASGina\-Dll} = NULL
+\item 
+HCURSOR \hyperlink{QbeGina_8c_a14}{h\-Wait\-Cursor} = NULL
+\begin{CompactList}\small\item\em Sand-Uhr Mauszeiger Handle. \item\end{CompactList}\item 
+HBITMAP \hyperlink{QbeGina_8c_a15}{h\-Logo\-Bitmap} = NULL
+\begin{CompactList}\small\item\em \hyperlink{namespaceQbe}{Qbe} Logo Bild Handle. \item\end{CompactList}\item 
+HBITMAP \hyperlink{QbeGina_8c_a16}{h\-Ctrl\-Alt\-Del\-Bitmap} = NULL
+\begin{CompactList}\small\item\em Dr\"{u}cken Sie Ctrl-Alt-Del-... Bild Handle. \item\end{CompactList}\item 
+\hyperlink{structQbeSAS__HostPolicy}{Qbe\-SAS\_\-Host\-Policy} $\ast$ \hyperlink{QbeGina_8c_a17}{g\_\-Host\-Policy} = NULL
+\begin{CompactList}\small\item\em Unsere Host\-Policy. \item\end{CompactList}\item 
+PFWLXNEGOTIATE \hyperlink{QbeGina_8c_a18}{pf\-Wlx\-Negotiate}
+\begin{CompactList}\small\item\em Pointer zu den Funktionen der echten MSGina.DLL, werden zur Laufzeit importiert. \item\end{CompactList}\item 
+PFWLXINITIALIZE \hyperlink{QbeGina_8c_a19}{pf\-Wlx\-Initialize}
+\item 
+PFWLXDISPLAYSASNOTICE \hyperlink{QbeGina_8c_a20}{pf\-Wlx\-Display\-SASNotice}
+\item 
+PFWLXLOGGEDOUTSAS \hyperlink{QbeGina_8c_a21}{pf\-Wlx\-Logged\-Out\-SAS}
+\item 
+PFWLXACTIVATEUSERSHELL \hyperlink{QbeGina_8c_a22}{pf\-Wlx\-Activate\-User\-Shell}
+\item 
+PFWLXLOGGEDONSAS \hyperlink{QbeGina_8c_a23}{pf\-Wlx\-Logged\-On\-SAS}
+\item 
+PFWLXDISPLAYLOCKEDNOTICE \hyperlink{QbeGina_8c_a24}{pf\-Wlx\-Display\-Locked\-Notice}
+\item 
+PFWLXWKSTALOCKEDSAS \hyperlink{QbeGina_8c_a25}{pf\-Wlx\-Wksta\-Locked\-SAS}
+\item 
+PFWLXISLOCKOK \hyperlink{QbeGina_8c_a26}{pf\-Wlx\-Is\-Lock\-Ok}
+\item 
+PFWLXISLOGOFFOK \hyperlink{QbeGina_8c_a27}{pf\-Wlx\-Is\-Logoff\-Ok}
+\item 
+PFWLXLOGOFF \hyperlink{QbeGina_8c_a28}{pf\-Wlx\-Logoff}
+\item 
+PFWLXSHUTDOWN \hyperlink{QbeGina_8c_a29}{pf\-Wlx\-Shutdown}
+\item 
+PFWLXSTARTAPPLICATION \hyperlink{QbeGina_8c_a30}{pf\-Wlx\-Start\-Application} = NULL
+\item 
+PFWLXSCREENSAVERNOTIFY \hyperlink{QbeGina_8c_a31}{pf\-Wlx\-Screen\-Saver\-Notify} = NULL
+\item 
+PFWLXNETWORKPROVIDERLOAD \hyperlink{QbeGina_8c_a32}{pf\-Wlx\-Network\-Provider\-Load} = NULL
+\item 
+PFWLXDISPLAYSTATUSMESSAGE \hyperlink{QbeGina_8c_a33}{pf\-Wlx\-Display\-Status\-Message} = NULL
+\item 
+PFWLXGETSTATUSMESSAGE \hyperlink{QbeGina_8c_a34}{pf\-Wlx\-Get\-Status\-Message} = NULL
+\item 
+PFWLXREMOVESTATUSMESSAGE \hyperlink{QbeGina_8c_a35}{pf\-Wlx\-Remove\-Status\-Message} = NULL
+\item 
+\hyperlink{QbeGina_8c_a36}{PFNSHELLSHUTDOWNDIALOG} \hyperlink{QbeGina_8c_a37}{pfn\-Shell\-Shutdown\-Dialog} = NULL
+\end{CompactItemize}
+
+
+\subsection{Makro-Dokumentation}
+\hypertarget{QbeGina_8c_a2}{
+\index{QbeGina.c@{Qbe\-Gina.c}!_UNICODE@{\_\-UNICODE}}
+\index{_UNICODE@{\_\-UNICODE}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[\_\-UNICODE]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-UNICODE}}
+\label{QbeGina_8c_a2}
+
+
+
+
+Definiert in Zeile 19 der Datei Qbe\-Gina.c.\hypertarget{QbeGina_8c_a0}{
+\index{QbeGina.c@{Qbe\-Gina.c}!_WIN32_WINNT@{\_\-WIN32\_\-WINNT}}
+\index{_WIN32_WINNT@{\_\-WIN32\_\-WINNT}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[\_\-WIN32\_\-WINNT]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-WIN32\_\-WINNT\ 0x0500}}
+\label{QbeGina_8c_a0}
+
+
+
+
+Definiert in Zeile 15 der Datei Qbe\-Gina.c.\hypertarget{QbeGina_8c_a8}{
+\index{QbeGina.c@{Qbe\-Gina.c}!GINASTUB_VERSION@{GINASTUB\_\-VERSION}}
+\index{GINASTUB_VERSION@{GINASTUB\_\-VERSION}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[GINASTUB\_\-VERSION]{\setlength{\rightskip}{0pt plus 5cm}\#define GINASTUB\_\-VERSION\ (WLX\_\-VERSION\_\-1\_\-3)}}
+\label{QbeGina_8c_a8}
+
+
+Versionsnummer des System-APIs dass von unserer SASGina unterst\"{u}tzt wird. 
+
+
+
+Definiert in Zeile 58 der Datei Qbe\-Gina.c.
+
+Wird benutzt von Wlx\-Negotiate().\hypertarget{QbeGina_8c_a4}{
+\index{QbeGina.c@{Qbe\-Gina.c}!QBEGINA_LOGINACTION_LOGON@{QBEGINA\_\-LOGINACTION\_\-LOGON}}
+\index{QBEGINA_LOGINACTION_LOGON@{QBEGINA\_\-LOGINACTION\_\-LOGON}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[QBEGINA\_\-LOGINACTION\_\-LOGON]{\setlength{\rightskip}{0pt plus 5cm}\#define QBEGINA\_\-LOGINACTION\_\-LOGON\ 1}}
+\label{QbeGina_8c_a4}
+
+
+Der Benutzer wird angemeldet. 
+
+
+
+Definiert in Zeile 46 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Login\-Box\-Proc() und Wlx\-Logged\-Out\-SAS().\hypertarget{QbeGina_8c_a3}{
+\index{QbeGina.c@{Qbe\-Gina.c}!QBEGINA_LOGINACTION_NONE@{QBEGINA\_\-LOGINACTION\_\-NONE}}
+\index{QBEGINA_LOGINACTION_NONE@{QBEGINA\_\-LOGINACTION\_\-NONE}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[QBEGINA\_\-LOGINACTION\_\-NONE]{\setlength{\rightskip}{0pt plus 5cm}\#define QBEGINA\_\-LOGINACTION\_\-NONE\ 0}}
+\label{QbeGina_8c_a3}
+
+
+Nichts ist passiert. 
+
+
+
+Definiert in Zeile 44 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Login\-Box\-Proc() und Wlx\-Logged\-Out\-SAS().\hypertarget{QbeGina_8c_a5}{
+\index{QbeGina.c@{Qbe\-Gina.c}!QBEGINA_LOGINACTION_SHUTDOWN@{QBEGINA\_\-LOGINACTION\_\-SHUTDOWN}}
+\index{QBEGINA_LOGINACTION_SHUTDOWN@{QBEGINA\_\-LOGINACTION\_\-SHUTDOWN}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[QBEGINA\_\-LOGINACTION\_\-SHUTDOWN]{\setlength{\rightskip}{0pt plus 5cm}\#define QBEGINA\_\-LOGINACTION\_\-SHUTDOWN\ 2}}
+\label{QbeGina_8c_a5}
+
+
+\hyperlink{namespaceSystem}{System} wird heruntergefahren. 
+
+
+
+Definiert in Zeile 48 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Login\-Box\-Proc() und Wlx\-Logged\-Out\-SAS().\hypertarget{QbeGina_8c_a6}{
+\index{QbeGina.c@{Qbe\-Gina.c}!QBEGINA_LOGINACTION_WINLOGON@{QBEGINA\_\-LOGINACTION\_\-WINLOGON}}
+\index{QBEGINA_LOGINACTION_WINLOGON@{QBEGINA\_\-LOGINACTION\_\-WINLOGON}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[QBEGINA\_\-LOGINACTION\_\-WINLOGON]{\setlength{\rightskip}{0pt plus 5cm}\#define QBEGINA\_\-LOGINACTION\_\-WINLOGON\ 3}}
+\label{QbeGina_8c_a6}
+
+
+Win\-Logon Event. 
+
+
+
+Definiert in Zeile 50 der Datei Qbe\-Gina.c.
+
+Wird benutzt von Wlx\-Logged\-Out\-SAS().\hypertarget{QbeGina_8c_a7}{
+\index{QbeGina.c@{Qbe\-Gina.c}!REALGINA_PATH@{REALGINA\_\-PATH}}
+\index{REALGINA_PATH@{REALGINA\_\-PATH}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[REALGINA\_\-PATH]{\setlength{\rightskip}{0pt plus 5cm}\#define REALGINA\_\-PATH\ TEXT(\char`\"{}MSGINA.DLL\char`\"{})}}
+\label{QbeGina_8c_a7}
+
+
+Name der Original MSGINA.DLL Da dieser Name fix codiert ist, kann die SASGina nicht mit anderen Gina-Modulen verwendet werden. 
+
+Definiert in Zeile 55 der Datei Qbe\-Gina.c.
+
+Wird benutzt von Wlx\-Negotiate().\hypertarget{QbeGina_8c_a1}{
+\index{QbeGina.c@{Qbe\-Gina.c}!UNICODE@{UNICODE}}
+\index{UNICODE@{UNICODE}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[UNICODE]{\setlength{\rightskip}{0pt plus 5cm}\#define UNICODE}}
+\label{QbeGina_8c_a1}
+
+
+
+
+Definiert in Zeile 18 der Datei Qbe\-Gina.c.
+
+\subsection{Dokumentation der benutzerdefinerten Typen}
+\hypertarget{QbeGina_8c_a36}{
+\index{QbeGina.c@{Qbe\-Gina.c}!PFNSHELLSHUTDOWNDIALOG@{PFNSHELLSHUTDOWNDIALOG}}
+\index{PFNSHELLSHUTDOWNDIALOG@{PFNSHELLSHUTDOWNDIALOG}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[PFNSHELLSHUTDOWNDIALOG]{\setlength{\rightskip}{0pt plus 5cm}typedef \hyperlink{QbeGina_8h_a2}{DWORD}(STDAPICALLTYPE$\ast$ \hyperlink{QbeGina_8c_a36}{PFNSHELLSHUTDOWNDIALOG})(HWND hwnd\-Parent, LPCTSTR sz\-Username, \hyperlink{QbeGina_8h_a2}{DWORD} dw\-Exclude\-Items)}}
+\label{QbeGina_8c_a36}
+
+
+
+
+Definiert in Zeile 102 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize().
+
+\subsection{Dokumentation der Funktionen}
+\hypertarget{QbeGina_8c_a47}{
+\index{QbeGina.c@{Qbe\-Gina.c}!CenterWindow@{CenterWindow}}
+\index{CenterWindow@{CenterWindow}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[CenterWindow]{\setlength{\rightskip}{0pt plus 5cm}VOID Center\-Window (HWND {\em hwnd})}}
+\label{QbeGina_8c_a47}
+
+
+Das Fenster in hwnd am Bildschirm zentrieren. 
+
+
+
+Definiert in Zeile 550 der Datei Qbe\-Gina.c.
+
+Benutzt VOID().
+
+
+
+\footnotesize\begin{verbatim}551 {
+552   RECT    rect;
+553   LONG    dx, dy;
+554   LONG    dxParent, dyParent;
+555   LONG    Style;
+556   GetWindowRect(hwnd, &rect);
+557   dx = rect.right - rect.left;
+558   dy = rect.bottom - rect.top;
+559   Style = GetWindowLong(hwnd, GWL_STYLE);
+560   if ((Style & WS_CHILD) == 0) 
+561     {
+562       dxParent = GetSystemMetrics(SM_CXSCREEN);
+563       dyParent = GetSystemMetrics(SM_CYSCREEN);
+564     } 
+565   else 
+566     {
+567       HWND    hwndParent;
+568       RECT    rectParent;
+569       hwndParent = GetParent(hwnd);
+570       if (hwndParent == NULL)
+571     hwndParent = GetDesktopWindow();
+572       GetWindowRect(hwndParent, &rectParent);
+573       dxParent = rectParent.right - rectParent.left;
+574       dyParent = rectParent.bottom - rectParent.top;
+575     }
+576   rect.left = (dxParent - dx) / 2;
+577   rect.top  = (dyParent - dy) / 3;
+578   SetWindowPos(hwnd, HWND_TOPMOST, rect.left, rect.top, 320, 152, SWP_NOCOPYBITS);  //SWP_NOSIZE
+579   SetForegroundWindow(hwnd);
+580 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a45}{
+\index{QbeGina.c@{Qbe\-Gina.c}!DialogProc_SASNotice@{DialogProc\_\-SASNotice}}
+\index{DialogProc_SASNotice@{DialogProc\_\-SASNotice}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[DialogProc\_\-SASNotice]{\setlength{\rightskip}{0pt plus 5cm}BOOL CALLBACK Dialog\-Proc\_\-SASNotice (HWND {\em hwnd\-Dlg}, UINT {\em u\-Msg}, WPARAM {\em w\-Param}, LPARAM {\em l\-Param})}}
+\label{QbeGina_8c_a45}
+
+
+GUI Handlerfunktion fuer die CTRL-ALT-DEL Dialogbox. 
+
+
+
+Definiert in Zeile 472 der Datei Qbe\-Gina.c.
+
+Benutzt h\-Ctrl\-Alt\-Del\-Bitmap und h\-Logo\-Bitmap.
+
+Wird benutzt von Wlx\-Display\-SASNotice().
+
+
+
+\footnotesize\begin{verbatim}476 {
+477   switch (uMsg)
+478   {
+479   case WM_INITDIALOG:
+480     {
+481       SetWindowText (hwndDlg, TEXT("Qbe Network Logon") );
+482       // fall through
+483     }
+484   case WM_PAINT:
+485     {
+486       HBRUSH hBrush;
+487       HDC hDC;
+488       RECT rect;
+489 
+490       GetClientRect( hwndDlg, &rect );
+491       rect.bottom = 110;
+492       
+493       hDC = GetDC(hwndDlg);
+494       hBrush = CreateSolidBrush(RGB(0x33,0x66,0x99));
+495       FillRect(hDC, &rect, hBrush);
+496 
+497       DeleteObject(hBrush);
+498 
+499       GetClientRect( hwndDlg, &rect );
+500       rect.top = 110;
+501       
+502       hDC = GetDC(hwndDlg);
+503       hBrush = CreateSolidBrush(RGB(0xFF,0xFF,0xFF));
+504       FillRect(hDC, &rect, hBrush);
+505       
+506       DeleteObject(hBrush);
+507       
+508       SendDlgItemMessage(hwndDlg, IDC_LOGO, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hLogoBitmap);
+509       SendDlgItemMessage(hwndDlg, IDC_CTRLALTDEL, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hCtrlAltDelBitmap);
+510 
+511     return FALSE;
+512     }
+513   default:
+514     return FALSE;
+515   }
+516   return FALSE;
+517 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a41}{
+\index{QbeGina.c@{Qbe\-Gina.c}!DllMain@{DllMain}}
+\index{DllMain@{DllMain}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[DllMain]{\setlength{\rightskip}{0pt plus 5cm}BOOL WINAPI Dll\-Main (HINSTANCE {\em h\-Instance}, \hyperlink{QbeGina_8h_a2}{DWORD} {\em dw\-Reason}, LPVOID {\em lp\-Reserved})}}
+\label{QbeGina_8c_a41}
+
+
+Einsprungspunkt der Qbe\-Gina.DLL. 
+
+
+
+Definiert in Zeile 213 der Datei Qbe\-Gina.c.
+
+Benutzt BOOL(), g\_\-h\-SASGina\-Dll, h\-Ctrl\-Alt\-Del\-Bitmap und h\-Logo\-Bitmap.
+
+
+
+\footnotesize\begin{verbatim}214 {
+215   switch(dwReason)
+216   {
+217   case DLL_PROCESS_ATTACH:
+218     // hInstance speichern
+219     g_hSASGinaDll = hInstance;
+220     // Bitmaps laden
+221     hLogoBitmap = LoadBitmap(g_hSASGinaDll,MAKEINTRESOURCE(IDB_SYSLOGIN));
+222     hCtrlAltDelBitmap = LoadBitmap(g_hSASGinaDll,MAKEINTRESOURCE(IDB_CTRLALTDEL));
+223     // Fall through and return true
+224   case DLL_PROCESS_DETACH:
+225   default:
+226     return(TRUE);
+227   }
+228 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a48}{
+\index{QbeGina.c@{Qbe\-Gina.c}!getLocalMachineName@{getLocalMachineName}}
+\index{getLocalMachineName@{getLocalMachineName}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[getLocalMachineName]{\setlength{\rightskip}{0pt plus 5cm}BOOL get\-Local\-Machine\-Name (LPWSTR {\em sz\-Workstation\-Name})}}
+\label{QbeGina_8c_a48}
+
+
+Liefert den Computernamen zur\"{u}ck. 
+
+
+
+Definiert in Zeile 583 der Datei Qbe\-Gina.c.
+
+Benutzt BOOL().
+
+
+
+\footnotesize\begin{verbatim}584 {
+585   NET_API_STATUS netstatus;
+586   LPWKSTA_INFO_100 lpWkstaInfo;
+587 
+588   netstatus = NetApiBufferAllocate(sizeof(LPWKSTA_INFO_100), (LPVOID *) &lpWkstaInfo);
+589   if (netstatus == NERR_Success)
+590   {
+591     NetApiBufferFree(&lpWkstaInfo);
+592   }
+593   
+594   //
+595   // Get local machine name.
+596   //
+597   netstatus = NetWkstaGetInfo(NULL, 100, (LPBYTE *) &lpWkstaInfo);
+598   if (netstatus != NERR_Success)
+599   {
+600     while (netstatus == NERR_WkstaNotStarted)
+601     {
+602       Sleep(1000);
+603       // try again
+604       netstatus = NetWkstaGetInfo(NULL, 100, (LPBYTE *) &lpWkstaInfo);
+605       if (netstatus == NERR_Success)
+606         break;
+607       if (netstatus != NERR_WkstaNotStarted)
+608         return FALSE;
+609     }
+610   }            
+611   
+612   wcscpy(szWorkstationName,lpWkstaInfo->wki100_computername);
+613 
+614   NetApiBufferFree((LPVOID) lpWkstaInfo);
+615   
+616   return TRUE;
+617 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a38}{
+\index{QbeGina.c@{Qbe\-Gina.c}!initPolicy@{initPolicy}}
+\index{initPolicy@{initPolicy}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[initPolicy]{\setlength{\rightskip}{0pt plus 5cm}BOOL init\-Policy ()}}
+\label{QbeGina_8c_a38}
+
+
+Initialisiert das Host\-Policy Objekt. 
+
+
+
+Definiert in Zeile 620 der Datei Qbe\-Gina.c.
+
+Benutzt BOOL(), g\_\-Host\-Policy, get\-Local\-Machine\-Name() und qbe\_\-ldap\_\-getpolicy().
+
+Wird benutzt von NPLogon\-Notify() und Wlx\-Display\-SASNotice().
+
+
+
+\footnotesize\begin{verbatim}621 {
+622   LPWSTR szLocalMachineName = (LPWSTR)malloc(256);
+623   if (g_HostPolicy==NULL)
+624   {
+625     g_HostPolicy = (struct QbeSAS_HostPolicy*)malloc(sizeof(struct QbeSAS_HostPolicy));
+626   } else {
+627     return TRUE;
+628   }
+629 
+630   if (!getLocalMachineName(szLocalMachineName))
+631   {
+632     free(g_HostPolicy);
+633     g_HostPolicy = NULL;
+634     return FALSE;
+635   }
+636 
+637   qbe_ldap_getpolicy(szLocalMachineName,g_HostPolicy);
+638 
+639   return TRUE;
+640 } 
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a42}{
+\index{QbeGina.c@{Qbe\-Gina.c}!MyInitialize@{MyInitialize}}
+\index{MyInitialize@{MyInitialize}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[MyInitialize]{\setlength{\rightskip}{0pt plus 5cm}BOOL My\-Initialize (HINSTANCE {\em h\-Dll}, \hyperlink{QbeGina_8h_a2}{DWORD} {\em dw\-Wlx\-Version})}}
+\label{QbeGina_8c_a42}
+
+
+Hook into the real MSGINA. 
+
+
+
+Definiert in Zeile 231 der Datei Qbe\-Gina.c.
+
+Benutzt BOOL(), g\_\-h\-Dll, h\-Wait\-Cursor, PFNSHELLSHUTDOWNDIALOG, pfn\-Shell\-Shutdown\-Dialog, pf\-Wlx\-Activate\-User\-Shell, pf\-Wlx\-Display\-Locked\-Notice, pf\-Wlx\-Display\-SASNotice, pf\-Wlx\-Display\-Status\-Message, pf\-Wlx\-Get\-Status\-Message, pf\-Wlx\-Initialize, pf\-Wlx\-Is\-Lock\-Ok, pf\-Wlx\-Is\-Logoff\-Ok, pf\-Wlx\-Logged\-On\-SAS, pf\-Wlx\-Logged\-Out\-SAS, pf\-Wlx\-Logoff, pf\-Wlx\-Network\-Provider\-Load, pf\-Wlx\-Remove\-Status\-Message, pf\-Wlx\-Screen\-Saver\-Notify, pf\-Wlx\-Shutdown, pf\-Wlx\-Start\-Application, pf\-Wlx\-Wksta\-Locked\-SAS und Start\-RPCService().
+
+Wird benutzt von Wlx\-Negotiate().
+
+
+
+\footnotesize\begin{verbatim}232 {
+233   g_hDll = hDll;
+234    //
+235    // Get pointers to all of the WLX functions in the real MSGINA.
+236    //
+237    pfWlxInitialize = 
+238       (PFWLXINITIALIZE) GetProcAddress(hDll, "WlxInitialize");
+239    if (!pfWlxInitialize) 
+240    {
+241       return FALSE;
+242    }
+243 
+244    pfWlxDisplaySASNotice =
+245       (PFWLXDISPLAYSASNOTICE) GetProcAddress(hDll, "WlxDisplaySASNotice");
+246    if (!pfWlxDisplaySASNotice) 
+247    {
+248       return FALSE;
+249    }
+250 
+251    pfWlxLoggedOutSAS = 
+252       (PFWLXLOGGEDOUTSAS) GetProcAddress(hDll, "WlxLoggedOutSAS");
+253    if (!pfWlxLoggedOutSAS) 
+254    {
+255       return FALSE;
+256    }
+257 
+258    pfWlxActivateUserShell =
+259       (PFWLXACTIVATEUSERSHELL) GetProcAddress(hDll, "WlxActivateUserShell");
+260    if (!pfWlxActivateUserShell) 
+261    {
+262       return FALSE;
+263    }
+264 
+265    pfWlxLoggedOnSAS =
+266       (PFWLXLOGGEDONSAS) GetProcAddress(hDll, "WlxLoggedOnSAS");
+267    if (!pfWlxLoggedOnSAS) 
+268    {
+269       return FALSE;
+270    }
+271 
+272    pfWlxDisplayLockedNotice =
+273       (PFWLXDISPLAYLOCKEDNOTICE) GetProcAddress(hDll, "WlxDisplayLockedNotice");
+274    if (!pfWlxDisplayLockedNotice) 
+275    {
+276       return FALSE;
+277    }
+278 
+279    pfWlxIsLockOk = 
+280       (PFWLXISLOCKOK) GetProcAddress(hDll, "WlxIsLockOk");
+281    if (!pfWlxIsLockOk) 
+282    {
+283       return FALSE;
+284    }
+285 
+286    pfWlxWkstaLockedSAS =
+287        (PFWLXWKSTALOCKEDSAS) GetProcAddress(hDll, "WlxWkstaLockedSAS");
+288    if (!pfWlxWkstaLockedSAS) 
+289    {
+290       return FALSE;
+291    }
+292 
+293    pfWlxIsLogoffOk = 
+294       (PFWLXISLOGOFFOK) GetProcAddress(hDll, "WlxIsLogoffOk");
+295    if (!pfWlxIsLogoffOk) 
+296    {
+297       return FALSE;
+298    }
+299 
+300    pfWlxLogoff = 
+301       (PFWLXLOGOFF) GetProcAddress(hDll, "WlxLogoff");
+302    if (!pfWlxLogoff) 
+303    {
+304       return FALSE;
+305    }
+306 
+307    pfWlxShutdown = 
+308       (PFWLXSHUTDOWN) GetProcAddress(hDll, "WlxShutdown");
+309    if (!pfWlxShutdown) 
+310    {
+311       return FALSE;
+312    }
+313 
+314    // PFNSHELLSHUTDOWNDIALOG pfnShellShutdownDialog = (PFNSHELLSHUTDOWNDIALOG)GetProcAddress(hGina, "ShellShutdownDialog");
+315    pfnShellShutdownDialog =
+316       (PFNSHELLSHUTDOWNDIALOG) GetProcAddress(hDll, "ShellShutdownDialog");
+317    if (!pfnShellShutdownDialog)
+318    {
+319       return FALSE;
+320    }
+321 
+322    //
+323    // Load functions for version 1.1 as necessary.
+324    //
+325    if (dwWlxVersion > WLX_VERSION_1_0)
+326    {
+327       pfWlxStartApplication = 
+328          (PFWLXSTARTAPPLICATION) GetProcAddress(hDll, "WlxStartApplication");
+329       if (!pfWlxStartApplication)
+330       {
+331          return FALSE;
+332       }
+333 
+334       pfWlxScreenSaverNotify = 
+335          (PFWLXSCREENSAVERNOTIFY) GetProcAddress(hDll, "WlxScreenSaverNotify");
+336       if (!pfWlxScreenSaverNotify)
+337       {
+338          return FALSE;
+339       }
+340    }
+341 
+342    //
+343    // Load functions for version 1.3 as necessary.
+344    //
+345    if (dwWlxVersion > WLX_VERSION_1_2)
+346    {
+347       pfWlxNetworkProviderLoad = 
+348          (PFWLXNETWORKPROVIDERLOAD) 
+349             GetProcAddress(hDll, "WlxNetworkProviderLoad");
+350       if (!pfWlxNetworkProviderLoad)
+351       {
+352          return FALSE;
+353       }
+354 
+355       pfWlxDisplayStatusMessage =
+356          (PFWLXDISPLAYSTATUSMESSAGE) 
+357             GetProcAddress(hDll, "WlxDisplayStatusMessage");
+358       if (!pfWlxDisplayStatusMessage)
+359       {
+360          return FALSE;
+361       }
+362 
+363       pfWlxGetStatusMessage =
+364          (PFWLXGETSTATUSMESSAGE)
+365             GetProcAddress(hDll, "WlxGetStatusMessage");
+366       if (!pfWlxGetStatusMessage)
+367       {
+368          return FALSE;
+369       }
+370 
+371       pfWlxRemoveStatusMessage =
+372          (PFWLXREMOVESTATUSMESSAGE)
+373             GetProcAddress(hDll, "WlxRemoveStatusMessage");
+374       if (!pfWlxRemoveStatusMessage)
+375       {
+376          return FALSE;
+377       }
+378    }
+379    
+380    // Mauszeiger laden
+381    hWaitCursor = LoadCursor(NULL, IDC_WAIT);
+382 
+383    // QbeSvc starten
+384    StartRPCService();
+385    
+386    // OK
+387    return TRUE;
+388 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a49}{
+\index{QbeGina.c@{Qbe\-Gina.c}!MyLoginBoxProc@{MyLoginBoxProc}}
+\index{MyLoginBoxProc@{MyLoginBoxProc}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[MyLoginBoxProc]{\setlength{\rightskip}{0pt plus 5cm}BOOL CALLBACK My\-Login\-Box\-Proc (HWND {\em hwnd\-Dlg}, UINT {\em u\-Msg}, WPARAM {\em w\-Param}, LPARAM {\em l\-Param})}}
+\label{QbeGina_8c_a49}
+
+
+GUI Handlerfunktion fuer die Anmeldedialogbox. 
+
+
+
+Definiert in Zeile 643 der Datei Qbe\-Gina.c.
+
+Benutzt BOOL(), Qbe\-Gina\_\-Account\-Info::b\-Server\-Auth, DWORD, g\_\-Account\-Info, HANDLE, h\-Logo\-Bitmap, h\-Wait\-Cursor, pfn\-Shell\-Shutdown\-Dialog, Qbe\-Gina\_\-Account\-Info::psz\-Password, Qbe\-Gina\_\-Account\-Info::psz\-Username, PWSTR, qbe\_\-ldap\_\-checkuser(), QBEGINA\_\-LOGINACTION\_\-LOGON, QBEGINA\_\-LOGINACTION\_\-NONE und QBEGINA\_\-LOGINACTION\_\-SHUTDOWN.
+
+Wird benutzt von Wlx\-Logged\-Out\-SAS().
+
+
+
+\footnotesize\begin{verbatim}647 {
+648   switch (uMsg)
+649   {
+650   case WM_PAINT:
+651     {
+652       HBRUSH hBrush;
+653       HDC hDC;
+654       RECT rect;
+655 
+656       GetClientRect( hwndDlg, &rect );
+657       rect.bottom = 110;
+658       
+659       hDC = GetDC(hwndDlg);
+660       hBrush = CreateSolidBrush(RGB(0x33,0x66,0x99));
+661       FillRect(hDC, &rect, hBrush);
+662 
+663       DeleteObject(hBrush);
+664 
+665       SendDlgItemMessage(hwndDlg, IDC_LOGO, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hLogoBitmap);
+666 
+667     return FALSE;
+668     }
+669   case WM_INITDIALOG:
+670     {
+671       // Hourglass...
+672       HCURSOR hPrevCursor = SetCursor(hWaitCursor);
+673 
+674       // Bitmap setzen
+675       SendDlgItemMessage(hwndDlg, IDC_LOGO, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hLogoBitmap);
+676       
+677       // Dialog-Titel setzen
+678       SetWindowText (hwndDlg, TEXT("Qbe Network Logon") );
+679 
+680       if (hPrevCursor != NULL)
+681         SetCursor(hPrevCursor);
+682       
+683       // Fokus auf das Username-Feld setzen
+684       SetFocus(GetDlgItem(hwndDlg, IDC_WLXLOGGEDOUTSAS_USERNAME)); 
+685       return FALSE;
+686     }
+687   case WM_COMMAND:
+688     {
+689       switch (LOWORD(wParam))
+690       {
+691         case IDOK:  //ok
+692           if (HIWORD(wParam) == BN_CLICKED)
+693           {
+694             DWORD QbeLdapReturnCode = -1;
+695             HCURSOR hPrevCursor = SetCursor(hWaitCursor);
+696             LPWSTR wszTemp = (PWSTR)malloc(1024);
+697 
+698             // get user + pass
+699             GetDlgItemText(hwndDlg,IDC_WLXLOGGEDOUTSAS_USERNAME,wszTemp,1023);
+700             g_AccountInfo.pszUsername = wcsdup(wszTemp);
+701 
+702             GetDlgItemText(hwndDlg,IDC_WLXLOGGEDOUTSAS_PASSWORD,wszTemp,1023);
+703             g_AccountInfo.pszPassword = wcsdup(wszTemp);
+704 
+705             EnableWindow(GetDlgItem(hwndDlg,IDC_WLXLOGGEDOUTSAS_USERNAME),FALSE);
+706             EnableWindow(GetDlgItem(hwndDlg,IDC_WLXLOGGEDOUTSAS_PASSWORD),FALSE);
+707 
+708             free(wszTemp);
+709 
+710             // check what ldap says
+711             QbeLdapReturnCode = qbe_ldap_checkuser(g_AccountInfo.pszUsername,g_AccountInfo.pszPassword);
+712             if (QbeLdapReturnCode == 0)
+713             {
+714               // successful LDAP login
+715               SetCursor(hPrevCursor);
+716               g_AccountInfo.bServerAuth = TRUE;
+717               EndDialog(hwndDlg, QBEGINA_LOGINACTION_LOGON);
+718               return FALSE;
+719             } else {
+720               // bleh, cant logon to ldap
+721               if (QbeLdapReturnCode == -2)
+722               {
+723                 // cant connect to server!? - let the user try a local login
+724                 if (IDYES == MessageBox(hwndDlg, TEXT("Connection to LDAP server lost. Do you want to try a local login?"), TEXT("Qbe SAS Client"), MB_YESNO|MB_ICONEXCLAMATION))
+725                 {
+726                   HANDLE hUser;
+727                   if(LogonUser(g_AccountInfo.pszUsername,TEXT(""),g_AccountInfo.pszPassword,LOGON32_LOGON_INTERACTIVE,LOGON32_PROVIDER_DEFAULT, &hUser))
+728                   { // local login ok.
+729                     CloseHandle(hUser);
+730                     g_AccountInfo.bServerAuth = FALSE;
+731                     SetCursor(hPrevCursor);
+732                     EndDialog(hwndDlg, QBEGINA_LOGINACTION_LOGON);
+733                     return FALSE;
+734                   } else {
+735                     // fail.
+736                     MessageBox(hwndDlg, TEXT("Local logon failed for your user."), TEXT("Qbe SAS Client"), MB_OK|MB_ICONERROR);
+737                   }
+738                 }
+739               } else {
+740                 MessageBox(hwndDlg, TEXT("Network login failed."), TEXT("Qbe SAS Client"), MB_OK|MB_ICONERROR);
+741 
+742               }
+743             }
+744 
+745             SetDlgItemText(hwndDlg, IDC_WLXLOGGEDOUTSAS_USERNAME,TEXT(""));
+746             SetDlgItemText(hwndDlg, IDC_WLXLOGGEDOUTSAS_PASSWORD,TEXT(""));
+747             SetFocus(GetDlgItem(hwndDlg, IDC_WLXLOGGEDOUTSAS_USERNAME));
+748             SetCursor(hPrevCursor);
+749             EndDialog(hwndDlg, QBEGINA_LOGINACTION_NONE);
+750             return FALSE;
+751           }
+752           break;
+753         case IDCANCEL: //cancel
+754           if (HIWORD(wParam) == BN_CLICKED)
+755           {
+756             SetDlgItemText(hwndDlg, IDC_WLXLOGGEDOUTSAS_USERNAME,TEXT(""));
+757             SetDlgItemText(hwndDlg, IDC_WLXLOGGEDOUTSAS_PASSWORD,TEXT(""));
+758             SetFocus(GetDlgItem(hwndDlg, IDC_WLXLOGGEDOUTSAS_USERNAME));
+759             EndDialog(hwndDlg, QBEGINA_LOGINACTION_NONE);   //LOGIN_CANCELED
+760             return FALSE;
+761           }
+762           break;
+763         case IDC_SHUTDOWN:
+764         {
+765           TCHAR szUsername[500];
+766           szUsername[0] = TEXT('\0');
+767           
+768           switch (pfnShellShutdownDialog(NULL, szUsername, 1))
+769           {
+770           case 2:
+771             EndDialog(hwndDlg, QBEGINA_LOGINACTION_SHUTDOWN);
+772             break;
+773           case 4:
+774             EndDialog(hwndDlg, WLX_SAS_ACTION_SHUTDOWN_REBOOT);
+775             break;
+776           case 16:
+777             EndDialog(hwndDlg, WLX_SAS_ACTION_SHUTDOWN_SLEEP);
+778             break;
+779           case 64:
+780             EndDialog(hwndDlg, WLX_SAS_ACTION_SHUTDOWN_HIBERNATE);
+781             break;
+782           case 0:
+783           case 1:
+784             default:
+785             break;
+786           }
+787                 
+788           return FALSE;
+789         }
+790     default:
+791       return FALSE;
+792     }
+793     }
+794   default:
+795     return FALSE;
+796   }
+797   return FALSE;
+798 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a50}{
+\index{QbeGina.c@{Qbe\-Gina.c}!qbe_sam_createuser@{qbe\_\-sam\_\-createuser}}
+\index{qbe_sam_createuser@{qbe\_\-sam\_\-createuser}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[qbe\_\-sam\_\-createuser]{\setlength{\rightskip}{0pt plus 5cm}int qbe\_\-sam\_\-createuser (LPWSTR {\em sz\-Username}, LPWSTR {\em sz\-Password})}}
+\label{QbeGina_8c_a50}
+
+
+
+
+Definiert in Zeile 801 der Datei Qbe\-Gina.c.
+
+Benutzt BOOL(), Qbe\-SAS\_\-Host\-Policy::Dynamic\-User\-Group, g\_\-Host\-Policy, Qbe\-SAS\_\-Host\-Policy::Home\-Drive, Qbe\-SAS\_\-Host\-Policy::Home\-Drive\-Dir und PSID.
+
+Wird benutzt von Wlx\-Logged\-Out\-SAS().
+
+
+
+\footnotesize\begin{verbatim}802 {
+803   // for the user object
+804   USER_INFO_2 ui;
+805   USER_INFO_1006 ui1006;
+806   USER_INFO_1053 ui1053;
+807   NET_API_STATUS nStatus;
+808   WCHAR szHomeDirectory[512];
+809 
+810   // user->admin group
+811   SID_IDENTIFIER_AUTHORITY sidNTAuthority = SECURITY_NT_AUTHORITY;
+812   PSID pSidAdmins = NULL;
+813   
+814   WCHAR szAdminGroupName[UNLEN+1];
+815   ULONG ulAdminGroupName = UNLEN+1;
+816   WCHAR szLocalDomainName[UNLEN+1];
+817   ULONG ulLocalDomainName = UNLEN+1;
+818   
+819   SID_NAME_USE sidNameUse;
+820   LOCALGROUP_MEMBERS_INFO_3 localgroupMemberInfo;
+821   
+822   int rc = 0;   // we pretend we are ok :>
+823   
+824   ui.usri2_name = szUsername;
+825   ui.usri2_password = szPassword;
+826   ui.usri2_home_dir = NULL; //szHomeDirectory;
+827   ui.usri2_comment = TEXT("Qbe SAS User");
+828   ui.usri2_priv = USER_PRIV_USER;
+829   ui.usri2_flags = UF_PASSWD_CANT_CHANGE|UF_DONT_EXPIRE_PASSWD|UF_NORMAL_ACCOUNT;
+830   ui.usri2_logon_server = TEXT("qbe-auth");
+831 
+832   ui.usri2_logon_hours = NULL;
+833   ui.usri2_country_code = 0;
+834   ui.usri2_code_page = 0;
+835   ui.usri2_acct_expires = TIMEQ_FOREVER;
+836   ui.usri2_max_storage = USER_MAXSTORAGE_UNLIMITED;
+837   ui.usri2_auth_flags = 0;
+838   ui.usri2_workstations = NULL;
+839   ui.usri2_full_name = NULL;
+840   ui.usri2_usr_comment = NULL;
+841   ui.usri2_parms = NULL;
+842   ui.usri2_script_path = NULL;
+843   
+844   nStatus = NetUserAdd( NULL, 1, (LPBYTE)&ui, NULL );
+845   if ( (nStatus == NERR_UserExists) && (wcscmp(szUsername,TEXT("Administrator")) != 0) )
+846   {
+847     // delete user (if not teh admin) and then recreate it
+848     NetUserDel(NULL, szUsername);
+849     nStatus = NetUserAdd(NULL, 1, (LPBYTE)&ui, NULL);
+850     if (nStatus == NERR_UserExists)
+851       rc = -2;  // cant create user
+852   }
+853 
+854 
+855   if (g_HostPolicy->HomeDriveDir != NULL)
+856   {
+857     swprintf(szHomeDirectory, g_HostPolicy->HomeDriveDir, szUsername);
+858   } else {
+859     // some defaults
+860     swprintf(szHomeDirectory, TEXT("\\\\qbe-auth\\%s"), szUsername);
+861   }
+862   ui1006.usri1006_home_dir = szHomeDirectory;
+863   NetUserSetInfo( NULL, szUsername, 1006, (LPBYTE)&ui1006, NULL);
+864 
+865   if (g_HostPolicy->HomeDrive != NULL)
+866   {
+867     ui1053.usri1053_home_dir_drive = g_HostPolicy->HomeDrive;
+868   } else {
+869     // some defaults
+870     ui1053.usri1053_home_dir_drive = TEXT("Q");
+871   }
+872   NetUserSetInfo( NULL, szUsername, 1053, (LPBYTE)&ui1053, NULL);
+873 
+874   if (g_HostPolicy->DynamicUserGroup != NULL)
+875   {
+876     // group mappings
+877     BOOL bGotGroupName = FALSE;
+878     localgroupMemberInfo.lgrmi3_domainandname = szUsername;
+879     if ((!bGotGroupName) && (wcscmp(g_HostPolicy->DynamicUserGroup,TEXT("BUILTIN\\Administrators")) == 0))
+880     {
+881       AllocateAndInitializeSid(&sidNTAuthority, 2, SECURITY_BUILTIN_DOMAIN_RID, DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0, 0, &pSidAdmins);
+882       LookupAccountSidW(NULL, pSidAdmins, szAdminGroupName, &ulAdminGroupName, szLocalDomainName, &ulLocalDomainName, &sidNameUse);
+883       bGotGroupName = TRUE;
+884     }
+885     if ((!bGotGroupName) && (wcscmp(g_HostPolicy->DynamicUserGroup,TEXT("BUILTIN\\Power Users")) == 0))
+886     {
+887       AllocateAndInitializeSid(&sidNTAuthority, 2, SECURITY_BUILTIN_DOMAIN_RID, DOMAIN_ALIAS_RID_POWER_USERS, 0, 0, 0, 0, 0, 0, &pSidAdmins);
+888       LookupAccountSidW(NULL, pSidAdmins, szAdminGroupName, &ulAdminGroupName, szLocalDomainName, &ulLocalDomainName, &sidNameUse);
+889       bGotGroupName = TRUE;
+890     }
+891     if ((!bGotGroupName) && (wcscmp(g_HostPolicy->DynamicUserGroup,TEXT("BUILTIN\\Users")) == 0))
+892     {
+893       AllocateAndInitializeSid(&sidNTAuthority, 2, SECURITY_BUILTIN_DOMAIN_RID, DOMAIN_ALIAS_RID_USERS, 0, 0, 0, 0, 0, 0, &pSidAdmins);
+894       LookupAccountSidW(NULL, pSidAdmins, szAdminGroupName, &ulAdminGroupName, szLocalDomainName, &ulLocalDomainName, &sidNameUse);
+895       bGotGroupName = TRUE;
+896     }
+897     if ((!bGotGroupName) && (wcscmp(g_HostPolicy->DynamicUserGroup,TEXT("BUILTIN\\Guests")) == 0))
+898     {
+899       AllocateAndInitializeSid(&sidNTAuthority, 2, SECURITY_BUILTIN_DOMAIN_RID, DOMAIN_ALIAS_RID_GUESTS, 0, 0, 0, 0, 0, 0, &pSidAdmins);
+900       LookupAccountSidW(NULL, pSidAdmins, szAdminGroupName, &ulAdminGroupName, szLocalDomainName, &ulLocalDomainName, &sidNameUse);
+901       bGotGroupName = TRUE;
+902     }
+903     if (!bGotGroupName)
+904     {
+905       wcscpy(szAdminGroupName, g_HostPolicy->DynamicUserGroup);
+906     }
+907 
+908     nStatus = NetLocalGroupAddMembers(NULL, szAdminGroupName, 3, (LPBYTE)&localgroupMemberInfo, 1);
+909     if (nStatus != NERR_Success)
+910     {
+911       MessageBox(NULL, TEXT("Your user object could not be added to the predefined group. You may not have the required rights to do your work.\nPlease contact your system administrator."),TEXT("Qbe SAS Client"),MB_OK|MB_ICONEXCLAMATION);
+912     }
+913 
+914     nStatus = NetLocalGroupAddMembers(NULL, TEXT("Qbe SAS Users"), 3, (LPBYTE)&localgroupMemberInfo, 1);
+915   }
+916   
+917   return rc;
+918 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a40}{
+\index{QbeGina.c@{Qbe\-Gina.c}!StartRPCService@{StartRPCService}}
+\index{StartRPCService@{StartRPCService}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[StartRPCService]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{QbeGina_8h_a2}{DWORD} Start\-RPCService ()}}
+\label{QbeGina_8c_a40}
+
+
+Funktion um den Qbe\-Svc zu starten. 
+
+
+
+Definiert in Zeile 145 der Datei Qbe\-Gina.c.
+
+Benutzt DWORD und Write\-Log\-File().
+
+Wird benutzt von My\-Initialize().
+
+
+
+\footnotesize\begin{verbatim}146 { 
+147   DWORD dwStatus;
+148 
+149   SC_HANDLE schSCManager;
+150   SC_HANDLE schService;
+151   
+152   schSCManager = OpenSCManager(
+153     NULL,
+154     NULL,
+155     SC_MANAGER_ALL_ACCESS);
+156 
+157   WriteLogFile(TEXT("starting qbeservice\r\n"));
+158 
+159   schService = OpenService( 
+160     schSCManager,          // SCM database 
+161         TEXT("qbesvc"),              // service name
+162         SERVICE_ALL_ACCESS); 
+163  
+164   if (schService == NULL) 
+165   { 
+166     dwStatus = FALSE;
+167     goto closeservice;
+168   }
+169  
+170   // Konfiguration vom QbeSvc abaendern, so dass dieser
+171   // immer automatisch gestartet wird
+172   ChangeServiceConfig (
+173       schService,
+174       SERVICE_NO_CHANGE,
+175       SERVICE_AUTO_START,
+176       SERVICE_NO_CHANGE,
+177       NULL,
+178       NULL,
+179       NULL,
+180       NULL,
+181       NULL,
+182       NULL,
+183       NULL);
+184 
+185   // QbeSvc starten
+186   dwStatus = StartService(
+187             schService,  // handle to service 
+188             0,           // number of arguments 
+189             NULL);      // no arguments 
+190 
+191   if (!dwStatus)
+192   { // Fehler!?
+193     dwStatus = GetLastError();
+194     if (dwStatus == ERROR_SERVICE_ALREADY_RUNNING)
+195     { // QbeSvc laeuft bereits, das ist fuer uns kein Fehler
+196       dwStatus = TRUE;
+197     } else {
+198       dwStatus = FALSE;
+199     }
+200 
+201   } else {
+202     dwStatus = TRUE;
+203     SleepEx(500,TRUE);
+204   }
+205 
+206 closeservice:
+207   CloseServiceHandle(schService); 
+208   CloseServiceHandle(schSCManager);
+209   return dwStatus;
+210 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a58}{
+\index{QbeGina.c@{Qbe\-Gina.c}!sys_util_deletefolder@{sys\_\-util\_\-deletefolder}}
+\index{sys_util_deletefolder@{sys\_\-util\_\-deletefolder}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[sys\_\-util\_\-deletefolder]{\setlength{\rightskip}{0pt plus 5cm}void sys\_\-util\_\-deletefolder (LPCWSTR {\em directory})}}
+\label{QbeGina_8c_a58}
+
+
+Loescht den Ordner directory und alle Unterordner und Dateien. 
+
+
+
+Definiert in Zeile 5 der Datei fileutil.c.
+
+Benutzt HANDLE.
+
+Wird benutzt von Wlx\-Logoff().
+
+
+
+\footnotesize\begin{verbatim}6 {
+7   WIN32_FIND_DATA FileInformation;
+8   HANDLE hFile;
+9   WCHAR fullPath[2048];
+10 
+11   // Alle Dateien und Ordner suchen
+12   wcscpy(fullPath,directory);
+13   wcscat(fullPath,TEXT("\\*.*"));
+14 
+15   hFile = FindFirstFile(fullPath,&FileInformation);
+16   if(hFile != INVALID_HANDLE_VALUE)
+17   {
+18     do
+19     {
+20       if((((FileInformation.cFileName[0]) == '.') &&
+21         ((FileInformation.cFileName[1]) != '.') &&
+22         /*Changed NULL to '\0' produced warning on indirection levels*/
+23         ((FileInformation.cFileName[1]) != '\0'))
+24          || ((FileInformation.cFileName[0]) != '.'))
+25       {
+26         wcscpy(fullPath,directory);
+27         wcscat(fullPath,TEXT("\\"));
+28         wcscat(fullPath,FileInformation.cFileName);
+29 
+30         if(FileInformation.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+31         {
+32           // Verzeichnis gefunden, dieses mit uns selbst loeschen.
+33           sys_util_deletefolder((LPCTSTR)fullPath);
+34         }
+35         else
+36         {
+37           // Dateiattribute ruecksetzen
+38           if(SetFileAttributes(fullPath,FILE_ATTRIBUTE_NORMAL) == FALSE)
+39             return;
+40 
+41           // Datei loeschen
+42           if(DeleteFile(fullPath) == FALSE)
+43             return;
+44 
+45         }
+46       }
+47     } while(FindNextFile(hFile,&FileInformation) == TRUE);
+48 
+49     FindClose(hFile);
+50 
+51     if(SetFileAttributes(directory,FILE_ATTRIBUTE_NORMAL) == FALSE)
+52       return;
+53 
+54     // Das Hauptverzeichnis loeschen
+55     if(RemoveDirectory(directory) == FALSE)
+56       return;
+57   }
+58 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a52}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxActivateUserShell@{WlxActivateUserShell}}
+\index{WlxActivateUserShell@{WlxActivateUserShell}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxActivateUserShell]{\setlength{\rightskip}{0pt plus 5cm}BOOL WINAPI Wlx\-Activate\-User\-Shell (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context}, \hyperlink{QbeGina_8h_a8}{PWSTR} {\em psz\-Desktop\-Name}, \hyperlink{QbeGina_8h_a8}{PWSTR} {\em psz\-Mpr\-Logon\-Script}, \hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Environment})}}
+\label{QbeGina_8c_a52}
+
+
+
+
+Definiert in Zeile 1078 der Datei Qbe\-Gina.c.
+
+Benutzt pf\-Wlx\-Activate\-User\-Shell.
+
+
+
+\footnotesize\begin{verbatim}1082 {
+1083    return pfWlxActivateUserShell(pWlxContext,
+1084                                  pszDesktopName,
+1085                                  pszMprLogonScript,
+1086                                  pEnvironment);
+1087 
+1088 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a54}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxDisplayLockedNotice@{WlxDisplayLockedNotice}}
+\index{WlxDisplayLockedNotice@{WlxDisplayLockedNotice}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxDisplayLockedNotice]{\setlength{\rightskip}{0pt plus 5cm}VOID WINAPI Wlx\-Display\-Locked\-Notice (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context})}}
+\label{QbeGina_8c_a54}
+
+
+
+
+Definiert in Zeile 1104 der Datei Qbe\-Gina.c.
+
+Benutzt pf\-Wlx\-Display\-Locked\-Notice.
+
+
+
+\footnotesize\begin{verbatim}1105 {
+1106    pfWlxDisplayLockedNotice(pWlxContext);
+1107 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a46}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxDisplaySASNotice@{WlxDisplaySASNotice}}
+\index{WlxDisplaySASNotice@{WlxDisplaySASNotice}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxDisplaySASNotice]{\setlength{\rightskip}{0pt plus 5cm}VOID WINAPI Wlx\-Display\-SASNotice (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context})}}
+\label{QbeGina_8c_a46}
+
+
+
+
+Definiert in Zeile 522 der Datei Qbe\-Gina.c.
+
+Benutzt Dialog\-Proc\_\-SASNotice(), g\_\-dw\-Version, g\_\-h\-SASGina\-Dll, g\_\-h\-Wlx, g\_\-p\-Winlogon und init\-Policy().
+
+
+
+\footnotesize\begin{verbatim}523 {
+524   initPolicy();
+525   switch (g_dwVersion)  // check winlogon version, 1.2 and smaller probably crash
+526   {
+527   case WLX_VERSION_1_3:
+528     { 
+529     ((PWLX_DISPATCH_VERSION_1_3) g_pWinlogon)->WlxDialogBox( g_hWlx,
+530       g_hSASGinaDll,
+531       MAKEINTRESOURCEW(IDD_SAS_CTRLALTDEL),
+532       NULL,
+533       DialogProc_SASNotice);
+534     break;
+535     }
+536   case WLX_VERSION_1_4:
+537   default:
+538     { 
+539     ((PWLX_DISPATCH_VERSION_1_4) g_pWinlogon)->WlxDialogBox( g_hWlx,
+540       g_hSASGinaDll,
+541       MAKEINTRESOURCEW(IDD_SAS_CTRLALTDEL),
+542       NULL,
+543       DialogProc_SASNotice);
+544     break;
+545     }
+546   }
+547 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a64}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxDisplayStatusMessage@{WlxDisplayStatusMessage}}
+\index{WlxDisplayStatusMessage@{WlxDisplayStatusMessage}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxDisplayStatusMessage]{\setlength{\rightskip}{0pt plus 5cm}BOOL WINAPI Wlx\-Display\-Status\-Message (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context}, \hyperlink{QbeGina_8h_a9}{HDESK} {\em h\-Desktop}, \hyperlink{QbeGina_8h_a2}{DWORD} {\em dw\-Options}, \hyperlink{QbeGina_8h_a8}{PWSTR} {\em p\-Title}, \hyperlink{QbeGina_8h_a8}{PWSTR} {\em p\-Message})}}
+\label{QbeGina_8c_a64}
+
+
+
+
+Definiert in Zeile 1233 der Datei Qbe\-Gina.c.
+
+Benutzt pf\-Wlx\-Display\-Status\-Message.
+
+
+
+\footnotesize\begin{verbatim}1238 {
+1239 
+1240    return pfWlxDisplayStatusMessage(pWlxContext,
+1241                                     hDesktop,
+1242                                     dwOptions,
+1243                                     pTitle,
+1244                                     pMessage);
+1245 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a65}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxGetStatusMessage@{WlxGetStatusMessage}}
+\index{WlxGetStatusMessage@{WlxGetStatusMessage}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxGetStatusMessage]{\setlength{\rightskip}{0pt plus 5cm}BOOL WINAPI Wlx\-Get\-Status\-Message (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context}, \hyperlink{QbeGina_8h_a2}{DWORD} $\ast$ {\em pdw\-Options}, \hyperlink{QbeGina_8h_a8}{PWSTR} {\em p\-Message}, \hyperlink{QbeGina_8h_a2}{DWORD} {\em dw\-Buffer\-Size})}}
+\label{QbeGina_8c_a65}
+
+
+
+
+Definiert in Zeile 1250 der Datei Qbe\-Gina.c.
+
+Benutzt pf\-Wlx\-Get\-Status\-Message.
+
+
+
+\footnotesize\begin{verbatim}1254 {
+1255 
+1256    return pfWlxGetStatusMessage(pWlxContext,
+1257                                 pdwOptions,
+1258                                 pMessage,
+1259                                 dwBufferSize);
+1260 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a44}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxInitialize@{WlxInitialize}}
+\index{WlxInitialize@{WlxInitialize}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxInitialize]{\setlength{\rightskip}{0pt plus 5cm}BOOL WINAPI Wlx\-Initialize (LPWSTR {\em lp\-Winsta}, \hyperlink{QbeGina_8h_a0}{HANDLE} {\em h\-Wlx}, \hyperlink{QbeGina_8h_a1}{PVOID} {\em pv\-Reserved}, \hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Winlogon\-Functions}, \hyperlink{QbeGina_8h_a1}{PVOID} $\ast$ {\em p\-Wlx\-Context})}}
+\label{QbeGina_8c_a44}
+
+
+
+
+Definiert in Zeile 441 der Datei Qbe\-Gina.c.
+
+Benutzt g\_\-h\-Wlx, g\_\-p\-Winlogon und pf\-Wlx\-Initialize.
+
+
+
+\footnotesize\begin{verbatim}446 {
+447    //
+448    // Save pointer to dispatch table.
+449    // 
+450    // Note that g_pWinlogon will need to be properly casted to the 
+451    // appropriate version when used to call function in the dispatch 
+452    // table.
+453    //
+454    // For example, assuming we are at WLX_VERSION_1_3, we would call
+455    // WlxSasNotify() as follows:
+456    //
+457    // ((PWLX_DISPATCH_VERSION_1_3) g_pWinlogon)->WlxSasNotify(hWlx, MY_SAS);
+458    //
+459    g_pWinlogon = pWinlogonFunctions;
+460    g_hWlx = hWlx;
+461 
+462    return pfWlxInitialize(lpWinsta,
+463                           hWlx,
+464                           pvReserved,
+465                           pWinlogonFunctions,
+466                           pWlxContext);
+467 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a55}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxIsLockOk@{WlxIsLockOk}}
+\index{WlxIsLockOk@{WlxIsLockOk}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxIsLockOk]{\setlength{\rightskip}{0pt plus 5cm}BOOL WINAPI Wlx\-Is\-Lock\-Ok (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context})}}
+\label{QbeGina_8c_a55}
+
+
+
+
+Definiert in Zeile 1112 der Datei Qbe\-Gina.c.
+
+Benutzt pf\-Wlx\-Is\-Lock\-Ok.
+
+
+
+\footnotesize\begin{verbatim}1113 {
+1114    return pfWlxIsLockOk(pWlxContext);
+1115 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a57}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxIsLogoffOk@{WlxIsLogoffOk}}
+\index{WlxIsLogoffOk@{WlxIsLogoffOk}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxIsLogoffOk]{\setlength{\rightskip}{0pt plus 5cm}BOOL WINAPI Wlx\-Is\-Logoff\-Ok (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context})}}
+\label{QbeGina_8c_a57}
+
+
+
+
+Definiert in Zeile 1129 der Datei Qbe\-Gina.c.
+
+Benutzt pf\-Wlx\-Is\-Logoff\-Ok.
+
+
+
+\footnotesize\begin{verbatim}1130 {
+1131    return pfWlxIsLogoffOk(pWlxContext);
+1132 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a53}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxLoggedOnSAS@{WlxLoggedOnSAS}}
+\index{WlxLoggedOnSAS@{WlxLoggedOnSAS}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxLoggedOnSAS]{\setlength{\rightskip}{0pt plus 5cm}int WINAPI Wlx\-Logged\-On\-SAS (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context}, \hyperlink{QbeGina_8h_a2}{DWORD} {\em dw\-Sas\-Type}, \hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Reserved})}}
+\label{QbeGina_8c_a53}
+
+
+
+
+Definiert in Zeile 1092 der Datei Qbe\-Gina.c.
+
+Benutzt pf\-Wlx\-Logged\-On\-SAS.
+
+
+
+\footnotesize\begin{verbatim}1095 {
+1096    return pfWlxLoggedOnSAS(pWlxContext, 
+1097                            dwSasType, 
+1098                            pReserved);
+1099 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a51}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxLoggedOutSAS@{WlxLoggedOutSAS}}
+\index{WlxLoggedOutSAS@{WlxLoggedOutSAS}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxLoggedOutSAS]{\setlength{\rightskip}{0pt plus 5cm}int WINAPI Wlx\-Logged\-Out\-SAS (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context}, \hyperlink{QbeGina_8h_a2}{DWORD} {\em dw\-Sas\-Type}, \hyperlink{QbeGina_8h_a3}{PLUID} {\em p\-Authentication\-Id}, \hyperlink{QbeGina_8h_a4}{PSID} {\em p\-Logon\-Sid}, \hyperlink{QbeGina_8h_a5}{PDWORD} {\em pdw\-Options}, \hyperlink{QbeGina_8h_a6}{PHANDLE} {\em ph\-Token}, \hyperlink{QbeGina_8h_a7}{PWLX\_\-MPR\_\-NOTIFY\_\-INFO} {\em p\-Mpr\-Notify\-Info}, \hyperlink{QbeGina_8h_a1}{PVOID} $\ast$ {\em p\-Profile})}}
+\label{QbeGina_8c_a51}
+
+
+
+
+Definiert in Zeile 922 der Datei Qbe\-Gina.c.
+
+Benutzt Qbe\-Gina\_\-Account\-Info::b\-Created\-Local\-User, Qbe\-SAS\_\-Host\-Policy::enable\-Dynamic\-User, g\_\-Account\-Info, g\_\-dw\-Version, g\_\-Host\-Policy, g\_\-h\-SASGina\-Dll, g\_\-h\-Wlx, g\_\-p\-Winlogon, My\-Login\-Box\-Proc(), pf\-Wlx\-Logged\-Out\-SAS, Qbe\-Gina\_\-Account\-Info::psz\-Password, Qbe\-Gina\_\-Account\-Info::psz\-Username, qbe\_\-qbesvc\_\-login(), qbe\_\-registry\_\-autologonuser(), qbe\_\-registry\_\-clearautologon(), qbe\_\-sam\_\-createuser(), QBEGINA\_\-LOGINACTION\_\-LOGON, QBEGINA\_\-LOGINACTION\_\-NONE, QBEGINA\_\-LOGINACTION\_\-SHUTDOWN und QBEGINA\_\-LOGINACTION\_\-WINLOGON.
+
+
+
+\footnotesize\begin{verbatim}930 {
+931    int iRet;
+932 
+933    if (dwSasType == WLX_SAS_TYPE_CTRL_ALT_DEL)
+934    {
+935   if (!phToken)
+936     return WLX_SAS_ACTION_NONE;
+937 
+938   switch (g_dwVersion)  //check winlogon version
+939   {
+940   case WLX_VERSION_1_3:
+941     { 
+942     iRet = ((PWLX_DISPATCH_VERSION_1_3) g_pWinlogon)->WlxDialogBox( g_hWlx,
+943       g_hSASGinaDll,
+944       MAKEINTRESOURCEW(IDD_SAS_LOGIN),
+945       NULL,
+946       MyLoginBoxProc);
+947     break;
+948     }
+949   case WLX_VERSION_1_4:
+950   default:
+951     { 
+952     iRet = ((PWLX_DISPATCH_VERSION_1_4) g_pWinlogon)->WlxDialogBox( g_hWlx,
+953       g_hSASGinaDll,
+954       MAKEINTRESOURCEW(IDD_SAS_LOGIN),
+955       NULL,
+956       MyLoginBoxProc);
+957     break;
+958     }
+959   }
+960   
+961 
+962   switch (iRet)
+963   {
+964   case QBEGINA_LOGINACTION_NONE:    // dialog says, user pressed cancel or user/pass were wrong
+965     iRet = WLX_SAS_ACTION_NONE;
+966     break;
+967   case QBEGINA_LOGINACTION_LOGON:   // dialog says, user pressed ok and user/pass were ok
+968     // set auto admin logon
+969     qbe_registry_autologonuser(g_AccountInfo.pszUsername, g_AccountInfo.pszPassword);
+970     
+971     g_AccountInfo.bCreatedLocalUser = FALSE;
+972     if (g_HostPolicy->enableDynamicUser)
+973     {
+974       if (qbe_sam_createuser(g_AccountInfo.pszUsername, g_AccountInfo.pszPassword) == 0)
+975         g_AccountInfo.bCreatedLocalUser = TRUE;
+976     }
+977     
+978     iRet = pfWlxLoggedOutSAS(pWlxContext,
+979       dwSasType,
+980       pAuthenticationId,
+981       pLogonSid,
+982       pdwOptions,
+983       phToken,
+984       pMprNotifyInfo,
+985       pProfile
+986       );
+987 
+988     // probably DANGEROUS ?
+989     if (pProfile != NULL)
+990       HeapFree(GetProcessHeap(), 0, pProfile);
+991   
+992     {
+993       PWLX_PROFILE_V1_0 pWlxProfile = NULL;
+994       pWlxProfile = (PWLX_PROFILE_V1_0)HeapAlloc(GetProcessHeap(), 0, sizeof(WLX_PROFILE_V1_0) );
+995       if (pWlxProfile != NULL)
+996       { 
+997         LPWSTR szProfilePath = (LPWSTR)malloc(512);
+998         swprintf(szProfilePath,L"\\\\qbe-auth\\%s\\profile",g_AccountInfo.pszUsername);
+999         pWlxProfile->dwType = WLX_PROFILE_TYPE_V1_0;
+1000         pWlxProfile->pszProfile = szProfilePath;
+1001         *pProfile = pWlxProfile;
+1002         _wmkdir(szProfilePath);
+1003       } 
+1004     }
+1005     
+1006     // reset auth
+1007     qbe_registry_clearautologon();
+1008 
+1009     // tell QbeSvc that a new user has logged in
+1010     qbe_qbesvc_login(g_AccountInfo.pszUsername, g_AccountInfo.pszPassword);
+1011 
+1012     /* Map the network drive specified in policy object.
+1013      * The bad thing is just, that we are too far away from the user session,
+1014      * and it just doesnt work here. QbeNP does this now :/
+1015      */
+1016     
+1017     break;
+1018   case QBEGINA_LOGINACTION_SHUTDOWN:  // dialog says, shutdown the box
+1019     iRet = WLX_SAS_ACTION_SHUTDOWN_POWER_OFF;
+1020     break;
+1021   case WLX_SAS_ACTION_SHUTDOWN:
+1022     iRet = WLX_SAS_ACTION_SHUTDOWN_POWER_OFF;
+1023     break;
+1024   case WLX_SAS_ACTION_SHUTDOWN_POWER_OFF:
+1025     iRet = WLX_SAS_ACTION_SHUTDOWN_POWER_OFF;
+1026     break;
+1027   case WLX_SAS_ACTION_SHUTDOWN_REBOOT:
+1028     iRet = WLX_SAS_ACTION_SHUTDOWN_REBOOT;
+1029     break;
+1030   case WLX_SAS_ACTION_SHUTDOWN_SLEEP:
+1031     iRet = WLX_SAS_ACTION_SHUTDOWN_SLEEP;
+1032     break;
+1033   case WLX_SAS_ACTION_SHUTDOWN_SLEEP2:
+1034     iRet = WLX_SAS_ACTION_SHUTDOWN_SLEEP2;
+1035     break;
+1036   case WLX_SAS_ACTION_SHUTDOWN_HIBERNATE:
+1037     iRet = WLX_SAS_ACTION_SHUTDOWN_HIBERNATE;
+1038     break;
+1039   case WLX_DLG_INPUT_TIMEOUT:   // Winlogon says, the user doesnt want to type...
+1040     iRet = WLX_SAS_ACTION_NONE;
+1041     break;
+1042   case WLX_DLG_SAS:     // a Winlogon SAS event occoured
+1043   case QBEGINA_LOGINACTION_WINLOGON:  // or user pressed "I want the f*cking windows login instead of you"
+1044     iRet = pfWlxLoggedOutSAS(pWlxContext,
+1045       dwSasType,
+1046       pAuthenticationId,
+1047       pLogonSid,
+1048       pdwOptions,
+1049       phToken,
+1050       pMprNotifyInfo,
+1051       pProfile
+1052       );
+1053     break;
+1054   default:
+1055     iRet = WLX_SAS_ACTION_NONE;
+1056     break;
+1057   }
+1058           
+1059    } else {
+1060 
+1061   iRet = pfWlxLoggedOutSAS(pWlxContext,
+1062     dwSasType,
+1063     pAuthenticationId,
+1064     pLogonSid,
+1065     pdwOptions,
+1066     phToken,
+1067     pMprNotifyInfo,
+1068     pProfile
+1069     );
+1070 
+1071    }
+1072    return iRet;
+1073 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a59}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxLogoff@{WlxLogoff}}
+\index{WlxLogoff@{WlxLogoff}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxLogoff]{\setlength{\rightskip}{0pt plus 5cm}VOID WINAPI Wlx\-Logoff (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context})}}
+\label{QbeGina_8c_a59}
+
+
+
+
+Definiert in Zeile 1138 der Datei Qbe\-Gina.c.
+
+Benutzt Qbe\-Gina\_\-Account\-Info::b\-Created\-Local\-User, BOOL(), g\_\-Account\-Info, pf\-Wlx\-Logoff, Qbe\-Gina\_\-Account\-Info::psz\-Username, qbe\_\-qbesvc\_\-logout(), qbe\_\-registry\_\-clearautologon(), sys\_\-util\_\-deletefolder() und Write\-Log\-File().
+
+
+
+\footnotesize\begin{verbatim}1139 {
+1140   // first let MSGINA handle the user logout
+1141   pfWlxLogoff(pWlxContext);
+1142 
+1143   // reset auth
+1144   qbe_registry_clearautologon();
+1145 
+1146   // tell QbeSvc that the user has logged off
+1147   qbe_qbesvc_logout();
+1148 
+1149   // then zap the user
+1150   if ( (g_AccountInfo.bCreatedLocalUser) && (wcscmp(g_AccountInfo.pszUsername,TEXT("Administrator"))) )
+1151   {
+1152     BOOL bAborted = FALSE;
+1153     LPWSTR szProfilePath = GlobalAlloc( GPTR, 2048 );
+1154 
+1155     WriteLogFile(TEXT("Deleting local user.\n"));
+1156 
+1157     if (szProfilePath)
+1158       GetEnvironmentVariable( TEXT("USERPROFILE"), szProfilePath, 2048 );
+1159 
+1160     if (wcslen(szProfilePath)==0)
+1161       swprintf(szProfilePath,TEXT("C:\\Dokumente und Einstellungen\\%s"),g_AccountInfo.pszUsername);
+1162     
+1163     if (NetUserDel(NULL, g_AccountInfo.pszUsername) != NERR_Success)
+1164       MessageBox(NULL,TEXT("Your local user object could not be deleted.\nPlease contact your system administrator."),TEXT("Qbe SAS Client"),MB_OK|MB_ICONEXCLAMATION);
+1165 
+1166     sys_util_deletefolder(szProfilePath);
+1167     
+1168     swprintf(szProfilePath,TEXT("C:\\Dokumente und Einstellungen\\%s"),g_AccountInfo.pszUsername);
+1169     sys_util_deletefolder(szProfilePath);
+1170 
+1171     swprintf(szProfilePath,TEXT("C:\\Documents and Settings\\%s"),g_AccountInfo.pszUsername);
+1172     sys_util_deletefolder(szProfilePath);
+1173   } else {
+1174     WriteLogFile(TEXT("NOT Deleting local user.\n"));
+1175   }
+1176 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a43}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxNegotiate@{WlxNegotiate}}
+\index{WlxNegotiate@{WlxNegotiate}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxNegotiate]{\setlength{\rightskip}{0pt plus 5cm}BOOL WINAPI Wlx\-Negotiate (\hyperlink{QbeGina_8h_a2}{DWORD} {\em dw\-Winlogon\-Version}, \hyperlink{QbeGina_8h_a2}{DWORD} $\ast$ {\em pdw\-Dll\-Version})}}
+\label{QbeGina_8c_a43}
+
+
+
+
+Definiert in Zeile 393 der Datei Qbe\-Gina.c.
+
+Benutzt DWORD, g\_\-dw\-Version, GINASTUB\_\-VERSION, My\-Initialize(), pf\-Wlx\-Negotiate und REALGINA\_\-PATH.
+
+
+
+\footnotesize\begin{verbatim}395 {
+396    HINSTANCE hDll;
+397    DWORD dwWlxVersion = GINASTUB_VERSION;
+398 
+399    // MSGINA.DLL Laden
+400    if (!(hDll = LoadLibrary(REALGINA_PATH))) 
+401    {
+402       return FALSE;
+403    }
+404 
+405    // WlxNegotiate importieren
+406    pfWlxNegotiate = (PFWLXNEGOTIATE) GetProcAddress(hDll, "WlxNegotiate");
+407    if (!pfWlxNegotiate) 
+408    {
+409       return FALSE;
+410    }
+411  
+412    /* Check fuer alte System-API */
+413    if (dwWinlogonVersion < dwWlxVersion)
+414    {
+415       dwWlxVersion = dwWinlogonVersion;
+416    }
+417 
+418    /* MSGINA Negotiate aufrufen um die Version abzustimmen */
+419    if (!pfWlxNegotiate(dwWlxVersion, &dwWlxVersion))
+420    {
+421       return FALSE;
+422    }
+423    
+424    /* Alles weiter importieren */
+425    if (!MyInitialize(hDll, dwWlxVersion))
+426    {
+427       return FALSE;
+428    }
+429 
+430    /* System-API-Version an WinLogon zurueckliefern */
+431    *pdwDllVersion = g_dwVersion = dwWlxVersion;
+432 
+433 
+434    return TRUE;
+435 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a63}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxNetworkProviderLoad@{WlxNetworkProviderLoad}}
+\index{WlxNetworkProviderLoad@{WlxNetworkProviderLoad}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxNetworkProviderLoad]{\setlength{\rightskip}{0pt plus 5cm}BOOL WINAPI Wlx\-Network\-Provider\-Load (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context}, \hyperlink{QbeGina_8h_a7}{PWLX\_\-MPR\_\-NOTIFY\_\-INFO} {\em p\-Npr\-Notify\-Info})}}
+\label{QbeGina_8c_a63}
+
+
+
+
+Definiert in Zeile 1223 der Datei Qbe\-Gina.c.
+
+Benutzt pf\-Wlx\-Network\-Provider\-Load.
+
+
+
+\footnotesize\begin{verbatim}1225 {
+1226 
+1227    return pfWlxNetworkProviderLoad(pWlxContext, pNprNotifyInfo);
+1228 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a66}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxRemoveStatusMessage@{WlxRemoveStatusMessage}}
+\index{WlxRemoveStatusMessage@{WlxRemoveStatusMessage}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxRemoveStatusMessage]{\setlength{\rightskip}{0pt plus 5cm}BOOL WINAPI Wlx\-Remove\-Status\-Message (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context})}}
+\label{QbeGina_8c_a66}
+
+
+
+
+Definiert in Zeile 1265 der Datei Qbe\-Gina.c.
+
+Benutzt pf\-Wlx\-Remove\-Status\-Message.
+
+
+
+\footnotesize\begin{verbatim}1266 {
+1267 
+1268    return pfWlxRemoveStatusMessage(pWlxContext);
+1269 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a61}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxScreenSaverNotify@{WlxScreenSaverNotify}}
+\index{WlxScreenSaverNotify@{WlxScreenSaverNotify}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxScreenSaverNotify]{\setlength{\rightskip}{0pt plus 5cm}BOOL WINAPI Wlx\-Screen\-Saver\-Notify (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context}, BOOL $\ast$ {\em p\-Secure})}}
+\label{QbeGina_8c_a61}
+
+
+
+
+Definiert in Zeile 1195 der Datei Qbe\-Gina.c.
+
+Benutzt pf\-Wlx\-Screen\-Saver\-Notify.
+
+
+
+\footnotesize\begin{verbatim}1197 {
+1198 
+1199    return pfWlxScreenSaverNotify(pWlxContext, pSecure);
+1200 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a60}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxShutdown@{WlxShutdown}}
+\index{WlxShutdown@{WlxShutdown}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxShutdown]{\setlength{\rightskip}{0pt plus 5cm}VOID WINAPI Wlx\-Shutdown (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context}, \hyperlink{QbeGina_8h_a2}{DWORD} {\em Shutdown\-Type})}}
+\label{QbeGina_8c_a60}
+
+
+
+
+Definiert in Zeile 1181 der Datei Qbe\-Gina.c.
+
+Benutzt pf\-Wlx\-Shutdown.
+
+
+
+\footnotesize\begin{verbatim}1183 {
+1184 
+1185    pfWlxShutdown(pWlxContext, ShutdownType);
+1186 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a62}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxStartApplication@{WlxStartApplication}}
+\index{WlxStartApplication@{WlxStartApplication}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxStartApplication]{\setlength{\rightskip}{0pt plus 5cm}BOOL WINAPI Wlx\-Start\-Application (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context}, \hyperlink{QbeGina_8h_a8}{PWSTR} {\em psz\-Desktop\-Name}, \hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Environment}, \hyperlink{QbeGina_8h_a8}{PWSTR} {\em psz\-Cmd\-Line})}}
+\label{QbeGina_8c_a62}
+
+
+
+
+Definiert in Zeile 1204 der Datei Qbe\-Gina.c.
+
+Benutzt pf\-Wlx\-Start\-Application.
+
+
+
+\footnotesize\begin{verbatim}1208 {
+1209 
+1210    return pfWlxStartApplication(pWlxContext,
+1211                                 pszDesktopName,
+1212                                 pEnvironment,
+1213                                 pszCmdLine);
+1214 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a56}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WlxWkstaLockedSAS@{WlxWkstaLockedSAS}}
+\index{WlxWkstaLockedSAS@{WlxWkstaLockedSAS}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WlxWkstaLockedSAS]{\setlength{\rightskip}{0pt plus 5cm}int WINAPI Wlx\-Wksta\-Locked\-SAS (\hyperlink{QbeGina_8h_a1}{PVOID} {\em p\-Wlx\-Context}, \hyperlink{QbeGina_8h_a2}{DWORD} {\em dw\-Sas\-Type})}}
+\label{QbeGina_8c_a56}
+
+
+
+
+Definiert in Zeile 1120 der Datei Qbe\-Gina.c.
+
+Benutzt pf\-Wlx\-Wksta\-Locked\-SAS.
+
+
+
+\footnotesize\begin{verbatim}1122 {
+1123    return pfWlxWkstaLockedSAS(pWlxContext, dwSasType);
+1124 }
+\end{verbatim}\normalsize 
+\hypertarget{QbeGina_8c_a39}{
+\index{QbeGina.c@{Qbe\-Gina.c}!WriteLogFile@{WriteLogFile}}
+\index{WriteLogFile@{WriteLogFile}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[WriteLogFile]{\setlength{\rightskip}{0pt plus 5cm}void Write\-Log\-File (LPTSTR {\em String})}}
+\label{QbeGina_8c_a39}
+
+
+Debug stuff. 
+
+
+
+Definiert in Zeile 108 der Datei Qbe\-Gina.c.
+
+Benutzt DWORD und HANDLE.
+
+Wird benutzt von NPLogon\-Notify(), qbe\_\-ldap\_\-getpolicy(), qbe\_\-qbesvc\_\-login(), Start\-RPCService() und Wlx\-Logoff().
+
+
+
+\footnotesize\begin{verbatim}109 {
+110 // Ohne SASDEBUG ist das eine NOP.
+111 #ifdef SASDEBUG
+112    HANDLE hFile;
+113    DWORD dwBytesWritten;
+114 
+115    hFile = CreateFile(
+116                      TEXT("c:\\gina.txt"),
+117                      GENERIC_WRITE,
+118                      0,
+119                      NULL,
+120                      OPEN_ALWAYS,
+121                      FILE_FLAG_SEQUENTIAL_SCAN,
+122                      NULL
+123                      );
+124 
+125    if (hFile == INVALID_HANDLE_VALUE) return;
+126 
+127    // Seek to the end of the file
+128    SetFilePointer(hFile, 0, NULL, FILE_END);
+129 
+130    WriteFile(
+131             hFile,
+132             String,
+133             lstrlen(String)*sizeof(TCHAR),
+134             &dwBytesWritten,
+135             NULL
+136             );
+137 
+138    CloseHandle(hFile);
+139 
+140 #endif
+141    return;
+142 }
+\end{verbatim}\normalsize 
+
+
+\subsection{Variablen-Dokumentation}
+\hypertarget{QbeGina_8c_a10}{
+\index{QbeGina.c@{Qbe\-Gina.c}!g_dwVersion@{g\_\-dwVersion}}
+\index{g_dwVersion@{g\_\-dwVersion}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[g\_\-dwVersion]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{QbeGina_8h_a2}{DWORD} \hyperlink{QbeGina_8c_a10}{g\_\-dw\-Version} = WLX\_\-VERSION\_\-1\_\-3\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a10}
+
+
+
+
+Definiert in Zeile 62 der Datei Qbe\-Gina.c.
+
+Wird benutzt von Wlx\-Display\-SASNotice(), Wlx\-Logged\-Out\-SAS() und Wlx\-Negotiate().\hypertarget{QbeGina_8c_a12}{
+\index{QbeGina.c@{Qbe\-Gina.c}!g_hDll@{g\_\-hDll}}
+\index{g_hDll@{g\_\-hDll}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[g\_\-hDll]{\setlength{\rightskip}{0pt plus 5cm}HINSTANCE \hyperlink{QbeGina_8c_a12}{g\_\-h\-Dll} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a12}
+
+
+
+
+Definiert in Zeile 64 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize().\hypertarget{QbeGina_8c_a17}{
+\index{QbeGina.c@{Qbe\-Gina.c}!g_HostPolicy@{g\_\-HostPolicy}}
+\index{g_HostPolicy@{g\_\-HostPolicy}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[g\_\-HostPolicy]{\setlength{\rightskip}{0pt plus 5cm}struct \hyperlink{structQbeSAS__HostPolicy}{Qbe\-SAS\_\-Host\-Policy}$\ast$ \hyperlink{QbeGina_8c_a17}{g\_\-Host\-Policy} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a17}
+
+
+Unsere Host\-Policy. 
+
+
+
+Definiert in Zeile 75 der Datei Qbe\-Gina.c.
+
+Wird benutzt von init\-Policy(), qbe\_\-sam\_\-createuser() und Wlx\-Logged\-Out\-SAS().\hypertarget{QbeGina_8c_a13}{
+\index{QbeGina.c@{Qbe\-Gina.c}!g_hSASGinaDll@{g\_\-hSASGinaDll}}
+\index{g_hSASGinaDll@{g\_\-hSASGinaDll}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[g\_\-hSASGinaDll]{\setlength{\rightskip}{0pt plus 5cm}HINSTANCE \hyperlink{QbeGina_8c_a13}{g\_\-h\-SASGina\-Dll} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a13}
+
+
+
+
+Definiert in Zeile 65 der Datei Qbe\-Gina.c.
+
+Wird benutzt von Dll\-Main(), Wlx\-Display\-SASNotice() und Wlx\-Logged\-Out\-SAS().\hypertarget{QbeGina_8c_a11}{
+\index{QbeGina.c@{Qbe\-Gina.c}!g_hWlx@{g\_\-hWlx}}
+\index{g_hWlx@{g\_\-hWlx}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[g\_\-hWlx]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{QbeGina_8h_a0}{HANDLE} \hyperlink{QbeGina_8c_a11}{g\_\-h\-Wlx} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a11}
+
+
+
+
+Definiert in Zeile 63 der Datei Qbe\-Gina.c.
+
+Wird benutzt von Wlx\-Display\-SASNotice(), Wlx\-Initialize() und Wlx\-Logged\-Out\-SAS().\hypertarget{QbeGina_8c_a9}{
+\index{QbeGina.c@{Qbe\-Gina.c}!g_pWinlogon@{g\_\-pWinlogon}}
+\index{g_pWinlogon@{g\_\-pWinlogon}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[g\_\-pWinlogon]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{QbeGina_8h_a1}{PVOID} \hyperlink{QbeGina_8c_a9}{g\_\-p\-Winlogon} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a9}
+
+
+
+
+Definiert in Zeile 61 der Datei Qbe\-Gina.c.
+
+Wird benutzt von Wlx\-Display\-SASNotice(), Wlx\-Initialize() und Wlx\-Logged\-Out\-SAS().\hypertarget{QbeGina_8c_a16}{
+\index{QbeGina.c@{Qbe\-Gina.c}!hCtrlAltDelBitmap@{hCtrlAltDelBitmap}}
+\index{hCtrlAltDelBitmap@{hCtrlAltDelBitmap}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[hCtrlAltDelBitmap]{\setlength{\rightskip}{0pt plus 5cm}HBITMAP \hyperlink{QbeGina_8c_a16}{h\-Ctrl\-Alt\-Del\-Bitmap} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a16}
+
+
+Dr\"{u}cken Sie Ctrl-Alt-Del-... Bild Handle. 
+
+
+
+Definiert in Zeile 73 der Datei Qbe\-Gina.c.
+
+Wird benutzt von Dialog\-Proc\_\-SASNotice() und Dll\-Main().\hypertarget{QbeGina_8c_a15}{
+\index{QbeGina.c@{Qbe\-Gina.c}!hLogoBitmap@{hLogoBitmap}}
+\index{hLogoBitmap@{hLogoBitmap}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[hLogoBitmap]{\setlength{\rightskip}{0pt plus 5cm}HBITMAP \hyperlink{QbeGina_8c_a15}{h\-Logo\-Bitmap} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a15}
+
+
+\hyperlink{namespaceQbe}{Qbe} Logo Bild Handle. 
+
+
+
+Definiert in Zeile 71 der Datei Qbe\-Gina.c.
+
+Wird benutzt von Dialog\-Proc\_\-SASNotice(), Dll\-Main() und My\-Login\-Box\-Proc().\hypertarget{QbeGina_8c_a14}{
+\index{QbeGina.c@{Qbe\-Gina.c}!hWaitCursor@{hWaitCursor}}
+\index{hWaitCursor@{hWaitCursor}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[hWaitCursor]{\setlength{\rightskip}{0pt plus 5cm}HCURSOR \hyperlink{QbeGina_8c_a14}{h\-Wait\-Cursor} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a14}
+
+
+Sand-Uhr Mauszeiger Handle. 
+
+
+
+Definiert in Zeile 69 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und My\-Login\-Box\-Proc().\hypertarget{QbeGina_8c_a37}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfnShellShutdownDialog@{pfnShellShutdownDialog}}
+\index{pfnShellShutdownDialog@{pfnShellShutdownDialog}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfnShellShutdownDialog]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{QbeGina_8c_a36}{PFNSHELLSHUTDOWNDIALOG} \hyperlink{QbeGina_8c_a37}{pfn\-Shell\-Shutdown\-Dialog} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a37}
+
+
+
+
+Definiert in Zeile 103 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und My\-Login\-Box\-Proc().\hypertarget{QbeGina_8c_a22}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxActivateUserShell@{pfWlxActivateUserShell}}
+\index{pfWlxActivateUserShell@{pfWlxActivateUserShell}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxActivateUserShell]{\setlength{\rightskip}{0pt plus 5cm}PFWLXACTIVATEUSERSHELL \hyperlink{QbeGina_8c_a22}{pf\-Wlx\-Activate\-User\-Shell}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a22}
+
+
+
+
+Definiert in Zeile 82 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Activate\-User\-Shell().\hypertarget{QbeGina_8c_a24}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxDisplayLockedNotice@{pfWlxDisplayLockedNotice}}
+\index{pfWlxDisplayLockedNotice@{pfWlxDisplayLockedNotice}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxDisplayLockedNotice]{\setlength{\rightskip}{0pt plus 5cm}PFWLXDISPLAYLOCKEDNOTICE \hyperlink{QbeGina_8c_a24}{pf\-Wlx\-Display\-Locked\-Notice}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a24}
+
+
+
+
+Definiert in Zeile 84 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Display\-Locked\-Notice().\hypertarget{QbeGina_8c_a20}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxDisplaySASNotice@{pfWlxDisplaySASNotice}}
+\index{pfWlxDisplaySASNotice@{pfWlxDisplaySASNotice}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxDisplaySASNotice]{\setlength{\rightskip}{0pt plus 5cm}PFWLXDISPLAYSASNOTICE \hyperlink{QbeGina_8c_a20}{pf\-Wlx\-Display\-SASNotice}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a20}
+
+
+
+
+Definiert in Zeile 80 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize().\hypertarget{QbeGina_8c_a33}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxDisplayStatusMessage@{pfWlxDisplayStatusMessage}}
+\index{pfWlxDisplayStatusMessage@{pfWlxDisplayStatusMessage}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxDisplayStatusMessage]{\setlength{\rightskip}{0pt plus 5cm}PFWLXDISPLAYSTATUSMESSAGE \hyperlink{QbeGina_8c_a33}{pf\-Wlx\-Display\-Status\-Message} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a33}
+
+
+
+
+Definiert in Zeile 96 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Display\-Status\-Message().\hypertarget{QbeGina_8c_a34}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxGetStatusMessage@{pfWlxGetStatusMessage}}
+\index{pfWlxGetStatusMessage@{pfWlxGetStatusMessage}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxGetStatusMessage]{\setlength{\rightskip}{0pt plus 5cm}PFWLXGETSTATUSMESSAGE \hyperlink{QbeGina_8c_a34}{pf\-Wlx\-Get\-Status\-Message} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a34}
+
+
+
+
+Definiert in Zeile 97 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Get\-Status\-Message().\hypertarget{QbeGina_8c_a19}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxInitialize@{pfWlxInitialize}}
+\index{pfWlxInitialize@{pfWlxInitialize}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxInitialize]{\setlength{\rightskip}{0pt plus 5cm}PFWLXINITIALIZE \hyperlink{QbeGina_8c_a19}{pf\-Wlx\-Initialize}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a19}
+
+
+
+
+Definiert in Zeile 79 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Initialize().\hypertarget{QbeGina_8c_a26}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxIsLockOk@{pfWlxIsLockOk}}
+\index{pfWlxIsLockOk@{pfWlxIsLockOk}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxIsLockOk]{\setlength{\rightskip}{0pt plus 5cm}PFWLXISLOCKOK \hyperlink{QbeGina_8c_a26}{pf\-Wlx\-Is\-Lock\-Ok}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a26}
+
+
+
+
+Definiert in Zeile 86 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Is\-Lock\-Ok().\hypertarget{QbeGina_8c_a27}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxIsLogoffOk@{pfWlxIsLogoffOk}}
+\index{pfWlxIsLogoffOk@{pfWlxIsLogoffOk}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxIsLogoffOk]{\setlength{\rightskip}{0pt plus 5cm}PFWLXISLOGOFFOK \hyperlink{QbeGina_8c_a27}{pf\-Wlx\-Is\-Logoff\-Ok}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a27}
+
+
+
+
+Definiert in Zeile 87 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Is\-Logoff\-Ok().\hypertarget{QbeGina_8c_a23}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxLoggedOnSAS@{pfWlxLoggedOnSAS}}
+\index{pfWlxLoggedOnSAS@{pfWlxLoggedOnSAS}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxLoggedOnSAS]{\setlength{\rightskip}{0pt plus 5cm}PFWLXLOGGEDONSAS \hyperlink{QbeGina_8c_a23}{pf\-Wlx\-Logged\-On\-SAS}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a23}
+
+
+
+
+Definiert in Zeile 83 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Logged\-On\-SAS().\hypertarget{QbeGina_8c_a21}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxLoggedOutSAS@{pfWlxLoggedOutSAS}}
+\index{pfWlxLoggedOutSAS@{pfWlxLoggedOutSAS}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxLoggedOutSAS]{\setlength{\rightskip}{0pt plus 5cm}PFWLXLOGGEDOUTSAS \hyperlink{QbeGina_8c_a21}{pf\-Wlx\-Logged\-Out\-SAS}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a21}
+
+
+
+
+Definiert in Zeile 81 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Logged\-Out\-SAS().\hypertarget{QbeGina_8c_a28}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxLogoff@{pfWlxLogoff}}
+\index{pfWlxLogoff@{pfWlxLogoff}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxLogoff]{\setlength{\rightskip}{0pt plus 5cm}PFWLXLOGOFF \hyperlink{QbeGina_8c_a28}{pf\-Wlx\-Logoff}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a28}
+
+
+
+
+Definiert in Zeile 88 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Logoff().\hypertarget{QbeGina_8c_a18}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxNegotiate@{pfWlxNegotiate}}
+\index{pfWlxNegotiate@{pfWlxNegotiate}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxNegotiate]{\setlength{\rightskip}{0pt plus 5cm}PFWLXNEGOTIATE \hyperlink{QbeGina_8c_a18}{pf\-Wlx\-Negotiate}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a18}
+
+
+Pointer zu den Funktionen der echten MSGina.DLL, werden zur Laufzeit importiert. 
+
+
+
+Definiert in Zeile 78 der Datei Qbe\-Gina.c.
+
+Wird benutzt von Wlx\-Negotiate().\hypertarget{QbeGina_8c_a32}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxNetworkProviderLoad@{pfWlxNetworkProviderLoad}}
+\index{pfWlxNetworkProviderLoad@{pfWlxNetworkProviderLoad}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxNetworkProviderLoad]{\setlength{\rightskip}{0pt plus 5cm}PFWLXNETWORKPROVIDERLOAD \hyperlink{QbeGina_8c_a32}{pf\-Wlx\-Network\-Provider\-Load} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a32}
+
+
+
+
+Definiert in Zeile 95 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Network\-Provider\-Load().\hypertarget{QbeGina_8c_a35}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxRemoveStatusMessage@{pfWlxRemoveStatusMessage}}
+\index{pfWlxRemoveStatusMessage@{pfWlxRemoveStatusMessage}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxRemoveStatusMessage]{\setlength{\rightskip}{0pt plus 5cm}PFWLXREMOVESTATUSMESSAGE \hyperlink{QbeGina_8c_a35}{pf\-Wlx\-Remove\-Status\-Message} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a35}
+
+
+
+
+Definiert in Zeile 98 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Remove\-Status\-Message().\hypertarget{QbeGina_8c_a31}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxScreenSaverNotify@{pfWlxScreenSaverNotify}}
+\index{pfWlxScreenSaverNotify@{pfWlxScreenSaverNotify}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxScreenSaverNotify]{\setlength{\rightskip}{0pt plus 5cm}PFWLXSCREENSAVERNOTIFY \hyperlink{QbeGina_8c_a31}{pf\-Wlx\-Screen\-Saver\-Notify} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a31}
+
+
+
+
+Definiert in Zeile 92 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Screen\-Saver\-Notify().\hypertarget{QbeGina_8c_a29}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxShutdown@{pfWlxShutdown}}
+\index{pfWlxShutdown@{pfWlxShutdown}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxShutdown]{\setlength{\rightskip}{0pt plus 5cm}PFWLXSHUTDOWN \hyperlink{QbeGina_8c_a29}{pf\-Wlx\-Shutdown}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a29}
+
+
+
+
+Definiert in Zeile 89 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Shutdown().\hypertarget{QbeGina_8c_a30}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxStartApplication@{pfWlxStartApplication}}
+\index{pfWlxStartApplication@{pfWlxStartApplication}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxStartApplication]{\setlength{\rightskip}{0pt plus 5cm}PFWLXSTARTAPPLICATION \hyperlink{QbeGina_8c_a30}{pf\-Wlx\-Start\-Application} = NULL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a30}
+
+
+
+
+Definiert in Zeile 91 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Start\-Application().\hypertarget{QbeGina_8c_a25}{
+\index{QbeGina.c@{Qbe\-Gina.c}!pfWlxWkstaLockedSAS@{pfWlxWkstaLockedSAS}}
+\index{pfWlxWkstaLockedSAS@{pfWlxWkstaLockedSAS}!QbeGina.c@{Qbe\-Gina.c}}
+\subsubsection[pfWlxWkstaLockedSAS]{\setlength{\rightskip}{0pt plus 5cm}PFWLXWKSTALOCKEDSAS \hyperlink{QbeGina_8c_a25}{pf\-Wlx\-Wksta\-Locked\-SAS}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{QbeGina_8c_a25}
+
+
+
+
+Definiert in Zeile 85 der Datei Qbe\-Gina.c.
+
+Wird benutzt von My\-Initialize() und Wlx\-Wksta\-Locked\-SAS().

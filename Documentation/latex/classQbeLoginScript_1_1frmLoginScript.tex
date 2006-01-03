@@ -1,0 +1,767 @@
+\hypertarget{classQbeLoginScript_1_1frmLoginScript}{
+\section{frm\-Login\-Script Klassenreferenz}
+\label{classQbeLoginScript_1_1frmLoginScript}\index{QbeLoginScript::frmLoginScript@{QbeLoginScript::frmLoginScript}}
+}
+
+
+\subsection{Ausf\"{u}hrliche Beschreibung}
+Zusammenfassung f\"{u}r \hyperlink{classQbeLoginScript_1_1frmLoginScript}{frm\-Login\-Script}.  
+
+
+
+Definiert in Zeile 13 der Datei frm\-Login\-Script.cs.\subsection*{\"{O}ffentliche Methoden}
+\begin{CompactItemize}
+\item 
+\hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta0}{frm\-Login\-Script} ()
+\item 
+void \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta1}{start\-Script} ()
+\item 
+void \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta2}{Login\-Script\-Thread} ()
+\item 
+void \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta3}{Read\-Std\-Out\-Thread} ()
+\item 
+void \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta4}{Read\-Std\-Err\-Thread} ()
+\item 
+void \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta5}{Write\-Std\-In\-Thread} ()
+\end{CompactItemize}
+\subsection*{Gesch\"{u}tzte Methoden}
+\begin{CompactItemize}
+\item 
+override void \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptb0}{Dispose} (bool disposing)
+\end{CompactItemize}
+\subsection*{Private Methoden}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd0}{Add\-Login\-Script\-Output} (System.String output)
+\item 
+void \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd1}{Initialize\-Component} ()
+\item 
+void \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd2}{btn\-Close\_\-Click} (object sender, System.Event\-Args e)
+\item 
+void \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd3}{frm\-Login\-Script\_\-Load} (object sender, System.Event\-Args e)
+\item 
+void \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd4}{tmr\-Start\_\-Tick} (object sender, System.Event\-Args e)
+\end{CompactItemize}
+\subsection*{Private, statische Methoden}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripth0}{Main} (string\mbox{[}$\,$\mbox{]} args)
+\end{CompactItemize}
+\subsection*{Private Attribute}
+\begin{CompactItemize}
+\item 
+System.Windows.Forms.Button \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr0}{btn\-Close}
+\item 
+System.Windows.Forms.Text\-Box \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr1}{txt\-Output}
+\item 
+System.Windows.Forms.Picture\-Box \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr2}{pct\-Background}
+\item 
+System.String \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr3}{str\-Login\-Script}
+\item 
+System.String \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr4}{str\-Copied\-Login\-Script}
+\item 
+System.String \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr5}{str\-Handler}
+\item 
+System.String \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr6}{str\-Handler\-Args}
+\item 
+System.Boolean \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr7}{b\-Copy\-File}
+\item 
+System.Boolean \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr8}{b\-Auto\-Close}
+\item 
+System.Diagnostics.Process\-Start\-Info \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr9}{si\-Script}
+\item 
+System.Diagnostics.Process \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr10}{proc\-Script}
+\item 
+System.Threading.Thread \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr11}{thread\-Script}
+\item 
+System.Threading.Thread \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr12}{thread\-Write\-Std\-In}
+\item 
+System.Threading.Thread \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr13}{thread\-Read\-Std\-Out}
+\item 
+System.Threading.Thread \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr14}{thread\-Read\-Std\-Err}
+\item 
+System.Windows.Forms.Timer \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr15}{tmr\-Start}
+\item 
+System.Component\-Model.IContainer \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr16}{components}
+\end{CompactItemize}
+
+
+\subsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta0}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!frmLoginScript@{frmLoginScript}}
+\index{frmLoginScript@{frmLoginScript}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[frmLoginScript]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{classQbeLoginScript_1_1frmLoginScript}{frm\-Login\-Script} ()}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta0}
+
+
+
+
+Definiert in Zeile 33 der Datei frm\-Login\-Script.cs.
+
+Benutzt frm\-Login\-Script::Initialize\-Component().
+
+Wird benutzt von frm\-Login\-Script::Main().
+
+
+
+\footnotesize\begin{verbatim}34     {
+35       //
+36       // Erforderlich für die Windows Form-Designerunterstützung
+37       //
+38       InitializeComponent();
+39     }
+\end{verbatim}\normalsize 
+
+
+\subsection{Dokumentation der Elementfunktionen}
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd0}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!AddLoginScriptOutput@{AddLoginScriptOutput}}
+\index{AddLoginScriptOutput@{AddLoginScriptOutput}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[AddLoginScriptOutput]{\setlength{\rightskip}{0pt plus 5cm}void Add\-Login\-Script\-Output (System.String {\em output})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd0}
+
+
+
+
+Definiert in Zeile 129 der Datei frm\-Login\-Script.cs.
+
+Benutzt frm\-Login\-Script::txt\-Output.
+
+Wird benutzt von frm\-Login\-Script::Login\-Script\-Thread(), frm\-Login\-Script::Read\-Std\-Err\-Thread(), frm\-Login\-Script::Read\-Std\-Out\-Thread() und frm\-Login\-Script::start\-Script().
+
+
+
+\footnotesize\begin{verbatim}130     {
+131       this.txtOutput.Text += output + "\r\n";
+132       this.txtOutput.Select(this.txtOutput.TextLength,0);
+133       this.Refresh();
+134       Application.DoEvents();
+135     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd2}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!btnClose_Click@{btnClose\_\-Click}}
+\index{btnClose_Click@{btnClose\_\-Click}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[btnClose\_\-Click]{\setlength{\rightskip}{0pt plus 5cm}void btn\-Close\_\-Click (object {\em sender}, System.Event\-Args {\em e})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd2}
+
+
+
+
+Definiert in Zeile 314 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Initialize\-Component().
+
+
+
+\footnotesize\begin{verbatim}315     {
+316       Application.Exit();
+317     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptb0}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[Dispose]{\setlength{\rightskip}{0pt plus 5cm}override void Dispose (bool {\em disposing})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptb0}
+
+
+Die verwendeten Ressourcen bereinigen.  
+
+Definiert in Zeile 183 der Datei frm\-Login\-Script.cs.
+
+Benutzt frm\-Login\-Script::components.
+
+
+
+\footnotesize\begin{verbatim}184     {
+185       if( disposing )
+186       {
+187         if (components != null) 
+188         {
+189           components.Dispose();
+190         }
+191       }
+192       base.Dispose( disposing );
+193     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd3}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!frmLoginScript_Load@{frmLoginScript\_\-Load}}
+\index{frmLoginScript_Load@{frmLoginScript\_\-Load}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[frmLoginScript\_\-Load]{\setlength{\rightskip}{0pt plus 5cm}void frm\-Login\-Script\_\-Load (object {\em sender}, System.Event\-Args {\em e})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd3}
+
+
+
+
+Definiert in Zeile 319 der Datei frm\-Login\-Script.cs.
+
+Benutzt frm\-Login\-Script::tmr\-Start.
+
+Wird benutzt von frm\-Login\-Script::Initialize\-Component().
+
+
+
+\footnotesize\begin{verbatim}320     {
+321       this.Show();
+322       this.WindowState = System.Windows.Forms.FormWindowState.Normal;
+323       Application.DoEvents();
+324       tmrStart.Enabled = true;
+325     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd1}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!InitializeComponent@{InitializeComponent}}
+\index{InitializeComponent@{InitializeComponent}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[InitializeComponent]{\setlength{\rightskip}{0pt plus 5cm}void Initialize\-Component ()\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd1}
+
+
+Erforderliche Methode f\"{u}r die Designerunterst\"{u}tzung. Der Inhalt der Methode darf nicht mit dem Code-Editor ge\"{a}ndert werden.  
+
+Definiert in Zeile 200 der Datei frm\-Login\-Script.cs.
+
+Benutzt frm\-Login\-Script::btn\-Close, frm\-Login\-Script::btn\-Close\_\-Click(), frm\-Login\-Script::components, frm\-Login\-Script::frm\-Login\-Script\_\-Load(), frm\-Login\-Script::pct\-Background, frm\-Login\-Script::tmr\-Start\_\-Tick() und frm\-Login\-Script::txt\-Output.
+
+Wird benutzt von frm\-Login\-Script::frm\-Login\-Script().
+
+
+
+\footnotesize\begin{verbatim}201     {
+202       this.components = new System.ComponentModel.Container();
+203       System.Resources.ResourceManager resources = new System.Resources.ResourceManager("frmLoginScript",System.Reflection.Assembly.GetExecutingAssembly());
+204       this.btnClose = new System.Windows.Forms.Button();
+205       this.txtOutput = new System.Windows.Forms.TextBox();
+206       this.pctBackground = new System.Windows.Forms.PictureBox();
+207       this.tmrStart = new System.Windows.Forms.Timer(this.components);
+208       this.SuspendLayout();
+209       // 
+210       // btnClose
+211       // 
+212       this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+213         | System.Windows.Forms.AnchorStyles.Right)));
+214       this.btnClose.BackColor = System.Drawing.SystemColors.Control;
+215       this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+216       this.btnClose.Enabled = false;
+217       this.btnClose.Location = new System.Drawing.Point(200, 384);
+218       this.btnClose.Name = "btnClose";
+219       this.btnClose.Size = new System.Drawing.Size(80, 24);
+220       this.btnClose.TabIndex = 0;
+221       this.btnClose.Text = "Close";
+222       this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+223       // 
+224       // txtOutput
+225       // 
+226       this.txtOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+227         | System.Windows.Forms.AnchorStyles.Left) 
+228         | System.Windows.Forms.AnchorStyles.Right)));
+229       this.txtOutput.AutoSize = false;
+230       this.txtOutput.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(51)), ((System.Byte)(102)), ((System.Byte)(153)));
+231       this.txtOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+232       this.txtOutput.ForeColor = System.Drawing.Color.White;
+233       this.txtOutput.Location = new System.Drawing.Point(8, 88);
+234       this.txtOutput.Multiline = true;
+235       this.txtOutput.Name = "txtOutput";
+236       this.txtOutput.ReadOnly = true;
+237       this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+238       this.txtOutput.Size = new System.Drawing.Size(464, 288);
+239       this.txtOutput.TabIndex = 1;
+240       this.txtOutput.Text = "";
+241       // 
+242       // pctBackground
+243       // 
+244       this.pctBackground.BackColor = System.Drawing.Color.Transparent;
+245       this.pctBackground.Image = ((System.Drawing.Image)(resources.GetObject("pctBackground.Image")));
+246       this.pctBackground.Location = new System.Drawing.Point(0, 0);
+247       this.pctBackground.Name = "pctBackground";
+248       this.pctBackground.Size = new System.Drawing.Size(400, 200);
+249       this.pctBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+250       this.pctBackground.TabIndex = 2;
+251       this.pctBackground.TabStop = false;
+252       // 
+253       // tmrStart
+254       // 
+255       this.tmrStart.Tick += new System.EventHandler(this.tmrStart_Tick);
+256       // 
+257       // frmLoginScript
+258       // 
+259       this.AcceptButton = this.btnClose;
+260       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+261       this.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(51)), ((System.Byte)(102)), ((System.Byte)(153)));
+262       this.CancelButton = this.btnClose;
+263       this.ClientSize = new System.Drawing.Size(480, 414);
+264       this.ControlBox = false;
+265       this.Controls.Add(this.txtOutput);
+266       this.Controls.Add(this.btnClose);
+267       this.Controls.Add(this.pctBackground);
+268       this.MaximizeBox = false;
+269       this.MinimizeBox = false;
+270       this.Name = "frmLoginScript";
+271       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+272       this.Text = "Qbe Login Script";
+273       this.Load += new System.EventHandler(this.frmLoginScript_Load);
+274       this.ResumeLayout(false);
+275 
+276     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta2}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!LoginScriptThread@{LoginScriptThread}}
+\index{LoginScriptThread@{LoginScriptThread}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[LoginScriptThread]{\setlength{\rightskip}{0pt plus 5cm}void Login\-Script\-Thread ()}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta2}
+
+
+
+
+Definiert in Zeile 95 der Datei frm\-Login\-Script.cs.
+
+Benutzt frm\-Login\-Script::Add\-Login\-Script\-Output(), frm\-Login\-Script::btn\-Close, frm\-Login\-Script::proc\-Script, frm\-Login\-Script::str\-Copied\-Login\-Script, frm\-Login\-Script::thread\-Read\-Std\-Err, frm\-Login\-Script::thread\-Read\-Std\-Out und frm\-Login\-Script::thread\-Write\-Std\-In.
+
+Wird benutzt von frm\-Login\-Script::start\-Script().
+
+
+
+\footnotesize\begin{verbatim}96     {
+97       this.procScript.WaitForExit();
+98       btnClose.Enabled = true;
+99       Application.DoEvents();
+100 
+101       try 
+102       {
+103         threadWriteStdIn.Abort();
+104         threadReadStdOut.Abort();
+105         threadReadStdErr.Abort();
+106 
+107         if (this.bCopyFile)
+108         { // delete the file we created.
+109           try {System.IO.File.Delete(this.strCopiedLoginScript);}  
+110           catch (Exception ex) {ex=ex; MessageBox.Show("ex handler"); }
+111         }
+112 
+113         AddLoginScriptOutput("");
+114         AddLoginScriptOutput("Qbe Login Script returned Exit Code " + this.procScript.ExitCode.ToString());
+115 
+116 
+117         if ((this.procScript.ExitCode == 0) && (this.bAutoClose))
+118         {
+119           this.Close();
+120         }
+121       }
+122       catch (Exception ex)
+123       {
+124         ex=ex;
+125       }
+126 
+127     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripth0}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!Main@{Main}}
+\index{Main@{Main}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[Main]{\setlength{\rightskip}{0pt plus 5cm}void Main (string\mbox{[}$\,$\mbox{]} {\em args})\hspace{0.3cm}{\tt  \mbox{[}static, private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripth0}
+
+
+Der Haupteinstiegspunkt f\"{u}r die Anwendung.  
+
+Definiert in Zeile 283 der Datei frm\-Login\-Script.cs.
+
+Benutzt frm\-Login\-Script::b\-Auto\-Close, frm\-Login\-Script::b\-Copy\-File, frm\-Login\-Script::frm\-Login\-Script(), frm\-Login\-Script::str\-Handler, frm\-Login\-Script::str\-Handler\-Args und frm\-Login\-Script::str\-Login\-Script.
+
+
+
+\footnotesize\begin{verbatim}284     {
+285       if (args.Length < 4)
+286       {
+287         MessageBox.Show("Usage: QbeLoginScript.exe HandlerPath HandlerArgs LoginScriptFile [CopyLoginScript = FALSE] [AutoCloseWindow = TRUE]","Qbe SAS Client");
+288         return;
+289       }
+290       
+291       try 
+292       {
+293         frmLoginScript frm;
+294         frm = new frmLoginScript();
+295         frm.strHandler = args[0];
+296         frm.strHandlerArgs = args[1];
+297         frm.strLoginScript = args[2];
+298         if (args.Length > 3)
+299           frm.bCopyFile = System.Boolean.Parse(args[3]);
+300         else
+301           frm.bCopyFile = false;
+302         if (args.Length > 4)
+303           frm.bAutoClose = System.Boolean.Parse(args[4]);
+304         else
+305           frm.bAutoClose = true;
+306         Application.Run(frm);
+307       } 
+308       catch (Exception ex)
+309       {
+310         MessageBox.Show("Error: "+ ex.Message + "\r\n" +ex.StackTrace,"Qbe SAS Login",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Error);
+311       }
+312     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta4}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!ReadStdErrThread@{ReadStdErrThread}}
+\index{ReadStdErrThread@{ReadStdErrThread}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[ReadStdErrThread]{\setlength{\rightskip}{0pt plus 5cm}void Read\-Std\-Err\-Thread ()}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta4}
+
+
+
+
+Definiert in Zeile 145 der Datei frm\-Login\-Script.cs.
+
+Benutzt frm\-Login\-Script::Add\-Login\-Script\-Output() und frm\-Login\-Script::proc\-Script.
+
+Wird benutzt von frm\-Login\-Script::start\-Script().
+
+
+
+\footnotesize\begin{verbatim}146     {
+147       string output;
+148       while ((output = procScript.StandardError.ReadLine()) != null)
+149       {
+150         AddLoginScriptOutput(output);
+151       }
+152     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta3}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!ReadStdOutThread@{ReadStdOutThread}}
+\index{ReadStdOutThread@{ReadStdOutThread}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[ReadStdOutThread]{\setlength{\rightskip}{0pt plus 5cm}void Read\-Std\-Out\-Thread ()}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta3}
+
+
+
+
+Definiert in Zeile 137 der Datei frm\-Login\-Script.cs.
+
+Benutzt frm\-Login\-Script::Add\-Login\-Script\-Output() und frm\-Login\-Script::proc\-Script.
+
+Wird benutzt von frm\-Login\-Script::start\-Script().
+
+
+
+\footnotesize\begin{verbatim}138     {     
+139       string output;
+140       while ((output = procScript.StandardOutput.ReadLine()) != null)
+141       {
+142         AddLoginScriptOutput(output);
+143       }
+144     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta1}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!startScript@{startScript}}
+\index{startScript@{startScript}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[startScript]{\setlength{\rightskip}{0pt plus 5cm}void start\-Script ()}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta1}
+
+
+
+
+Definiert in Zeile 41 der Datei frm\-Login\-Script.cs.
+
+Benutzt frm\-Login\-Script::Add\-Login\-Script\-Output(), frm\-Login\-Script::b\-Auto\-Close, frm\-Login\-Script::b\-Copy\-File, frm\-Login\-Script::Login\-Script\-Thread(), frm\-Login\-Script::proc\-Script, frm\-Login\-Script::Read\-Std\-Err\-Thread(), frm\-Login\-Script::Read\-Std\-Out\-Thread(), frm\-Login\-Script::si\-Script, frm\-Login\-Script::str\-Handler, frm\-Login\-Script::str\-Handler\-Args, frm\-Login\-Script::str\-Login\-Script, frm\-Login\-Script::thread\-Read\-Std\-Err, frm\-Login\-Script::thread\-Read\-Std\-Out, frm\-Login\-Script::thread\-Script, frm\-Login\-Script::thread\-Write\-Std\-In und frm\-Login\-Script::Write\-Std\-In\-Thread().
+
+
+
+\footnotesize\begin{verbatim}42     {
+43       System.String strScript;
+44 
+45       try 
+46       {
+47 
+48         if (this.bCopyFile)
+49         {
+50           System.String newFileName = System.IO.Path.GetTempPath() + "\\" + System.IO.Path.GetFileName(this.strLoginScript);
+51           try {System.IO.File.Delete(newFileName);}  
+52           catch (Exception ex) {ex=ex; MessageBox.Show("ex handler"); }
+53           System.IO.File.Copy(this.strLoginScript,newFileName);
+54           strScript = newFileName;
+55           this.strCopiedLoginScript = newFileName;
+56         } 
+57         else 
+58         {
+59           strScript = this.strLoginScript;
+60         }
+61 
+62         AddLoginScriptOutput("Qbe Login Script: " + strScript);
+63         AddLoginScriptOutput("AutoClose: " + this.bAutoClose);
+64         AddLoginScriptOutput("CopyScript: " + this.bCopyFile);
+65 
+66         siScript = new System.Diagnostics.ProcessStartInfo(strHandler,strHandlerArgs);
+67         siScript.CreateNoWindow = true;
+68         siScript.RedirectStandardError = true;
+69         siScript.RedirectStandardOutput = true;
+70         siScript.RedirectStandardInput = true;
+71         siScript.WorkingDirectory = System.IO.Path.GetPathRoot(strScript);
+72         siScript.UseShellExecute = false;
+73 
+74         procScript = new System.Diagnostics.Process();
+75         procScript.StartInfo = siScript;
+76 
+77         threadScript = new System.Threading.Thread(new System.Threading.ThreadStart(LoginScriptThread));
+78         threadWriteStdIn = new System.Threading.Thread(new System.Threading.ThreadStart(WriteStdInThread));
+79         threadReadStdOut = new System.Threading.Thread(new System.Threading.ThreadStart(ReadStdOutThread));
+80         threadReadStdErr = new System.Threading.Thread(new System.Threading.ThreadStart(ReadStdErrThread));
+81 
+82         procScript.Start();
+83         threadScript.Start();
+84         threadWriteStdIn.Start();
+85         threadReadStdOut.Start();
+86         threadReadStdErr.Start();
+87       } 
+88       catch (Exception ex)
+89       {
+90         MessageBox.Show("Error: "+ ex.Message + "\r\n" +ex.StackTrace,"Qbe SAS Login",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Error);
+91       }
+92     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd4}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!tmrStart_Tick@{tmrStart\_\-Tick}}
+\index{tmrStart_Tick@{tmrStart\_\-Tick}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[tmrStart\_\-Tick]{\setlength{\rightskip}{0pt plus 5cm}void tmr\-Start\_\-Tick (object {\em sender}, System.Event\-Args {\em e})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptd4}
+
+
+
+
+Definiert in Zeile 327 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Initialize\-Component().
+
+
+
+\footnotesize\begin{verbatim}328     {
+329       this.tmrStart.Enabled = false;
+330       this.startScript();
+331     }
+\end{verbatim}\normalsize 
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta5}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!WriteStdInThread@{WriteStdInThread}}
+\index{WriteStdInThread@{WriteStdInThread}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[WriteStdInThread]{\setlength{\rightskip}{0pt plus 5cm}void Write\-Std\-In\-Thread ()}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScripta5}
+
+
+
+
+Definiert in Zeile 153 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::start\-Script().
+
+
+
+\footnotesize\begin{verbatim}154     {
+155     /*  while (!procScript.HasExited)
+156       {
+157         try 
+158         {
+159           procScript.WaitForInputIdle();
+160         } 
+161         catch (Exception ex)
+162         {
+163           try 
+164           {
+165             ex=ex;
+166             InputDialog dlg = new InputDialog();
+167             dlg.ShowDialog(this);
+168             procScript.StandardInput.WriteLine(dlg.strAnswer); 
+169 
+170             this.Refresh();
+171             Application.DoEvents();
+172             System.Threading.Thread.Sleep(100);
+173           } 
+174           catch (Exception ex2) { ex2=ex2; }
+175         }
+176       } 
+177       */
+178     }
+\end{verbatim}\normalsize 
+
+
+\subsection{Dokumentation der Datenelemente}
+\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr8}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!bAutoClose@{bAutoClose}}
+\index{bAutoClose@{bAutoClose}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[bAutoClose]{\setlength{\rightskip}{0pt plus 5cm}System.Boolean \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr8}{b\-Auto\-Close}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr8}
+
+
+
+
+Definiert in Zeile 23 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Main() und frm\-Login\-Script::start\-Script().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr7}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!bCopyFile@{bCopyFile}}
+\index{bCopyFile@{bCopyFile}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[bCopyFile]{\setlength{\rightskip}{0pt plus 5cm}System.Boolean \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr7}{b\-Copy\-File}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr7}
+
+
+
+
+Definiert in Zeile 22 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Main() und frm\-Login\-Script::start\-Script().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr0}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!btnClose@{btnClose}}
+\index{btnClose@{btnClose}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[btnClose]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Button \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr0}{btn\-Close}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr0}
+
+
+
+
+Definiert in Zeile 15 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Initialize\-Component() und frm\-Login\-Script::Login\-Script\-Thread().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr16}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!components@{components}}
+\index{components@{components}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[components]{\setlength{\rightskip}{0pt plus 5cm}System.Component\-Model.IContainer \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr16}{components}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr16}
+
+
+
+
+Definiert in Zeile 31 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Dispose() und frm\-Login\-Script::Initialize\-Component().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr2}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!pctBackground@{pctBackground}}
+\index{pctBackground@{pctBackground}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[pctBackground]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Picture\-Box \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr2}{pct\-Background}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr2}
+
+
+
+
+Definiert in Zeile 17 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Initialize\-Component().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr10}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!procScript@{procScript}}
+\index{procScript@{procScript}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[procScript]{\setlength{\rightskip}{0pt plus 5cm}System.Diagnostics.Process \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr10}{proc\-Script}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr10}
+
+
+
+
+Definiert in Zeile 25 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Login\-Script\-Thread(), frm\-Login\-Script::Read\-Std\-Err\-Thread(), frm\-Login\-Script::Read\-Std\-Out\-Thread() und frm\-Login\-Script::start\-Script().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr9}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!siScript@{siScript}}
+\index{siScript@{siScript}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[siScript]{\setlength{\rightskip}{0pt plus 5cm}System.Diagnostics.Process\-Start\-Info \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr9}{si\-Script}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr9}
+
+
+
+
+Definiert in Zeile 24 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::start\-Script().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr4}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!strCopiedLoginScript@{strCopiedLoginScript}}
+\index{strCopiedLoginScript@{strCopiedLoginScript}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[strCopiedLoginScript]{\setlength{\rightskip}{0pt plus 5cm}System.String \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr4}{str\-Copied\-Login\-Script}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr4}
+
+
+
+
+Definiert in Zeile 19 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Login\-Script\-Thread().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr5}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!strHandler@{strHandler}}
+\index{strHandler@{strHandler}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[strHandler]{\setlength{\rightskip}{0pt plus 5cm}System.String \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr5}{str\-Handler}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr5}
+
+
+
+
+Definiert in Zeile 20 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Main() und frm\-Login\-Script::start\-Script().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr6}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!strHandlerArgs@{strHandlerArgs}}
+\index{strHandlerArgs@{strHandlerArgs}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[strHandlerArgs]{\setlength{\rightskip}{0pt plus 5cm}System.String \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr6}{str\-Handler\-Args}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr6}
+
+
+
+
+Definiert in Zeile 21 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Main() und frm\-Login\-Script::start\-Script().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr3}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!strLoginScript@{strLoginScript}}
+\index{strLoginScript@{strLoginScript}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[strLoginScript]{\setlength{\rightskip}{0pt plus 5cm}System.String \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr3}{str\-Login\-Script}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr3}
+
+
+
+
+Definiert in Zeile 18 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Main() und frm\-Login\-Script::start\-Script().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr14}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!threadReadStdErr@{threadReadStdErr}}
+\index{threadReadStdErr@{threadReadStdErr}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[threadReadStdErr]{\setlength{\rightskip}{0pt plus 5cm}System.Threading.Thread \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr14}{thread\-Read\-Std\-Err}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr14}
+
+
+
+
+Definiert in Zeile 29 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Login\-Script\-Thread() und frm\-Login\-Script::start\-Script().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr13}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!threadReadStdOut@{threadReadStdOut}}
+\index{threadReadStdOut@{threadReadStdOut}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[threadReadStdOut]{\setlength{\rightskip}{0pt plus 5cm}System.Threading.Thread \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr13}{thread\-Read\-Std\-Out}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr13}
+
+
+
+
+Definiert in Zeile 28 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Login\-Script\-Thread() und frm\-Login\-Script::start\-Script().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr11}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!threadScript@{threadScript}}
+\index{threadScript@{threadScript}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[threadScript]{\setlength{\rightskip}{0pt plus 5cm}System.Threading.Thread \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr11}{thread\-Script}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr11}
+
+
+
+
+Definiert in Zeile 26 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::start\-Script().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr12}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!threadWriteStdIn@{threadWriteStdIn}}
+\index{threadWriteStdIn@{threadWriteStdIn}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[threadWriteStdIn]{\setlength{\rightskip}{0pt plus 5cm}System.Threading.Thread \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr12}{thread\-Write\-Std\-In}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr12}
+
+
+
+
+Definiert in Zeile 27 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Login\-Script\-Thread() und frm\-Login\-Script::start\-Script().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr15}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!tmrStart@{tmrStart}}
+\index{tmrStart@{tmrStart}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[tmrStart]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Timer \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr15}{tmr\-Start}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr15}
+
+
+
+
+Definiert in Zeile 30 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::frm\-Login\-Script\_\-Load().\hypertarget{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr1}{
+\index{QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}!txtOutput@{txtOutput}}
+\index{txtOutput@{txtOutput}!QbeLoginScript::frmLoginScript@{Qbe\-Login\-Script::frm\-Login\-Script}}
+\subsubsection[txtOutput]{\setlength{\rightskip}{0pt plus 5cm}System.Windows.Forms.Text\-Box \hyperlink{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr1}{txt\-Output}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classQbeLoginScript_1_1frmLoginScript_QbeLoginScript_1_1frmLoginScriptr1}
+
+
+
+
+Definiert in Zeile 16 der Datei frm\-Login\-Script.cs.
+
+Wird benutzt von frm\-Login\-Script::Add\-Login\-Script\-Output() und frm\-Login\-Script::Initialize\-Component().

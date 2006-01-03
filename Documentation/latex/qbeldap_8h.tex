@@ -1,0 +1,364 @@
+\hypertarget{qbeldap_8h}{
+\section{qbeldap.h Dateireferenz}
+\label{qbeldap_8h}\index{qbeldap.h@{qbeldap.h}}
+}
+
+
+\subsection*{Klassen}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structQbeSAS__HostPolicy}{Qbe\-SAS\_\-Host\-Policy}
+\begin{CompactList}\small\item\em Enthaelt die Konfiguration fuer die lokale Arbeitsstation (\char`\"{}Host\-Policy\char`\"{}). \item\end{CompactList}\end{CompactItemize}
+\subsection*{Makrodefinitionen}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{qbeldap_8h_a0}{QBE\_\-LDAP\_\-SERVER}\ TEXT(\char`\"{}qbe-auth\char`\"{})
+\item 
+\#define \hyperlink{qbeldap_8h_a1}{QBE\_\-LDAP\_\-PORT}\ 389
+\item 
+\#define \hyperlink{qbeldap_8h_a2}{QBE\_\-LDAP\_\-BASE}\ TEXT(\char`\"{}o=htlwrn,c=at\char`\"{})
+\item 
+\#define \hyperlink{qbeldap_8h_a3}{QBE\_\-LDAP\_\-SEARCH}\ TEXT(\char`\"{}uid=\%s\char`\"{})
+\item 
+\#define \hyperlink{qbeldap_8h_a4}{QBE\_\-LDAP\_\-HOSTSEARCH}\ TEXT(\char`\"{}uid=\%s\$\char`\"{})
+\end{CompactItemize}
+\subsection*{Funktionen}
+\begin{CompactItemize}
+\item 
+int \hyperlink{qbeldap_8h_a5}{qbe\_\-ldap\_\-checkuser} (LPWSTR username, LPWSTR password)
+\begin{CompactList}\small\item\em UEberprueft Benutzername + Passwort gegenueber dem LDAP-Server. \item\end{CompactList}\item 
+int \hyperlink{qbeldap_8h_a6}{qbe\_\-ldap\_\-getpolicy} (LPWSTR sz\-Workstation\-Name, struct \hyperlink{structQbeSAS__HostPolicy}{Qbe\-SAS\_\-Host\-Policy} $\ast$policy)
+\end{CompactItemize}
+
+
+\subsection{Makro-Dokumentation}
+\hypertarget{qbeldap_8h_a2}{
+\index{qbeldap.h@{qbeldap.h}!QBE_LDAP_BASE@{QBE\_\-LDAP\_\-BASE}}
+\index{QBE_LDAP_BASE@{QBE\_\-LDAP\_\-BASE}!qbeldap.h@{qbeldap.h}}
+\subsubsection[QBE\_\-LDAP\_\-BASE]{\setlength{\rightskip}{0pt plus 5cm}\#define QBE\_\-LDAP\_\-BASE\ TEXT(\char`\"{}o=htlwrn,c=at\char`\"{})}}
+\label{qbeldap_8h_a2}
+
+
+
+
+Definiert in Zeile 5 der Datei qbeldap.h.
+
+Wird benutzt von qbe\_\-ldap\_\-checkuser() und qbe\_\-ldap\_\-getpolicy().\hypertarget{qbeldap_8h_a4}{
+\index{qbeldap.h@{qbeldap.h}!QBE_LDAP_HOSTSEARCH@{QBE\_\-LDAP\_\-HOSTSEARCH}}
+\index{QBE_LDAP_HOSTSEARCH@{QBE\_\-LDAP\_\-HOSTSEARCH}!qbeldap.h@{qbeldap.h}}
+\subsubsection[QBE\_\-LDAP\_\-HOSTSEARCH]{\setlength{\rightskip}{0pt plus 5cm}\#define QBE\_\-LDAP\_\-HOSTSEARCH\ TEXT(\char`\"{}uid=\%s\$\char`\"{})}}
+\label{qbeldap_8h_a4}
+
+
+
+
+Definiert in Zeile 8 der Datei qbeldap.h.
+
+Wird benutzt von qbe\_\-ldap\_\-getpolicy().\hypertarget{qbeldap_8h_a1}{
+\index{qbeldap.h@{qbeldap.h}!QBE_LDAP_PORT@{QBE\_\-LDAP\_\-PORT}}
+\index{QBE_LDAP_PORT@{QBE\_\-LDAP\_\-PORT}!qbeldap.h@{qbeldap.h}}
+\subsubsection[QBE\_\-LDAP\_\-PORT]{\setlength{\rightskip}{0pt plus 5cm}\#define QBE\_\-LDAP\_\-PORT\ 389}}
+\label{qbeldap_8h_a1}
+
+
+
+
+Definiert in Zeile 4 der Datei qbeldap.h.
+
+Wird benutzt von qbe\_\-ldap\_\-checkuser() und qbe\_\-ldap\_\-getpolicy().\hypertarget{qbeldap_8h_a3}{
+\index{qbeldap.h@{qbeldap.h}!QBE_LDAP_SEARCH@{QBE\_\-LDAP\_\-SEARCH}}
+\index{QBE_LDAP_SEARCH@{QBE\_\-LDAP\_\-SEARCH}!qbeldap.h@{qbeldap.h}}
+\subsubsection[QBE\_\-LDAP\_\-SEARCH]{\setlength{\rightskip}{0pt plus 5cm}\#define QBE\_\-LDAP\_\-SEARCH\ TEXT(\char`\"{}uid=\%s\char`\"{})}}
+\label{qbeldap_8h_a3}
+
+
+
+
+Definiert in Zeile 6 der Datei qbeldap.h.
+
+Wird benutzt von qbe\_\-ldap\_\-checkuser().\hypertarget{qbeldap_8h_a0}{
+\index{qbeldap.h@{qbeldap.h}!QBE_LDAP_SERVER@{QBE\_\-LDAP\_\-SERVER}}
+\index{QBE_LDAP_SERVER@{QBE\_\-LDAP\_\-SERVER}!qbeldap.h@{qbeldap.h}}
+\subsubsection[QBE\_\-LDAP\_\-SERVER]{\setlength{\rightskip}{0pt plus 5cm}\#define QBE\_\-LDAP\_\-SERVER\ TEXT(\char`\"{}qbe-auth\char`\"{})}}
+\label{qbeldap_8h_a0}
+
+
+
+
+Definiert in Zeile 3 der Datei qbeldap.h.
+
+Wird benutzt von qbe\_\-ldap\_\-checkuser() und qbe\_\-ldap\_\-getpolicy().
+
+\subsection{Dokumentation der Funktionen}
+\hypertarget{qbeldap_8h_a5}{
+\index{qbeldap.h@{qbeldap.h}!qbe_ldap_checkuser@{qbe\_\-ldap\_\-checkuser}}
+\index{qbe_ldap_checkuser@{qbe\_\-ldap\_\-checkuser}!qbeldap.h@{qbeldap.h}}
+\subsubsection[qbe\_\-ldap\_\-checkuser]{\setlength{\rightskip}{0pt plus 5cm}int qbe\_\-ldap\_\-checkuser (LPWSTR {\em username}, LPWSTR {\em password})}}
+\label{qbeldap_8h_a5}
+
+
+UEberprueft Benutzername + Passwort gegenueber dem LDAP-Server. 
+
+
+
+Definiert in Zeile 22 der Datei qbeldap.c.
+
+Benutzt PWSTR, QBE\_\-LDAP\_\-BASE, QBE\_\-LDAP\_\-PORT, QBE\_\-LDAP\_\-SEARCH und QBE\_\-LDAP\_\-SERVER.
+
+Wird benutzt von My\-Login\-Box\-Proc().
+
+
+
+\footnotesize\begin{verbatim}23 {
+24   int rc = -1;
+25   LDAP* ld;
+26   LPWSTR szSearch = (PWSTR)malloc(((unsigned int)wcslen(username))+1024);
+27   LPWSTR szDN = (PWSTR)malloc(((unsigned int)wcslen(username))+1024);
+28   LDAPMessage *pMsg = NULL;
+29 
+30   // well, ldap doesnt accept empty user/pass
+31   // so fuck him if he tries it...
+32   if ((!wcslen(username)) || (!wcslen(password)))
+33     return -10;
+34 
+35   // and, ehm, he shouldnt fuck us with the 1024 chars and so
+36   if ((wcslen(username)>1000) || (wcslen(password)>1000))
+37     return -10;
+38 
+39 
+40   ld = ldap_init(QBE_LDAP_SERVER, QBE_LDAP_PORT);
+41   if (ld==NULL) 
+42     return -2;  // server failure
+43   if (ldap_connect(ld, NULL) != LDAP_SUCCESS)
+44     return -2;  // server failure
+45 
+46   ldap_simple_bind_s(ld, TEXT(""), TEXT("")); // anonymous bind
+47 
+48   swprintf(szSearch, QBE_LDAP_SEARCH, username);
+49   if (ldap_search_s(ld, QBE_LDAP_BASE, LDAP_SCOPE_SUBTREE, szSearch, NULL, FALSE, &pMsg) == LDAP_SUCCESS)
+50   {
+51     // ok user exists
+52     // lets see what to do next...ehm...login? ;>
+53 
+54     //TCHAR szTemp[1024];
+55     PWCHAR DN;
+56     LDAPMessage *pEntry = ldap_first_entry(ld, pMsg);
+57     DN = ldap_get_dn(ld, pEntry);
+58     if (DN == NULL)
+59       rc = -10;
+60     else if (!wcslen(DN))
+61       rc = -10;
+62 
+63     // so far so good
+64     // just hope that the fucker supplied a valid username
+65     // and ehm see...
+66     if (rc==-1)
+67     {
+68       // ok i got a username above
+69       // now fuck our old connection and create a new one
+70       ldap_unbind(ld);
+71       ld = ldap_init(QBE_LDAP_SERVER, QBE_LDAP_PORT);
+72       ldap_connect(ld, NULL);
+73       // just for logging in...
+74       if (ldap_simple_bind_s(ld, DN, password) == LDAP_SUCCESS) // the real bind
+75         rc = 0;     // ok
+76       else
+77         rc = -11;   // wrong password, sucker.
+78     }
+79 
+80     // m$ wants you to clear all up after they were here
+81     if (DN != NULL)
+82       ldap_memfree(DN);
+83 
+84   } else {
+85     rc = -10; // user invalid
+86   }
+87 
+88   // zap that dog out!
+89   if (pMsg != NULL)
+90     ldap_msgfree(pMsg);
+91 
+92   // and yes...kill that stale connection :>
+93   ldap_unbind(ld);
+94   return rc;  // ldap error
+95 }
+\end{verbatim}\normalsize 
+\hypertarget{qbeldap_8h_a6}{
+\index{qbeldap.h@{qbeldap.h}!qbe_ldap_getpolicy@{qbe\_\-ldap\_\-getpolicy}}
+\index{qbe_ldap_getpolicy@{qbe\_\-ldap\_\-getpolicy}!qbeldap.h@{qbeldap.h}}
+\subsubsection[qbe\_\-ldap\_\-getpolicy]{\setlength{\rightskip}{0pt plus 5cm}int qbe\_\-ldap\_\-getpolicy (LPWSTR {\em sz\-Workstation\-Name}, struct \hyperlink{structQbeSAS__HostPolicy}{Qbe\-SAS\_\-Host\-Policy} $\ast$ {\em policy})}}
+\label{qbeldap_8h_a6}
+
+
+
+
+Definiert in Zeile 97 der Datei qbeldap.c.
+
+Benutzt Qbe\-SAS\_\-Host\-Policy::Dynamic\-User\-Group, Qbe\-SAS\_\-Host\-Policy::enable\-Dynamic\-User, Qbe\-SAS\_\-Host\-Policy::Home\-Drive, Qbe\-SAS\_\-Host\-Policy::Home\-Drive\-Dir, Qbe\-SAS\_\-Host\-Policy::Login\-Script, QBE\_\-LDAP\_\-BASE, QBE\_\-LDAP\_\-HOSTSEARCH, QBE\_\-LDAP\_\-PORT, QBE\_\-LDAP\_\-SERVER und Write\-Log\-File().
+
+Wird benutzt von init\-Policy().
+
+
+
+\footnotesize\begin{verbatim}98 {
+99   int rc = -1;
+100   LDAP* ld;
+101   LPWSTR szPolicyName;
+102   LPWSTR szSearch = (LPWSTR)malloc(((unsigned int)wcslen(szWorkstationName))+1024);
+103   LPWSTR szDN = (LPWSTR)malloc(((unsigned int)wcslen(szWorkstationName))+1024);
+104   LDAPMessage *pMsg = NULL;
+105 
+106   policy->enableDynamicUser = 0;
+107   policy->enableDynamicUser = 0;
+108   policy->DynamicUserGroup = NULL;
+109   policy->LoginScript = NULL;
+110   policy->HomeDrive = NULL;
+111   policy->HomeDriveDir = NULL;
+112 
+113   ld = ldap_init(QBE_LDAP_SERVER, QBE_LDAP_PORT);
+114   if (ld==NULL) 
+115     return -2;  // server failure
+116   if (ldap_connect(ld, NULL) != LDAP_SUCCESS)
+117     return -2;  // server failure
+118   ldap_simple_bind_s(ld, TEXT(""), TEXT("")); // anonymous bind
+119 
+120   swprintf(szSearch, QBE_LDAP_HOSTSEARCH, szWorkstationName);
+121   if (ldap_search_s(ld, QBE_LDAP_BASE, LDAP_SCOPE_SUBTREE, szSearch, NULL, FALSE, &pMsg) == LDAP_SUCCESS)
+122   {
+123     // ok host exists
+124     // lets see what to do next...
+125 
+126     PWCHAR DN;
+127     LDAPMessage *pEntry;
+128 
+129     pEntry = ldap_first_entry(ld, pMsg);
+130     DN = ldap_get_dn(ld, pEntry);
+131     if (DN != NULL)
+132     {
+133       if (!wcslen(DN))
+134         rc = -10;
+135     } else {
+136       rc = -10;
+137     }
+138     
+139 
+140     // so far so good
+141     // just hope that the fucker supplied a valid username
+142     // and ehm see...
+143     if (rc==-1)
+144     {
+145       // get get get a policy dn
+146       // ...
+147       PWCHAR* pValues;
+148       
+149       ldap_memfree(DN); DN = NULL;
+150 
+151       pValues = ldap_get_values(ld, pEntry, TEXT("qbePolicyName"));
+152       if (!ldap_count_values(pValues))
+153       {
+154         // doh! no values :/
+155         rc = -11;
+156 WriteLogFile(TEXT("No policy name in host object.\r\n"));
+157       } else {
+158 WriteLogFile(TEXT("Host object references policy name:\r\n"));
+159         // fine, very fine.
+160         szPolicyName = (LPWSTR)malloc(((unsigned int)wcslen(*pValues))+1024);
+161         wcscpy(szPolicyName,*pValues);
+162         ldap_value_free(pValues);
+163 WriteLogFile(szPolicyName);
+164 WriteLogFile(TEXT("\r\n"));
+165       }
+166       
+167       
+168     }
+169 
+170   
+171     // free that.
+172     ldap_msgfree(pMsg);
+173     pMsg = NULL;
+174 
+175   } else {
+176     rc = -10; // host invalid
+177   }
+178 
+179   if (rc==-1)
+180   {
+181     // ok i have a policy-dn in policyName.
+182     // 
+183     if (ldap_search_s(ld, szPolicyName, LDAP_SCOPE_BASE, TEXT("(objectClass=*)"), NULL, FALSE, &pMsg) == LDAP_SUCCESS)
+184     { // search ok
+185       PWCHAR* pValues;
+186       LDAPMessage *pEntry;
+187       
+188       pEntry = ldap_first_entry(ld, pMsg);
+189       if (pEntry == NULL)
+190         rc = -12; // unable to read policy object
+191 
+192       if (rc==-1)
+193       {     
+194         pValues = ldap_get_values(ld, pEntry, TEXT("qbePolicyDynamicUserEnabled"));
+195         if (!ldap_count_values(pValues))
+196         {
+197           policy->enableDynamicUser = 0;
+198         } else {
+199           policy->enableDynamicUser = (*pValues[0]=='1');
+200           ldap_value_free(pValues);
+201         }
+202       
+203         pValues = ldap_get_values(ld, pEntry, TEXT("qbePolicyDynamicUserGroup"));
+204         if (!ldap_count_values(pValues))
+205         {
+206           policy->DynamicUserGroup = NULL;
+207         } else {
+208           policy->DynamicUserGroup = (LPWSTR)malloc(((unsigned int)wcslen(*pValues))+1024);
+209           wcscpy(policy->DynamicUserGroup,*pValues);
+210           ldap_value_free(pValues);
+211         }
+212 
+213         pValues = ldap_get_values(ld, pEntry, TEXT("qbePolicyLoginScript"));
+214         if (!ldap_count_values(pValues))
+215         {
+216           policy->LoginScript = NULL;
+217         } else {
+218           policy->LoginScript = (LPWSTR)malloc(((unsigned int)wcslen(*pValues))+1024);
+219           wcscpy(policy->LoginScript,*pValues);
+220           ldap_value_free(pValues);
+221         }
+222 
+223         pValues = ldap_get_values(ld, pEntry, TEXT("qbePolicyHomeDrive"));
+224         if (!ldap_count_values(pValues))
+225         {
+226           policy->HomeDrive = NULL;
+227         } else {
+228           policy->HomeDrive = (LPWSTR)malloc(((unsigned int)wcslen(*pValues))+1024);
+229           wcscpy(policy->HomeDrive,*pValues);
+230           ldap_value_free(pValues);
+231         }
+232 
+233         pValues = ldap_get_values(ld, pEntry, TEXT("qbePolicyHomeDriveDir"));
+234         if (!ldap_count_values(pValues))
+235         {
+236           policy->HomeDriveDir = NULL;
+237         } else {
+238           policy->HomeDriveDir = (LPWSTR)malloc(((unsigned int)wcslen(*pValues))+1024);
+239           wcscpy(policy->HomeDriveDir,*pValues);
+240           ldap_value_free(pValues);
+241         }
+242       }
+243       
+244     } else {
+245       // didnt find cool policy object
+246       rc = -12;
+247     }
+248   }
+249 
+250 
+251   // zap that dog out!
+252   if (pMsg != NULL)
+253     ldap_msgfree(pMsg);
+254 
+255   // and yes...kill that stale connection :>
+256   ldap_unbind(ld);
+257   return rc;  // ldap error
+258 }
+\end{verbatim}\normalsize 

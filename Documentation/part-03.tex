@@ -1,0 +1,58 @@
+%%
+%% Qbe SAS SystemDocumentation
+%% (C) Copyright 2001-2004 Christian Hofstaedtler
+%%
+%% $Id: part-03.tex 2 2004-03-10 08:40:26Z ch $
+%%
+
+\cChapter{Webserver Integration}
+Qbe SAS ist vorbereitet um in Kooperation mit einem getrennten Webserver die Webseite der Institution und die persönlichen Seiten der Systembenutzer anzuzeigen.
+
+\section{Software}
+Folgende Standardsoftware wird verwendet:
+
+\begin{Verbatim}
+Debian GNU/Linux woody, RedHat Linux, alternativ FreeBSD/OpenBSD
+Apache HTTP Server 1.3 oder 2.0
+NFS Client
+\end{Verbatim}
+
+\section{Konfiguration}
+Da keine spezielle Software verwendet wird, beschränkt sich die Konfiguration auf das NFS Filesystem und den Apache Webserver.
+
+Notiz: Es ist nicht notwendig eine LDAP-Benutzerauthentifizierung einzurichten. Idealerweise gibt es auf dem Webserver nur Systemaccounts und einen Systemverwalter (nicht \verb|root|). \verb|root| sollte sich nicht remote anmelden können.
+
+\subsection{NFS}
+Datei \verb|/etc/fstab| muss um folgenden Eintrag (in einer Zeile) ergänzt werden:
+
+\begin{Verbatim}
+10.0.2.10:/export/homes /import/homes           nfs     rw,soft,
+timeo=60,async,nodev,noexec,nouser,nosuid 0 0
+\end{Verbatim}
+
+Dies weißt das System an, beim Neustart automatisch das Filesystem mit den Benutzerverzeichnissen via NFS vom AuthServer (hier: 10.0.2.10) zu importieren. Zusätzlich werden einige Parameter gesetzt die die Geschwindigkeit und Sicherheit positiv beeinflussen.
+
+\subsection{Apache httpd}
+In der Apache Konfigurationsdatei \verb|httpd.conf| muss folgendes sinngemäß hinzugefügt werden (Beispiel für Apache 1.3):
+\begin{Verbatim}
+LoadModule userdir_module     modules/mod_userdir.so
+
+<IfModule mod_userdir.c>
+    UserDir disabled root
+    UserDir /import/homes/*/web
+</IfModule>
+<Directory /import/homes/*/web>
+    AllowOverride All
+    Options Indexes Includes
+    Order allow,deny
+    Allow from all
+</Directory>
+\end{Verbatim}
+
+Soll auch die Institutsseite am AuthServer abgelegt werden, kann diese im Benutzerverzeichniss des Benutzers "`web"' geschehen. Dazu muss zusätzlich im \verb|httpd.conf| eingetragen werden:
+\begin{Verbatim}
+DocumentRoot "/import/homes/web"
+\end{Verbatim}
+
+
+%% *eof*

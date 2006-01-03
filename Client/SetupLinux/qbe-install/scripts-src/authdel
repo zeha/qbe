@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Qbe SAS Client for Linux"
+echo "Username and Password configuration killer."
+echo ""
+
+gconftool-2 -s /apps/qbe/username -t string ""
+gconftool-2 -s /apps/qbe/password -t string ""
+
