@@ -1,5 +1,4 @@
 using System;
-using Mono.Posix;
 
 namespace QbeService
 {
@@ -14,7 +13,9 @@ namespace QbeService
 		{
 			bool EnableSSL = false;
 			String AuthServer = "";
-			int uid = 0; int gid = 0;
+#if MONO
+			uint uid = 0; uint gid = 0;
+#endif
 			if (args.Length > 0)
 			{
 				for(int i = 0; i < args.Length; i++)
@@ -35,19 +36,20 @@ namespace QbeService
 						AuthServer = args[i];
 						ArgumentOk = true;
 					}
-					
+#if MONO
 					if ((args[i] == "--uid") && (args.Length >= (i+1)))
 					{
 						++i;
-						uid = int.Parse(args[i]);
+						uid = uint.Parse(args[i]);
 						ArgumentOk = true;
 					}
 					if ((args[i] == "--gid") && (args.Length >= (i+1)))
 					{
 						++i;
-						gid = int.Parse(args[i]);
+						gid = uint.Parse(args[i]);
 						ArgumentOk = true;
 					}
+#endif
 				
 					// sollen wir ein pidfile schreiben?
 					if ((args[i] == "--pidfile") && (args.Length >= (i+1)))
@@ -72,7 +74,11 @@ namespace QbeService
 			}
 
 			// Version ausgeben
+#if MONO
+			Console.WriteLine("     ____  _               Qbe SAS Client (Mono) " + QbeSAS.QbeClientVersion.ClientVersion);
+#else
 			Console.WriteLine("     ____  _               Qbe SAS Client (XPlat) " + QbeSAS.QbeClientVersion.ClientVersion);
+#endif
 			Console.WriteLine("    / __ \\| |              Copyright 2001-2006 Christian Hofstaedtler");
 			Console.WriteLine("   | |  | | |__   ___      Copyright 2001-2004 Andreas Stuetzner");
 			Console.WriteLine("   | |  | | '_ \\ / _ \\     " + QbeSAS.QbeClientVersion.CVSID);
@@ -94,19 +100,21 @@ namespace QbeService
 			if (args.Length > 0) if (args[0] == "-V")
 				return;
 
+#if MONO
 			if ((uid>0) || (gid>0))
 			{
 				if ((uid>0) && (gid>0))
 				{
 					Console.WriteLine("Dropping privileges...");
-					Syscall.setgid(gid);
-					Syscall.setuid(uid);
+					Mono.Unix.Native.Syscall.setgid(gid);
+					Mono.Unix.Native.Syscall.setuid(uid);
 				} else {
 					Console.WriteLine("CANNOT dropping privileges: either uid or gid is ZERO!");
 					Console.WriteLine("ABORTING...");
 					return;
 				}
 			}
+#endif
 			
 			Console.WriteLine("   To log in, please visit the URI mentioned below.");
 			// Qbe SAS HTTP Service starten
