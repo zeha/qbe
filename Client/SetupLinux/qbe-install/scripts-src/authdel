@@ -1,9 +1,10 @@
 #!/bin/bash
 
-echo "Qbe SAS Client for Linux"
-echo "Username and Password configuration killer."
-echo ""
+echo "Qbe SAS Client for Linux \$Id$"
+echo -n "Clearing cached username and password from your GNOME Config... "
 
 gconftool-2 -s /apps/qbe/username -t string ""
 gconftool-2 -s /apps/qbe/password -t string ""
+
+echo "Done."
 

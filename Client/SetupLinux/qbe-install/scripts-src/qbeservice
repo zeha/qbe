@@ -1,78 +1,62 @@
-#! /bin/sh
-#
-# skeleton	example file to build /etc/init.d/ scripts.
-#		This file should be used to construct scripts for /etc/init.d.
-#
-# Author:	Miquel van Smoorenburg <miquels@cistron.nl>.
-#		Ian Murdock <imurdock@gnu.ai.mit.edu>.
-#
-#		You may remove the "Author" lines above and replace them
-#		with your own name if you copy and modify this script.
-#
-# Version:	@(#)skeleton  1.9.4  21-Mar-2004  miquels@cistron.nl
-#
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          qbeservice
+# Required-Start:    $local_fs $remote_fs
+# Required-Stop:     $local_fs $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      S 0 1 6
+# Short-Description: Qbe SAS Client
+# Description:       The startup file for Qbe SAS Client
+### END INIT INFO
+# $Id$
 
 set -e
 
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/opt/qbe/QbeService.EXE
-NAME=qbeservice
-DESC="Qbe Authentication Client"
-
+PATH=/opt/qbe:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DESC="Qbe SAS Client"
+NAME=QbeService
+DAEMON=/opt/qbe/$DAEMON
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 
 # Gracefully exit if the package has been removed.
 test -x $DAEMON || exit 0
 
-# Read config file if it is present.
-#if [ -r /etc/default/$NAME ]
-#then
-#	. /etc/default/$NAME
-#fi
+d_start() {
+  start-stop-daemon --start --quiet --pidfile $PIDFILE \
+	  --exec $DAEMON \
+	  || echo -n " already running"
+}
 
+d_stop() {
+  start-stop-daemon --stop --quiet --pidfile $PIDFILE \
+	  --name $NAME \
+	  || echo -n " not running"
+}
+					
 case "$1" in
   start)
 	echo -n "Starting $DESC: $NAME"
-	start-stop-daemon --start --quiet -b --pidfile $PIDFILE \
-		--exec $DAEMON
+	d_start
 	echo "."
 	;;
   stop)
 	echo -n "Stopping $DESC: $NAME"
-	start-stop-daemon --stop --quiet --pidfile $PIDFILE \
-		--exec $DAEMON
+	d_stop
 	echo "."
 	;;
-  #reload)
-	#
-	#	If the daemon can reload its config files on the fly
-	#	for example by sending it SIGHUP, do it here.
-	#
-	#	If the daemon responds to changes in its config file
-	#	directly anyway, make this a do-nothing entry.
-	#
-	# echo -n "Reloading $DESC configuration..."
-	# start-stop-daemon --stop --signal 1 --quiet --pidfile \
-	#	$PIDFILE --exec $DAEMON
-	# echo "done."
-  #;;
-  restart|force-reload)
+	restart|force-reload)
 	#
 	#	If the "reload" option is implemented, move the "force-reload"
 	#	option to the "reload" entry above. If not, "force-reload" is
 	#	just the same as "restart".
 	#
 	echo -n "Restarting $DESC: $NAME"
-	start-stop-daemon --stop --quiet --oknodo --pidfile \
-		$PIDFILE --exec $DAEMON
+	d_stop
 	sleep 1
-	start-stop-daemon --start --quiet -b --pidfile \
-		$PIDFILE --exec $DAEMON
-	echo "."
+	d_start
 	;;
   *)
-	# echo "Usage: $SCRIPTNAME {start|stop|restart|reload|force-reload}" >&2
 	echo "Usage: $SCRIPTNAME {start|stop|restart|force-reload}" >&2
 	exit 1
 	;;

@@ -1,30 +1,30 @@
 #!/bin/bash
 
-echo "Qbe SAS Client for Linux"
+echo "Qbe SAS Client for Linux \$Id$"
 echo "Username and Password configuration."
 echo ""
 
+if [ ! -x `which gconftool-2` ]; then
+	echo "ERROR: You do not have gconftool-2 in your path."
+	echo "This tool depends on the GNOME Configuration Storage (gconftool-2) to work."
+	echo "Maybe you do not have GNOME installed..."
+	exit 1
+fi
+
 echo "Current configuration:"
-echo -n "  Username: "
-gconftool-2 -g /apps/qbe/username
-echo -n "  Password: "
-gconftool-2 -g /apps/qbe/password
+echo -n "  Username: "; gconftool-2 -g /apps/qbe/username
+echo -n "  Password: "; gconftool-2 -g /apps/qbe/password
 echo ""
 
 echo "Enter new configuration data:"
-echo -n "  Username: "
-USERNAME=`line`
-
-echo -n "  Password: "
-PASSWORD=`line`
+read -p "  Username: " USERNAME
+read -p "  Password: " PASSWORD
 
 gconftool-2 -s /apps/qbe/username -t string "$USERNAME"
 gconftool-2 -s /apps/qbe/password -t string "$PASSWORD"
 
 echo ""
-echo "Saved data:"
-echo -n "  Username: "
-gconftool-2 -g /apps/qbe/username
-echo -n "  Password: "
-gconftool-2 -g /apps/qbe/password
+echo "Now stored data:"
+echo -n "  Username: "; gconftool-2 -g /apps/qbe/username
+echo -n "  Password: "; gconftool-2 -g /apps/qbe/password
 
