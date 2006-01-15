@@ -1,9 +1,9 @@
 ;
-; $Id: prefix.cnsh 116 2004-06-02 08:05:18Z ch $
-; (C) Copyright 2002-2003 Christian Hofstaedtler
+; $Id$
+; (C) Copyright 2002-2006 Christian Hofstaedtler
 ;
 
-#include "../Common/ilogin-version.h"
+#include "../Common/version.h"
 
 !define PRODUCT_PRODUCT "Qbe SAS Client"
 !define PRODUCT_VERSION ILOGIN_VERSION

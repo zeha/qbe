@@ -22,7 +22,7 @@ PROG_FILES = ..\Common\AssemblyInfo.cs \
 	   /res:$(OUTDIR)\LoginScript.resources \
 	   InputDialog.cs \
 	   /res:$(OUTDIR)\InputDialog.resources \
-	   ..\Common\ilogin-version.cs \
+	   ..\Common\version.cs \
 	   /m:QbeSAS.LoginScript
 
 

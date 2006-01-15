@@ -1,15 +1,15 @@
 # Makefile. Written for UNIX. May work on windows with nmake too.
 #
 
-all: ilogin-version.cs AssemblyInfo.cs $(QBEOUTDIR)\qbelogon.cmd $(QBEOUTDIR)\qbelogout.cmd
+all: version.cs AssemblyInfo.cs $(QBEOUTDIR)\qbelogon.cmd $(QBEOUTDIR)\qbelogout.cmd
 
 clean:
-	rm -f ilogin-version.cs AssemblyInfo.cs
+	rm -f version.cs AssemblyInfo.cs
 
-ilogin-version.cs: ilogin-version.xcs ilogin-version.h 
-	cpp -Wall -P -E ilogin-version.xcs -o ilogin-version.cs
+version.cs: version.xcs version.h 
+	cpp -Wall -P -E version.xcs -o version.cs
 	
-AssemblyInfo.cs: AssemblyInfo.xcs ilogin-version.h
+AssemblyInfo.cs: AssemblyInfo.xcs version.h
 	cpp -Wall -P -E AssemblyInfo.xcs -o AssemblyInfo.cs
 
 $(QBEOUTDIR)\qbelogon.cmd: qbelogon.cmd

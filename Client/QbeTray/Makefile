@@ -1,5 +1,5 @@
-# Qbe iLogin Makefile: QbeHTA
-# Copyright (C) 2001-2003 Christian Hofstaedtler.  All rights reserved.
+# Qbe Client Makefile: QbeTray
+# Copyright (C) 2001-2006 Christian Hofstaedtler.  All rights reserved.
 #
 
 ## -> MFC
@@ -29,7 +29,7 @@ PROG_FILES = ..\Common\AssemblyInfo.cs \
 	   TrayNotify.cs \
 	   /res:$(OUTDIR)\TrayNotify.resources \
 	   /res:$(OUTDIR)\Resource.resources \
-	   ..\Common\ilogin-version.cs \
+	   ..\Common\version.cs \
 	   ..\QbeSAS\ClientUI.cs ..\QbeSAS\SysState.cs \
 	   /m:QbeSAS.StartTray
 

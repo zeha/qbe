@@ -1,5 +1,5 @@
-# Qbe SAS Client Makefile: QbeNDI
-# Copyright (C) 2001-2004 Christian Hofstaedtler.  All rights reserved.
+# Qbe Client Makefile: QbePFC
+# Copyright (C) 2001-2006 Christian Hofstaedtler.  All rights reserved.
 #
 
 ## -> MFC
@@ -21,7 +21,7 @@ PROG_FILES = ..\Common\AssemblyInfo.cs \
 	   ProgramBase.cs FusionInstall.cs comreg.cs \
 	   QbePfc.cs \
 	   ..\QbeSAS\PFC.cs ..\QbeSAS\WinServiceAPI.cs ..\QbeSAS\WinVersionAPI.cs \
-	   ..\Common\ilogin-version.cs \
+	   ..\Common\version.cs \
 	   /m:ComReg.Start
 
 #	

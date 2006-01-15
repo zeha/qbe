@@ -19,7 +19,7 @@ PROG_OBJ = $(OUTDIR)\Applications.resources \
 
 
 PROG_FILES = ..\Common\AssemblyInfo.cs \
-	..\Common\ilogin-version.cs \
+	..\Common\version.cs \
 	AssemblyInfo.cs \
 	Applications.cs /res:$(OUTDIR)\Applications.resources \
 	IEViewer.cs /res:$(OUTDIR)\IEViewer.resources \

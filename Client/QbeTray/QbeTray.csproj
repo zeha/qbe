@@ -109,7 +109,7 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "ilogin-version.cs"
+                    RelPath = "version.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />

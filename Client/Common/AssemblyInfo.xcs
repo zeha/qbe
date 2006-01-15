@@ -1,4 +1,4 @@
-#include "ilogin-version.h"
+#include "version.h"
 
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -13,7 +13,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Qbe Austria -- http://qbe.ch/")]
 [assembly: AssemblyProduct("Qbe SAS Client")]
-[assembly: AssemblyCopyright("Copyright (C) 2001-2004 Christian Hofstaedtler")]
+[assembly: AssemblyCopyright("Copyright (C) 2001-2006 Christian Hofstaedtler")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
