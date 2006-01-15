@@ -19,7 +19,7 @@ QbeService-Mono.EXE: $(SRCS)
 	mcs $(DEFINES) /d:MONO -out:QbeService-Mono.EXE $(SRCS) $(DEPS) -r:Mono.Posix
 
 QbeService-XPlat.EXE: $(SRCS)
-	mcs $(DEFINES) -out:QbeService-Mono.EXE $(SRCS) $(DEPS)
+	mcs $(DEFINES) -out:QbeService-XPlat.EXE $(SRCS) $(DEPS)
 
 test: QbeService-Mono.EXE
 	mono QbeService-Mono.EXE --pidfile pidfile --uid 1000 --gid 1000 --host qbe-auth.htlwrn.ac.at

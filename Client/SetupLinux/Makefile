@@ -2,10 +2,10 @@ dummy:
 	@echo "Available targets: install-linux test build targz"
 
 install-linux: QbeService-Mono.EXE
-	cd qbe-install && ./build-installer.sh
+	./build-installer.sh
 
 clean:
-	rm -rf test build install-linux QbeService*.EXE targz QbeClient-XPlat.tar.gz
+	rm -rf test build install-linux QbeService*.EXE targz QbeClient-XPlat.tar.gz qbe-install
 
 test:	install-linux QbeService-Mono.EXE QbeService-XPlat.EXE
 	rm -rf test

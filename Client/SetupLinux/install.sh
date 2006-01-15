@@ -1,9 +1,9 @@
 #!/bin/bash
 
 VERSION=`cat version`
-
-echo "     ____  _               Qbe SAS Client (XPlat) $VERSION"
-echo "    / __ \| |              for Linux Installations"
+echo ""
+echo "     ____  _               Qbe SAS Client (Mono) $VERSION"
+echo "    / __ \| |              for Linux Installation Utility"
 echo "   | |  | | |__   ___      "
 echo "   | |  | | '_ \ / _ \     Copyright 2001-2006 Christian Hofstaedtler"
 echo "   | |__| | |_) |  __/     "
