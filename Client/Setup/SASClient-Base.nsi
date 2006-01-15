@@ -1,6 +1,6 @@
 ;
-; $Id: SASClient.nsi 126 2004-06-02 13:56:08Z ch $
-; (c) Copyright 2002-2004 Christian Hofstaedtler
+; $Id$
+; (c) Copyright 2001-2006 Christian Hofstaedtler
 ;
 ; vi:noai:ts=4
 ;

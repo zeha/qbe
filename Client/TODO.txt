@@ -4,3 +4,9 @@ TODO for SASClient
 QbeGina: 
 
   * debug "your user object could not be deleted" when admin logs off
+
+All:
+
+	* make build work on windows again
+	* rename all ilogin stuff
+
