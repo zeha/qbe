@@ -17,5 +17,5 @@ test: QbeService.EXE
 	mono QbeService.EXE
 
 testssl: QbeService.EXE
-	mono QbeService.EXE -ssl
+	mono QbeService.EXE --ssl
 
