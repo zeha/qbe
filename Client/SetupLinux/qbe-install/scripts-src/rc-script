@@ -24,7 +24,7 @@ test -x $DAEMON || exit 0
 
 d_start() {
   start-stop-daemon --start --quiet --pidfile $PIDFILE \
-	  --exec $DAEMON \
+	  --exec $DAEMON --pidfile $PIDFILE --uid 65534 --gid 65534 \
 	  || echo -n " already running"
 }
 
