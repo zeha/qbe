@@ -8,6 +8,7 @@ namespace QbeSAS
 		public bool CheckValidationResult(System.Net.ServicePoint sp, System.Security.Cryptography.X509Certificates.X509Certificate cert, System.Net.WebRequest request, int problem)
 		{
 			return true;	// as long as there is a cert, it's ok for us.
+			// XXX FIXME: we really should check against a local copy of the CA certificate
 		}
 	}
 
@@ -102,10 +103,10 @@ namespace QbeSAS
 			public String Value = "";
 			public String UnsplittedValue = "";
 
-			public static String FindParameter(UriGetParameter[] ar, String parName)
+			public static String FindParameter(UriGetParameter[] ar, String paramName)
 			{
-				foreach(UriGetParameter bla in ar)
-					if (bla.Name.Equals(parName)) return bla.Value;
+				foreach(UriGetParameter param in ar)
+					if (param.Name.Equals(paramName)) return param.Value;
 				return null;
 			}
 		}
@@ -278,22 +279,39 @@ namespace QbeSAS
 					Console.WriteLine("REQ: "+requestString);
 						
 					String[] requestParams;
-					if (requestQuery != "") 
-					{ 
+					if (requestQuery != "")
+					{
+						/// fuer GET + POST
 						requestParams = requestQuery.Split("&".ToCharArray());
-					} 
+					}
 					else 
 					{
 						requestParams = new String[0];
+						if (requestLocationLine.StartsWith("POST "))
+						{
+							/// das ist jetzt nicht so richtig kompatibel mit der http spec,
+							/// reicht aber fuer unsere Zwecke:
+							/// wenn wir einen POST request bekommen wird zuerst ueberprueft ob wir einen QueryString haben
+							/// wenn nicht, dann suchen wir uns den POST-Body raus
+							String thisLine;
+							while((thisLine = strr.ReadLine()) != null)
+							{
+								if (thisLine == "")
+								{
+									requestParams = strr.ReadLine().Split("&".ToCharArray());
+									break;
+								}
+							}
+						}
 					}
 
 					System.Collections.ArrayList requestParameters = new System.Collections.ArrayList();
 
-					foreach(String bla in requestParams)
+					foreach(String paramKeyValue in requestParams)
 					{
 						UriGetParameter thisParm = new UriGetParameter();
-						thisParm.UnsplittedValue = System.Web.HttpUtility.UrlDecode(bla);
-						String[] splitted = bla.Split("=".ToCharArray());
+						thisParm.UnsplittedValue = System.Web.HttpUtility.UrlDecode(paramKeyValue);
+						String[] splitted = paramKeyValue.Split("=".ToCharArray());
 						if (splitted.Length == 2)
 						{
 							thisParm.IsSplitted = true;
