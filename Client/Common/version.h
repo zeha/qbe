@@ -11,5 +11,6 @@
 /// Versionsnummer fuer .NET Assemblies
 #define ILOGIN_ASSEMBLYVERSION "2.24.09.*"
 /// Versionskontrollsystem ID
-#define ILOGIN_CVSID "$Id$"
+#include "build.h"
+//#define ILOGIN_CVSID "$Id$"
 

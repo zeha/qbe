@@ -88,8 +88,8 @@ namespace QbeService
 #endif
 			Console.WriteLine("    / __ \\| |              Copyright 2001-2006 Christian Hofstaedtler");
 			Console.WriteLine("   | |  | | |__   ___      Copyright 2001-2004 Andreas Stuetzner");
-			Console.WriteLine("   | |  | | '_ \\ / _ \\     " + QbeSAS.QbeClientVersion.CVSID);
-			Console.WriteLine("   | |__| | |_) |  __/     $Id$");
+			Console.WriteLine("   | |  | | '_ \\ / _ \\     Build " + QbeSAS.QbeClientVersion.CVSID);
+			Console.WriteLine("   | |__| | |_) |  __/     ");
 			Console.WriteLine("    \\___\\_\\_.__/ \\___|     ");
 			Console.WriteLine("                           About Qbe SAS: http://sas.qbe.ch/");
 			Console.WriteLine("");
