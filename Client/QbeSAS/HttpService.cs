@@ -409,7 +409,7 @@ namespace QbeSAS
 				
 			ResponseText = RES_DEFAULT_OK;
 			ResponseText += MakeRespHtmlHeader();
-			ResponseText += "<form method=get action=\"/web/hta-login-post\" id=\"loginform\" name=\"loginform\">";
+			ResponseText += "<form method=post action=\"/web/hta-login-post\" id=\"loginform\" name=\"loginform\">";
 			ResponseText += "<table border=0 cellpadding=0 cellspacing=0>";
 
 			ResponseText += "<tr><td><b>Benutzername: &nbsp;&nbsp;</b></td><td align=left><input type=text name=user id=user size=15></td></tr>";
@@ -431,6 +431,8 @@ namespace QbeSAS
 
 #if !UNIX
 			// 31337 script for saving username and password using COM in the user reg
+			// more a hack than anything else, really
+			// maybe we could use a cookie?
 			ResponseText += "<script language=vbscript>" + RES_NEWLINE;
 			ResponseText += "Function submitform(): set iluser = CreateObject(\"QbeSAS.DataStore\"): iluser.saveData loginform.user.value,loginform.pass.value,loginform.save.checked: loginform.submit: End Function" + RES_NEWLINE;
 			ResponseText += "set iluser = CreateObject(\"QbeSAS.DataStore\"): loginform.user.value = iluser.getUsername(): loginform.pass.value = iluser.getPassword(): if loginform.pass.value <> \"\" then: loginform.submit: end if" + RES_NEWLINE + "</script>" + RES_NEWLINE;
@@ -440,7 +442,7 @@ namespace QbeSAS
 			return ResponseText;
 		}
 
-		/// Bearbeited die schon zerpflueckte Anfrage an den HTTP Service
+		/// Bearbeitet die schon zerpflueckte Anfrage an den HTTP Service
 		ServiceHttpResponse ParseRequest(String Filename, UriGetParameter[] Parameters, System.Net.Sockets.NetworkStream rawStream)
 		{
 			ServiceHttpResponse resp = new ServiceHttpResponse("");
