@@ -33,6 +33,21 @@ namespace QbeService
 						AuthServer = args[i];
 						ArgumentOk = true;
 					}
+					
+					// sollen wir ein pidfile schreiben?
+					if ((args[i] == "--pidfile") && (args.Length >= (i+1)))
+					{
+						++i;
+						try {
+						using (System.IO.StreamWriter sw = new System.IO.StreamWriter(args[i])) 
+							sw.WriteLine(System.Diagnostics.Process.GetCurrentProcess().Id.ToString());
+						
+							ArgumentOk = true;
+						} catch (Exception ex)
+						{
+							Console.WriteLine(ex.StackTrace);
+						}
+					}
 
 					if (!ArgumentOk)
 					{
