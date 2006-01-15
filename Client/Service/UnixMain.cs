@@ -12,6 +12,7 @@ namespace QbeService
 		static void Main(string[] args)
 		{
 			bool EnableSSL = false;
+			bool DisplayVersion = false;
 			String AuthServer = "";
 #if MONO
 			uint uid = 0; uint gid = 0;
@@ -29,6 +30,12 @@ namespace QbeService
 						ArgumentOk = true;
 					}
 					
+					if (args[i] == "--version" || args[i] == "-V")
+					{
+						DisplayVersion = true;
+						ArgumentOk = true;
+					}
+				
 					// anderer Authentication Server
 					if ((args[i] == "--host") && (args.Length >= (i+1)))
 					{
@@ -82,9 +89,9 @@ namespace QbeService
 			Console.WriteLine("    / __ \\| |              Copyright 2001-2006 Christian Hofstaedtler");
 			Console.WriteLine("   | |  | | |__   ___      Copyright 2001-2004 Andreas Stuetzner");
 			Console.WriteLine("   | |  | | '_ \\ / _ \\     " + QbeSAS.QbeClientVersion.CVSID);
-			Console.WriteLine("   | |__| | |_) |  __/     ");
-			Console.WriteLine("    \\___\\_\\_.__/ \\___|     About Qbe SAS: http://sas.qbe.ch/");
-			Console.WriteLine("                           \"the school network solution (tm)\"");
+			Console.WriteLine("   | |__| | |_) |  __/     $Id$");
+			Console.WriteLine("    \\___\\_\\_.__/ \\___|     ");
+			Console.WriteLine("                           About Qbe SAS: http://sas.qbe.ch/");
 			Console.WriteLine("");
 			Console.WriteLine("   **********************************************************************");
 			Console.WriteLine("   *****          5  J A H R E  -  5  Y E A R S  -  5  A N S        *****");
@@ -96,8 +103,8 @@ namespace QbeService
 			Console.WriteLine("     * SSL is OFF by default, use --ssl to enable");
 			Console.WriteLine("");
 			
-			// -V (=nur Version), jetzt beenden
-			if (args.Length > 0) if (args[0] == "-V")
+			// nur Version zeigen? dann jetzt beenden
+			if (DisplayVersion)
 				return;
 
 #if MONO
