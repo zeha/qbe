@@ -1,2 +1,2 @@
 #!/bin/sh
-mono /opt/qbe/QbeService.EXE "$@"
+mono /opt/qbe/QbeService-Mono.EXE "$@"
