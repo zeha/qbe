@@ -31,7 +31,7 @@ namespace QbeSAS
 		const String RES_DEFAULT_NOTFOUND	= RES_HTTP_NOTFOUND + RES_HEADER_SERVER + RES_HEADERS + RES_NEWLINE + "Location not found." + RES_NEWLINE;
 
 		const String RES_HTML_FOOTER		= "<br><div style=\"bottom: 4px; left: 5px; position: absolute;\"><table border=0><tr><td><span style=\"color: white; font-size: 25pt; font-weight: bold;\">Q</span></td><td><span>" + RES_NEWLINE + 
-												"Qbe SAS Client " + QbeSAS.QbeClientVersion.ClientVersion + " (unofficial) &copy; 2001-2005 Christian Hofst&auml;dtler - still alive!<br>" + 
+												"Qbe SAS Client " + QbeSAS.QbeClientVersion.ClientVersion + " &copy; 2001-2006 Christian Hofst&auml;dtler - still alive and fixing bugs!<br>" + 
 												QbeSAS.QbeClientVersion.CVSID + "</span></td></tr></table>" + 
 												"</body></html>" + RES_NEWLINE + RES_NEWLINE;
 
@@ -123,6 +123,7 @@ namespace QbeSAS
 		/// Standardkonstruktor. Erwartet eine TCP/IP Portnummer (normalerweise 7666) und ob SSL aktiviert werden soll.
 		public HttpService(int tcpPort, bool enableSSL)
 		{
+			// wir wollen auf jedem pc gleich funktionieren, also verwenden wir en-us als "sprache".
 			this.CultureFromCaller = System.Threading.Thread.CurrentThread.CurrentCulture;
 			this.CultureWeRequire = new System.Globalization.CultureInfo( "en-US", false );
 				
@@ -242,7 +243,7 @@ namespace QbeSAS
 			if ( (ipAddr[0] == managerIp[0]) && (ipAddr[1] == managerIp[1]) && (ipAddr[2] == managerIp[2]) && (ipAddr[3] == managerIp[3]))
 				ConnectionOkay = true;
 
-			String thisLine = strr.ReadLine();
+			String requestLocationLine = strr.ReadLine();
 
 			if (!ConnectionOkay)
 			{
@@ -256,14 +257,17 @@ namespace QbeSAS
 				return;
 			}
 
-			if (thisLine.StartsWith("GET "))
+			/// wir koennen GET und POST requests bearbeiten
+			/// POST sollte nur vom lokalen Browser/ControlPanel kommen
+			if (requestLocationLine.StartsWith("GET ") || requestLocationLine.StartsWith("POST "))
 			{
-				int iHttp = thisLine.LastIndexOf(" HTTP/");
+				/// die http spec sagt, zumindest HTTP/ muss da sein. und eine versionsnummer - aber die interessiert uns nicht so wirklich
+				int iHttp = requestLocationLine.LastIndexOf(" HTTP/");
 				if (iHttp < 5)
 					strw.WriteLine(RES_HTTP_BADREQUEST + RES_HEADERS + RES_NEWLINE + "<b>The Server could not understand your request.</b>" + RES_NEWLINE);
 				else
 				{
-					String requestString = thisLine.Substring(4,iHttp-4);
+					String requestString = requestLocationLine.Substring(4,iHttp-4);
 					Uri uri = new Uri("http://localhost"+requestString);
 
 					String requestFilename = System.Web.HttpUtility.UrlDecode(uri.AbsolutePath);
