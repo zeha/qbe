@@ -121,26 +121,46 @@ namespace QbeSAS
 			public string Body;
 		}
 
-		/// Standardkonstruktor. Erwartet eine TCP/IP Portnummer (normalerweise 7666) und ob SSL aktiviert werden soll.
-		public HttpService(int tcpPort, bool enableSSL)
+		private void InitializeObject(int tcpPort, bool enableSSL, String AuthServer)
 		{
 			// wir wollen auf jedem pc gleich funktionieren, also verwenden wir en-us als "sprache".
 			this.CultureFromCaller = System.Threading.Thread.CurrentThread.CurrentCulture;
 			this.CultureWeRequire = new System.Globalization.CultureInfo( "en-US", false );
-				
-			//System.Net.IPAddress ipAddress = System.Net.Dns.Resolve("localhost").AddressList[0];
+			
 			this.ServiceData.bUseSSL = enableSSL;
+			if (AuthServer != "")	this.ServiceData.AuthServer = AuthServer;
+			
 			try
 			{
-				tcpListener = new System.Net.Sockets.TcpListener(System.Net.IPAddress.Any,tcpPort);
-				Console.WriteLine("Listening on: " + tcpListener.LocalEndpoint.ToString());
+				tcpListener = new System.Net.Sockets.TcpListener(System.Net.IPAddress.Any, tcpPort == 0 ? 7666 : tcpPort);
+				Console.WriteLine("Qbe Client listening on: http://" + tcpListener.LocalEndpoint.ToString() + "/");
+				Console.WriteLine("Using Authentication Server: http" + (this.ServiceData.bUseSSL ? "s" : "") + "://" + this.ServiceData.AuthServer + "/");
+				Console.WriteLine("");
 			}
 			catch (Exception ex)
-			{	ex=ex;
+			{
 				Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
 				tcpListener = null;
 				return;
 			}
+		}
+
+		/// dumb constructor
+		public HttpService()
+		{
+			this.InitializeObject(0, true, "");
+		}
+
+		/// Standardkonstruktor. Erwartet eine TCP/IP Portnummer (normalerweise 7666) und ob SSL aktiviert werden soll.
+		public HttpService(int tcpPort, bool enableSSL)
+		{
+			this.InitializeObject(tcpPort, enableSSL, "");
+		}
+		
+		/// Extended Version
+		public HttpService(int tcpPort, bool enableSSL, String AuthServer)
+		{
+			this.InitializeObject(tcpPort, enableSSL, AuthServer);
 		}
 
 		/// Startet die Ausfuehrung des HTTP Service in einem eigenen Thread
@@ -258,9 +278,12 @@ namespace QbeSAS
 				return;
 			}
 
+			bool RequestIsGET = (requestLocationLine.StartsWith("GET "));
+			bool RequestIsPOST = (requestLocationLine.StartsWith("POST "));
+
 			/// wir koennen GET und POST requests bearbeiten
 			/// POST sollte nur vom lokalen Browser/ControlPanel kommen
-			if (requestLocationLine.StartsWith("GET ") || requestLocationLine.StartsWith("POST "))
+			if (RequestIsGET || RequestIsPOST)
 			{
 				/// die http spec sagt, zumindest HTTP/ muss da sein. und eine versionsnummer - aber die interessiert uns nicht so wirklich
 				int iHttp = requestLocationLine.LastIndexOf(" HTTP/");
@@ -268,13 +291,14 @@ namespace QbeSAS
 					strw.WriteLine(RES_HTTP_BADREQUEST + RES_HEADERS + RES_NEWLINE + "<b>The Server could not understand your request.</b>" + RES_NEWLINE);
 				else
 				{
-					String requestString = requestLocationLine.Substring(4,iHttp-4);
+					/// pfad + querystring rausschneiden...
+					int offset = requestLocationLine.IndexOf(" ")+1;
+					String requestString = requestLocationLine.Substring(offset,iHttp-offset);
 					Uri uri = new Uri("http://localhost"+requestString);
 
 					String requestFilename = System.Web.HttpUtility.UrlDecode(uri.AbsolutePath);
 					String requestQuery = uri.Query;
 					if (requestQuery.StartsWith("?")) { requestQuery = requestQuery.Substring(1); }
-
 
 					Console.WriteLine("REQ: "+requestString);
 						
@@ -287,21 +311,42 @@ namespace QbeSAS
 					else 
 					{
 						requestParams = new String[0];
-						if (requestLocationLine.StartsWith("POST "))
+						if (RequestIsPOST)
 						{
 							/// das ist jetzt nicht so richtig kompatibel mit der http spec,
 							/// reicht aber fuer unsere Zwecke:
 							/// wenn wir einen POST request bekommen wird zuerst ueberprueft ob wir einen QueryString haben
 							/// wenn nicht, dann suchen wir uns den POST-Body raus
 							String thisLine;
+							int ContentLength = 0;
 							while((thisLine = strr.ReadLine()) != null)
 							{
+								/// zuerst alle Header Zeilen durchgehen
+								if (thisLine.StartsWith("Content-Length: "))
+								{
+									/// brauchen wir damit wir wissen wieviele bytes wir lesen koennen...
+									ContentLength = int.Parse(thisLine.Substring(15));
+									/// ein Range Limit, damit wir anschliessend nicht unbegrenzt Speicher allozieren...
+									if ((ContentLength < 0) || (ContentLength > 512))
+										ContentLength = 0;
+								}
+								
 								if (thisLine == "")
 								{
-									requestParams = strr.ReadLine().Split("&".ToCharArray());
+									if (ContentLength > 0)
+									{
+										/// Platz fuer body herrichten
+										char[] c = new char[ContentLength];
+										strr.Read(c, 0, c.Length);
+										thisLine = new String(c); /// "typecast"
+										requestParams = thisLine.Split("&".ToCharArray());
+									} else {
+										Console.WriteLine("warning: contentlength is zero, not parsing body");
+									}
 									break;
 								}
 							}
+							
 						}
 					}
 
@@ -710,7 +755,7 @@ namespace QbeSAS
 							this.ServiceData.User_Internet = 0;
 							ResponseText = this.MakeRespOk();
 #if UNIX
-							Console.WriteLine("Proxy unlocked you.");
+							Console.WriteLine("Proxy unlocked you, have fun surfing!");
 #endif
 							break;
 						case "lock":
@@ -734,7 +779,7 @@ namespace QbeSAS
 							switch (WantedType)
 							{
 								case "username":
-									// we have to keep it this way, the scripts on the server except it so.
+									// we have to keep it this way, the scripts on the server expects it...
 									ResponseText = this.MakeRespOkWithData( (this.ServiceData.Username != null ? this.ServiceData.Username : "*VOID*" ) );
 									break;
 								case "username2":
@@ -769,7 +814,7 @@ namespace QbeSAS
 									ResponseText = this.MakeRespOkWithData( this.ServiceData.ConnectionError.ToString() );
 									break;
 								case "copyright":
-									ResponseText = this.MakeRespOkWithData( "(C) Copyright 2001-2004 Christian Hofstaedtler" );
+									ResponseText = this.MakeRespOkWithData( "(C) Copyright 2001-2006 Christian Hofstaedtler. All Rights Reserved." );
 									break;
 								case "authserver":
 									ResponseText = this.MakeRespOkWithData( this.ServiceData.AuthServer );
@@ -934,8 +979,8 @@ namespace QbeSAS
 				System.Net.ServicePointManager.CertificatePolicy = new QbeSAS.AllCertsAreOK();
 				
 				req.UserAgent = RES_USERAGENT;
-				req.Headers.Add("iLogin-User",this.ServiceData.Username);
-				req.Headers.Add("iLogin-Pass",this.ServiceData.Password);
+				req.Headers.Add("iLogin-User",this.ServiceData.Username);	// XXX at some point we should rename this
+				req.Headers.Add("iLogin-Pass",this.ServiceData.Password); // and get rid of all iLogin nightmares
 
 				resp = (System.Net.HttpWebResponse)req.GetResponse();
 				respStream = resp.GetResponseStream();
