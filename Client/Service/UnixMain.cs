@@ -1,4 +1,5 @@
 using System;
+using Mono.Posix;
 
 namespace QbeService
 {
@@ -13,6 +14,7 @@ namespace QbeService
 		{
 			bool EnableSSL = false;
 			String AuthServer = "";
+			int uid = 0; int gid = 0;
 			if (args.Length > 0)
 			{
 				for(int i = 0; i < args.Length; i++)
@@ -34,6 +36,19 @@ namespace QbeService
 						ArgumentOk = true;
 					}
 					
+					if ((args[i] == "--uid") && (args.Length >= (i+1)))
+					{
+						++i;
+						uid = int.Parse(args[i]);
+						ArgumentOk = true;
+					}
+					if ((args[i] == "--gid") && (args.Length >= (i+1)))
+					{
+						++i;
+						gid = int.Parse(args[i]);
+						ArgumentOk = true;
+					}
+				
 					// sollen wir ein pidfile schreiben?
 					if ((args[i] == "--pidfile") && (args.Length >= (i+1)))
 					{
@@ -78,6 +93,20 @@ namespace QbeService
 			// -V (=nur Version), jetzt beenden
 			if (args.Length > 0) if (args[0] == "-V")
 				return;
+
+			if ((uid>0) || (gid>0))
+			{
+				if ((uid>0) && (gid>0))
+				{
+					Console.WriteLine("Dropping privileges...");
+					Syscall.setgid(gid);
+					Syscall.setuid(uid);
+				} else {
+					Console.WriteLine("CANNOT dropping privileges: either uid or gid is ZERO!");
+					Console.WriteLine("ABORTING...");
+					return;
+				}
+			}
 			
 			Console.WriteLine("   To log in, please visit the URI mentioned below.");
 			// Qbe SAS HTTP Service starten

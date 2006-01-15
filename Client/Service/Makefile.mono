@@ -11,7 +11,7 @@ clean:
 	rm -f QbeService.EXE
 
 QbeService.EXE: UnixMain.cs ../QbeSAS/SysState.cs ../QbeSAS/HttpService.cs ../Common/version.cs ../Common/AssemblyInfo.cs ../QbeSAS/WinTimeAPI.cs ../QbeSAS/WinServiceAPI.cs
-	mcs /d:UNIX -out:QbeService.EXE UnixMain.cs ../QbeSAS/WinTimeAPI.cs ../QbeSAS/WinServiceAPI.cs ../QbeSAS/ServiceMessageBox.cs ../QbeSAS/AppDist.cs ../QbeSAS/SysState.cs ../QbeSAS/HttpService.cs ../Common/version.cs ../Common/AssemblyInfo.cs -r:System.Web
+	mcs /d:UNIX -out:QbeService.EXE UnixMain.cs ../QbeSAS/WinTimeAPI.cs ../QbeSAS/WinServiceAPI.cs ../QbeSAS/ServiceMessageBox.cs ../QbeSAS/AppDist.cs ../QbeSAS/SysState.cs ../QbeSAS/HttpService.cs ../Common/version.cs ../Common/AssemblyInfo.cs -r:System.Web -r:Mono.Posix
 
 test: QbeService.EXE
 	mono QbeService.EXE
