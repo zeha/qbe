@@ -974,8 +974,7 @@ namespace QbeSAS
 
 		public void runSendHello()
 		{
-			ForeignHttpResponse Response;
-			Response = this.runUrl("/rpc/client/hello?ver="+QbeSAS.QbeClientVersion.ClientVersion);
+			this.runUrl("/rpc/client/hello?ver="+QbeSAS.QbeClientVersion.ClientVersion);
 		}
 		
 		/// Ruft den RPC client/login am Authentication Server auf

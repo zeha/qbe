@@ -163,7 +163,7 @@ namespace QbeSAS
 						try {
 							if (!System.IO.File.Exists(ActionTarget))
 							{
-								System.IO.StreamWriter sw = System.IO.File.CreateText(ActionTarget);
+								/*System.IO.StreamWriter sw =*/ System.IO.File.CreateText(ActionTarget);
 							}
 							System.IO.StreamReader sr = System.IO.File.OpenText(ActionObject);
 							using (System.IO.StreamWriter sw = System.IO.File.AppendText(ActionTarget))
