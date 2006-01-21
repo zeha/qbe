@@ -1,5 +1,5 @@
 ;
-; $Id: SASClient.nsi 122 2004-06-02 10:41:50Z ch $
+; $Id$
 ; (c) Copyright 2002-2004 Christian Hofstaedtler
 ;
 ; vi:noai:ts=4
@@ -103,6 +103,8 @@ Function ClientWriteUninstaller
  SetOutPath "$INSTDIR" 
 
  DetailPrint "* Schreibe Deinstallationsinformationen ..."
+    ; recreate path...
+    SetOutPath "$INSTDIR\Setup" 
 	WriteUninstaller "$INSTDIR\Setup\Uninstall.exe"
 
 	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\QbeSASClient" "DisplayName" "${PRODUCT_NAME}"
@@ -225,12 +227,13 @@ Function un.ClientUninstall
 	DeleteRegKey HKLM "SOFTWARE\Qbe\SAS\Client"
 	DeleteRegKey HKLM "SOFTWARE\Qbe"
 
-	ExecWait '"$INSTDIR\Setup\QbePFC.exe" /K'
-	ExecWait '"$INSTDIR\Setup\QbePFC.exe" /c /u /silent /gac "$INSTDIR\QbeSAS.dll"'
+    ; $INSTDIR seems to be %system32%\Qbe\Setup, better dont use it 
+	ExecWait '"$SYSDIR\Qbe\Setup\QbePFC.exe" /K'
+	ExecWait '"$SYSDIR\Qbe\Setup\QbePFC.exe" /c /u /silent /gac "$SYSDIR\Qbe\QbeSAS.dll"'
 
 ;	ExecWait 'rundll32.exe setupapi.dll,InstallHinfSection DefaultUninstall 128 $INSTDIR\Setup\netQbe.inf'
 
-	RMDir /r "$INSTDIR\Setup"
-	RMDir /r "$INSTDIR"
+	RMDir /r "$SYSDIR\Qbe\Setup"
+	RMDir /r "$SYSDIR\Qbe"
 FunctionEnd
 

@@ -1,7 +1,7 @@
 @echo off
 REM
 REM The Qbe SAS Client MASTER build file
-REM $Id: buildx.bat 152 2004-06-16 13:28:30Z ch $
+REM $Id$
 REM (C) Copyright 2003, 2004 Christian Hofstaedtler
 REM
 REM Note: this was made between 23:00 and 00:32, so expect mistakes...
@@ -142,6 +142,17 @@ echo.
 echo ::: LoginScript
 cd QbeLoginScript
 if %QBECLEAN%==yes %QBENMAKE% clean
+%QBENMAKE% 
+cd ..
+if ERRORLEVEL 1 echo Errors: %ERRORLEVEL% 
+if ERRORLEVEL 1 pause
+if %QBEWHAT%~==SINGLE~ goto done
+
+:TARUtil
+echo.
+echo ::: Util
+cd QbeUtil
+if %QBECLEAN%==yes %QBENMAKE% clean 
 %QBENMAKE% 
 cd ..
 if ERRORLEVEL 1 echo Errors: %ERRORLEVEL% 

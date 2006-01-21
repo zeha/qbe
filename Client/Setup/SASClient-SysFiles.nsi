@@ -1,5 +1,5 @@
 ;
-; $Id: SASClient-SysFiles.nsi 165 2004-06-17 15:00:39Z ch $
+; $Id$
 ;
 
 Var SYSFILE_NAME
@@ -10,6 +10,11 @@ Function SysFilesCheckAndDownload
  Push $R1
 
 	DetailPrint "   $SYSFILE_NAME"
+	FindFirst $R0 $R1 "$SYSDIR\$SYSFILE_NAME"
+	IfErrors sfi_recheck sfi_ok
+	FindClose $R0
+
+ sfi_recheck:
 	FindFirst $R0 $R1 "$INSTDIR\$SYSFILE_NAME"
 	IfErrors sfi_get sfi_ok
 	FindClose $R0
@@ -36,20 +41,20 @@ Function SysFilesInstall
 	; SetOutPath "$INSTDIR"
 	DetailPrint "* Überprüfe Systemdateien ..."
 
-	StrCpy $SYSFILE_NAME "mfc70u.dll"
-	Call SysFilesCheckAndDownload
+;	StrCpy $SYSFILE_NAME "mfc70u.dll"
+;	Call SysFilesCheckAndDownload
 
 	StrCpy $SYSFILE_NAME "mfc71u.dll"
 	Call SysFilesCheckAndDownload
 
-	StrCpy $SYSFILE_NAME "msvcr70.dll"
-	Call SysFilesCheckAndDownload
+;	StrCpy $SYSFILE_NAME "msvcr70.dll"
+;	Call SysFilesCheckAndDownload
 
 	StrCpy $SYSFILE_NAME "msvcr71.dll"
 	Call SysFilesCheckAndDownload
 
-	StrCpy $SYSFILE_NAME "msvcp70.dll"
-	Call SysFilesCheckAndDownload
+;	StrCpy $SYSFILE_NAME "msvcp70.dll"
+;	Call SysFilesCheckAndDownload
 
 	StrCpy $SYSFILE_NAME "msvcp71.dll"
 	Call SysFilesCheckAndDownload

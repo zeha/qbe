@@ -1,6 +1,6 @@
 @echo off
 REM
-REM $Id: make.bat 167 2004-06-18 09:03:52Z ch $
+REM $Id$
 REM (C) Copyright 2003 Christian Hofstaedtler
 REM
 
@@ -27,6 +27,7 @@ REM popd
 %DEVELDRIVE%\programme\nsis20\makensis.exe /DQBEOUTDIR=%QBEOUTDIR% /NOCD /V2 SASFatClient.nsi
 
 %DEVELDRIVE%\programme\nsis20\makensis.exe /DQBEOUTDIR=%QBEOUTDIR% /NOCD /V2 SASMiniClient.nsi
+%DEVELDRIVE%\programme\nsis20\makensis.exe /DQBEOUTDIR=%QBEOUTDIR% /NOCD /V2 SASDevelClient.nsi
 
 if %NOPAUSE%~==~ pause
 

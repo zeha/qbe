@@ -4,9 +4,9 @@
 
 QBEPROG=QbeSvc
 QBEPEXT=EXE
-QBEEXTRAALL=
+QBEEXTRAALL=QbeUtil.dll
 QBEEXTRALINK=
-QBEEXTRALINKDEP=
+QBEEXTRALINKDEP=QbeUtil.dll
 QBEWINSYS=console
 QBENETCOMPILER=csc
 QBENETTARGET=exe
@@ -26,6 +26,9 @@ PROG_FILES = ..\Common\AssemblyInfo.cs \
 	   /r:QbeUtil.dll
 
 !include "../Common/ilogin.mak"
+
+QbeUtil.dll: $(QBEOUTDIR)\QbeUtil\QbeUtil.dll
+        copy $(QBEOUTDIR)\QbeUtil\QbeUtil.dll QbeUtil.dll
 
 # - eof -
 

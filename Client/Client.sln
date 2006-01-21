@@ -7,14 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QbeTray", "QbeTray\QbeTray.
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QbeNDI", "QbeNDI\QbeNDI.vcproj", "{7F5B155D-99DA-4114-A2AE-A0F8B2273467}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QbeSvc", "Service\Service.vcproj", "{2AD948F1-16F4-4610-A624-06E645EE4904}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QbeLoginScript", "QbeLoginScript\QbeLoginScript.csproj", "{B1BC03B4-7078-4B44-8CDA-C0FF0BDD0C58}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
@@ -33,14 +25,6 @@ Global
 		{806DEF16-523C-4365-8722-043455E06874}.Debug.Build.0 = Debug|.NET
 		{806DEF16-523C-4365-8722-043455E06874}.Release.ActiveCfg = Release|.NET
 		{806DEF16-523C-4365-8722-043455E06874}.Release.Build.0 = Release|.NET
-		{7F5B155D-99DA-4114-A2AE-A0F8B2273467}.Debug.ActiveCfg = Debug|Win32
-		{7F5B155D-99DA-4114-A2AE-A0F8B2273467}.Debug.Build.0 = Debug|Win32
-		{7F5B155D-99DA-4114-A2AE-A0F8B2273467}.Release.ActiveCfg = Release|Win32
-		{7F5B155D-99DA-4114-A2AE-A0F8B2273467}.Release.Build.0 = Release|Win32
-		{2AD948F1-16F4-4610-A624-06E645EE4904}.Debug.ActiveCfg = Debug|Win32
-		{2AD948F1-16F4-4610-A624-06E645EE4904}.Debug.Build.0 = Debug|Win32
-		{2AD948F1-16F4-4610-A624-06E645EE4904}.Release.ActiveCfg = Release|Win32
-		{2AD948F1-16F4-4610-A624-06E645EE4904}.Release.Build.0 = Release|Win32
 		{B1BC03B4-7078-4B44-8CDA-C0FF0BDD0C58}.Debug.ActiveCfg = Debug|.NET
 		{B1BC03B4-7078-4B44-8CDA-C0FF0BDD0C58}.Debug.Build.0 = Debug|.NET
 		{B1BC03B4-7078-4B44-8CDA-C0FF0BDD0C58}.Release.ActiveCfg = Release|.NET
