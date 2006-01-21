@@ -7,6 +7,5 @@ QbeGina:
 
 All:
 
-	* make build work on windows again
-	* rename all ilogin stuff
+  * rename all ilogin stuff
 

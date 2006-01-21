@@ -1,2 +1,7 @@
+// development build
 #define ILOGIN_CVSID "Inofficial Build prepared on Windows"
+
+// release build
+// #define ILOGIN_CVSID "SVN Revision 32, prepared by ch on 2006-01-15"
+
 
