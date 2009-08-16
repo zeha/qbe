@@ -1,0 +1,10 @@
+# Defaults for qbe-sas-daemon initscript
+# sourced by /etc/init.d/qbe-sas-daemon
+# installed at /etc/default/qbe-sas-daemon by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+# Additional options that are passed to the Daemon.
+DAEMON_OPTS=""

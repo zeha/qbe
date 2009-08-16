@@ -31,12 +31,12 @@
 	pdfcreator = {\LaTeX\ with package \flqq hyperref\frqq},
 	pdfborder = 0,
 	pdfstartpage = 1,
-	bookmarks = true,
+	%bookmarks = true,
 	bookmarksopen = true,
 }
 
 \newcommand{\placefig}[2]{%
-\begin{figure}[h] %
+\begin{figure}[ht] %
 	\centering % 
 		\includegraphics{files/#1} %
 		\caption{#2} %
@@ -45,7 +45,7 @@
 }
 
 \newcommand{\placefigx}[3]{%
-\begin{figure}[h] %
+\begin{figure}[ht] %
 	\centering %
 		\includegraphics[#3]{files/#1} %
 		\caption{#2} %
@@ -53,19 +53,33 @@
 \end{figure} %
 }
 
+% Figure tweaking
+% http://www.fysik.dtu.dk/~schiotz/comp/latextips/#tweaklist
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+
+
+\setlength{\headheight}{14pt}
+
+%\newcommand{\defaultnormalfont}{\normalfont}
+\renewcommand{\normalfont}{\fontfamily{cmbr} \selectfont}
+
 %\definecolor{Headings}{rgb}{1,0,0}%{named}{Red}
 %\newcommand{\cChapter}[1]{\color{Headings}\chapter{#1}\color{black}}
-\newcommand{\cChapter}[1]{\chapter{#1}}
+\definecolor{QBlue}{rgb}{0.12,0.24,0.36}
+\newcommand{\cChapter}[1]{\color{QBlue} \chapter{#1}\color{black}}
+
+\definecolor{QRed}{rgb}{1,0,0}
 
 
 \renewcommand*\descriptionlabel[1]{\hspace\labelsep
-	\color{red}\bfseries #1\hspace{4pt} }
+	\color{QBlue}\bfseries #1\hspace{4pt} }
 
+\newcommand{\keyword}[1]{\color{QBlue} \textbf{#1} \color{black}}
 
 %fontfamily=Helvetica,
 %\fvset{frame=single,fontsize=\small,numbers=left,numbersep=3pt}
-
-\definecolor{identifiers}{rgb}{0.1,0.1,0.1}
 
 \lstset{% listings setup
 	basicstyle=\small,%
@@ -75,8 +89,10 @@
 	breaklines=true,%
 	language=C,%
 	showstringspaces=false,showspaces=false,showtabs=false,%
-	keywordstyle=\color{blue},commentstyle=\color{green},identifierstyle=\color{identifiers}%
+	keywordstyle=\color{QBlue},commentstyle=\color{green}%
 }
+
+%\lstdefinelanguage[schema]{LDAP}{C}{keywords=[2]{attributeTypes,objectClasses},string=[b]{\'}}
 
 % Bookmarks fixup
 \ifx\hypersetup\undefined\else

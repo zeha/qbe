@@ -2,41 +2,43 @@
 %% Qbe SAS SystemDocumentation
 %% (C) Copyright 2001-2004 Christian Hofstaedtler
 %%
-%% $Id: part-03.tex 2 2004-03-10 08:40:26Z ch $
+%% $Id: part-03.tex 36 2004-05-12 13:04:34Z ch $
 %%
 
 \cChapter{Webserver Integration}
-Qbe SAS ist vorbereitet um in Kooperation mit einem getrennten Webserver die Webseite der Institution und die persönlichen Seiten der Systembenutzer anzuzeigen.
+Qbe SAS ist vorbereitet um in Kooperation mit einem getrennten Webserver, die Webseite der Institution und die persönlichen Seiten der Systembenutzer anzuzeigen.
 
 \section{Software}
 Folgende Standardsoftware wird verwendet:
 
-\begin{Verbatim}
-Debian GNU/Linux woody, RedHat Linux, alternativ FreeBSD/OpenBSD
-Apache HTTP Server 1.3 oder 2.0
-NFS Client
-\end{Verbatim}
+\begin{itemize}
+\item Debian GNU/Linux woody oder OpenBSD 3.2+ oder FreeBSD 4.x
+\item Apache \index{HTTP}{HTTP} Server 1.3 oder 2.0
+\item NFS Client
+\end{itemize}
 
 \section{Konfiguration}
 Da keine spezielle Software verwendet wird, beschränkt sich die Konfiguration auf das NFS Filesystem und den Apache Webserver.
 
-Notiz: Es ist nicht notwendig eine LDAP-Benutzerauthentifizierung einzurichten. Idealerweise gibt es auf dem Webserver nur Systemaccounts und einen Systemverwalter (nicht \verb|root|). \verb|root| sollte sich nicht remote anmelden können.
+Notiz: Es ist nicht notwendig, eine LDAP-Benutzerauthentifizierung einzurichten. Idealerweise gibt es auf dem Webserver nur Systemaccounts und einen Systemverwalter (nicht \verb|root|). \verb|root| sollte sich nicht über das Netzwerk anmelden können.
 
 \subsection{NFS}
 Datei \verb|/etc/fstab| muss um folgenden Eintrag (in einer Zeile) ergänzt werden:
 
-\begin{Verbatim}
-10.0.2.10:/export/homes /import/homes           nfs     rw,soft,
-timeo=60,async,nodev,noexec,nouser,nosuid 0 0
-\end{Verbatim}
+\begin{lstlisting}
+10.0.2.100:/export/homes /import/homes           nfs     rw,soft,timeo=60,async,nodev,noexec,nouser,nosuid 0 0
+\end{lstlisting}
 
-Dies weißt das System an, beim Neustart automatisch das Filesystem mit den Benutzerverzeichnissen via NFS vom AuthServer (hier: 10.0.2.10) zu importieren. Zusätzlich werden einige Parameter gesetzt die die Geschwindigkeit und Sicherheit positiv beeinflussen.
+Dies weist das System an, beim Neustart automatisch das Dateisystem mit den Benutzerverzeichnissen via NFS vom AuthServer (hier: 10.0.2.100) zu importieren. Zusätzlich werden einige Parameter gesetzt die die Geschwindigkeit und Sicherheit positiv beeinflussen.
 
 \subsection{Apache httpd}
-In der Apache Konfigurationsdatei \verb|httpd.conf| muss folgendes sinngemäß hinzugefügt werden (Beispiel für Apache 1.3):
-\begin{Verbatim}
+In der Apache Konfigurationsdatei \verb|httpd.conf| muss folgendes sinngemäß hinzugefügt werden (Beispiel für Apache Version 1.3):
+
+\begin{lstlisting}[language=]
+; Modul fuer Benutzerverzeichnisse laden
 LoadModule userdir_module     modules/mod_userdir.so
 
+; Fuer root kein Benutzerverzeichnis, fuer alle anderen in ~/web/
 <IfModule mod_userdir.c>
     UserDir disabled root
     UserDir /import/homes/*/web
@@ -47,12 +49,14 @@ LoadModule userdir_module     modules/mod_userdir.so
     Order allow,deny
     Allow from all
 </Directory>
-\end{Verbatim}
+\end{lstlisting}
 
-Soll auch die Institutsseite am AuthServer abgelegt werden, kann diese im Benutzerverzeichniss des Benutzers "`web"' geschehen. Dazu muss zusätzlich im \verb|httpd.conf| eingetragen werden:
-\begin{Verbatim}
+Soll auch die Institutionsseite am AuthServer abgelegt werden, kann diese im Benutzerverzeichniss des Benutzers "web" geschehen. 
+Dazu muss im \verb|httpd.conf| zusätzlich folgendes eingetragen werden:
+\begin{lstlisting}
 DocumentRoot "/import/homes/web"
-\end{Verbatim}
+\end{lstlisting}
 
 
 %% *eof*
+

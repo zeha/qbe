@@ -9,7 +9,7 @@
 
 # primary targets
 
-# master target
+# master target 
 pdf:	QbeSASDoc.pdf
 
 htl:	htl-master.pdf
@@ -18,6 +18,10 @@ all:	clean doxygen doxypatch pdf
 
 upload:	QbeSASDoc.pdf htl-master.pdf
 	scp QbeSASDoc.pdf htl-master.pdf ch@sas.qbe.ch:/kunden/vhosts/qbe.ch/sas/htdocs/sysdoc/
+
+draft:	*.tex
+	pdflatex htl-master.tex
+
 
 # file targets
 QbeSASDoc.pdf: *.tex

@@ -2,14 +2,14 @@
 %% Qbe SAS SystemDocumentation
 %% (C) Copyright 2001-2004 Christian Hofstaedtler
 %%
-%% $Id: QbeSASDoc.tex 20 2004-05-03 15:41:20Z ch $
+%% $Id: QbeSASDoc.tex 29 2004-05-12 08:45:25Z ch $
 %%
 %draft
 \documentclass[a4paper,11pt,twoside]{book}
 %%\usepackage[top=10mm,bottom=15mm]{geometry}
 
-\newcommand{\ionusappver}{0.9.6}
-\newcommand{\ionusdocver}{0078}
+\newcommand{\ionusappver}{1.0.0}
+\newcommand{\ionusdocver}{0194}
 \newcommand{\ionusdocdate}{\today}
 \newcommand{\ionusdoctitle}{Qbe SAS SystemDocumentation}
 \newcommand{\ionusdocauthor}{Christian\ Hofstädtler}
@@ -24,12 +24,6 @@
 
 %%\makeatletter
 %\nonfrenchspacing
-
-% Figure tweaking
-% http://www.fysik.dtu.dk/~schiotz/comp/latextips/#tweaklist
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\textfraction}{0.1}
-\renewcommand{\floatpagefraction}{0.75}
 
 % Page Setup
 %
@@ -81,7 +75,7 @@
 \pagenumbering{roman}
 
 %\sffamily
-\fontfamily{cmss}		%ppl
+\fontfamily{cmbr}		%ppl
 \selectfont
 
 % Set Document Information
@@ -106,15 +100,15 @@
 
 \vspace{4cm}
 \begin{center}
-Qbe Enterprise IT Solutions
+%QbeIT
 \end{center}
 
 \vfill
 
 {\parindent=0cm
 \rule{\textwidth}{1pt}  %%0.75
-Diese SystemDocumentation gibt einen Überblick über das umfangreiche Qbe SAS System. Es wurde versucht, so viel wie möglich in kurzer und verständlicher Form zu dokumentieren - bei einem derart großen System mag dies allerdings fast nicht gelingen. \\
-Zusätzlich findet sich im Anhang die Source Code Cross Reference für den Qbe SAS Client -- der Teil der wohl am meisten Anpassung in der Zukunft benötigen wird.
+%Diese SystemDocumentation gibt einen Überblick über das umfangreiche Qbe SAS System. Es wurde versucht, so viel wie möglich in kurzer und verständlicher Form zu dokumentieren - bei einem derart großen System mag dies allerdings fast nicht gelingen. \\
+%Zusätzlich findet sich im Anhang die Source Code Cross Reference für den Qbe SAS Client -- der Teil der wohl am meisten Anpassung in der Zukunft benötigen wird.
 }
 \end{titlepage}
 
@@ -123,11 +117,11 @@ Zusätzlich findet sich im Anhang die Source Code Cross Reference für den Qbe SAS
 \normalsize
 
 \newpage	%% Copyright, Thanks
-\include{pre-copyright}
-\newpage
-\include{pre-thanks}
-\newpage
-\include{pre-filefor}
+\input{pre-copyright.tex}
+\input{pre-aboutme.tex}
+\input{pre-thanks.tex}
+%\newpage
+%\input{pre-filefor.tex}
 
 \pagestyle{plain}
 
@@ -163,7 +157,7 @@ Zusätzlich findet sich im Anhang die Source Code Cross Reference für den Qbe SAS
 
 % Code XRef SAS Client
 \lstset{numbers=none}
-\input{part-xref-client}
+%\input{part-xref-client}
 
 \newpage
 \printindex

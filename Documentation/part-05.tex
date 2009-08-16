@@ -1,0 +1,169 @@
+%%
+%% Qbe SAS SystemDocumentation
+%% (C) Copyright 2001-2004 Christian Hofstaedtler
+%%
+%% $Id: part-04.tex 24 2004-05-07 06:28:49Z ch $
+%%
+
+\cChapter{Client/Server Protokoll}
+\label{chap-csprotocol}
+
+Der Qbe SAS Client und der Qbe Authentication Server benutzen eine eigene, einfache \index{RPC}{RPC} Implementation, die auf HTTP aufsetzt. Verbindungen vom Server zum Client sind immer unverschlüsselt, in die andere Richtung steht es dem Client frei zwischen \index{HTTP}{HTTP} und \index{HTTP-SSL}{HTTP-SSL} zu wählen.
+
+\section{UserAgent Feldbeschreibung}
+Der Qbe SAS Client sollte immer einen UserAgent-\index{Header}{Header} mitschicken, der den Client als richtigen Client mit definierter Versionsnummer identifiziert. Der Feldaufbau für alte Versionen ist wie folgend:
+\begin{itemize}
+\item Zeichenkette "iLogin"
+\item Leerzeichen
+\item Der Programmname. Zum Beispiel "QbeService (WIN32)"
+\item Leerzeichen
+\item Qbe SAS Client Versionsnummer. Zum Beispiel "2.23.00"
+\end{itemize}
+
+Beginnend mit Client Version 2.23.10 wird folgendes Format verwendet:
+\index{QbeService}
+
+\begin{itemize}
+\item Zeichenkette "QbeService/"
+\item Qbe SAS Client Versionsnummer. Zum Beispiel "2.23.89"
+\end{itemize}
+
+Clients, die nicht diesen Anforderungen entsprechen, werden eventuell vom Server abgewiesen. 
+Die neuen Clients melden den Betriebssystemnamen nicht mehr an den Server.
+
+\section{Server API}
+Folgende Befehle sind am Server zur Benutzung durch den Client implementiert:
+
+\subsection{/rpc/client/login}
+Überprüft den Benutzernamen und das Passwort gegenüber dem \index{LDAP}{LDAP} Verzeichnis und trägt dann die aktuelle IP- und MAC-Adresse des Clients in das Benutzerobjekt ein. Ist bereits eine IP- oder MAC-Adresse eingetragen, werden diese überschrieben und alte Anmeldungen werden damit ungültig.
+
+Akzeptiert die GET-Parameter "user" und "pass" für Testzwecke, oder vom Client die \index{Header}{Header} "iLogin-User" (Benutzername), "iLogin-Pass" (Passwort), oder "iLogin-Token" (Benutzername/Passwort base64 enkodiert). Auf jeden Fall muss der GET-Paramter "ver" (die Client-Versionsnummer) und der "UserAgent"-Header vorhanden sein.
+
+Die Antwort besteht aus dem \index{HTTP}{HTTP} Statuscode, sowie dem Internet-Status aus dem LDAP ("iLogin-User-State"), dem bisherigen Internettraffic ("iLogin-Stats-Traffic") und der Speicherplatznutzung ("iLogin-Stats-Disk"). 
+
+Der HTTP \index{Statuscode}{Statuscode} kann folgende Werte annehmen:
+\begin{itemize}
+\item 200 OK, Anmeldung erfolgreich
+\item 401 Fehler: Benutzer muss zuerst Passwort ändern
+\item 403 Fehler: Benutzername/Passwort falsch
+\item 404 Fehler: Das API hat sich geändert, bzw. der Qbe SAS Client ist veraltet.
+\item 500 Fehler: Allgemeiner Serverfehler. Client soll die Anmeldung nicht erneut versuchen.
+\end{itemize}
+
+Die Anmeldeversuche und Resultate werden mittels \index{syslog}{syslog} nach /var/log/qbe.log gespeichert.
+
+\subsection{/rpc/client/logout}
+Meldet den aktuellen Benutzer vom System ab. Akzeptiert keine Parameter und liefert immer HTTP-Statuscode 200 ("OK") zurück.
+
+Zur Abmeldung wird nach dem ersten LDAP-Eintrag, der auf den folgender Filter passt gesucht: \textit{(loggenonHost=\$ClientIP)}. In diesem Eintrag werden dann die Attribute loggedon\-Host, loggedon\-Mac, und last\-Activity gelöscht.
+
+Die Abmeldungen werden mittels \index{syslog}{syslog} nach /var/log/qbe.log gespeichert.
+
+\subsection{/rpc/client/svc-top.php}
+Zeigt den Schriftzug "Qbe SAS Client MJ.MN.RV" (wobei MJ = Majorversion, MN = Minorversion, RV = Revision des Clients) auf blauem Hintergrund. 
+
+Ab Qbe Application Server Version 0.91 wird zusätzlich auch ein Hinweis auf den Serverstatus angezeigt. z.B: Server: ok. Andere Zustände können fail oder critical sein.
+
+\subsection{/rpc/client/svc-frame.php}
+Erstellt ein HTML Frameset zur Verwendung in der Windows-Version des Qbe SAS Clients. Enthält ein Top-Frame mit dem \verb|svc-top.php| und ein Content-Frame mit der QbeSvc-URL "http://127.0.0.1:7666/web/menu".
+Wird vom Client im Parameter \verb|ver| eine Versionsnummer übermittelt und entspricht diese nicht der aktuellen Version, wird statt dem Content Frame die Update-Info Seite \verb|update.php| angezeigt.
+
+\subsection{/rpc/client/update.php}
+Weist auf eine neue verfügbare Qbe SAS Client Version hin. Auf PCs mit installiertem \index{HDGuard}{HDGuard} wird der Hinweis mittels einem VBScript/Registry-Check übersprungen.
+
+\section{Client API}
+
+Die Client-Befehle sind unter Windows im QbeSvc.EXE, im Xplat Client im QbeService.EXE implementiert. Befehle werden nur von IPs im Bereich 10.0.2.0/24 akzeptiert, der Server muss sich jedoch nicht weiter ausweisen.
+
+Befehle mit Präfix "/web" sollten nicht vom Server, sondern nur intern vom Qbe SAS Client benutzt werden.
+
+Der Client antwortet im Fehlerfall mit \index{Statuscode}{Statuscode} 400 oder 404. Code 400 wird für nicht implementierte Methoden (HEAD, POST) verwendet, 404 für nicht implementierte Pfade.
+
+\subsection{/}
+Optional: Weiterleitung nach "/web/menu".
+
+\subsection{/web/menu}
+Optional: Zeigt eine einfache Übersicht über den Status des Qbe SAS Client zur lokalen Verwendung an. Üblicherweise werden der Benutzername, der Servername, Zeit der letzten Verbindung, eventuell der letzte Fehler bzw. die Benutzerstatistiken angezeigt.
+
+\subsection{/web/login}
+Optional: Zeigt das Anmeldeformular zur lokalen Verwendung an. Mittels ActiveX Objekt wird ein eventuell vorher gespeichertes Benutzername/Passwort-Paar aus der Registry ausgelesen und abgeschickt. Andernfalls kann man das Paar abspeichern.
+
+Das Formular führt einen GET-Request auf "/auth/setlogin" aus.
+
+\subsection{/web/hta-login}
+Optional: Hilfsdaten für den Windows Client.
+
+\subsection{/web/hta-login-done}
+Optional: Hilfsdaten für den Windows Client.
+
+\subsection{/web/hta-login-post}
+Optional: Hilfsdaten für den Windows Client.
+
+\subsection{/web/cleardata}
+Optional: Löscht ein eventuell vorher gespeichertes Benutzername/Passwort-Paar via ActiveX-Objekt aus der Registry.
+
+\subsection{/web/logout}
+Optional: Initiiert eine Abmeldung im Hintergrund.
+
+\subsection{/auth/login}
+Initiiert eine Hintergrundanmeldung.
+
+\subsection{/auth/setauthserver}
+Optional: Akzeptiert im GET-Parameter "server" einen neuen Namen für den Qbe Authentication Server. Default: "\index{qbe-auth}{qbe-auth}"
+
+\subsection{/auth/setlogin}
+Akzeptiert die GET-Daten des Formulars "/web/login" und initiiert eine Hintergrundanmeldung.
+
+\subsection{/auth/logout}
+Initiiert eine Abmeldung im Hintergrund.
+
+\subsection{/auth/forcerefresh}
+
+\subsection{/service/stop}
+Optional: Windows-Spezifisch: Beendet den QbeSvc.
+
+\subsection{/system/exec}
+Optional: Windows-Spezifisch: Führt einen Befehl im Kontext des QbeSvc aus.
+
+\subsection{/system/setmanager}
+Übernimmt den GET-QueryString als neue zusätzliche Manager-IP, von der Befehle entgegen genommen werden.
+
+\subsection{/system/getinfo}
+Akzeptiert den GET-Parameter "type" und liefert die gewünschte Information zurück. Gültige Werte sind:
+
+\begin{description}
+\item[osversion] Optional: Die Betriebssystemversion.
+\item[osregowner] Optional: Der Name des Benutzers auf den das Betriebssystem eingetragen wurde.
+\item[hostname] Der Computername.
+\item[username] Der Qbe SAS Benutzername oder "*VOID*" wenn kein Benutzername bekannt ist.
+\item[authtoken] Das Qbe SAS Benutzername/Passwort-Token oder "*VOID*" wenn kein Benutzername/Passwort-Token bekannt ist.
+\item[version] Die Qbe SAS Clientversion.
+\item[cvsid] Optional: Die CVS bzw. SVN \$Id\$.
+\item[copyright] Optional: Die Copyright-Information des installierten Qbe SAS Client.
+\item[time] Optional: Die aktuelle Zeit.
+\item[authserver] Der verwendete Qbe Authentication Server
+\item[connectionstate] Optional: Der zuletzt bekannte Zustand der Systemverbindung.
+\item[internetstate] Optional: Der zuletzt bekannte Internet-Zustand des Benutzers.
+\end{description}
+
+\subsection{/system/message}
+Sendet den GET-QueryString als Nachricht an den Benutzer.
+
+\subsection{/system/shutdown}
+Optional: Fährt den Computer herunter.
+
+\subsection{/system/restart}
+Optional: Startet den Computer neu.
+
+\subsection{/ilogin/update}
+Server bestätigt eine Anmeldung oder sendet einen Keep-Alive-Request. Gleichzeitig werden der Internetstatus, die Internetnutzung in Prozent und die Speicherplatznutzung in Prozent übertragen.
+
+\subsection{/ilogin/logout}
+Server bestätigt eine Abmeldung. Client löscht alle relevanten Daten wie Benutzername, Passwort, letzte Kommunikationszeit, Internetstatus \ldots
+
+\subsection{/ilogin/time}
+Optional: Server sendet die aktuelle Zeit in Sekunden seit 1. 1. 1970 an den Client. Dieser sollte dann die Systemzeit richtig einstellen.
+
+\placefigx{flow-client-login}{Ablaufdiagramm Client Anmeldung}{width=14.5cm}
+
+%% *eof*

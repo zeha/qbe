@@ -1,0 +1,45 @@
+<h1>the qbe function list for php</h1>
+// Copyright 2000-11, 2003-01 Christian Hofstädtler<br>
+// Version 0.05<br>
+<pre>
+$sas_version = "0.05";
+$sas_codename = "Gina"; // $sas_codename = "v" . $sas_version; || "Avalon Release"
+$sas_wantmenu = 0;
+$sas_global_pagestart = microtime();
+$sas_global_pageinit = 0;
+$sas_need_ilogin = "0.047";
+$sas_client_ip = sas_web_getclientip();
+$sas_cur_rootpath = "";
+$sas_cur_pagepath = "";
+$sas_phpext = ".php";
+
+$sas_mysql_server;
+$sas_mysql_user;
+$sas_mysql_password;
+$sas_mysql_database;
+
+$sas_ldap_base;
+$sas_ldap_server;
+$sas_ldap_adminuser;
+$sas_ldap_adminpass;
+$sas_ldap_machineuser;
+$sas_ldap_machinepass;
+
+function sas_showmenu($whatmenu = 1)
+function sas_ldap_getuid($user)
+function sas_ldap_getdn($uid)
+function sas_ldap_isadmin($user)
+function sas_changepassword($binduser,$bindpass,$user,$newpass)
+function sas_ldap_changepassword($user,$oldpass,$newpass)
+function sas_ldap_checkpassword($user,$pass)
+function sas_web_getclientip()
+function sas_web_getclientmac($ip)
+function sas_locallink($text,$href,$target,$params)
+function sas_start($title,$rootpath,$pagepath,$needlogin,$wantheader=1)
+function sas_end()
+
+Added in "Gina":
+function sas_ldap_getusername($uid)
+function sas_ldap_isgroupmember($group,$user)
+
+</pre>

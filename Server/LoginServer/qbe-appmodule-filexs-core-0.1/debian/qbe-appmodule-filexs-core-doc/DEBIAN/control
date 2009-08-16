@@ -1,0 +1,10 @@
+Package: qbe-appmodule-filexs-core-doc
+Version: 0.1-1
+Section: non-free/misc
+Priority: optional
+Architecture: all
+Installed-Size: 32
+Maintainer: Christian Hofstaedtler <christian@hofstaedtler.com>
+Source: qbe-appmodule-filexs-core
+Description: Documentation for qbe-appmodule-filexs-core
+ mkntpwd docs.

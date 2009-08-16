@@ -1,0 +1,5 @@
+Termineintragung mit Klassen statt ID's, damit Klassentabelle gelöscht werden kann.
+
+AV Tabelle mit AV's und Stellvertretern. Von jedem Betrachtbar und von Admins editierbar.
+
+Kompatiblität mit IE

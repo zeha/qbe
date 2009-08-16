@@ -1,0 +1,80 @@
+#
+# /etc/dhcpd.conf -- 2002, 2003 for SAS by Christian Hofstaedtler
+#                                         <christian@hofstaedtler.com>
+#
+#
+
+ddns-updates off;
+#ddns-update-style interim;
+ddns-domainname "htlwrn.ac.at";
+update-static-leases true;
+authoritative;
+
+zone htlwrn.ac.at. 	{	primary 10.0.2.10;	}
+zone 10.in-addr.arpa.	{	primary 10.0.2.10;	}
+zone 172.in-addr.arpa. {	primary 10.0.2.10;	}
+zone dyn.htlwrn.ac.at. {	primary 10.0.2.10;	}
+zone int.htlwrn.ac.at. {	primary 10.0.2.10;	}
+
+boot-unknown-clients on;
+use-host-decl-names  on;
+authoritative;
+#logging { severity critical; };
+#option bpbatchparms code 135 = string;
+option ip-forwarding false;
+
+shared-network SASNET {
+ subnet 172.16.0.0 netmask 255.255.0.0
+ {
+	# this is our DYNAMIC subnet
+	option routers			172.16.0.1;
+	option subnet-mask		255.255.0.0;
+
+	ddns-domainname			"dyn.htlwrn.ac.at";
+	option nis-domain		"dyn.htlwrn.ac.at";
+	option domain-name		"htlwrn.ac.at";
+	option domain-name-servers	172.16.0.1;
+
+	option time-offset		3600;	# GMT+1
+	option ntp-servers		172.16.0.1;
+	option ip-forwarding		false;
+        #filename			"nvidia.rom";	#X86PC/UNDI/BStrap/bstrap.0";
+	#option bpbatchparms		"test";
+	# option option-155		"-i"; 
+	# option dhcp-class-identifier	"PXEClient" 
+	# option vendor-encapsulated-options ff;
+
+	range dynamic-bootp 172.16.10.1 172.16.50.254;
+        default-lease-time 604800;
+        max-lease-time 1209600;
+ }
+ subnet 10.0.0.0 netmask 255.0.0.0
+ {
+	# this is the STATIC net
+	option routers			10.0.0.1;
+	option subnet-mask		255.0.0.0;
+
+	ddns-domainname			"int.htlwrn.ac.at";
+	option nis-domain		"htlwrn.ac.at";
+	option domain-name		"htlwrn.ac.at";
+	option domain-name-servers	10.0.2.10, 10.0.0.2, 10.0.0.1;
+
+	option time-offset		3600;	# GMT+1
+	option ntp-servers		10.0.2.100;
+	option ip-forwarding		false;
+
+	option pop-server		mail.htlwrn.ac.at;
+	option smtp-server		mail.htlwrn.ac.at;
+	option www-server		www.htlwrn.ac.at;
+
+	option netbios-name-servers	10.0.2.100;
+	option netbios-node-type	8;
+
+	#ddns-domainname "int.htlwrn.ac.at";
+
+	# --- Selects point-to-point node (default is hybrid). Don't change this unless you understand Netbios very well
+	#option netbios-node-type 2;
+        default-lease-time 604800;
+        max-lease-time 691200;
+ }
+}

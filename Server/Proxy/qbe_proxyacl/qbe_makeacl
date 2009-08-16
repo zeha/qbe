@@ -1,0 +1,2 @@
+#!/bin/sh
+perl qbe_writeacl.pl | ./qbe_writeacl

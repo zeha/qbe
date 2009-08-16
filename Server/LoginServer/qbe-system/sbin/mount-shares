@@ -1,0 +1,22 @@
+#!/bin/sh
+
+SHUSER=sharer
+SHPASS=xxx
+TOKEN=username=$SHUSER,password=$SHPASS
+
+umount /export/skripten-e
+mount -t smbfs -o $TOKEN,gid=teachers,dmask=775 //htl-e/sh-skripten-e /export/skripten-e
+umount /export/skripten-h
+mount -t smbfs -o $TOKEN,gid=teachers,dmask=775 //htl-e/sh-skripten-h /export/skripten-h
+umount /export/skripten-a
+mount -t smbfs -o $TOKEN,gid=teachers,dmask=775 //htl-e/sh-skripten-a /export/skripten-a
+
+umount /export/share-alle
+mount -t smbfs -o $TOKEN,gid=sysops,dmask=775 //htl-e/Alle /export/share-alle
+
+umount /export/share-free
+mount -t smbfs -o $TOKEN,uid=nobody,gid=nogroup,dmask=777 //htl-e/sh-free /export/share-free
+
+umount /export/software
+mount -t smbfs -o $TOKEN,uid=fz,gid=sysops,dmask=770 //htl-e/software /export/software
+

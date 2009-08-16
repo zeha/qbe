@@ -1,0 +1,1 @@
+<? function sysstate($mode="html"){if($mode=="html"){$r="<span class=\"sysstate_pass\">ok</span>";}else{$r="pass";}return $r;} ?>

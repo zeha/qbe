@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="37cm" height="29cm" viewBox="2 7 37 29">
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000" x="3" y="17" width="21.5" height="16.5" rx="0.5" ry="0.5"/>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 1 0.4 0.2 0.4; stroke: #000000" x="3.5" y="17.5" width="20.5" height="7.5" rx="0.25" ry="0.25"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" x1="24.5" y1="14.825" x2="26.5882" y2="14.825"/>
+  <polygon style="fill: #ffffff" points="26.5882,15.225 27.3882,14.825 26.5882,14.425 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" points="26.5882,15.225 27.3882,14.825 26.5882,14.425 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" x1="14" y1="25.9118" x2="14" y2="27"/>
+  <polygon style="fill: #ffffff" points="14.4,25.9118 14,25.1118 13.6,25.9118 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" points="14.4,25.9118 14,25.1118 13.6,25.9118 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" x1="13.5" y1="25" x2="13.5" y2="26.0882"/>
+  <polygon style="fill: #ffffff" points="13.1,26.0882 13.5,26.8882 13.9,26.0882 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" points="13.1,26.0882 13.5,26.8882 13.9,26.0882 "/>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000" x="27.5" y="17" width="11" height="16.5" rx="0.5" ry="0.5"/>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="28" y="33">qbe-proxy.htlwrn.ac.at</text>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="3.5" y="33">qbe-appserver.htlwrn.ac.at</text>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" x1="24.3964" y1="22.4957" x2="32.5" y2="20.9875"/>
+  <polygon style="fill: #ffffff" points="24.3232,22.1024 23.6099,22.642 24.4696,22.8889 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" points="24.3232,22.1024 23.6099,22.642 24.4696,22.8889 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" x1="24.4041" y1="24.1055" x2="32.5" y2="25.1625"/>
+  <polygon style="fill: #ffffff" points="24.4559,23.7089 23.6109,24.002 24.3523,24.5022 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" points="24.4559,23.7089 23.6109,24.002 24.3523,24.5022 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" x1="18.7342" y1="21.2481" x2="17.775" y2="19.85"/>
+  <polygon style="fill: #ffffff" points="18.4043,21.4744 19.1868,21.9078 19.064,21.0218 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" points="18.4043,21.4744 19.1868,21.9078 19.064,21.0218 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" x1="16.5257" y1="21.3128" x2="15.25" y2="19.85"/>
+  <polygon style="fill: #ffffff" points="16.2242,21.5757 17.0515,21.9157 16.8272,21.0499 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" points="16.2242,21.5757 17.0515,21.9157 16.8272,21.0499 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" x1="14.3348" y1="22.0389" x2="12" y2="19.85"/>
+  <polygon style="fill: #ffffff" points="14.0612,22.3307 14.9184,22.586 14.6084,21.7471 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" points="14.0612,22.3307 14.9184,22.586 14.6084,21.7471 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" x1="14.1959" y1="22.8951" x2="8.5" y2="19.85"/>
+  <polygon style="fill: #ffffff" points="14.0073,23.2479 14.9014,23.2723 14.3845,22.5424 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" points="14.0073,23.2479 14.9014,23.2723 14.3845,22.5424 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" x1="14.164" y1="23.6234" x2="5.5" y2="19.85"/>
+  <polygon style="fill: #ffffff" points="14.0043,23.9901 14.8975,23.9429 14.3238,23.2567 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" points="14.0043,23.9901 14.8975,23.9429 14.3238,23.2567 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" x1="21.4279" y1="21.0897" x2="21.5" y2="19.85"/>
+  <polygon style="fill: #ffffff" points="21.0286,21.0665 21.3815,21.8884 21.8272,21.113 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" points="21.0286,21.0665 21.3815,21.8884 21.8272,21.113 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" x1="8.76012" y1="21.9964" x2="12" y2="19.85"/>
+  <polygon style="fill: #ffffff" points="8.53921,21.663 8.0932,22.4383 8.98104,22.3299 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" points="8.53921,21.663 8.0932,22.4383 8.98104,22.3299 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" x1="32.5" y1="19.6625" x2="8.90082" y2="23.3589"/>
+  <polygon style="fill: #ffffff" points="8.83892,22.9637 8.11046,23.4827 8.96272,23.7541 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" points="8.83892,22.9637 8.11046,23.4827 8.96272,23.7541 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" x1="32.5" y1="26.4875" x2="8.9051" y2="23.6104"/>
+  <polygon style="fill: #ffffff" points="8.95352,23.2133 8.11098,23.5135 8.85668,24.0074 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" points="8.95352,23.2133 8.11098,23.5135 8.85668,24.0074 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.02; stroke-dasharray: 0.2; stroke: #000000" x1="26" y1="11.5" x2="26" y2="34.5"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.02; stroke-dasharray: 0.2; stroke: #000000" x1="2.5" y1="11.5" x2="39" y2="11.5"/>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="25" y="11">Network</text>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" x1="13.7497" y1="12.5882" x2="13.7491" y2="10.815"/>
+  <polygon style="fill: #ffffff" points="13.3497,12.5883 13.75,13.3882 14.1497,12.5881 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" points="13.3497,12.5883 13.75,13.3882 14.1497,12.5881 "/>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="6.5" y="11.5">Anmeldung als</text>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="6.5" y="12.3">&quot;SW&quot; oder &quot;e98011&quot;</text>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="28" y="19">Traffic Volume</text>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="28" y="19.6">Accounting</text>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="28" y="22.5">Anmeldungscheck</text>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="28" y="24">Anmeldungscheck</text>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="28" y="27">Traffic Volume</text>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="28" y="27.6">Accounting</text>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae5" points="33,12.5882 33,9.5 13.7491,9.5 13.7491,10.815 "/>
+  <polygon style="fill: #ffffff" points="32.6,12.5882 33,13.3882 33.4,12.5882 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae5" points="32.6,12.5882 33,13.3882 33.4,12.5882 "/>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="18.5" y="9">Internetanfrage</text>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="8.5" y="9.5"></text>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" x1="5.08847" y1="34.4777" x2="3.99897" y2="34.451"/>
+  <polygon style="fill: #ffffff" points="5.07868,34.8776 5.88823,34.4973 5.09826,34.0778 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" points="5.07868,34.8776 5.88823,34.4973 5.09826,34.0778 "/>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="6.5" y="34.5">Hauptsächlich Lesen</text>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" x1="4" y1="35.5" x2="5.0882" y2="35.5"/>
+  <polygon style="fill: #ffffff" points="5.0882,35.9 5.8882,35.5 5.0882,35.1 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" points="5.0882,35.9 5.8882,35.5 5.0882,35.1 "/>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="6.5" y="35.5">Hauptsächlich Schreiben</text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="3.5" y="27" width="20.5" height="1.85"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="13.75" y="28.375">Cluster Monitor: Heartbeat </text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="3.5" y="29" width="9.5" height="2.65"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="8.25" y="30.375">Cluster Node 1</text>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="8.25" y="31.175">Active/Primary</text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="14.5" y="29" width="9.5" height="2.65"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="19.25" y="30.375">Cluster Node 2</text>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="19.25" y="31.175">Hot Standby</text>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" x1="13" y1="29.6625" x2="13.5882" y2="29.6625"/>
+  <polygon style="fill: #ffffff" points="13.5882,30.0625 14.3882,29.6625 13.5882,29.2625 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" points="13.5882,30.0625 14.3882,29.6625 13.5882,29.2625 "/>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="32.5" y="24.5" width="5.5" height="2.65"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="35.25" y="25.875">frox</text>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="35.25" y="26.675">FTP Proxy</text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="32.5" y="19" width="5.5" height="2.65"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="35.25" y="20.375">squid</text>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="35.25" y="21.175">HTTP Proxy</text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="3" y="13.5" width="21.5" height="2.65"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="13.75" y="14.875">Qbe Application Server running Qbe SAS</text>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="13.75" y="15.675">on Debian GNU/Linux 3.1 beta</text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="27.5" y="13.5" width="11" height="2.65"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="33" y="14.875">Qbe SAS Proxy</text>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="33" y="15.675">on Debian GNU/Linux 3.0</text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="15" y="22" width="8.5" height="2.65"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="19.25" y="23.375">Novell eDirectory</text>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="19.25" y="24.175">8.7.3</text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="4" y="22" width="4" height="2"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="6" y="23.45">MySQL 4</text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="7" y="18" width="3" height="1.85"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="8.5" y="19.375">DNS</text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="4" y="18" width="3" height="1.85"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="5.5" y="19.375">DHCP</text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="10.5" y="18" width="3" height="1.85"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="12" y="19.375">HTTP</text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="14" y="18" width="2.5" height="1.85"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="15.25" y="19.375">FTP</text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="16.5" y="18" width="2.55" height="1.85"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="17.775" y="19.375">CIFS</text>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke: #000000" x="19.5" y="18" width="4" height="1.85"/>
+  <text style="fill: #000000; text-anchor:middle; font-size: 1" x="21.5" y="19.375">LDAPv3</text>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" x1="16.9118" y1="35" x2="18" y2="35"/>
+  <polygon style="fill: #ffffff" points="16.9118,34.6 16.1118,35 16.9118,35.4 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #308ae4" points="16.9118,34.6 16.1118,35 16.9118,35.4 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" x1="16" y1="34.5" x2="17.0882" y2="34.5"/>
+  <polygon style="fill: #ffffff" points="17.0882,34.9 17.8882,34.5 17.0882,34.1 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" points="17.0882,34.9 17.8882,34.5 17.0882,34.1 "/>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="18.5" y="34.5">Bidirektionale</text>
+  <text style="fill: #000000; text-anchor:start; font-size: 1" x="18.5" y="35.3">Kommunikation</text>
+  <line style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" x1="13" y1="30.9875" x2="13.5882" y2="30.9875"/>
+  <polygon style="fill: #ffffff" points="13.5882,31.3875 14.3882,30.9875 13.5882,30.5875 "/>
+  <polygon style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000" points="13.5882,31.3875 14.3882,30.9875 13.5882,30.5875 "/>
+  <image x="12.5" y="8" width="2.5" height="3.29167" xlink:href="D:\Zeichnung2.png"/>
+</svg>

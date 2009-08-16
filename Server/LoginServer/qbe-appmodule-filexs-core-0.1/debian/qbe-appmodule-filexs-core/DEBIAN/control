@@ -1,0 +1,10 @@
+Package: qbe-appmodule-filexs-core
+Version: 0.1-1
+Section: non-free/misc
+Priority: optional
+Architecture: i386
+Depends: libc6 (>= 2.3.2-1)
+Installed-Size: 60
+Maintainer: Christian Hofstaedtler <christian@hofstaedtler.com>
+Description: Core package for Qbe Module FileXS
+ Contains core files for FileXS and also mkntpwd binaries.

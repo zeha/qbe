@@ -1,0 +1,6 @@
+#!/bin/sh
+killall -HUP qbe_proxyacl
+echo Sleeping...
+sleep 10
+/usr/local/qbe_proxyacl/qbe_proxyacl-restart
+

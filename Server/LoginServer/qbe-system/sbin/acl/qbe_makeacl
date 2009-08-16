@@ -1,0 +1,16 @@
+#!/usr/bin/perl -w
+#  (C) Copyright 2003 Christian Hofstaedtler
+#########################################################
+if ( -e "/import/homes/.status/proxyacl.bin-update" )
+{
+ $PREFIX = "/sas/sbin/acl/";
+## system('cd /sas/sbin/acl');
+ system('rm /tmp/qbeacl');
+ system('cp '.$PREFIX.'base-ipacl /tmp/qbeacl');
+ system('perl '.$PREFIX.'qbe_writeacl.pl >> /tmp/qbeacl 2>/dev/null');
+ system('cat /tmp/qbeacl | '.$PREFIX.'qbe_writeacl 2>/dev/null');
+ system('touch /import/homes/.status/proxyacl-update');
+ system('rm -f /import/homes/.status/proxyacl.bin-update');
+ system('logger ACL Update complete.');
+## system('killall -HUP qbe_proxyacl');
+}

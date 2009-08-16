@@ -1,0 +1,4 @@
+<Files *.html>
+	Order allow,deny
+	allow from none
+</Files>

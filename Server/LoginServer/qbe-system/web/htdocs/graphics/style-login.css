@@ -1,0 +1,14 @@
+BODY,P {
+        background-color: white;
+}
+BODY,P,TD {
+	color: white;
+	font-family: "Trebuchet MS",Verdana,Helvetica;
+}
+A,A:active,A:hover,A:visited {
+        color: white;
+}
+HR {color: #3333FF; }
+.content { background-color: #336699; border: 1px solid black; width: 70%; }
+.textbig { color: white; font-weight: bold; font-size: 140%; }
+.textinfo { font-weight: bold; width: 350px; min-width: 350px; }

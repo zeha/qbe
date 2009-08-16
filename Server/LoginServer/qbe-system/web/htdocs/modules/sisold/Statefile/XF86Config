@@ -1,0 +1,49 @@
+// Section in der die Pfade der Files stehen
+Section "Files"
+	RgbPath		"/usr/X11R6/lib/X11/rgb"
+EndSection
+
+// Keyboardeinstellungen
+Section "Keyboard"
+	Protocol	"Standard"
+	LeftAlt		Meta
+	RightAlt	ModeShift
+EndSection
+
+// Mauseinstelleungen
+Section "Pointer"
+	Protocol	"PS/2"
+	Device		"/dev/psaux"
+EndSection
+
+// Monitor Einstellungen
+Section "Monitor"
+	Identifier	"TFT"
+	HorizSync	30-64
+	VertRefresh	50-90
+	Modeline	"1024x768" 65 1024 1032 1176 1344 768 771 777 806
+	Modeline	"800x600" 40 800 840 968 1056 600 601 605 628
+EndSection
+
+// Grafikdevice Einstellungen
+Section "Device"
+	Identifier	"LynxEM"
+	VendorName	"Silicon"
+	BoardName	"Lynx"
+	Option		"sw_cursor"
+EndSection
+
+// zuordnung Monitor, Grafikdevice und Auflösung
+Section "Screen"
+	Driver		"svga"
+	Device		"LynxEM"
+	Monitor		"TFT"
+	Subsection "Display"
+		Depth	8
+		Modes	"1024x768"
+	EndSubsection
+	Subsection "Display"
+		Depth	16
+		Modes	"1024x768"
+	EndSubsection
+EndSection

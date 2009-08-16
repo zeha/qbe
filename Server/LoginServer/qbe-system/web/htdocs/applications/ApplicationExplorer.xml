@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationConfig>
+  <InstallActions>
+  	<ApplicationDistAction>
+		<ActionType>DeleteFile</ActionType>
+		<ActionObject>%SystemRoot%\system32\Qbe\Setup\AppExp.exe</ActionObject>
+		<FailureIsFatal>false</FailureIsFatal>
+	</ApplicationDistAction>
+	<ApplicationDistAction>
+		<ActionType>FetchFile</ActionType>
+		<ActionObject>http://qbe-auth.htlwrn.ac.at/modules/client/files/beta/QbeSASAppExp.exe</ActionObject>
+		<ActionTarget>%SystemRoot%\system32\Qbe\Setup\AppExp.exe</ActionTarget>
+	</ApplicationDistAction>
+	<ApplicationDistAction>
+		<ActionType>ExecuteAndWait</ActionType>
+		<ActionObject>%SystemRoot%\system32\Qbe\Setup\AppExp.exe</ActionObject>
+		<ActionTarget>/S</ActionTarget>
+		<WaitMaxTime>0</WaitMaxTime>
+	</ApplicationDistAction>
+	<ApplicationDistAction>
+		<ActionType>DeleteFile</ActionType>
+		<ActionObject>%SystemRoot%\system32\Qbe\Setup\AppExp.exe</ActionObject>
+		<FailureIsFatal>false</FailureIsFatal>
+	</ApplicationDistAction>
+  </InstallActions>
+  <Platforms>
+    <string>WIN32</string>
+  </Platforms>
+  <Name>Qbe SAS Application Explorer</Name>
+  <Version>2</Version>
+  <PortableId>ApplicationExplorer</PortableId>
+</ApplicationConfig>

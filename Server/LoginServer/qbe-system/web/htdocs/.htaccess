@@ -1,0 +1,5 @@
+#RewriteEngine On
+#RewriteRule (.*.jpg) /qbe/web/htdocs/$1 [L]
+#RewriteRule .* /qbe/web/htdocs/index.html 
+Options -Indexes
+

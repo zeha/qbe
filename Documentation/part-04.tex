@@ -2,36 +2,41 @@
 %% Qbe SAS SystemDocumentation
 %% (C) Copyright 2001-2004 Christian Hofstaedtler
 %%
-%% $Id: part-04.tex 20 2004-05-03 15:41:20Z ch $
+%% $Id: part-04.tex 39 2004-05-12 14:07:08Z ch $
 %%
 
 \cChapter{Qbe SAS Client}
 
-\section{Systemanforderungen}
+Qbe SAS Client soll primär auf Clientsystemen mit Betriebssystem Windows 2000 und/oder Windows XP Professional laufen. 
+Wenn möglich soll nur ein kleiner Teil für den Benutzer sichtbar sein (Anmeldung, Statusabfrage und Abmeldung) - die Funktion des Systems sollte nicht weiter in den Vordergrund gerückt werden.
 
-Qbe SAS Client soll primär auf Clientsystemen mit Betriebssystem Windows 2000 und/oder Windows XP Professional laufen. Wenn möglich soll nur ein kleiner Teil für den Benutzer sichtbar sein (Anmeldung, Statusabfrage und Abmeldung) - die Funktion des Systems sollte nicht weiter in den Vordergrund gerückt werden. Ebenfalls soll der gesamte Clientteil nur über einen definierten minimalen Befehlssatz mit dem Qbe Auth Server kommunizieren und keine direkten LDAP API Aufrufe durchführen um maximale Portabilität (möglicherweise auch von LDAP weg) zu erreichen. Bestimmte Fehler am Client sollen nicht die Fähigkeit der Kommunikation mit dem Qbe Auth Server beeinträchtigen; Netzwerk-Disconnects sollen (besonders auf Laptops) transparent behandelt werden.
+Ebenfalls soll der gesamte Clientteil nur über einen definierten minimalen Befehlssatz mit dem Qbe Auth Server kommunizieren und keine direkten LDAP API Aufrufe durchführen, um maximale Portabilität (möglicherweise auch von LDAP weg) zu erreichen.
+Bestimmte Fehler am Client sollen nicht die Fähigkeit der Kommunikation mit dem Qbe Auth Server beeinträchtigen; Netzwerk-Disconnects sollen (besonders auf Laptops) transparent behandelt werden.
 
 \section{Betriebsarten}
 
-Qbe SAS Client übernimmt die Authentifizierung des Benutzers der einen beliebigen Client PC im Netzwerk benutzen möchte. Dazu kann es in zwei verschiedenen Modi verwendet werden:
+Qbe SAS Client übernimmt die Authentifizierung des Benutzers, der einen beliebigen Client PC im Netzwerk benutzen möchte. 
+Dazu kann der Client in zwei verschiedenen Modi betrieben werden:
 
 \begin{description}
 \item[Network only]
-Qbe SAS Client authentifiziert den Benutzer nur gegenüber dem Server. Der Benutzer gibt seinen Benutzernamen und Passwort getrennt ein.
+Qbe SAS Client authentifiziert den Benutzer nur gegenüber dem Server. 
+Der Benutzer gibt seinen Benutzernamen und Passwort getrennt von der Windows-Anmeldung ein.
 \item[System Logon]
-Qbe SAS Client authentifiziert den Benutzer sowohl gegenüber dem Client als auch dem Server - bereits beim anmelden an die Windows Workstation. Bei Bedarf wird ein lokaler Benutzer angelegt, und bei der Abmeldung wieder gelöscht.
+Qbe SAS Client authentifiziert den Benutzer sowohl gegenüber Windows als auch dem Qbe Server - bereits beim Anmelden an die Windows Workstation. 
+Bei Bedarf wird ein lokaler Benutzer mit konfigurierbaren Rechten angelegt, und bei der Abmeldung wieder gelöscht.
 \end{description}
 
-\subsection{Serversuche}
+\section{Serversuche}
 
-Der zu benutzende Server wird ausschließlich per DNS gefunden. Standard\-mäßig benutzt Qbe SAS Client den Servernamen "qbe-auth". Die Auflösung des Namens in eine IP Adresse wird vom Betriebssystem durchgeführt - Vorraussetzungen dafür sind:
+Der zu benutzende Server wird ausschließlich per DNS gefunden. Standard\-mäßig benutzt Qbe SAS Client den Servernamen "qbe-auth". Die Auflösung des Namens in eine IP Adresse wird vom Betriebssystem durchgeführt - Voraussetzungen dafür sind:
 \begin{itemize}
-\item DNS-Server läuft und ist richtig konfiguriert \\
-	("qbe-auth" ist als A-Record eingetragen.)
-\item Die Workstation kann den DNS-Server erreichen, und fragt mit dem richtigen Domainsuffix an. Die richtige Konfiguration der Workstation wird vorzugsweise mittels DHCP erreicht.
+\item \index{DNS}{DNS}-Server läuft und ist richtig konfiguriert \\
+	("\index{qbe-auth}{qbe-auth}" ist als A-Record eingetragen.)
+\item Die Workstation kann den DNS-Server erreichen, und fragt mit dem richtigen Domainsuffix an. Die richtige Konfiguration der Workstation wird vorzugsweise mittels \index{DHCP}{DHCP} erreicht.
 \end{itemize}
 
-In der aktuell vorhandenen Version besteht keine Möglichkeit den anfänglichen Servernamen zu ändern. Geplant ist eine eigene DHCP-Option die vom Qbe SAS Client ausgelesen werden kann - Vorraussetzung dafür wäre, dass die Workstation die IP-Stack Konfiguration vom DHCP-Server bekommt.
+In der aktuell vorhandenen Version besteht keine Möglichkeit den anfänglichen Servernamen zu ändern. Geplant ist, eine eigene DHCP-Option, die vom Qbe SAS Client ausgelesen werden kann - Voraussetzung dafür wäre, dass die Workstation die IP-Stack Konfiguration vom DHCP-Server bekommt.
 
 \begin{Verbatim}
 ; DNS-Beispieleintrag:
@@ -39,7 +44,7 @@ qbe-auth.htlwrn.ac.at.	IN	A		10.0.2.100
 \end{Verbatim}
 
  
-\subsection{Einzelteile}
+\section{Einzelteile}
 
 Der Qbe SAS Client ist ein komplexes System, dass aus vielen kleineren Teilen besteht:
 
@@ -48,333 +53,238 @@ Der Qbe SAS Client ist ein komplexes System, dass aus vielen kleineren Teilen be
 Teilsystem & Dateiname \\
 \hline
 Network Authentication Service & QbeSvc.exe \\
- & QbeSAS.dll \\
+ & \index{QbeSAS.DLL}{QbeSAS.dll} \\
 System Logon & QbeGina.dll \\
 Statusanzeige & QbeTray.exe  \\
-UI Components & iLogin.hta \\
+UI Components & SASClient.hta \\
 & startup.hta \\
 & Q.ico \\
-COM API	& iLoginCOM.dll	\\
-Einstellungen & iLogin.reg \\
+Einstellungen & SASClient.reg \\
 Installation & ServicePack.exe \\
  & netQbe.inf \\
- & QbeNDI.exe \\
+ & QbePFC.exe \\
 \hline
 \end{tabular}
 
-Qbe SAS Client kann bereits mit nur dem installiertem "qbesvc.exe" im "Network only" Modus betrieben werden - für den "System Logon" Modus bzw. für eine benutzerfreundliche Umgebung sollte der Client vollständig installiert werden.
+Qbe SAS Client kann bereits nur mit dem installiertem "qbesvc.exe" und der "QbeSAS.dll" im "Network only" Modus betrieben werden -- der Xplat Client implementiert prinzipiell nichts anderes und kann auch unter Windows gestartet werden. 
+Für den "System Logon" Modus bzw. für eine benutzerfreundlichere Umgebung, sollte der Client vollständig installiert werden.
 
 
 %\begin{center}
 %	\includegraphics[width=1.00\textwidth]{files/pic-03-beziehungsdiagramm}
 %\end{center}
-\placefig{pic-03-beziehungsdiagramm}{Beziehungsdiagramm Qbe SAS Client/Server}
+\placefigx{client}{Beziehungsdiagramm Qbe SAS Client/Server}{width=13cm}
 
 
-Im Beziehungsdiagramm wird deutlich, dass der Network Authentication Service alle grundlegenden Dienste für den iLogin Client zur Verfügung stellt. Wird der System Logon Mode benutzt, wird ein zusätzlicher Teil systemwichtig -- die SASGina. Dieser wird in das Windows Login eingebunden, und übernimmt die Windows Anmeldung, LDAP Benutzerüberprüfung und Datenspeicherung.
+Im Beziehungsdiagramm wird deutlich, dass der Network Authentication Service alle grundlegenden Dienste für den SAS Client zur Verfügung stellt. Wird der System Logon Mode benutzt, wird ein zusätzlicher Teil systemwichtig -- die SASGina. Dieser wird in das Windows Login eingebunden, und übernimmt die Windows Anmeldung und die Authentifizierung gegenüber dem \index{LDAP}{LDAP} Server.
 
-\subsubsection{Network Authentication Service}
+\subsection{Network Authentication Service}
 
-Dieser läuft als Windows-Dienst und implementiert sowohl einen HTTP-SSL Client für die Kommunikation mit dem Qbe-Auth Server, als auch einen HTTP Server (auf TCP/IP Port 7666) der die Interaktion mit dem Benutzer ermöglicht und Teile des Authentifizierungshandshakes abarbeitet. Auf den Network Authentication Service kann mit einem normalen Webbrowser zugegriffen werden, speziell wurde dies aber für den Internet Explorer (bzw. für die Microsoft HTML Engine) entwickelt und optimiert, da die restlichen Benutzerinterface-Teile auf der Microsoft HTML Engine aufsetzen. 
+Dieser läuft als Windows-Dienst und implementiert sowohl einen \index{HTTP-SSL}{HTTP-SSL} Client für die Kommunikation mit dem Qbe-Auth Server, 
+als auch einen \index{HTTP}{HTTP} Server (auf TCP/IP Port 7666), der die Interaktion mit dem Benutzer ermöglicht und Teile des Authentifizierungshandshakes abarbeitet. 
+Auf den Network Authentication Service kann mit einem normalen Webbrowser zugegriffen werden, speziell wurde dies aber für den Internet Explorer (bzw. für die Microsoft HTML Engine) entwickelt und optimiert, da die restlichen Benutzerinterface-Teile auf der Microsoft HTML Engine aufsetzen. 
 
-Alle weiteren Teile kommunizieren ausschließlich mit dem Network Authentication Service der alle relevanten Daten über den Benutzer im Speicher hält - diese Daten werden regelmäßig vom Server aufgefrischt.
+Alle weiteren Teile kommunizieren ausschließlich mit dem Network Authentication Service, der alle relevanten Daten über den Benutzer im Speicher hält - diese Daten werden regelmäßig vom Server aufgefrischt.
 
-Der HTTP Server ermöglicht es dem Server außerdem, bestimmte Parameter (Benutzername, Servername, Letzte Verbindung, ...) abzufragen sowie Programme auszuführen (etwa um einen Drucker zu installieren). Dies wird durch eine Abfrage der IP-Adresse geschützt.
+Der HTTP Server ermöglicht es dem Server außerdem, bestimmte Parameter (Benutzername, Servername, Letzte Verbindung, ...) abzufragen, sowie Programme auszuführen (etwa um einen Drucker zu installieren). Dies wird durch eine Abfrage der IP-Adresse geschützt.
 
-\subsubsection{COM API and Authentication Helper}
+\placefigx{scr-win32client}{Screenshot Qbe SAS Client unter Windows}{width=9cm}
 
-Das COM API ermöglicht es auf den Network Authentication Service per Microsoft COM (ActiveX) zuzugreifen. Gleichzeitig erlaubt es eine Speicherung der Benutzerdaten (Username und Passwort) in der Registry um die Anmeldung zu beschleunigen. Wird iLogin im System Logon oder Single Sign On Mode betrieben, holt das COM API den Benutzernamen und Passwort vom Windows System. \\
+\subsection{COM API and Authentication Helper}
 
+Das COM API ermöglicht es, auf den Network Authentication Service per Microsoft COM (ActiveX) zuzugreifen. Gleichzeitig erlaubt es eine Speicherung der Benutzerdaten (Username und Passwort) in der Registry, um die Anmeldung zu beschleunigen.
 
-\subsubsection{Statusanzeige}
+Bis zur Version 2.23.96-pre wurde eine DLL (geschrieben in Visual Basic 6) verwendet, die ein normales COM Objekt implementiert.
+Jetzt wird dies durch die Klasse QbeSAS::DataStore (in der .NET QbeSAS.dll) implementiert. 
 
-Die Statusanzeige besteht aus einem Windows System Tray Symbol dass den aktuellen Internetstatus signalisiert, wichtige Ereignisse dem Benutzer mitteilt und schnellen Zugriff auf die iLogin Statusseite und Anmeldung erlaubt.
-Für die Statusseite und Anmeldung werden die "UI Components" gestartet.
-Energie-Events werden vom iLogin Tray Symbol behandelt. Bei einem kritischen Energieereignis (Standby/Ruhezustand) wird versucht eine Abmeldung durch den Network Authentication Service zu erreichen. 30 Sekunden nach dem Aufwachen wird eine transparente Verbindungswiederherstellung eingeleitet.
+\subsection{Statusanzeige}
 
-\subsubsection{UI Components}
+Die Statusanzeige besteht aus einem Windows System Tray Symbol, dass den aktuellen Internetstatus signalisiert, wichtige Ereignisse dem Benutzer mitteilt (Internet freigegeben) und schnellen Zugriff auf die Client Statusseite und Anmeldung erlaubt.
+Für die Statusseite wird die \verb|SASClient.hta| gestartet, beim Start des QbeTray wird die \verb|startup.hta| aufgerufen.
+
+Energie-Events werden vom \index{Trayicon} Tray Symbol behandelt. 
+Bei einem kritischen Energieereignis (Standby/Ruhezustand) wird versucht, eine Abmeldung durch den Network Authentication Service zu erreichen. 
+30 Sekunden nach dem Aufwachen wird eine transparente Verbindungswiederherstellung eingeleitet.
+
+\subsection{UI Components}
 
 Die sogenannten UI Components bestehen lediglich aus Beschreibungsdateien für \href{http://msdn.microsoft.com/workshop/author/hta/overview/htaoverview.asp}{Microsoft HTA Applikationen}, die auf den http Server im Network Authentication Service verweisen.
 
-\placefig{scr-win32client}{Screenshot Qbe SAS Client unter Windows}
+Die Datei \verb|startup.hta| wird beim Starten des Clients geladen und verweist auf \verb|/rpc/client/svc-frame?mode=startup| am Authentication Server.
 
-\subsubsection{Einstellungen}
+Die Datei \verb|SASClient.hta| wird beim Linksklick auf das Q-\index{Trayicon}{Trayicon} geladen und verweist auf \verb|/rpc/client/svc-frame| am Authentication Server.
 
-Qbe SAS Client installiert bei der Anmeldung einige Standardeinstellungen (z.B. Proxykonfiguration), die direkt aus der Datei "iLogin.reg" kommen. Diese wird mit Hilfe vom Windows Registrierungseditors automatisch in die Registry importiert.
 
-\subsubsection{Update}
+\subsection{Automatische Einstellungen}
+
+Qbe SAS Client installiert bei der Anmeldung einige Standardeinstellungen (z.B. Proxykonfiguration), die direkt aus der Datei "iLogin.reg" kommen. Diese wird mit Hilfe vom Windows Registrierungseditor (regedit.exe) automatisch in die Registry importiert.
+
+\subsection{Update}
 Da der Client bei jeder Anmeldung die Versionsnummer an den Server sendet, können alte/problematische Client-Versionen einfach ausgeschlossen werden. Clients die den Statuscode \verb|404 - Not found| erhalten, sollten keine weitere Anfrage an den Server schicken.
 
-Neuere Windows Clients (ab 2.01) stellen die Benutzerschnittstelle erst nach einer Anfrage an den Server dar. Damit kann ein Update des Clients erzwungen werden. Workstations mit HDGUARD werden am Client abgefragt und das Zwangupdate wird übersprungen.
+Neuere Windows Clients (ab 2.01) stellen die Benutzerschnittstelle erst nach einer Anfrage an den Server dar. Damit kann ein Update des Clients erzwungen werden. Workstations mit HDGUARD werden am Client abgefragt und das Zwangsupdate wird übersprungen.
 
 
 \section{Installation}
-\subsection{Qbe SAS Client}
-Das Setup bietet keine Optionen an und installiert alle Dateien nach \%SystemRoot\%/System32/Qbe/Setup. Die Reihenfolge:
+Das Setup bietet keine weiteren Optionen an, und entpackt zuerst alle Dateien nach \%SystemRoot\%/System32/Qbe/Setup. 
+Die weitere Reihenfolge:
+
 \begin{itemize}
-\item[-] .NET VM wird gegebenenfalls heruntergeladen und installiert.
-\item[-] \%SystemRoot\%/System32/Qbe/Setup wird komplett gelöscht.
+\item[-] Eine eventuell vorhandene, alte Version wird deinstalliert
+\item[-] .NET VM wird gegebenenfalls heruntergeladen und installiert
+\item[-] \%SystemRoot\%/System32/Qbe/Setup wird komplett gelöscht
 \item[-] PFC wird in das System kopiert und ausgeführt (siehe unten)
 \item[-] Dateien von früheren Versionen die nach \%SystemRoot\%/System32 und \%ProgramFiles\%/iLogin installiert wurden werden gelöscht
 \item[-] Alle Dateien werden nach \%SystemRoot\%/System32/Qbe/Setup kopiert
-\item[-] Windows NDI installiert den Qbe SAS Client als NetService-Komponente
-\item[-] QbeGina wird nicht automatisch installiert/upgedated
+\item[-] Windows installiert den Qbe SAS Client nach \%SystemRoot\%/System32/Qbe
+\item[-] QbePFC /s registriert die \index{QbeSAS.DLL}{QbeSAS.DLL} im \index{Global Assembly Cache}{Global Assembly Cache}
+\item[-] QbeGina wird nicht automatisch installiert sondern muss mit dem QbeLogin.exe installiert werden
 \end{itemize}
 
 \subsection{PFC}
-Qbe "Pre-Flight-Check" ist eine .NET Anwendung (ClientSource/SetupPFC) die vor der eigentlichen Installation ausgeführt wird und folgende Tasks erledigt:
+Qbe "Pre-Flight-Check" ist eine .NET Anwendung (ClientSource/QbePFC), die vor der eigentlichen Installation ausgeführt wird und folgende Tasks erledigt:
 \begin{itemize}
 \item vorherigen Versionen von QbeSvc, QbeTray, iLogin, etc. schliessen
 \item QbeSvc aus der Registry entfernen
-\item HTA-Ausführungsschicht (MSHTA) beenden
-\item Windows Service-Pack überprüfen und ggf. das aktuelle Service Pack installieren
+\item HTA-Ausführungsschicht (MSHTA) und Internet Explorer beenden
 \end{itemize}
 
-\subsection{Wizard}
-Es ist ein Installationswizard geplant der den Benutzer durch die Schritte Client Installation, Computerkonfiguration, Account Aktivierung und Netzwerkkarte registrieren führt. Dieser wurde bereits in .NET angefangen, ist jedoch nicht fertig. (Projektverzeichnis ClientSource/Wizard)
+Ab Client-Version 2.23.96-pre enthält QbePFC auch ein .NET-to-COM Registrierungsmodul, dieses wird mit dem Parameter "/c" angesprochen.
+Dies wurde notwendig da .NET-Objekte die als COM-Objekte verwendet werden, im .NET \index{Global Assembly Cache}{Global Assembly Cache} registriert werden müssen.
+Das .NET-Objekt ist hier die Klasse QbeSAS::DataStore und wird von den MSHTA Seiten aufgerufen.
 
 \subsection{System-Updates}
 
 Der SAS Client (für Windows) benötigt Windows 2000 oder XP mit installiertem .NET Framework. Das aktuelle Servicepack auf den Zielsystemen ist nicht zwingend erforderlich, wäre aber von Vorteil.
-Das Client Setup prüft vor der eigentlichen Client-Installation ob das .NET Framework und die Microsoft C++ 7.1 Runtimes vorhanden ist - wenn nicht wird beides heruntergeladen und installiert.
+Das Client Setup prüft vor der eigentlichen Client-Installation ob das .NET Framework und die Microsoft C++ Runtimes in Version 7.1 vorhanden sind - wenn nicht wird beides heruntergeladen und installiert.
 
-\subsubsection{.NET Framework}
-Für das .NET Framework wird mittels Registry-Key die Installation überprüft, andernfalls wird das Setup heruntergeladen und gestartet. Kein Setup-Neustart.
+\subsection{.NET Framework}
+Die .NET Framework Version wird mittels Registry-Key überprüft, andernfalls wird das Setup heruntergeladen und gestartet.
+Das SAS Client Setup wird dabei nicht unterbrochen, sondern wartet nur auf das .NET Framework Setup.
 
 \begin{Verbatim}
-URL: http://qbe-auth.htlwrn.ac.at/login/dotnetfx.exe
+URL: http://qbe-auth.htlwrn.ac.at/modules/client/files/dotnetfx.exe
 
-ch@xtc:/qbe/web/htdocs/login -> ls -la dotnetfx.exe
+ch@xtc:/qbe/web/htdocs/modules/client/files/ -> ls -la dotnetfx.exe
 -rw-rw-r--  ch   sysops   24277024 Mar  4  2003 dotnetfx.exe
 \end{Verbatim}	
 
-\subsubsection{Service-Pack}
-Für das Service-Pack wird die NSI-Anwendung (ClientSource/Setup/ServicePack.nsi) gestartet die dann vom AuthServer das ServicePack herunterlädt und installiert.
-Die ServicePack Installationsdateien dazu liegen am AuthServer im /login/ Verzeichniss.
-\begin{Verbatim}
-URL: http://qbe-auth.htlwrn.ac.at/login/servicepack.php?ver=5.0
-
-ch@xtc:/qbe/web/htdocs/login -> ls -la service*exe
--rwxrw-r--  ch   sysops   135945992 Jun 20  2003 servicepack-5.0.exe
--rwxrw-r--  ch   sysops   129049184 Jan 27  2003 servicepack-5.1.exe
-\end{Verbatim}
-
-\subsection{Client kompilieren}
-Es werden kurz die Vorraussetzungen und der Kompilationsvorgang selbst beschrieben.
-
-\subsubsection{Vorraussetzungen}
-Um die Qbe SAS Client Sourcen zu kompilieren muss folgende Software auf dem Entwicklungssystem gegeben sein:
+\section{Windows Client kompilieren}
+Um die Qbe SAS Client Sourcen zu kompilieren, muss folgende Software auf dem Entwicklungssystem gegeben sein:
 
 \begin{itemize}
-\item Microsoft Visual Studio 6.0
-\item Microsoft Visual Studio .NET 2003
-\item Microsoft Windows XP SP1 DDK
-\item Microsoft Platform SDK (February 2003)
+\item Microsoft Visual Studio .NET 2003 mit C++ und C\# Unterstützung
+\item Microsoft Platform SDK, February 2003
 \item GCC 3.x aus dem Cygwin Paket
 \item Nullsoft Install System 2.0
+\item Mono MCS für den mono/Xplat Build
 \end{itemize}
 
-Es muss die Umgebungsvariable \verb|%DEVELDRIVE%| gesetzt sein. Zum Beispiel: \verb|set DEVELDRIVE=C:| wenn die Software auf C: installiert wurde.
+Es muss die Umgebungsvariable \verb|%DEVELDRIVE%| auf das Installationslaufwerk obiger Software gesetzt sein. Zum Beispiel: \verb|set DEVELDRIVE=C:| wenn die Software auf C: installiert wurde.
 Weiters darf keines der Visual Studio Setups den PATH oder LIBS/INCLUDE etc. verändert haben. Diese Variablen werden durch das build-Skript automatisch für das Microsoft Platform SDK gesetzt.
 
-\subsubsection{NSIS Patch}
+Das Build-Skript setzt folgende Installationspfade voraus:
+\begin{description}
+\item[Visual Studio] "\%DEVELDRIVE\%/Programme/Microsoft Visual Studio 2003"
+\item[Cygwin/GCC] kein Pfad, muss bereits im \%PATH\% eingetragen sein
+\item[Platform SDK] "\%DEVELDRIVE\%/Programme/Microsoft SDK"
+\item[NSIS 2.0] "\%DEVELDRIVE\%/Programme/NSIS20"
+\end{description}
+
+\subsection{NSIS Patch}
 Der SAS Client Installer erfordert folgenden Patch des "NSISdl" Modules.
+Damit wird die Proxy-Konfiguration nicht mehr automatisch aus den Internet Explorer Einstellungen ausgelesen.
 
-\VerbatimInput{files/nsisdl-noproxy.patch}
+\lstinputlisting{files/nsisdl-noproxy.patch}
 
-\subsubsection{Kompilierungsskript}
-Um die Erstellung des Qbe SAS Client Installers drastisch zu vereinfachen wurden alle Komponenten -- Die .NET Komponenten müssen zuerst händisch kompiliert werden. -- mit einem Makefile versehen. Die Makefiles werden durch das Skript "buildx.bat" aufgerufen, welches wiederum über eines der build-w2k.bat oder build-wxp.bat aufgerufen wird. Die build-xxx.bat Skripte starten zuerst das Platform SDK setenv.bat mit Parametern um das Build-Environment entsprechend herzurichten. Anschliessend wird buildx.bat ausgeführt... Die Zieldateien werden im Verzeichnis BIN/RETAIL/PLATFORMNAME erstellt. 
+\subsection{Kompilierungsskript}
+Um die Erstellung des Qbe SAS Client Installers drastisch zu vereinfachen, wurden alle Komponenten mit einem Makefile versehen. 
+Die Makefiles werden durch das Skript "buildx.bat" in der richtigen Reihenfolge aufgerufen, welches wiederum über eines der build-w2k.bat oder build-wxp.bat aufgerufen wird. 
+Die build-xxx.bat Skripte starten zuerst das Platform SDK \verb|setenv.bat| mit Parametern, um das Build-Environment entsprechend herzurichten. Anschliessend wird buildx.bat ausgeführt... 
+Die Zieldateien werden im Verzeichnis BIN/RETAIL/PLATFORMNAME erstellt. 
 
-\subsubsection{Versionsnummern}
-Die Versionsnummer wird in der Datei C/ilogin-version.h definiert. Die Datei wird von sehr vielen Komponenten benutzt um die Qbe SAS Client Ziel-Version zu ermitteln und darzustellen.
+\subsection{Versionsnummern}
+
+Die Versionsnummer wird in der Datei Common/ilogin-version.h definiert. 
+Die Datei wird von sehr vielen Komponenten benutzt um die Qbe SAS Client Ziel-Version zu ermitteln und darzustellen.
 
 \section{Qbe SAS Xplat Client}
 
-Der komplexe Aufbau und die enge Verwebung mit dem Windows Betriebssystem machen es (mit heutigen Mitteln) unmöglich den normalen Qbe SAS Client unter z.B. Linux zu verwenden. 
+Der komplexe Aufbau und die enge Verwebung mit dem Windows Betriebssystem machen es (mit heutigen Mitteln) unmöglich, den normalen Qbe SAS Client unter z.B. Linux zu verwenden. 
 
 Auf der anderen Seite macht die .NET Architektur dies sehr einfach. So kann, mit der Annahme dass es pro PC nur einen Benutzer gibt, der gleiche Sourcecode verwendet werden, um ein mit Mono ausführbares Binary zu erstellen.
 Dieses Binary ("QbeService.exe") enthält dann die minimalste Funktionalität, die der Qbe SAS Client mitbringen muss. Da das User Interface hier ebenfalls über HTTP ausgeliefert wird, sieht der Client für den Endanwender relativ ähnlich zum Windows Client aus.
 
 \placefig{scr-unixclientui}{Screenshot: Qbe SAS Client unter Linux: Benutzeroberfläche}
 
-Zusätzlich zu dem QbeService.exe sind im Source-Tree ein paar Skripte die die Verwendung mit Gnome als X11-Umgebung erleichtern können.
+Zusätzlich zu dem QbeService.exe sind im Source-Tree ein paar Skripte, die die Verwendung mit Gnome als X11-Umgebung erleichtern können.
 
 \placefig{scr-unixclientshell}{Screenshot: Qbe SAS Client unter Linux: Terminalfenster}
+
+\clearpage
 
 \section{System Logon}
 Die QbeGina und unterstützende Dateien werden mit dem "Windows Logon Enabler" Setup installiert.
 Die aktuelle Version implementiert eine transparente LDAP-Authentifizierung. Benutzer werden automatisch angelegt bzw. gelöscht. Homedirectory wird entsprechend eingestellt, der Profilpfad wird auf \%HOMEDRIVE\%/profile gesetzt. Im Anmeldedialogfeld kann mit der Tastenkombination CTRL-ALT-DEL die LDAP-Authentifizierung übersprungen werden -- dann wird die normale MSGina.dll für diese Session aktiv.
 
-Das Setup ändert folgende Einstellungen:
+Die Installation legt die Gruppe "Qbe SAS Users" an und trägt folgende Registry-Änderungen ein:
 
-\begin{itemize}
-\item Der Registry-Key HKLM/Software/Microsoft/Windows NT/CurrentVersion/Winlogon/GinaDLL wird auf "QbeGina.dll" gesetzt.
-\item HKLM/SOFTWARE/Microsoft/Windows NT/CurrentVersion/Winlogon wird auf den Computer Namen gesetzt.
-\item Die Gruppe "Qbe SAS Users" wird angelegt.
-\item Unter HKLM/SYSTEM/CurrentControlSet/Services wird ein neuer Netzwerk-Provider "QbeNP" angelegt.
-\item QbeNP wird in HKLM/SYSTEM/CurrentControlSet/Control/NetworkProvider/Order/ProviderOrder hinzugefügt.
-\end{itemize}
+\begin{lstlisting}
+; Registry Aenderungen
+[HKEY_LOCAL_MACHINE/Software/Microsoft/Windows NT/CurrentVersion/Winlogon]
+GinaDLL="QbeGina.DLL"
+ComputerName="ComputerName"
 
-Die Arbeitsweise der Systemanmeldung wird in den Abbildungen \ref{fig:qbegina-workflow-p1} bis \ref{fig:qbegina-workflow-p3} ersichtlich.
+[HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Services/QbeNP]
 
-\begin{flushleft}
-\placefigx{qbegina-workflow-p1}{Ablaufdiagramm: QbeGina Initialisierungsvorgang}{width=6cm}
-\placefigx{qbegina-workflow-p2}{Ablaufdiagramm: QbeGina Benutzeranmeldung}{width=6cm}
-\placefigx{qbegina-workflow-p3}{Ablaufdiagramm: QbeGina Benutzerabmeldung}{width=6cm}
-\placefigx{scr-qbegina-ctrlaltdel}{Screenshot: QbeGina Fenster vor der Anmeldung}{width=6cm}
-\placefigx{scr-qbegina-ldapconnlost}{Screenshot: QbeGina Anmeldung wenn die LDAP Verbindung verloren geht}{width=6cm}
-\placefigx{scr-qbegina-loginwithuser}{Screenshot: QbeGina Benutzeranmeldefenster}{width=6cm}
-\newpage
-\end{flushleft}
+[HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/NetworkProvider/Order]
+ProviderOrder+="QbeNP"
+\end{lstlisting}
 
-\section{Client/Server-Protokollbeschreibung}
+\subsection{Arbeitsweise}
 
-Der Qbe SAS Client und der Qbe Authentication Server benutzen eine eigene, einfache RPC-over-HTTP Implementation.
+Beim Windows \keyword{Boot} wird statt dem Windows Login Fenster ein Fenster mit der Schrift "Qbe SAS - Strg-Alt-Entf zum anmelden." angezeigt.
 
-\subsection{UserAgent Feldbeschreibung}
-Der Qbe SAS Client soll/muss immer einen UserAgent-Header mitschicken, der den Client als Client mit definierter Versionsnummer identifiziert. Der Feldaufbau für alte Versionen ist wie folgend:
-\begin{itemize}
-\item Zeichenkette "iLogin"
-\item Leerzeichen
-\item Der Programmname. Zum Beispiel "QbeService (WIN32)"
-\item Leerzeichen
-\item Qbe SAS Client Versionsnummer. Zum Beispiel "2.23.00"
-\end{itemize}
+%\placefigx{qbegina-workflow-p1}{Ablaufdiagramm: QbeGina Initialisierungsvorgang}{width=3.3cm}
 
-Beginnend mit 2.23.10, wird folgendes Format verwendet:
+Drückt man dann Strg-Alt-Entf, beginnt die QbeGina die Policy-Konfiguration vom Server herunterzuladen. Dann gelangt man zur \keyword{Anmeldung}. 
+Die QbeGina fragt hier den Benutzer um seinen Accountnamen und das Passwort, lässt aber keine Auswahl zwischen lokaler Anmeldung oder Netzwerk-Anmeldung zu. 
+Um eine lokale Anmeldung zu erzwingen, kann man in diesem Fenster nochmals Strg-Alt-Enf drücken (damit wird ein \index{Winlogon}{Winlogon} SAS Event ausgelöst) und man kommt zum normalen Windows Anmeldedialog.
 
-\begin{itemize}
-\item Zeichenkette "QbeService/"
-\item Qbe SAS Client Versionsnummer. Zum Beispiel "2.23.89"
-\end{itemize}
 
-Der Server muss sich dem Client gegenüber nicht ausweisen. Die neuen Clients melden den Platform-Namen nicht mehr an den Server.
+Kann die QbeGina nach der Benutzerdatenabfrage die Verbindung zum LDAP Server nicht mehr wiederherstellen, wird der Benutzer gefragt, ob er eine lokale Anmeldung versuchen möchte (Bild \ref{fig:scr-qbegina-ldapconnlost}).
 
-\subsection{Server-Befehle}
-Folgende Befehle sind am Server zur Benutzung durch den Client implementiert:
+Die Arbeitsweise der Anmeldung am Netzwerk und an der Windows Workstation ist aus der Abbildung \ref{fig:qbegina-workflow-p2} ersichtlich.
 
-\subsubsection{/rpc/client/login}
-Meldet einen Benutzer am System an. Der Anmeldevorgang besteht aus der Benutzername/Passwort-Überprüfung am LDAP Server und der Eintragung der aktuellen IP- und MAC-Adresse des Clients.
+\placefigx{qbegina-workflow-p2}{Ablaufdiagramm: QbeGina Benutzeranmeldung}{width=13cm}
 
-Akzeptiert die GET-Parameter "user" und "pass" für Testzwecke, oder vom Client die Header "iLogin-User" (Benutzername), "iLogin-Pass" (Passwort), "iLogin-Token" (Benutzername/Passwort base64 enkodiert). Auf jeden Fall muss der GET-Paramter "ver" (die Client-Versionsnummer) vorhanden sein.
+%Abmelden
+Beim \keyword{Abmelden}, wird geprüft ob der Benutzer Mitglied der Gruppe "Qbe SAS Users" ist. Falls dies zutrifft wird der Benutzer und sein lokales Profilverzeichnis gelöscht.
 
-Die Antwort besteht aus dem HTTP Statuscode, sowie dem Internet-Status aus dem LDAP ("iLogin-User-State"), dem bisherigen Internettraffic ("iLogin-Stats-Traffic") und der Speicherplatznutzung ("iLogin-Stats-Disk"). 
+%\placefigx{qbegina-workflow-p3}{Ablaufdiagramm: QbeGina Benutzerabmeldung}{width=3.3cm}
 
-Der HTTP Statuscode kann folgende Werte annehmen:
-\begin{itemize}
-\item 200 OK, Anmeldung erfolgreich
-\item 401 Fehler: Benutzer muss zuerst Passwort ändern
-\item 403 Fehler: Benutzername/Passwort falsch
-\item 404 Fehler: Das API hat sich geändert, bzw. der Qbe SAS Client ist veraltet.
-\item 500 Fehler: Allgemeiner Serverfehler. Client soll die Anmeldung nicht erneut versuchen.
-\end{itemize}
+\subsection{Konfiguration durch Policy-Objekt}
+Jedes Workstation Objekt kann das Attribut \verb|qbePolicyName| mit einem Verweis auf ein Policy-Objekt enthalten. Dort sind dann folgende Parameter konfigurierbar:
 
-\subsubsection{/rpc/client/logout}
-Meldet den aktuellen Benutzer vom System ab. Akzeptiert keine Parameter und liefert immer HTTP-Statuscode 200 ("OK") zurück.
+\begin{description}
+\item[Dynamic Local User] Legt fest, ob ein lokaler Benutzer angelegt wird falls dieser nicht existiert. Ohne lokalen Benutzer kann keine Anmeldung stattfinden.
+\item[Local User Gruppe] Legt fest, in welche Gruppe neue Benutzer hinzugefügt werden. 
+Dies kann ein normaler Gruppenname sein, oder einer der folgenden vordefinierten Namen, die dann in die sprachspezifischen Windows Namen konvertiert werden.
+ \begin{description}
+ \item[BUILTIN/Administrators] Die Administratorengruppe (Administators, Administratoren, \ldots)
+ \item[BUILTIN/Power Users] Die Hauptbenutzergruppe (Power Users, Hauptbenutzer, \ldots)
+ \item[BUILTIN/Users] Die normale Benutzergruppe (Users, Benutzer, \ldots)
+ \item[BUILTIN/Guests] Die Gastgruppe (Guests, Gäste, \ldots)
+ \end{description}
+\item[Profile Path] Der Profilpfad für den Benutzer. Ein \verb|%s| wird durch den Benutzernamen ersetzt.
+\item[Login Script] Pfad zu einem ausführbaren Loginskript. Vorzugsweise wird dafür die QbeLoginScript.exe verwendet. An den kompletten Pfadnamen wird der Benutzername und das Passwort angehängt.
+\end{description}
+\clearpage
 
-\subsubsection{/rpc/client/svc-top.php}
-Zeigt die Zeichenfolge "Qbe SAS Client [Versionsnummer]", wobei die [Versionsnummer] aus dem GET-Parameter "ver" verwendet wird. Wird der "ver"-Parameter nicht angegeben, wird als [Versionsnummer] der String "ß" benutzt.
+\subsection{Screenshots QbeGina}
 
-Ab Qbe Application Server 0.91 wird zusätzlich auch ein Hinweis auf den Serverstatus angezeigt. "ok" bzw. "fail".
-
-\subsubsection{/rpc/client/svc-frame.php}
-Erstellt ein HTML Frameset zur Verwendung in der Windows-Version des Qbe SAS Clients. Enthält ein Top-Frame mit dem "svc-top.php" und ein Content-Frame mit entweder der QbeSvc-URL "http://127.0.0.1:7666/web/menu" oder der Update-Info "update.php"
-
-\subsubsection{/rpc/client/update.php}
-Weißt auf eine neue verfügbare Qbe SAS Client Version hin. Auf PCs mit installiertem HDGUARD wird der Hinweis mittels einem VBScript/Registry-Check übersprungen.
-
-\subsection{Client-Befehle}
-
-Die Client-Befehle sind unter Windows im QbeSvc.EXE, im Xplat Client im QbeService.EXE implementiert. Befehle werden nur von IPs im Bereich 10.0.2.0/24 akzeptiert.
-Befehle mit Präfix "/web" sollten nicht vom Server sondern nur intern vom Qbe SAS Client benutzt werden.
-
-\subsubsection{/}
-Optional: Weiterleitung nach "/web/menu".
-
-\subsubsection{/web/menu}
-Optional: Zeigt eine einfache Übersicht über den Status des Qbe SAS Client zur lokalen Verwendung an. Üblicherweise werden der Benutzername, der Servername, Zeit der letzten Verbindung, eventuell der letzte Fehler bzw. die Benutzerstatistiken angezeigt.
-
-\subsubsection{/web/login}
-Optional: Zeigt das Anmeldeformular zur lokalen Verwendung an. Mittels ActiveX Objekt wird ein eventuell vorher gespeichertes Benutzername/Passwort-Paar aus der Registry ausgelesen und abgeschickt. Andernfalls kann man das Paar abspeichern.
-
-Das Formular führt einen POST-Request auf "/auth/setlogin" aus.
-
-\subsubsection{/web/hta-login}
-Optional: Hilfsdaten für den Windows Client.
-
-\subsubsection{/web/hta-login-done}
-Optional: Hilfsdaten für den Windows Client.
-
-\subsubsection{/web/hta-login-post}
-Optional: Hilfsdaten für den Windows Client.
-
-\subsubsection{/web/cleardata}
-Optional: Löscht ein eventuell vorher gespeichertes Benutzername/Passwort-Paar via ActiveX-Objekt aus der Registry.
-
-\subsubsection{/web/logout}
-Optional: Initiert eine Abmeldung im Hintergrund.
-
-\subsubsection{/auth/login}
-Initiiert eine Hintergrundanmeldung.
-
-\subsubsection{/auth/setauthserver}
-Optional: Akzeptiert im GET-Parameter "server" einen neuen Namen für den Qbe Authentication Server. Default: "qbe-auth"
-
-\subsubsection{/auth/setlogin}
-Akzeptiert die GET-Daten des Formulars "/web/login" und initiiert eine Hintergrundanmeldung.
-
-\subsubsection{/auth/logout}
-Initiert eine Abmeldung im Hintergrund.
-
-\subsubsection{/auth/forcerefresh}
-
-\subsubsection{/service/stop}
-Optional: Windows-Spezifisch: Beendet den QbeSvc.
-
-\subsubsection{/system/exec}
-Optional: Windows-Spezifisch: Führt einen Befehl im Kontext des QbeSvc aus.
-
-\subsubsection{/system/setmanager}
-Übernimmt den GET-QueryString als neue zusätzliche Manager-IP von der Befehle entgegen genommen werden.
-
-\subsubsection{/system/getinfo}
-Akzeptiert den GET-Parameter "type" und liefert die gewünschte Information zurück. Gültige Werte sind:
-
-\begin{itemize}
-\item osversion Optional: Die Betriebssystemversion.
-\item osregowner Optional: Der Name des Benutzers auf den das Betriebssystem eingetragen wurde.
-\item hostname Der Computername.
-\item username Der Qbe SAS Benutzername oder "*VOID*" wenn kein Benutzername bekannt ist.
-\item authtoken Das Qbe SAS Benutzername/Passwort-Token oder "*VOID*" wenn kein Benutzername/Passwort-Token bekannt ist.
-\item version Die Qbe SAS Clientversion.
-\item cvsid Optional: Die CVS bzw. SVN \$Id\$.
-\item copyright Optional: Die Copyright-Information des installierten Qbe SAS Client.
-\item time Optional: Die aktuelle Zeit.
-\item authserver Der verwendete Qbe Authentication Server
-\item connectionstate Optional: Der zuletzt bekannte Zustand der Systemverbindung.
-\item internetstate Optional: Der zuletzt bekannte Internet-Zustand des Benutzers.
-\end{itemize}
-
-\subsubsection{/system/message}
-Sendet den GET-QueryString als Nachricht an den Benutzer.
-
-\subsubsection{/system/shutdown}
-Optional: Fährt den Computer herunter.
-
-\subsubsection{/system/restart}
-Optional: Startet den Computer neu.
-
-\subsubsection{/ilogin/update}
-Server bestätigt eine Anmeldung oder sendet einen Keep-Alive-Request. Gleichzeitig werden der Internetstatus, die Internetnutzung in Prozent und die Speicherplatznutzung in Prozent übertragen.
-
-\subsubsection{/ilogin/logout}
-Server bestätigt eine Abmeldung. Client löscht alle relevanten Daten.
-
-\subsubsection{/ilogin/time}
-Optional: Server sendet die aktuelle Zeit in Sekunden seit 1. 1. 1970 an den Client. Dieser sollte dann die Systemzeit richtig einstellen.
-
-\subsection{Ablaufdiagramme}
-
-FIXME: Ablauf Login, Refresh
+\placefigx{scr-qbegina-ctrlaltdel}{Screenshot: QbeGina Fenster vor der Anmeldung}{width=7cm}
+\placefigx{scr-qbegina-ldapconnlost}{Screenshot: QbeGina Anmeldung wenn die LDAP Verbindung verloren geht}{width=7cm}
+\placefigx{scr-qbegina-loginwithuser}{Screenshot: QbeGina Benutzeranmeldefenster}{width=7cm}
 
 %% *eof*

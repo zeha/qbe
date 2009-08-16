@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteBase /modules/custom
+RewriteRule map http://10.0.0.2/nagios/cgi-bin/statusmap.cgi?host=all&createimage&canvas_x=0&canvas_y=30&canvas_width=499&canvas_height=686&max_width=0&max_height=0&layout=6&layermode=exclude [P]
+

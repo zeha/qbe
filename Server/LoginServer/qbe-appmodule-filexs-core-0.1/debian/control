@@ -1,0 +1,17 @@
+Source: qbe-appmodule-filexs-core
+Section: non-free/misc
+Priority: optional
+Maintainer: Christian Hofstaedtler <christian@hofstaedtler.com>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.6.0
+
+Package: qbe-appmodule-filexs-core
+Architecture: i386
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Core package for Qbe Module FileXS
+ Contains core files for FileXS and also mkntpwd binaries.
+
+Package: qbe-appmodule-filexs-core-doc
+Architecture: all
+Description: Documentation for qbe-appmodule-filexs-core
+ mkntpwd docs.

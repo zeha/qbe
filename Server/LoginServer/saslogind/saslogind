@@ -1,0 +1,50 @@
+#!/usr/bin/perl -w -T
+# saslogind
+# (c) 2002 Christian Hofstaedtler
+#
+#----------------------
+
+package saslogind;
+use strict;
+use vars qw(@ISA);
+use Net::Server::PreFork;
+@ISA = qw(Net::Server::PreFork);
+
+
+### hooks
+
+sub process_request {
+  my $self = shift;
+  my $var2 = shift;
+  print STDERR "processing.. $self $var2\n";
+  print STDOUT "saslogind...\n";
+  eval {
+	#local $SIG{ALRM} = sub { die "Timeout...\n" };
+	#my $timeout = 30;
+	#my $prevalarm = alarm($timeout);
+	while( <STDIN> )
+	{
+		#s/\r?\n$//;
+		my $input = $_;
+		print STDERR "recv: $_\n";
+	#	alarm($timeout);
+	}
+	#alarm($prevalarm);
+  };
+#  if ($@=~/timeout/i){
+#	print STDOUT "Timed Out\n";
+#	return;
+#  }
+}
+sub request_denied_hook {
+	print "DENIED!\n";	
+}
+
+# go go go!
+saslogind->run(
+	port => '7666',
+	proto => 'tcp',
+	log_level => '4'
+);
+exit;
+1;

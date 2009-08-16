@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# fullbackup - SAS 1.0, 8. nov. 2002, ch
+#
+
+# tell users that we're going to backup
+wall System will be mostly unusable during Backup! Please stand by a few minutes ...
+cp /etc/issue.backup /etc/issue
+
+# stop services
+/sas/sbin/sasctl stop >/dev/null
+/etc/init.d/samba stop >/dev/null
+/etc/init.d/mysqld stop >/dev/null
+/sas/sbin/apache stop >/dev/null
+# stop ldap as the last !!!
+/etc/init.d/ldap stop >/dev/null
+
+# generate a backup file name
+SASBACKUPTARGET=/data/backup/fullbackup-sas-day`date +%j`-`date +%Y`.tar.bz2
+
+# back it up
+##tar cvfj $SASBACKUPTARGET /etc/* /sas/* /usr/local/* /var/lib/* /export/* /var/named/* /var/ircd/*
+/sbin/tob -full system
+
+# start ldap as the first service!!
+/etc/init.d/ldap start >/dev/null
+# start services
+/etc/init.d/samba start >/dev/null
+/etc/init.d/mysqld start >/dev/null
+/sas/sbin/sasctl start >/dev/null
+/sas/sbin/apache start >/dev/null
+
+cp /etc/issue.ok /etc/issue
+wall System Backup Completed. Everything should work now normally again.
+
+# change ownership (requires ldap ...)
+chown ch.sysops $SASBACKUPTARGET
+

@@ -1,0 +1,6 @@
+qbe-base (0.9.1-1) unstable; urgency=low
+
+  * Initial Debian version.
+
+ -- Christian Hofstaedtler <christian@hofstaedtler.com>  Sat, 22 Nov 2003 11:02:09 +0100
+

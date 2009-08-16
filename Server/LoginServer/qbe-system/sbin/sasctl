@@ -1,0 +1,75 @@
+#!/bin/bash
+#
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+RETVAL=0
+prog="sasd"
+
+start() {
+        # Start daemons.
+	if [ -n "`/sbin/pidof $prog`" ]; then
+		echo -n $"$prog: already running"
+		return 1
+	fi
+        echo -n $"Loading SAS: "
+
+	base=$prog
+        /sas/sbin/sasd 2&1>/dev/null
+	RETVAL=$?
+	usleep 100000
+	if [ -z "`/sbin/pidof $prog`" ]; then
+		# The child processes have died after fork()ing, e.g.
+		# because of a broken config file
+		RETVAL=1
+	fi
+	[ $RETVAL -ne 0 ] && failure $"$base startup"
+ 	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/sasd && success $"$base startup"
+	echo
+	return $RETVAL
+}
+stop() {
+        # Stop daemons.
+        echo -n $"Terminating SAS: "
+        killproc $prog
+	RETVAL=$?
+	[ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/sasd
+        echo
+	return $RETVAL
+}
+restart() {
+	stop
+	start
+}
+
+# See how we were called.
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	status)
+		rhstatus
+		;;
+	restart)
+		restart
+		;;
+	condrestart)
+		[ -f /var/lock/subsys/sasd ] && restart
+		;;
+	reload)
+		restart
+		;;
+	*)
+        	echo $"Usage: $0 {start|stop|status|restart|condrestart}"
+		exit 1
+esac
+
+exit $?
+

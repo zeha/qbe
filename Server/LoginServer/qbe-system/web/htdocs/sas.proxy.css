@@ -1,0 +1,43 @@
+BODY {
+	margin: 4px 4px 4px 4px;
+}
+BODY,P,TD {
+	background-color: #0099CC;
+	color: black;
+	font-family: "Trebuchet MS",Verdana,Helvetica;
+}
+A,A:active,A:hover,A:visited {
+	color: green;
+}
+.sysstate_pass { color: green; }
+.sysstate_fail { color: yellow; font-weight: bold; }
+.sysstate_crit { color: red; font-weight: bold; }
+
+.sas_menu {
+	border: 1px solid Black;
+	background-color: #666666;
+	color: black;
+}
+
+A.menu,A.menu:active,A.menu:hover,A.menu:visited {
+	color: white;
+}
+.sas_menu A,.sas_menu A:active,.sas_menu A:hover,.sas_menu A:visited {
+	color: white;
+}
+.sas_menu TD,.sas_menu TABLE {
+	background-color: #666666;
+}
+.sas_menu HR {
+	color: black;
+}
+HR { color: black; }
+.error {
+	border: 1px solid Black;
+	background-color: white;
+	padding: 2px 2px 2px 2px;
+	color: red;
+}
+.admin {
+	color: navy;
+}

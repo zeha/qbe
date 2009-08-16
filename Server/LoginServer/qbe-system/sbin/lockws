@@ -1,0 +1,8 @@
+echo Connecting to $1 ...
+rm -f /tmp/fil0r2
+echo GET /system/exec?rundll32.exe%20user32,LockWorkStation HTTP/1.0 >/tmp/fil0r2
+echo >>/tmp/fil0r2
+echo >>/tmp/fil0r2
+echo .>>/tmp/fil0r2
+nc $1 7666 < /tmp/fil0r2 > /dev/null
+

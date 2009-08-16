@@ -1,0 +1,13 @@
+Source: qbe-appmodule-filexs-system
+Section: non-free/misc
+Priority: optional
+Maintainer: Christian Hofstaedtler <christian@hofstaedtler.com>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.6.0
+
+Package: qbe-appmodule-filexs-system
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: System-level helper for qbe-appmodule-filexs
+ The system level service helper for the FileXS module
+ for the Qbe Application platform.

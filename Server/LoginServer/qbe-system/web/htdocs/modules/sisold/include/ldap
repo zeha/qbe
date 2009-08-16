@@ -1,0 +1,12 @@
+<?php
+function ldap_auth_ibutton($user,$ibutton_serial)
+{
+    
+}
+
+function ldap_auth_simple($user,$passwd)
+{
+    
+
+}
+?>

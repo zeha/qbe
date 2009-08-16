@@ -1,0 +1,129 @@
+.allgemein { 
+	background-image: url(Pictures/AllM1_final.png);  
+	height: 300px;
+	width: 200px;
+	left: 0px;
+	top: 0px;
+	position: absolute;
+	visibility: hidden;
+	cursor: pointer;
+	font-size: 12pt;
+		z-index: 100;
+}
+
+img.button { cursor: pointer; }
+
+
+.etechnik {
+	background-image: url(Pictures/EM1_final.png);
+	height: 200px;
+	width: 200px;
+	left: 200px;
+	top: 0px;
+	position: absolute;
+	visibility: hidden;
+	cursor: pointer;
+	font-size: 12pt;
+	z-index: 100;
+}
+.atechnik {
+	background-image: url(Pictures/AM1_final.png);
+	height: 200px;
+	width: 200px;
+	left: 400px;
+	top: 0px;
+	position: absolute;
+	visibility: hidden;
+	cursor: pointer;
+	z-index: 100;
+}
+.hochbau {
+	background-image: url(Pictures/HM1_final.png);
+	height: 200px;
+	width: 200px;
+	left: 600px;
+	top: 0px;
+	position: absolute;
+	visibility: hidden;
+	cursor: pointer;
+	z-index: 100;
+}
+
+td.kopf-allgemein {
+	height: 30px;
+	width: 200px;
+	background-color: #FFFFFF;
+}
+td.kopf-etechnik {
+	height: 30px;
+	width: 200px;
+	background-image: url(Pictures/EK1.png);
+}
+td.kopf-atechnik {
+	height: 30px;
+	width: 200px;
+	background-color: #F50F0F;
+}
+td.kopf-hochbau {
+	height: 30px;
+	width: 200px;
+	background-color: #FAFA00;
+	border: thin;
+}
+td.kopf-edvo {
+	height: 30px;
+	width: 200px;
+	background-color: #FFCC11;
+	border: thin;
+}
+
+table.menu {
+	top: 0px;
+	left: 0px;
+	width: 1000px;
+	position: absolute;
+	cursor: pointer;
+	height: 30px;
+
+}
+
+table.news { 
+	top: 10px; 
+	left: 10px; 
+	width: 950px; 
+	position: relative; 
+	z-index: 1;
+}
+
+table.status { 
+	top: 0px;
+	left: 5px;
+	width: 900px;
+	position: absolute;
+	height: 15px;
+	z-index: 1;	 
+}
+table.kal {  
+	top: 10px; 
+	left: 10px; 
+	width: 950px; 
+	position: relative; 
+	z-index: 1;
+}
+
+body { background-color: #CCCCCC;}
+
+body.status {
+	 background-color: #CCCCCC;
+}
+tr.kal { 
+	border-bottom-color: White;
+	border-bottom-style: solid;
+	border-bottom-width: thin;
+	position: relative;
+}
+
+th.kal {
+        background-color: #808080;
+        color: #E5E5E5;
+}

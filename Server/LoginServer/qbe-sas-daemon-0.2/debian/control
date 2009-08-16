@@ -1,0 +1,13 @@
+Source: qbe-sas-daemon
+Section: non-free/admin 
+Priority: optional
+Maintainer: Christian Hofstaedtler <christian@hofstaedtler.com>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.6.0
+
+Package: qbe-sas-daemon
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Background daemon for Qbe SAS
+ Handles background tasks like user homedir creation etc for 
+ Qbe SAS / Qbe Application Platform.

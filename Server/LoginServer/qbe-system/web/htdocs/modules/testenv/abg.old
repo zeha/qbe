@@ -1,0 +1,100 @@
+<?
+	// Seitenstart fuer Qbe Application Server
+	include "../../sas.inc.php";
+	
+	sas_start("Abgabe","../../","/modules/testenv",1);
+	sas_showmenu();
+
+	// so, ch hat mal code fixed...
+	error_reporting(15);	// Warnungen und so
+	
+	/*
+		Access Restriction:
+	
+		oldstyle:
+// Zugriffskontrolle ueber die Gruppe "inetlock"
+if (!sas_ldap_isgroupmember("inetlock",$user))
+{	// kein Zugriff, beenden...
+        echo "Unauthorized Access!<br>";
+        sas_end();
+        exit;
+
+}
+
+	*/
+	//	newstyle:
+	qbe_restrict_access("testarea");
+
+	// real code start:
+
+	//Wird OK gedrückt??
+	/*
+		so wies ned geht:
+	if (isset($OK))
+	{
+	copy($file,"$file_name");
+
+	}
+
+		so wies hoffentlich scho geht:
+	*/
+	if ( (isset($_REQUEST['OK'])) && ($_REQUEST['OK'] == '1') )
+	{
+		// so den rest hab ich jetzt amal grossteils vom filexs modul genommen:
+		if (is_uploaded_file($_FILES['file']['tmp_name']))
+		{
+			$datum=date("Ymd");
+			$target="/tmp/".$HTTP_POST_VARS["gegenstand"]."/".$HTTP_POST_VARS["lehrer"]."/".$datum;
+			
+			copy($_FILES['file']['tmp_name'],$target);
+			echo "Jo! Datei (".$target.") is da!<br>Dateiinhalt:<pre>";
+			
+		
+		//	print_r(file("/tmp/wb_playing_with_my_server_xxxfile"));
+			
+			print_r(file($target));
+
+			echo "</pre>";
+			
+			sas_end();
+		} else 
+			sas_pcode('error','Dateiname ungueltig.');
+	}
+
+	/*
+		Bei einem File Upload muss man AFAIK method=post und enctype="multipart/form-data" setzen.
+	*/
+?>	<form name="testumgebung" method=post enctype="multipart/form-data">
+		<br>
+		Gegenstand:<br>
+		<input type="text" name="gegenstand"><br>
+		Lehrer:<br>
+		<input type="text" name="lehrer"><br><br>
+		
+		
+		
+		
+		<div class="box" style="width: 100px;">	
+		<a href="javascript:popupform('../filexs/put-popup?actionlink=;hideactions=;show=own;subdir=');">Upload ...</a>
+				</div>
+		
+		
+		
+				
+		<br>
+		<!--
+		Input suckt fuer einen Button.
+		<input type="submit" name="OK" value="Hochladen">
+
+		Machen wir mal lieber einen richtigen button:
+		
+		<button name="OK" value="1">Hochladen</button>
+		
+		Ich sollte mal die ganzen Kommentare usw. rausnehmen, KÖNNTE unter Umständen zur Übersichtlichkeit beitragen ;> Zu müde um weiterzumachen.. Zu müde um weiterzumachen....
+		-->	
+	</form>
+<?php
+
+	// END CODE
+	sas_end();
+

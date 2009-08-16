@@ -1,0 +1,32 @@
+## debian/packages for qbe
+## Customised for qbe by 
+
+## This is an -example- packages file; read /usr/share/doc/yada/yada.txt.gz to
+## find out how to customise it to your needs.
+
+Source: qbe-base
+Section: unknown
+Priority: extra
+Maintainer: Christian Hofstaedtler <christian@hofstaedtler.com>
+Upstream-Authors: Christian Hofstaedtler <christian@hofstaedtler.com>
+Standards-Version: 3.5.9
+Upstream-Source: N/A
+Home-Page: <URL:http://qbe.ch/>
+Description: The base package for the qbe application platform.
+Origin: debian
+Copyright: Commercial
+ Copyright 2003 Christian Hofstaedtler
+ Copyright 2003 Andreas Stuetzner
+Major-Changes:
+ Introduced many bugs by not editing debian/packages appropriately.
+Build: sh
+ 
+Clean: sh
+
+Package: qbe-base
+Architecture: i386
+Depends: php4
+Description: The base package for the qbe application platform.
+ Not done yet.
+Install: sh
+ make install DESTDIR=$ROOT

@@ -1,0 +1,6 @@
+#!/bin/sh
+/sas/sbin/acl/qbe_makeacl
+sleep 10
+echo Sleeping...
+/sas/sbin/acl/qbe_makeacl-run
+
